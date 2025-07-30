@@ -1,0 +1,90 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>请求管理</h2>
+<p>本章主要讲述在前端应用类型项目中如何管理我们的 API 接口，如何通过可视化的方式快速实现一个请求。</p>
+<h3>概述</h3>
+<p>请求管理功能仅在<code>前端-应用</code>类型的仓库中提供。它作为实际的应用落地应用项目，我们可以在其内部实现对 API 接口的统一管理和维护。</p>
+<p>我们可以在右侧菜单面板中点击<code>服务接口</code>菜单来打开此功能。</p>
+<p><img src="/workbench/requester.png" alt=""></p>
+<h3>创建/编辑接口</h3>
+<p>在请求管理页面中，我们可以点击页面<strong>右上角</strong>的新建接口来创建新的服务接口；也可以在接口类表中点击编辑按钮来编辑服务接口。</p>
+<p><img src="/workbench/requester1.png" alt=""></p>
+<p>当我们打开接口编辑窗口后，有以下内容要素需要我们维护：</p>
+<p><img src="/workbench/requester2.png" alt=""></p>
+<ol>
+<li>接口地址：这里需要填写接口地址，这里请不要填写接口域名，请求文根可以在环境变量中配置。</li>
+<li>请求类习：点击接口地址输入框前的请求类型允许切换请求类型，目前支持<code>POST</code>、<code>GET</code>两种请求方式。</li>
+<li>备注标题：接口标题可以帮助开发人员快速了解接口含义。</li>
+<li>接口描述：完整的接口介绍信息，帮助开发人员深入了解接口。</li>
+<li>输入：接口输入字段，可以点击添加参数或者编辑某一项已经添加的接口输入参数。</li>
+<li>输出：接口输出字段，可以点击添加参数或者编辑某一项已经添加的接口输入参数。</li>
+</ol>
+<blockquote>
+<p>当我们创建服务接口后，平台会根据文根层级自动归类，提供更好的服务接口管理。
+多环境请求文根的配置，请阅读<a href="/workbench/env" target="_blank">环境变量</a>文章中的 <strong>requesterRoot</strong> 变量。</p>
+</blockquote>
+<h3>导入/更新</h3>
+<p>平台提供快速接口导入/更新操作，允许我们在接口管理面板中快速导入现有可操作的服务端项目中的所有 API 接口。</p>
+<p><img src="/workbench/requester11.png" alt=""></p>
+<p>我们可以点击右上角的<strong>导入/更新</strong>按钮来打开接口快速导入功能面板。在这里我们需要输入要导入的服务端仓库名称，来搜索服务端项目。</p>
+<p><img src="/workbench/requester12.png" alt=""></p>
+<p>这里查询的服务端项目仅展现于当前用户相关可操作的服务端项目。选中服务端项目后，可以选择要关联导入的项目版本，平台允许我们选择 DEV 开发版本。</p>
+<p>选择完成后，我们可以在面板中点击导入/更新按钮来实现单个接口或者单个控制器的导入工作，也可以点击<strong>一键同步</strong>按钮来同步所有服务端接口。</p>
+<blockquote>
+<p>当导入接口地址存在时会做输入输出的更新操作，该操作仅更新相关属性类型，不会修改<code>MOCK</code>数据，若存在数据结构变更，建议及时更改 MOCK 数据。</p>
+</blockquote>
+<h3>接口输入</h3>
+<p>我们可以点击添加参数按钮来添加接口输入参数：</p>
+<p><img src="/workbench/requester3.png" alt=""></p>
+<p>详细字段创建帮助文档请参阅：<a href="/workbench/property" target="_blank">字段维护</a></p>
+<h3>接口输出</h3>
+<p>接口输出是指一个接口返回的数据格式类型。我们可以点击输出标签也来维护接口输出字段。</p>
+<p><img src="/workbench/requester4.png" alt=""></p>
+<p>详细字段创建帮助文档请参阅：<a href="/workbench/property" target="_blank">字段维护</a></p>
+<p>平台除了提供的传统的字段创建功能外，还提供了根据 JSON 内容自动识别的功能，我们可以将现有接口的返回数据直接复制到 JSON 解析窗口中，平台会自动解析字段。</p>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/requester5.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<h3>MOCK 数据</h3>
+<p>JOKER 智能开发平台具备 MOCK 数据能力，借助便捷的 Mock 语法，就能实现对字段的 Mock 挡板数据声明。</p>
+<p><img src="/workbench/requester6.png" alt="展示Mock语法实现挡板数据声明的界面"></p>
+<p>除了运用<code>mock.js</code>语法编写挡板数据外，平台还支持手动维护 Mock 数据，并且提供了条件分支的高级挡板功能。</p>
+<p><img src="/workbench/requester7.png" alt="展示手动维护Mock数据及条件分支高级挡板的界面"></p>
+<blockquote>
+<p>在手动维护时，我们可以通过设置<strong>条件</strong>字段，来决定当前 Mock 数据的命中条件，从而灵活控制 Mock 数据的使用场景。</p>
+</blockquote>
+<h3>请求全局管理</h3>
+<p>在请求管理编辑器中，点击<code>请求全局管理</code>标签，即可开启此功能。</p>
+<p><img src="/workbench/requester8.png" alt="请求全局管理入口截图"></p>
+<p>该功能涵盖以下几个关键配置项：</p>
+<ul>
+<li><strong>请求超时时间</strong>：默认的请求超时时间为 10 秒，你可在此处对全局请求超时时间进行配置。对于那些需要长时间处理的接口，也能在请求时单独设置超时时间，而此处配置的超时时间将作为未指定超时时间时的默认设置。</li>
+<li><strong>数据转换配置</strong>：在此处，您能够对请求前后的数据转换进行相关配置，利用该切面事件，实现对接不同服务端接口规范的改造。</li>
+<li><strong>请求状态决断</strong>：（建议配置）接口响应后，通过此配置来判断接口数据是业务成功还是业务失败。若不进行配置，除网络状态异常外，均视为业务成功。</li>
+<li><strong>全局异常处理</strong>：（建议配置）可在此配置全局的请求异常通用处理方式，比如请求失败后统一弹窗提示错误信息等。若请求 Error 方法内返回 true，则不会触发全局异常处理。</li>
+<li><strong>请求自定义配置</strong>：您可以在此添加一些特色化的配置项，通过这些选项来满足特色化的业务需求。例如，增加是否开启 loading 的参数。</li>
+<li><strong>请求守卫</strong>：在此处可配置请求守卫逻辑，以此实现如请求 loading 效果等功能。守卫主要包括前置、后置、错误三个切面事件的管理。</li>
+</ul>
+<h3>如何调用接口</h3>
+<p>当我们完成了对接口的维护后，我们可以在任意的方法逻辑编辑器中通过<code>数据请求</code>节点来实现快速接口请求的调用。
+<img src="/workbench/requester9.png" alt=""></p>
+<p>在请求接口时，我们还可以自定义接口请求的配置。</p>
+<p><img src="/workbench/requester10.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

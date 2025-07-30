@@ -1,0 +1,59 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Component Methods</h2>
+<p>This chapter focuses on the creation and maintenance of component methods.</p>
+<h3>Overview</h3>
+<p>In addition to maintaining logic in the component's lifecycle functions, the platform also empowers developers with the ability to create component methods. By creating common business logic as methods within a component, it helps to maintain the component more efficiently. After exposing these methods externally, it is also possible to call the internal methods of the component from the outside, which is a key operation process for implementing advanced and complex components.</p>
+<h3>How to Create/Edit Methods</h3>
+<p>Component methods can be added and maintained at &quot;Logic Events - Component Methods&quot; in the &quot;Component Data&quot; panel.</p>
+<p><img src="/workbench/component-method.png" alt=""></p>
+<p>After opening the method creation panel, the platform requires the following method-related data to be filled in:</p>
+<p><img src="/workbench/component-method2.png" alt=""></p>
+<ul>
+<li><strong>Method Name</strong>: The name of the method needs to be filled in. It is required to use English letters and be unique within the current component.</li>
+<li><strong>Remark/Title</strong>: An alias can be given to the method so that the purpose and meaning of the method can be quickly understood.</li>
+<li><strong>Comment Description</strong>: Configure the comment for the method here. When using the method, moving the mouse over it will display more information about this method.</li>
+<li><strong>Whether to Expose</strong>: If configured as an exposed method, it allows external calls. For detailed content, please refer to the subsequent sections.</li>
+<li><strong>Async Function</strong>: If marked as an async function, the method will be modified with <code>async</code>. When saving the logic orchestration, the platform will automatically judge whether asynchronous processing is included and provide prompts for the repair of async functions. Of course, the async flag of the method can also be manually marked here.</li>
+<li><strong>Parameter Declaration</strong>: Method parameters can be added in the parameter declaration area. For parameter declaration, refer to: <a href="/workbench/property" target="_blank">Field Maintenance</a>.</li>
+<li><strong>Return Type</strong>: The return value type of the current method can be defined here.</li>
+</ul>
+<h3>How to Use Methods</h3>
+<p>We will introduce how to use component methods from two perspectives:</p>
+<h4>Internal Use</h4>
+<p>In the page layout, component methods can be used in the form of component parameters (expressions).
+<img src="/workbench/component-method3.png" alt=""></p>
+<p>During the logic orchestration process, internal methods can be called either through expressions (code) or with the help of &quot;Internal Method Call&quot;:</p>
+<ol>
+<li><strong>In Code Expressions</strong>: Call it in the way of <code>this.</code>.
+<img src="/workbench/component-method4.png" alt=""></li>
+<li><strong>With the Help of &quot;Internal Method Call&quot; Node</strong>: Drag the &quot;Internal Method Call&quot; node to the logic orchestration canvas and select the method to be called through the drop-down box. All callable methods will be shown here, including the internal methods of the component. The advantage of this calling method is that it can achieve quick method calls in a visual form and also provides visual parameter configuration.
+<img src="/workbench/component-method5.png" alt=""></li>
+</ol>
+<h4>External Call</h4>
+<p>External calls require us to configure <strong>ref (component identifier)</strong> for the component. For detailed content, please refer to <a href="/workbench/layout" target="_blank">Component Layout</a>. Now let's learn how to use the publicly exposed methods provided by the component.</p>
+<p><img src="/workbench/component5.png" alt="Screenshot of Demonstration for Calling Public Methods"></p>
+<p>All the callable methods shown in the figure are the publicly exposed methods within the component. Un-exposed methods will not be displayed here.</p>
+<blockquote>
+<p>For the logic orchestration tutorial, please refer to: <a href="/workbench/workflow" target="_blank">Logic Orchestration</a></p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

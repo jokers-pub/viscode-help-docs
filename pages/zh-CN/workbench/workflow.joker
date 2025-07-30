@@ -1,0 +1,254 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>逻辑编排</h2>
+<p>本章主要阐述逻辑编排的基本功能，以及如何借助这些功能快速实现业务逻辑。</p>
+<h3>概述</h3>
+<p>逻辑编排是一款可视化的方法开发工具。在此工具中，你既能够通过简单的拖拽操作，也可以运用自定义的代码块来编写实现业务逻辑的代码。平台具备强大的<strong>类型表达式</strong>功能，这使得在任意逻辑节点处，我们都能快速查询到所需的数据变量。同时，智能的<strong>语法提示</strong>与<strong>语法检查</strong>功能，让我们在进行逻辑开发时更加得心应手、顺畅无阻。</p>
+<h3>如何添加逻辑</h3>
+<p>我们可以在逻辑编排面板中将工具箱中的方法节点拖入到画布，实现方法的调用。</p>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/workflow.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<h3>如何删除逻辑</h3>
+<p>我们可以点击要删除的节点右侧删除按钮，来删除逻辑节点。</p>
+<p><img src="/workbench/workflow2.png" alt=""></p>
+<h3>添加节点注释</h3>
+<p>我们可以点击节点右侧的编辑注释按钮，来实现对节点的注释编辑。
+<img src="/workbench/workflow3.png" alt=""></p>
+<blockquote>
+<p>编辑的注释会在代码生成时一并输出到实际代码产出物中。</p>
+</blockquote>
+<h3>拖拽顺序</h3>
+<p>我们可以将鼠标移入要拖动的节点，选中拖动图标后按住鼠标左键不动，实现拖动位置。</p>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/workflow1.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<h3>逻辑分支</h3>
+<p>逻辑分支允许我们通过可视化的方式实现<strong>if</strong>、<strong>else if</strong>、 <strong>else</strong>的逻辑。</p>
+<p><img src="/workbench/workflow4.png" alt=""></p>
+<h3>日志</h3>
+<p>我们可以通过日志逻辑快速实现一个<code>console</code>的控制台日志输出。</p>
+<p><img src="/workbench/workflow5.png" alt=""></p>
+<blockquote>
+<p>请注意，在服务端项目中，服务端控制器中提供了分布式日志处理功能，它比控制日志输出更强大，可以自由选择日志输出形式。</p>
+</blockquote>
+<h3>内部方法调用</h3>
+<p>我们可以通过该节点实现可视化的内部方法调用，该节点会自动分析当前项目中的内部函数。</p>
+<p><img src="/workbench/workflow6.png" alt=""></p>
+<h4>方法返回值接收</h4>
+<p>这里需要注意的是，如果该方法存在返回值，则在方法调用左侧展示一个变量接收的操作图表，点击它来配置接收变量。
+<img src="/workbench/workflow7.png" alt=""></p>
+<p>我们可以在这里选择使用现有变量接收还是新建变量来接收返回值。</p>
+<p><img src="/workbench/workflow8.png" alt=""></p>
+<h4>方法参数</h4>
+<p>默认情况下，平台会自动识别方法的可选参数配置，自动隐藏后续的非必填（未配置）的参数。我们可以点击展开更多参数来展示所有参数。</p>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/workflow9.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<h4>异步方法（await）</h4>
+<p>当我们调用的方法是异步函数时，方法调用节点会展示是否开启<code>await</code>。</p>
+<p>await 开启后，在方法执行时会等待该方法顺利执行成功后才会执行后续逻辑；若关闭等待，则不等待执行结果，采用异步的方式进行逻辑执行。</p>
+<p><img src="/workbench/workflow10.png" alt=""></p>
+<h3>数据观察</h3>
+<p>在前端项目中，我们可以在组件类型的文件中使用数据观察方法，来对响应值的更新进行监听，并在值发生变更时进行通知。</p>
+<p><img src="/workbench/workflow11.png" alt=""></p>
+<p>这一节点的操作会被转换为下面的代码进行执行：</p>
+<pre><code class="language-js">import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        value: &quot;v1&quot;
+    };
+
+    方法() {
+        this.$watch(
+            () =&gt; this.model.icons,
+            (nv, ov) =&gt; {
+                console.info(&quot;值变更了&quot;);
+            }
+        );
+    }
+}
+</code></pre>
+<p>我们通过一个 demo 来深入了解一下此功能。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;p&gt;
+        当前值: @model.value
+    &lt;/p&gt;
+    &lt;button @click=&quot;handleClick&quot;&gt;将值变更为当前时间&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+import { MessageBox } from &quot;@joker.front/ui&quot;;
+
+export default class extends Component {
+    model = {
+        value: &quot;v1&quot;
+    };
+
+    mounted() {
+        this.$watch(
+            () =&gt; this.model.value,
+            (nv, ov) =&gt; {
+                MessageBox.alert(`值变更了：${ov}=&gt;${nv}`);
+            }
+        );
+    }
+
+    handleClick() {
+        this.model.value = new Date().toLocaleTimeString();
+    }
+}
+&lt;/script&gt;
+</code></pre>
+</DemoContainer>
+<blockquote>
+<p>详细内容可以阅读<a href="https://front.jokers.pub/base/component-api" target="_blank">组件内部方法</a>文档中的<code>$watch</code>方法介绍。</p>
+</blockquote>
+<h3>定义变量</h3>
+<p>我们可以通过该节点来定义新的变量。</p>
+<p><img src="/workbench/workflow12.png" alt=""></p>
+<p>相当于以下代码：</p>
+<pre><code class="language-js">let age = 35;
+</code></pre>
+<h3>变量赋值</h3>
+<p>我们可以通过该节点实现对现有变量的赋值。</p>
+<p><img src="/workbench/workflow13.png" alt=""></p>
+<h3>循环遍历</h3>
+<p>我们可以使用该节点实现对数组/对象的循环遍历。</p>
+<ul>
+<li><strong>循环</strong>：要循环遍历的对象，可以是数组也可以是对象。</li>
+<li><strong>循环项</strong>：定义循环项变量名，若循环的是对象则该值代表对象的属性值，若循环的是数组，则该值代表数组项。</li>
+<li><strong>循环索引</strong>：定义循环索引变量，若循环的是对象则该值代表对象的 KEY，若循环的数组，则该值代表数组的索引。</li>
+</ul>
+<p>当我们在循环过程中，想要中断循环，可以使用<code>break</code>节点，也可以直接使用<code>返回（return）</code>节点。</p>
+<p><img src="/workbench/workflow14.png" alt=""></p>
+<p>上述的逻辑编排相当于：</p>
+<pre><code class="language-js">for (let item of [1, 2, 3, 4]) {
+    console.info(item);
+
+    if (item &gt; 2) {
+        break;
+    }
+}
+</code></pre>
+<h3>返回</h3>
+<p>我们可以通过返回节点实现方法的<code>return</code>操作。我们可以点击返回节点右侧的按钮来配置返回值。</p>
+<p><img src="/workbench/workflow15.png" alt=""></p>
+<h3>自定义代码块</h3>
+<p>自定义代码块允许我们通过<code>Javascript</code>语法来自由编辑我们的代码。</p>
+<p><img src="/workbench/workflow16.png" alt=""></p>
+<p>我们可以点击自定义代码块节点右侧的放大按钮来打开表达式编辑面板，在这里我们可以有更大的操作空间，并且平台也会提示出当前节点可以操作的所有变量。</p>
+<p><img src="/workbench/workflow17.png" alt=""></p>
+<blockquote>
+<p>这里需要注意的是，代码块内所声明的临时变量并不会被该节点后的节点表达式所识别，若想要实现变量声明后在后面逻辑中可用，可以在代码块执行前，先通过<code>定义变量</code>节点先定义，在自定义代码块中进行赋值即可。平台这样做的原因在于平台后续在调试时可以更好的对方法内变量进行识别和展现。</p>
+</blockquote>
+<h3>调试运行</h3>
+<p>我们允许在某个业务逻辑节点中嵌入<code>debugger</code>节点，该节点可以帮助我们在开发调试时在控制台进行调试。</p>
+<p><img src="/workbench/workflow18.png" alt=""></p>
+<blockquote>
+<p>在实际代码导出构建时，该节点会被移除，请放心使用。</p>
+</blockquote>
+<h3>触发事件</h3>
+<p>该节点仅会在前端组件文件中展现。我们可以通过该逻辑节点实现对组件的事件触发。
+<img src="/workbench/workflow19.png" alt=""></p>
+<blockquote>
+<p>详细使用方法可参阅<a href="/workbench/component-event" target="_blank">组件事件</a>。</p>
+</blockquote>
+<h3>获取组件</h3>
+<p>该节点仅会在前端组件文件中展现。我们可以通过该节点实现对已标记的组件进行方法调用。</p>
+<p>在使用该节点之前，需要配置要操作组件的<code>组件标识</code>属性，并且该组件存在对外公开方法。</p>
+<p><img src="/workbench/workflow20.png" alt=""></p>
+<p>当然我们也可以在自定义代码块中通过<code>this.$getRef</code>方法获取组件虚拟节点。这是高级用法，提供更灵活的操作，除了可以调用组件公开方法还可以读取组件内部数据，注册该组件事件等高级功能。</p>
+<pre><code class="language-js">import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        value: &quot;v1&quot;
+    };
+
+    方法() {
+        this.$getRef(&quot;form1&quot;)?.component.submit();
+    }
+}
+</code></pre>
+<h3>环境分支</h3>
+<p>平台按照开发场景分为了三种环境：开发、调试、输出。我们可以通过条件判断实现在不同环境代码的生效。</p>
+<p><img src="/workbench/workflow21.png" alt=""></p>
+<p>它的运行原理不是在代码中通过<code>if</code>判断来实现逻辑是否执行，而是站在代码生成层面的一种代码块是否输出层面的功能。</p>
+<blockquote>
+<p>这里的环境不是环境变量中维护的环境，而是针对开发场景的环境划分。</p>
+</blockquote>
+<h3>内部事件</h3>
+<p>我们可以通过<code>内部事件注册</code>和<code>内部事件销毁</code>节点来管理当前组件内部的事件处理。</p>
+<p><img src="/workbench/workflow22.png" alt=""></p>
+<p><img src="/workbench/workflow23.png" alt=""></p>
+<h3>组合回复</h3>
+<p>该节点仅在前端项目中展现。组合回复通常在我们需要对某个变量进行频繁操作的情况下使用。其目的在于避免在完成最终设置之前频繁执行 DOM 渲染。采用该方法能够将方法内的所有变更进行去重处理，而后统一执行变更通知。</p>
+<blockquote>
+<p>在了解组合回复节点之前，请先学习 JOKER 框架的内容<a href="https://front.jokers.pub/base/combined-reply" target="_blank">组合回复</a>。</p>
+</blockquote>
+<p>平台提供了快速实现组合回复的能力：
+<img src="/workbench/workflow24.png" alt=""></p>
+<p>相当于：</p>
+<pre><code class="language-js">combinedReply(() =&gt; {
+    this.model.radioValue = 1;
+    this.model.radioValue = 2;
+});
+</code></pre>
+<h3>数据同步</h3>
+<p>该节点仅会在前端组件文件中展现。我们可以通过该方法节点实现 <code>props</code>中的属性值快速同步到<code>model</code>中的属性，并在<code>props</code>属性值变更时同步修改<code>model</code>中的值。</p>
+<blockquote>
+<p>该节点要求<code>props</code>中的属性值和<code>model</code>中的属性值名称一致。</p>
+</blockquote>
+<p><img src="/workbench/workflow25.png" alt=""></p>
+<blockquote>
+<p>详细内容可参阅<a href="https://front.jokers.pub/base/component-api" target="_blank">组件内部方法</a>中的<code>属性同步（$syncProp）</code>。</p>
+</blockquote>
+<h3>等待更新渲染</h3>
+<p>该节点仅会在前端组件文件中展现。该方法用于当变更更新后，等待其真正更新渲染 DOM 后执行，可用于异步渲染等待。</p>
+<p><img src="/workbench/workflow26.png" alt=""></p>
+<blockquote>
+<p>Joker 前端的渲染是即时的，当属性变更会立即在页面中进行更新渲染，但是当我们在使用异步组件时，就需要通过<code>$nextUpdatedRender</code>函数来监听组件是否完成整体渲染更新。详细内容可参阅<a href="https://front.jokers.pub/base/component-api" target="_blank">组件内部方法</a>中的<code>等待下次渲染</code>。</p>
+</blockquote>
+<h3>返回成功数据</h3>
+<p>仅在服务端应用项目中展现，我们可以通过该节点完成接口的成功数据返回。</p>
+<p><img src="/workbench/workflow27.png" alt=""></p>
+<p>等同于：</p>
+<pre><code class="language-js">return Ok(1);
+</code></pre>
+<blockquote>
+<p>该节点也是一种带有业务含义的<code>return</code>语法节点。详细内容可参考<a href="/workbench/server-controller" target="_blank">控制器设计</a></p>
+</blockquote>
+<h3>返回成功数据</h3>
+<p>仅在服务端应用项目中展现，我们可以通过该节点完成接口的异常数据返回。</p>
+<p><img src="/workbench/workflow28.png" alt=""></p>
+<p>等同于：</p>
+<pre><code class="language-js">return ActionError(&quot;错误信息&quot;);
+</code></pre>
+<blockquote>
+<p>该节点也是一种带有业务含义的<code>return</code>语法节点。详细内容可参考<a href="/workbench/server-controller" target="_blank">控制器设计</a></p>
+</blockquote>
+<h3>数据库操作</h3>
+<p>仅在服务端应用项目中展现，该节点可以帮助我们实现对数据库的操作，详细内容请阅读<a href="/workbench/db-option" target="_blank">数据操作</a>文章。</p>
+<p><img src="/workbench/db-option.png" alt=""></p>
+<h3>缓存操作</h3>
+<p>仅在服务端应用项目中展现，该节点可以帮助我们实现对缓存的操作，详细内容请阅读<a href="/workbench/server-cache" target="_blank">缓存操作</a>。</p>
+<p><img src="/workbench/server-cache1.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo1 from '../../../examples/workbench/workflow/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

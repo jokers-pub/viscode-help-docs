@@ -1,0 +1,215 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>控制器设计</h2>
+<p>本章着重阐述控制器相关内容。控制器作为服务端应用的核心功能模块，承担着设计应用 API 接口的重任，堪称服务端应用唯一请求入口的设计枢纽。</p>
+<h3>概要</h3>
+<p>平台赋予我们通过可视化方式，快速创建服务端应用 API 接口的能力。我们能够在<code>控制器</code>文件夹内，依据业务类型创建不同的控制器，并且每个控制器下可创建多个 API 方法。
+<img src="/workbench/back-end.png" alt=""></p>
+<p>接下来，我们将按照“API 创建 -&gt; 输入参数 -&gt; API 方法参数 -&gt; API 方法返回值类型 -&gt; 鉴权”的顺序，详尽讲解控制器的各项功能。</p>
+<h3>创建 API</h3>
+<p>在控制器文件中，可创建多个 API 方法。点击右上角的<strong>创建 API</strong>按钮，即可打开 API 编辑器窗口。
+<img src="/workbench/server-controller.png" alt=""></p>
+<p>在此窗口中，可对 API 接口的以下信息进行配置：</p>
+<ul>
+<li><strong>名称</strong>：即接口 API 方法的名称。需注意，此并非最终的 API 访问地址，API 的访问地址格式为<code>服务文根</code>/<code>控制器名称</code>/<code>API 名称</code>。</li>
+<li><strong>备注标题</strong>：为 API 方法配置别名，助力开发人员迅速明晰 API 的含义。</li>
+<li><strong>描述</strong>：为 API 方法撰写详细的说明信息，方便开发人员深入领会。</li>
+<li><strong>请求类型</strong>：在此可配置多种请求类型，仅符合所配置请求类型的请求，才会映射到该 API 方法。其可选值包括：<strong>POST</strong>、<strong>GET</strong>、<strong>PUT</strong>、<strong>DELETE</strong>。</li>
+<li><strong>授权认证</strong>：若开启此功能，在访问该 API 接口前，系统会对 JWT 进行认证。一旦 JWT 验证失败或过期，将直接返回 401 错误。</li>
+<li><strong>输入参数</strong>：在此处能够配置 API 的输入参数。</li>
+</ul>
+<h3>输入参数校验</h3>
+<p>如前文所述，我们可在 API 接口编辑面板中创建 API 接口的输入参数，其创建遵循通用的<code>字段维护</code>规则，详细内容可查阅<a href="/workbench/property" target="_blank">字段维护</a>章节。</p>
+<p>在此，主要讲解 API 输入参数在字段维护中的一项特殊功能：<strong>输入参数校验</strong>。</p>
+<p>在<strong>字段维护</strong>编辑窗口的第二步，通过选择不同的数据类型，能够配置各异的字段限制规则。
+<img src="/workbench/server-controller1.png" alt=""></p>
+<p>以下是不考虑数据类型时，所有的校验规则介绍：</p>
+<ol>
+<li><strong>正则校验</strong>：允许自定义正则表达式，以此约束输入参数的内容。</li>
+<li><strong>是否为邮箱</strong>：用于验证输入内容是否为邮箱格式。</li>
+<li><strong>是否为电话</strong>：判断输入内容是否符合电话格式。</li>
+<li><strong>只限字母</strong>：确保输入内容仅包含字母。</li>
+<li><strong>只限字母和数字</strong>：限定输入内容只能是字母和数字。</li>
+<li><strong>只限数字</strong>：仅允许输入数字（字符串类型数字）。若该字段本身即为数字类型，可直接更改字段类型；此规则仅为字符串类型提供数字格式的校验补充。</li>
+<li><strong>是否是整数</strong>：要求输入必须是整数，不允许为浮点数。</li>
+<li><strong>包含特定内容</strong>：字符串中必须包含特定的内容。</li>
+<li><strong>限制值范围</strong>：对值的范围进行限制。例如性别只能是男/女，支持手动维护枚举值，也可选择数据表内的枚举值。
+<img src="/workbench/server-controller2.png" alt=""></li>
+<li><strong>长度限制</strong>：对字符串长度进行限制，可单独配置最大值或最小值，也能同时组合限制。</li>
+<li><strong>最大值</strong>：针对数字类型的字段，可配置最大值限制。</li>
+<li><strong>最小值</strong>：针对数字类型的字段，可配置最小值限制。</li>
+<li><strong>文件大小限制</strong>：当字段类型为<strong>File</strong>文件时，可通过此约束来限定上传文件的大小。</li>
+<li><strong>文件格式限制</strong>：当字段类型为<strong>File</strong>文件时，可限制文件的最大上传数量，默认仅允许上传 1 个文件。</li>
+<li><strong>文件类型限制</strong>：当字段类型为<strong>File</strong>文件时，可限制上传文件的接收类型，支持通配符。例如：图片(image/jpeg,image/*)支持“*”通配符，若需限制多个类型，可用“,”进行分割。</li>
+</ol>
+<h3>文件上传</h3>
+<p>在服务端项目中，<code>字段维护</code>面板支持选择字段类型为<code>File</code>文件类型，借助此功能，我们能够在 API 接口中实现文件上传。</p>
+<p>上文提及了文件类型的约束条件配置，在此着重讲解 File 类型具备的属性及操作方式。
+<img src="/workbench/server-controller3.png" alt=""></p>
+<p>假设创建了一个输入参数<code>userImg</code>，可通过<code>data.userImg</code>的方式获取上传的文件，并对其展开操作。</p>
+<p>文件类型的数据为我们提供了以下属性：</p>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checkMimeType</td>
+<td>Function</td>
+<td>检查是否符合文件类型要求，支持通配符。例如：图片(image/jpeg,image/*)支持“*”通配符，若限制多个类型，可以是单个字符串也可以是字符串数组</td>
+</tr>
+<tr>
+<td>checkSize</td>
+<td>Function</td>
+<td>检查是否满足文件大小限制</td>
+</tr>
+<tr>
+<td>fileCount</td>
+<td>Number</td>
+<td>文件个数</td>
+</tr>
+<tr>
+<td>files</td>
+<td>File[]</td>
+<td>所有文件</td>
+</tr>
+<tr>
+<td>save</td>
+<td>Function</td>
+<td>通过该方法实现文件保存到服务端指定目录</td>
+</tr>
+</tbody>
+</table>
+<p>在此，重点讲解<strong>save</strong>文件保存方法。其他属性通常可在输入项条件约束中进行配置，除非存在特殊需求，才会考虑使用自定义方式判断文件格式、文件大小。</p>
+<h4>文件保存</h4>
+<pre><code class="language-js">//不做任何调整直接保存到项目上传目录中
+await data.userImg.save();
+
+//完整参数示例,将文件保存到上传目录中的user文件夹中。
+await data.userImg.save(&quot;user/&quot;, {
+    //自定义保存文件名
+    newFileName: (file) =&gt; {
+        //按照userId.ext的格式进行命名，其中file.ext 是上传的文件扩展名
+        return userId + &quot;.&quot; + file.ext;
+    },
+    //是否不压缩图片，这里默认为false，默认平台底层会对上传的图片资源做压缩处理，若不想压缩可以配置为true
+    uncompressedImage: false,
+    //图片压缩处理配置，仅在开启图片压缩时生效
+    imageCompressionOption: {
+        //图片压缩比率0 - 100,默认80
+        quality: 80,
+        //图片最大宽度，默认不限制，单位像素，若配置值小于实际图片值则会等比例缩放
+        maxWidth: 1000,
+        //图片最大高度，默认不限制，单位像素，若配置值小于实际图片值则会等比例缩放
+        maxHeight: 1000
+    }
+});
+</code></pre>
+<blockquote>
+<p>其中项目上传目录可在服务端环境变量中，通过<strong>UPLOAD_ROOT_DIR</strong>进行配置。</p>
+</blockquote>
+<h4>保存返回值</h4>
+<p><strong>save</strong>方法的调用为异步操作，其返回值是一个数组：</p>
+<pre><code class="language-typescript">{
+    //成功保存的文件列表，值为保存的路径
+    success: string[];
+    //保存失败的错误信息列表
+    error: string[];
+}
+</code></pre>
+<p>完整实例：</p>
+<pre><code class="language-js">//不做任何调整直接保存到项目上传目录中
+let uploadResult = await data.userImg.save();
+
+if (uploadResult.error.length) {
+    //TODO：记录日志
+    return ActionError(&quot;保存失败&quot;); //ActionError 在 API返回值类型有介绍。
+}
+
+let userImg = uploadResult.success[0];
+</code></pre>
+<p><img src="/workbench/server-controller4.png" alt=""></p>
+<h3>API 方法参数</h3>
+<p>在 API 逻辑编排中，平台为我们提供了常用的数据参数。</p>
+<ul>
+<li>data： 输入参数，类型可以在 API 接口输入参数中去设计维护。</li>
+<li>context：路由上下文，是 API 接口处理的路由上下文数据，里面包含：
+<ol>
+<li>jwt：鉴权令牌内容，若当前控制器开启了<strong>鉴权</strong>，才会存在 jwt 属性，令牌值已解析，可以直接获取内部属性。</li>
+<li>url：请求地址</li>
+<li>request：底层请求对象，我们可以通过它获取请求 IP、来源地址等数据。</li>
+<li>logger：日志处理对象，可以帮助我们实现集中日志输出和收集。</li>
+</ol>
+</li>
+<li>logger：日志处理对象，可以帮助我们实现集中日志输出和收集。他和 console 不同的是，他是集中的日志收集器，它允许我们使用文件日志、控制台日志、数据库日志。根据不同的需求可以在<a href="/workbench/env" target="_blank">环境配置</a>中进行配置。</li>
+</ul>
+<h3>API 返回值类型</h3>
+<p>平台为我们提供了统一的数据返回结构，如下所示：</p>
+<pre><code class="language-json">{
+    &quot;header&quot;: {
+        &quot;code&quot;: &quot;状态码&quot;, // 当返回 JK000000 时代表业务成功，除此之外全部为业务异常
+        &quot;msg&quot;: &quot;错误信息&quot;
+    },
+    &quot;data&quot;: {} // 返回的业务数据
+}
+</code></pre>
+<p>平台还提供了快速创建接口返回值的方法：</p>
+<h4>Ok</h4>
+<p>用于返回正确的业务数据。示例代码如下：</p>
+<pre><code class="language-js">return Ok(业务数据);
+</code></pre>
+<p>当然，也可以在逻辑编排面板中，使用<strong>返回成功数据</strong>节点来实现正确业务数据的返回。
+<img src="/workbench/server-controller5.png" alt=""></p>
+<h4>ActionError</h4>
+<p>用于返回异常业务数据。示例代码如下：</p>
+<pre><code class="language-js">return ActionError(错误信息, 错误码, 业务数据);
+// 其中错误信息为必填项，错误码若不配置则使用通用异常码 JK999999。
+</code></pre>
+<blockquote>
+<p>开发人员可配置不同的错误码，以便前端在请求异常时，能根据状态码实现不同的业务处理分支。</p>
+</blockquote>
+<p>同样，也可以在逻辑编排面板中，使用<strong>返回失败数据</strong>节点来返回异常业务数据。
+<img src="/workbench/server-controller6.png" alt=""></p>
+<h4>数据兜底</h4>
+<p>在控制器中，我们可以直接通过<code>return</code>返回业务数据。平台底层会进行判断，若返回的数据符合要求的 API 数据格式，则按照该返回值进行返回；否则，将自动包裹<code>Ok</code>方法，将其作为正确数据返回。</p>
+<h3>授权认证</h3>
+<p>接下来，详细讲解如何配置项目的 JWT 令牌功能。</p>
+<h4>如何生成 JWT 令牌</h4>
+<p>可以在某个 API 接口中生成 JWT 令牌，并将其返回给前端，通常在登录接口中完成这一操作。</p>
+<p>可使用<code>generateJwtToken</code>方法来生成令牌。
+<img src="/workbench/server-controller7.png" alt=""></p>
+<p>从上图的逻辑可知，首先依据接口输入项查询用户信息。若查询到用户信息，就使用该信息生成 JWT，并返回<code>Ok</code>；若未查询到用户信息，则返回<code>ActionError</code>。</p>
+<blockquote>
+<p>上述内容仅为示例，特别提醒，切勿在 JWT 内容中存放敏感数据，如密码等。</p>
+</blockquote>
+<h4>前端如何上送 JWT 令牌</h4>
+<p>前端需在接口请求头<code>header</code>中，通过<strong>sid</strong>来上送 JWT 令牌。</p>
+<p>在 JOKER 可视化平台中，可在<code>transformReqData</code>数据请求转换方法里统一注入<code>sid</code>。
+<img src="/workbench/server-controller8.png" alt=""></p>
+<blockquote>
+<p>这里需要特别注意，若 API 开启了<strong>鉴权</strong>功能，在 API 方法内通过<code>context.jwt</code>获取的值即为 JWT 的<code>payload</code>。此时，无需使用<code>verifyJwtToken</code>方法来检验令牌的合法性，因为平台会在路由切面中预先判断令牌是否合法。若令牌无效，将不会执行 API 内的逻辑。<code>verifyJwtToken</code>方法仅用于高级复杂的自定义校验场景，为其提供令牌的解析操作。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

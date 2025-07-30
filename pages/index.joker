@@ -1,0 +1,373 @@
+<template>
+    <jk-scrollbar>
+        <div class="home">
+            <div class="logo">
+                <img src="https://static.jokers.pub/joker.png" />
+            </div>
+            <div class="top">
+                <p>
+                    @(i18n("可视化平台帮助文档", "Visual Dev Platform Help Docs"))
+                </p>
+                <p>
+                    @(i18n("Visual Development Platform", "Visual Dev Platform"))
+                </p>
+                <p>
+                    @(i18n("专为开发人员而生，它拥有更为灵活的开发模式，操作简便，易于上手，学习成本低，是开发人员的得力助手。", "Designed for developers, it features a more flexible development model, simple operation, easy to get started, low learning curve, and is a powerful assistant for developers."))
+                </p>
+                <div class="nav-btns">
+                    <a href="@(i18n("/cn"))/portal/introduction">
+                        @(i18n("门户帮助文档", "Portal Help Documentation"))
+                        <i class="jk-icon-right" />
+                    </a>
+                    <a href="@(i18n("/cn"))/workbench/basic" class="t1">
+                        @(i18n("工作台帮助文档", "Workbench Help Documentation"))
+                        <i class="jk-icon-right" />
+                    </a>
+                    <a href="https://viscode.jokers.pub" target="_blank" class="t2">
+                        @(i18n("官方可视化开发平台", "Official Visual Development Platform"))
+                        <i class="jk-icon-medal" />
+                    </a>
+                </div>
+            </div>
+            <div class="desc-list">
+                <div class="item">
+                    <div class="title">
+                        @(i18n("开放社区", "Open Community"))
+                    </div>
+                    <div class="content">
+                        @(i18n("完善活跃交流的社区生态，支持自由发布组件库、公共方法集，发布成果人人均可直接引用！", "A well-developed and active community ecosystem that supports free publishing of component libraries and public method sets, allowing anyone to directly reference published achievements!"))
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="title">
+                        @(i18n("全资产可视化开发", "Full Asset Visual Development"))
+                    </div>
+                    <div class="content">
+                        @(i18n("支持自定义组件、方法集，高度灵活可控，可发布到市场分享成果！", "Supports custom components and method sets, highly flexible and controllable, and can be published to the market to share achievements!"))
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="title">
+                        @(i18n("逻辑编排", "Logic Orchestration"))
+                    </div>
+                    <div class="content">
+                        @(i18n("平台提供基于表达式的逻辑编排，可使用搭积木的方式完成逻辑判断、接口调用、逻辑调用等前后端逻辑功能！", "The platform provides expression-based logic orchestration, allowing you to complete front-end and back-end logic functions such as logical judgment, interface calls, and logic calls in a building block manner!"))
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="title">
+                        @(i18n("代码检查", "Code Inspection"))
+                    </div>
+                    <div class="content">
+                        @(i18n("平台巧妙结合 AI 平台具备代码检查功能，能够实时向开发人员告知存在的问题，从而有力地保证项目的稳定性。", "The platform cleverly combines with the AI platform to have code inspection functions, which can timely inform developers of existing problems, thus strongly ensuring the stability of the project."))
+                    </div>
+                </div>
+            </div>
+            <div class="growth">
+                <div class="item">
+                    <div class="title">
+                        <span>1</span>@(i18n("入门", "Getting Started"))
+                    </div>
+                    <jk-timeline>
+                        <jk-timeline-item>
+                            <jk-link href="[video](https://static.jokers.pub/home/video/component.mp4)/portal/basic">
+                                @(i18n("了解门户", "Learn About Portal"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item>
+                            <jk-link href="@(i18n("/cn"))/portal/register">
+                                @(i18n("注册用户", "Register User"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item>
+                            <jk-link href="@(i18n("/cn"))/portal/create-org">
+                                @(i18n("创建第一个团队", "Create First Team"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item>
+                            <jk-link href="@(i18n("/cn"))/portal/create-rep">
+                                @(i18n("创建第一个项目", "Create First Project"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item>
+                            <jk-link href="@(i18n("/cn"))/portal/rep-info">
+                                @(i18n("了解仓库功能", "Learn About Repository Functions"))
+                            </jk-link>
+                        </jk-timeline-item>
+                    </jk-timeline>
+                </div>
+                <div class="item">
+                    <div class="title">
+                        <span>2</span>@(i18n("使用", "Usage"))
+                    </div>
+                    <jk-timeline>
+                        <jk-timeline-item type="primary">
+                            <jk-link href="@(i18n("/cn"))/workbench/basic">
+                                @(i18n("了解工作台", "Learn About Workbench"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item type="primary">
+                            <jk-link href="@(i18n("/cn"))/workbench/front-end">
+                                @(i18n("了解前端项目", "Learn About Front-end Projects"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item type="primary">
+                            <jk-link href="@(i18n("/cn"))/workbench/back-end">
+                                @(i18n("了解服务端项目", "Learn About Server-side Projects"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item type="primary">
+                            <jk-link href="@(i18n("/cn"))/workbench/install-package">
+                                @(i18n("如何安装扩展", "How to Install Extensions"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item type="primary">
+                            <jk-link href="@(i18n("/cn"))/workbench/check-code-version">
+                                @(i18n("代码检查及版本发布", "Code Inspection and Version Release"))
+                            </jk-link>
+                        </jk-timeline-item>
+                    </jk-timeline>
+                </div>
+                <div class="item">
+                    <div class="title">
+                        <span>3</span>@(i18n("通用能力", "General Capabilities"))
+                    </div>
+                    <jk-timeline>
+                        <jk-timeline-item type="success">
+                            <jk-link href="@(i18n("/cn"))/workbench/package-release">
+                                @(i18n("组件/方法集发布", "Component/Method Set Release"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item type="success">
+                            <jk-link href="@(i18n("/cn"))/workbench/workflow">
+                                @(i18n("逻辑编排", "Logic Orchestration"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item type="success">
+                            <jk-link href="@(i18n("/cn"))/workbench/env">
+                                @(i18n("环境变量", "Environment Variables"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item type="success">
+                            <jk-link href="@(i18n("/cn"))/workbench/debugger">
+                                @(i18n("运行调试", "Run Debugging"))
+                            </jk-link>
+                        </jk-timeline-item>
+                        <jk-timeline-item type="success">
+                            <jk-link href="@(i18n("/cn"))/workbench/generate">
+                                @(i18n("代码生成", "Code Generation"))
+                            </jk-link>
+                        </jk-timeline-item>
+                    </jk-timeline>
+                </div>
+            </div>
+            <div class="footer">
+                @(i18n("本文档采用 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议 (CC BY-NC-SA 4.0) 进行许可。", "This documentation is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."))
+            </div>
+        </div>
+    </jk-scrollbar>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { getLang } from "../common/utils";
+export default class extends Component {
+    lang = getLang();
+
+    i18n(cn: string, en: string) {
+        return (this.lang === "zh-CN" ? cn : en) || "";
+    }
+}
+</script>
+<style lang="scss" scoped>
+.home {
+    margin-bottom: 40px;
+    .logo {
+        margin: 30px auto;
+        text-align: center;
+    }
+    .top {
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 10px;
+        margin-bottom: 20px;
+
+        p {
+            margin: 0;
+
+            &:first-child {
+                font-size: 60px;
+                font-weight: 900;
+                line-height: 1.25;
+                background-image: linear-gradient(
+                    315deg,
+                    var(--jk-color-primary),
+                    var(--jk-color-success),
+                    var(--jk-color-primary)
+                );
+                -webkit-background-clip: text;
+                background-size: 200%;
+                color: transparent;
+                animation: run 4s linear 0s infinite;
+            }
+
+            &:nth-child(2) {
+                font-size: 64px;
+                font-weight: 900;
+                line-height: 1.25;
+                color: rgb(33, 53, 71);
+            }
+
+            &:nth-child(3) {
+                color: rgba(60, 60, 60, 0.7);
+                font-size: 18px;
+                margin: 24px 0 48px 0;
+                line-height: 1.5;
+            }
+        }
+
+        .nav-btns {
+            text-align: center;
+            padding: 20px 0;
+
+            a {
+                font-size: 16px;
+                display: inline-block;
+                border-radius: 8px;
+                background-color: var(--jk-color-primary);
+                color: #fff;
+                padding: 10px 1em;
+                text-decoration: none;
+                margin-bottom: 10px;
+                border: 2px solid transparent;
+                i {
+                    margin-left: 10px;
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                }
+
+                &.t1 {
+                    margin: 0 15px;
+                    margin-bottom: 10px;
+                }
+                &.t1,
+                &.t2 {
+                    background: #f1f1f1;
+                    color: var(--jk-color-text-regular);
+                }
+
+                &.t1:hover {
+                    opacity: 1;
+                    background: #e5e5e5;
+                }
+
+                &.t2 {
+                    background:
+                        linear-gradient(#f1f1f1, #f1f1f1) padding-box,
+                        linear-gradient(45deg, #42d392, #647eff) border-box;
+                    border: 2px solid transparent;
+                    i {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+
+    .desc-list {
+        border-top: solid 1px var(--jk-border-color-extra-light);
+        border-bottom: solid 1px var(--jk-border-color-extra-light);
+        display: flex;
+        justify-content: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding-top: 20px;
+        .item {
+            flex: 0 20%;
+            padding: 26px 26px;
+
+            text-align: left;
+
+            .title {
+                font-weight: 600;
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .content {
+                font-weight: 400;
+                font-size: 15px;
+                color: var(--jk-color-text-secondary);
+            }
+        }
+    }
+
+    .growth {
+        display: flex;
+        justify-content: center;
+        max-width: 900px;
+        margin: 0 auto;
+        padding-top: 20px;
+
+        .item {
+            flex: 1;
+            .title {
+                padding-left: 35px;
+                font-size: 16px;
+                margin-bottom: 20px;
+                span {
+                    font-size: 28px;
+
+                    margin-right: 10px;
+                    font-family: "Lucida Console", "Courier New", monospace;
+                }
+            }
+        }
+    }
+
+    .footer {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        background: var(--jk-background-color-base);
+        text-align: center;
+        font-size: 12px;
+        padding: 5px 0;
+        color: var(--jk-color-text-secondary);
+    }
+
+    @media (max-width: 767px) {
+        margin-bottom: 0;
+        .top {
+            p {
+                &:first-child {
+                    font-size: 50px;
+                }
+
+                &:nth-child(2) {
+                    font-size: 30px;
+                    font-weight: normal;
+                }
+            }
+        }
+        .desc-list {
+            display: block;
+        }
+        .growth {
+            display: block;
+        }
+        .footer {
+            padding: 10px;
+            position: relative;
+        }
+    }
+}
+@keyframes run {
+    100% {
+        background-position: 400% 0px;
+    }
+}
+</style>

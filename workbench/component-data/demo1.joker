@@ -1,0 +1,17 @@
+<template>
+    <button @click="handleClick">点我呀  [@(model.count)]</button>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+
+export default class extends Component {
+    model = {
+        count: 0
+    };
+
+    //点击事件
+    handleClick() {
+        this.model.count++;
+    }
+}
+</script>

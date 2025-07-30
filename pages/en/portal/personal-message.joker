@@ -1,0 +1,39 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Message Center</h2>
+<p>During the daily use of the platform, the message center is a crucial channel for obtaining all kinds of important information in a timely manner. It integrates various notifications related to you within the platform, helping you keep abreast of the platform's dynamics and business progress at any time. This chapter will explain in depth the functions and usage methods of the message center.</p>
+<h3>Entering the Message Center</h3>
+<p>The entrance to the message center is set up very conveniently, allowing you to access it at any time:</p>
+<ul>
+<li><strong>Entering through the Personal Center</strong>: On the personal center page, you can find the clearly labeled &quot;Message Center&quot; menu. Click on it to directly enter the message center. This way is suitable for you to check messages when browsing personal-related settings or information.
+<img src="/portal/personal-message.png" alt="Entrance to the message center in the personal center"></li>
+<li><strong>Entering through the Message Notification Icon</strong>: In the upper right of the page, there is a conspicuous &quot;Message Notification&quot; icon, which reminds you in real time whether there are new messages. No matter which page you are operating on within the platform, just click on this icon, and you can quickly jump to the message center page to learn about the latest notifications in a timely manner.
+<img src="/portal/personal-message2.png" alt="Entrance to the message notification icon in the upper right of the page"></li>
+</ul>
+<h3>Handling Messages</h3>
+<ol>
+<li><strong>Viewing Message Details</strong>: After entering the message center, you can see all the received messages at a glance. Each message contains key information to help you quickly understand the content of the notification. Click on the message details, and the system will intelligently jump to the specific page associated with the message, such as the topic discussion page, the team-related page, etc., enabling you to quickly locate the source of the message and gain an in-depth understanding of related matters.
+<img src="/portal/personal-message3.png" alt="Message display and detail jump in the message center"></li>
+<li><strong>Marking Messages as Read</strong>: To facilitate message management, the platform provides an &quot;Mark All as Read&quot; button. After you have finished browsing the messages, you don't need to mark them one by one. Just click on this button, and the system will automatically mark all unread messages as read, making your message center page cleaner and more organized, and also helping you distinguish between new messages and processed messages.</li>
+</ol>
+<p>Through the above functions, the message center can help you handle various notifications within the platform efficiently, ensuring that you won't miss any important information and greatly improving your work efficiency and interaction experience on the platform.</p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,44 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>My Organization</h2>
+<p>In the collaboration system of the platform, &quot;My Organization&quot; is an important section for managing the relationship between individuals and their teams or organizations. It undertakes key functions such as organization information display and team management, helping users carry out team collaboration efficiently. This chapter will introduce in detail the basic functions of &quot;My Organization&quot;.</p>
+<h3>Entering the My Organization List</h3>
+<ol>
+<li><strong>Locate the Personal Homepage</strong>: After logging into the platform, click on the profile picture in the upper right corner of the page to enter your personal exclusive homepage. The personal homepage, as the core interaction area for users on the platform, gathers numerous function entrances related to individuals.</li>
+<li><strong>Click on &quot;My Organization&quot;</strong>: On the personal homepage, find and click on the &quot;My Organization&quot; menu option. This operation will lead you into the &quot;My Organization&quot; list page, where you can view all the organization information related to yourself in a centralized manner.
+<img src="/portal/personal-my-org.png" alt="Operation of entering the My Organization list"></li>
+</ol>
+<h3>Organization Management</h3>
+<ol>
+<li><strong>Organization Information Display</strong>: After entering the &quot;My Organization&quot; list page, you will see a detailed organization list, which lists all the teams/organizations that you have created or joined. Each organization entry clearly shows the key information, facilitating you to quickly understand the situation of the relevant organization.</li>
+<li><strong>Role Viewing and Team Withdrawal</strong>: On this page, you can not only view your role in each team to clarify your responsibilities and permissions within the team, but also actively choose to withdraw from a certain team according to actual needs. Through this function, you can manage your team participation flexibly and ensure that you are in the most appropriate position in the organizational structure of the platform.
+<img src="/portal/personal-my-org2.png" alt="The My Organization list page and organization management functions"></li>
+</ol>
+<h3>Leaving the Organization</h3>
+<ol>
+<li><strong>Operation Steps</strong>: When you decide to withdraw from a certain team, just find the corresponding team entry in the &quot;My Organization&quot; list page, and click on the &quot;Leave Organization&quot; button to initiatively start the operation of withdrawing from this team/organization. The system will pop up a confirmation prompt to ensure that you are aware of the consequences of the operation before executing it.
+<img src="/portal/personal-my-org3.png" alt="Button for the operation of leaving the team"></li>
+</ol>
+<blockquote>
+<p><strong>Special Note</strong>: If you are the creator of a team/organization, for the sake of the stability of organization management, you cannot directly withdraw from the organization. If you wish to no longer serve as the creator, you can transfer the ownership of the organization to other suitable members through <a href="/protal/org-transfer" target="_blank">Transferring Ownership</a> to achieve a smooth transition of the organization management relationship.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

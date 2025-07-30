@@ -1,0 +1,37 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h1>转让团队/组织</h1>
+<p>本章将详细介绍转让团队/组织拥有者身份的具体方法。</p>
+<h2>应用场景</h2>
+<p>当团队的<code>拥有者</code>因特定原因需退出当前团队，或需将团队完整移交给目标客户时，就会用到<code>转让团队/组织</code>这一功能。</p>
+<h2>操作步骤</h2>
+<ol>
+<li>打开团队设置页面，点击<code>转让组织</code>按钮，此时会弹出转让组织面板。</li>
+</ol>
+<p><img src="/portal/org-transfer.png" alt=""></p>
+<ol start="2">
+<li>在面板中填写拟转让用户的邮箱或姓名，平台会自动检索匹配的用户。选择目标用户后，点击<code>提交</code>按钮。系统随后将要求输入账号密码，以确认操作是否被授权。</li>
+</ol>
+<blockquote>
+<p><strong>温馨提示</strong>：转让过程中有一个<code>转让后离开该组织</code>的选项。若勾选此项，完成拥有者身份转移后，原拥有者将自动离开当前团队；若不勾选，原拥有者则会自动降级为“开发人员”。同时，在进行<code>组织转让</code>操作时，组织内其他成员的权限不会发生变化。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

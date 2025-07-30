@@ -1,0 +1,54 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Login/Registration</h2>
+<h3>Scenario Introduction</h3>
+<p>Before using the Joker Intelligent Development Platform, you need to register an account first. The following takes the SaaS version as an example to introduce the registration process of the low-code platform account.</p>
+<h3>Operation Steps</h3>
+<h4>Open the Visual Development Platform</h4>
+<p>First, go to the official website of the Joker platform. On the homepage of the official website, find and click the &quot;Enter Visual Development Platform&quot; button.<br>
+<img src="/portal/official.png" alt="Button to enter the visual development platform"></p>
+<h3>Enter the Login Page</h3>
+<p>After successfully jumping to the Visual Development Platform, you can browse the platform content freely. When performing operations that require login permissions, the system will automatically guide you to the login page; you can also actively click the avatar icon in the upper right corner of the page to manually jump to the login page.<br>
+<img src="/portal/login.png" alt="Schematic of the login page entry"></p>
+<blockquote>
+<p>In addition, you can also directly visit this address to enter the login page: <a href="https://viscode.jokers.pub/user/login" target="_blank">Login Address</a></p>
+</blockquote>
+<h3>User Login</h3>
+<p>After opening the login page, enter your email and password in the corresponding fields, then click the &quot;Login&quot; button to complete the user login operation.<br>
+<img src="/portal/login2.png" alt="User login interface"></p>
+<blockquote>
+<p>Special Reminder: When logging in to your account in public places, please operate with caution and do not check the browser's &quot;Remember Password&quot; option to avoid potential risks to your information security caused by password leakage.</p>
+</blockquote>
+<h3>User Registration</h3>
+<p>If you haven’t registered an account yet, click the &quot;Register&quot; button on the login page to switch to the user registration panel.<br>
+<img src="/portal/login3.png" alt="Button to switch to the registration page"></p>
+<p>In the registration panel, fill in your email and set the account password in sequence. After completing the above information, click the corresponding button, and the platform will send a verification code to your registered email.<br>
+<img src="/portal/login4.png" alt="Registration information filling interface"></p>
+<p>After receiving the verification code, enter it in the specified field and click the &quot;Verify&quot; button. After the verification is passed, you have successfully completed the registration of the platform account.</p>
+<h3>Forgot Password</h3>
+<p>If you forget your account password, click the &quot;Forgot Password&quot; button below the login page to jump to the password reset page.<br>
+<img src="/portal/login5.png" alt="Location of the forgot password button"></p>
+<p>On the password reset page, enter your registered email, and the platform will send a verification code to this email. After completing the verification, the platform will randomly generate a new password for you.</p>
+<blockquote>
+<p>Please log in to the platform in a timely manner after resetting the password, and modify the password to a secure one that is easy for you to remember in the User Management module.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

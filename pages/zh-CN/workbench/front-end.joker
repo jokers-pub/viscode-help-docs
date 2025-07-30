@@ -1,0 +1,106 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>了解前端项目</h2>
+<p>本章将着重阐述前端项目的功能，以及其具备的便捷开发能力。</p>
+<p>JOKER 平台秉持前后端分离的开发模式，这一模式赋予开发人员灵活性，使其能够专注于前端或服务端项目的开发。本文聚焦于前端部分，着重对其功能展开详细讲解。</p>
+<h3>概述</h3>
+<p>前端项目主要负责在终端渲染页面以及处理业务逻辑，是互联网应用至关重要的呈现层。</p>
+<p>在前端开发领域，JOKER 智能开发平台提供了极为灵活的开发体验。借助该平台，我们能够以可视化方式完成所有前端资产的开发工作，涵盖<strong>前端组件</strong>、<strong>前端方法</strong>、<strong>前端页面</strong>等方面。</p>
+<p>平台打造了完整的开发环境，支持多样化的灵活开发场景，诸如<strong>事件参数传递</strong>、<strong>事件修饰符</strong>、<strong>区块渲染</strong>、<strong>区块参数传递</strong>、<strong>组件生命周期</strong>等。开发人员在这个平台上，能够获得如同本地开发般的体验，尽情施展创意，实现各类开发设想。</p>
+<p><img src="/workbench/front-end.png" alt=""></p>
+<h3>功能要素</h3>
+<p>一个完整的前端项目（应用）由多种类型的文件组合而成，这些文件从类型上主要包括：</p>
+<ul>
+<li>
+<p><strong>组件</strong>：作为一个公共的 UI 交互区域，可将其封装为组件。使用时，只需将其拖入指定位置，就能实现组件引用，有效提升代码复用性，降低开发难度。</p>
+</li>
+<li>
+<p><strong>方法集</strong>：主要承载项目中的公共方法集合。我们可依据特定业务范围，封装不同业务功能的方法集，并对外提供方法调用能力。例如，常见的有时间处理方法集、加密方法集等。</p>
+</li>
+<li>
+<p><strong>页面</strong>：页面本质上也是一种组件，但与一般组件不同的是，其目的在于实现最终的页面渲染。它没有输入参数，然而具备路由信息配置功能。通过配置当前页面的路由信息，能够建立方法地址与页面的关联关系。</p>
+</li>
+<li>
+<p><strong>配置文件</strong>：用于管理当前项目中的公共配置，诸如公共样式、开放哪些组件（针对组件库类型项目）、开放哪些方法集（适用于组件库、方法集类型项目）、路由管理、全局变量、全局方法以及 NPM 引用等。</p>
+</li>
+<li>
+<p><strong>环境变量</strong>：此文件主要负责声明和管理不同环境下的变量。借助不同的环境变量，可实现项目在不同环境中的差异化运行效果。</p>
+</li>
+<li>
+<p><strong>请求管理</strong>：主要负责管理当前应用下所有可调用的 API 接口。在此，我们能够维护 API 的地址、输入、输出以及全局请求配置。声明的请求有助于在逻辑开发过程中，以可视化方式快速实现接口调用。</p>
+</li>
+</ul>
+<h3>组件/页面开发</h3>
+<p>在前端编辑器中，界面分为左右两个区域，即 <code>开发画布区</code> 和 <code>属性区</code>。</p>
+<p><img src="/workbench/front-end2.png" alt="前端编辑器截图"></p>
+<ol>
+<li><strong>开发画布区</strong>：在此区域，我们能够将 <strong>组件</strong> 拖入工作画布，完成组件的添加操作。同时，若已添加组件，选中它后可对其属性进行修改，或者执行删除该组件等操作。</li>
+<li><strong>属性区</strong>：当未选中任何组件时，默认展示的是组件属性面板。在此，我们既可以更改组件的样式文件，也能够通过 HTML 快速导入节点。而当选中组件时，属性区会呈现该组件的专属属性面板，此面板包含 <code>属性</code>、<code>事件</code>、<code>区域</code> 这三个类型的属性配置。</li>
+</ol>
+<p>当我们打开 <code>组件</code> 或 <code>页面</code> 类型文件时，会发现工作台左侧展示有 <code>组件数据</code> 和 <code>组件中心</code> 两个菜单。</p>
+<p><img src="/workbench/front-end3.png" alt="相关截图"></p>
+<ul>
+<li><strong>组件数据</strong>：利用此菜单，我们能够管理组件内部的所有数据，涵盖 <strong>状态数据</strong>、<strong>逻辑/事件</strong> 以及布局 <strong>大纲</strong>。</li>
+<li><strong>组件中心</strong>：借助组件中心，可通过拖拽的方式，将三方引用的组件快速引入到我们的组件或页面当中。</li>
+</ul>
+<h3>方法集开发</h3>
+<p>我们可在 <code>方法</code> 文件夹中创建方法集文件。一个方法集具备对外提供多个方法的能力 。</p>
+<p><img src="/workbench/front-end4.png" alt="方法集开发相关截图"></p>
+<p>在进行方法开发时，平台还提供了单元测试脚本。这些脚本能够辅助我们有效地验证方法的正确性与稳定性，确保每个方法在各种输入条件下都能按照预期运行，有助于及时发现并修正潜在的逻辑错误，提升代码质量，保障整个方法集的可靠性与健壮性。</p>
+<h3>配置文件</h3>
+<p>每个仓库都存在一个<code>项目配置</code>文件，我们可以通过该文件实现对项目公共数据的配置和管理。</p>
+<p><img src="/workbench/front-end5.png" alt=""></p>
+<p>该文件具备以下能力（根据不同仓库分类会有差异）：</p>
+<h4>对外开放组件</h4>
+<p>可以通过在此处进行勾选那些需要对外开放的组件，从而使其在被其他项目所引用时，能够提供相应的组件能力。（仅在组件类型项目生效）</p>
+<p><img src="/workbench/front-end6.png" alt=""></p>
+<h4>对外开放方法</h4>
+<p>可以通过在此处进行勾选那些需要对外开放的方法，从而使其在被其他项目所引用时，能够提供相应的方法功能。（仅在组件、方法集类型项目生效）</p>
+<p><img src="/workbench/front-end7.png" alt=""></p>
+<h4>项目样式管理</h4>
+<p>平台为我们提供了专门的区域，用于维护全局应用公共样式。在此区域，我们能够对公共样式名和样式变量进行集中管理。这些样式名和样式变量被统一维护后，在组件和页面开发过程中，我们便能快速调用，极大地提高了开发效率，确保整个应用在样式呈现上的一致性与规范性 。</p>
+<p><img src="/workbench/front-end8.png" alt=""></p>
+<h4>NPM 包管理</h4>
+<p>可于此处对当前项目的底层依赖包予以维护，借助安装依赖包来达成对第三方功能的集成，且能在项目里运用包内的相关功能。</p>
+<p><img src="/workbench/front-end9.png" alt=""></p>
+<blockquote>
+<p>与<code>组件方法市场</code>不同的是，这里提供的是更为底层的类库引用，而组件方法市场是一种打包成型的可视化资产的扩展引用。</p>
+</blockquote>
+<h4>路由管理</h4>
+<p>在<strong>应用</strong>类型的前端项目中，我们可以在这里维护当前项目的路由信息，包括：默认路由地址和路由守卫。</p>
+<p><img src="/workbench/front-end10.png" alt=""></p>
+<h4>全局方法/全局变量</h4>
+<p>平台允许我们创建全局变量和全局方法，该功能对应前端核心中的<code>@Gloabl</code>。</p>
+<p><img src="/workbench/front-end11.png" alt=""></p>
+<h3>环境变量</h3>
+<p>平台提供了完整的环境变量的维护功能。</p>
+<p><img src="/workbench/front-end12.png" alt=""></p>
+<p>平台允许我们在其内部创建多套环境，也可以自定义环境变量，声明的环境变量可以在通过<code>import.meta.define</code>去调用。</p>
+<p><img src="/workbench/front-end13.png" alt=""></p>
+<h3>请求管理</h3>
+<p>在“应用”类型的前端项目里，左侧菜单会展示<code>请求管理</code>选项。通过这一菜单，我们能够对当前项目中的所有 API 接口进行全面维护。平台赋予了强大且完整丰富的接口处理能力，具体表现如下：</p>
+<ul>
+<li><strong>配置请求参数</strong>：我们可以自由设定<strong>请求超时时间</strong>，避免因网络问题导致请求长时间等待，提升用户体验；还能对<strong>请求数据处理</strong>方式进行定制，确保数据以合适的格式在接口间传递；同时，可灵活配置<strong>请求切面事件</strong>，在请求前后执行特定逻辑，满足多样化的业务需求。</li>
+<li><strong>便捷接口声明与数据模拟</strong>：支持根据 JSON 快速导入接口声明，极大提高了接口创建效率，减少手动编写的工作量；另外，它还具备自动化 MOCK 数据的高级功能，在开发过程中，无需依赖真实后端数据，就能快速进行前端功能的调试与开发，加快项目迭代速度。</li>
+</ul>
+<p><img src="/workbench/front-end14.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

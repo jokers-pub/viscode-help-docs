@@ -1,0 +1,37 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h1>Transferring Teams/Organizations</h1>
+<p>This chapter will elaborate on the specific methods for transferring the ownership of teams/organizations.</p>
+<h2>Application Scenarios</h2>
+<p>When the <code>owner</code> of a team needs to withdraw from the current team for specific reasons or needs to fully transfer the team to a target client, the function of <code>transferring teams/organizations</code> will be used.</p>
+<h2>Operation Steps</h2>
+<ol>
+<li>Open the team settings page and click on the <code>Transfer Organization</code> button. At this time, a transfer organization panel will pop up.</li>
+</ol>
+<p><img src="/portal/org-transfer.png" alt=""></p>
+<ol start="2">
+<li>Fill in the email address or name of the user to whom you plan to transfer the ownership in the panel. The platform will automatically search for and match the user. After selecting the target user, click on the <code>Submit</code> button. Subsequently, the system will require you to enter your account password to confirm whether the operation is authorized.</li>
+</ol>
+<blockquote>
+<p><strong>Kind Reminder</strong>: There is an option of <code>Leave the Organization after Transfer</code> during the transfer process. If this option is checked, after the transfer of the ownership is completed, the original owner will automatically leave the current team; if it is not checked, the original owner will be automatically downgraded to a &quot;developer&quot;. Meanwhile, when performing the <code>organization transfer</code> operation, the permissions of other members within the organization will not change.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

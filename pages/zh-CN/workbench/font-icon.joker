@@ -1,0 +1,63 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>字体图标</h2>
+<p>本章主要聚焦于介绍如何在平台内对项目中的字体图标进行维护，以及如何高效快速地运用这些字体图标。</p>
+<h3>概述</h3>
+<p>平台为我们提供了便利，允许在**<code>资源</code><strong>文件夹中创建</strong>字体图标**文件。这一特定的文件夹位置，成为了我们集中维护项目字体图标的核心场所 。
+<img src="/workbench/font-icon.png" alt="字体图标文件夹位置"></p>
+<h3>配置样式前缀</h3>
+<p>在着手使用字体图标之前，有一个关键的前置步骤——配置<strong>样式前缀</strong>。这一步骤极为重要，因为若未配置样式前缀，平台将不会为我们生成字体文件。
+<img src="/workbench/font-icon1.png" alt="配置样式前缀"></p>
+<blockquote>
+<p>务必准确无误地输入图标样式前缀。需要着重强调的是，对图标样式前缀的任何修改都必须慎之又慎。一旦进行修改，先前已经引用该图标的组件极有可能出现图标丢失的状况，进而严重影响到平台的正常使用。</p>
+</blockquote>
+<p>举例来说，当我们将样式前缀配置为<code>jk - icon</code>时，在实际的样式输出过程中，样式会严格按照此前缀进行命名，如：</p>
+<pre><code class="language-css">.jk-icon-setting {
+}
+.jk-icon-plus {
+}
+/**...*/
+</code></pre>
+<h3>维护图标</h3>
+<p>在平台内部，我们能够通过上传 SVG 文件的方式，轻松为字体图标增添新的图标文件 。
+<img src="/workbench/font-icon2.png" alt="上传SVG文件维护图标"></p>
+<ul>
+<li><strong>图标</strong>：具体操作是上传<strong>SVG</strong>格式的文件，以此来实现图标的创建与展示。</li>
+<li><strong>图标名</strong>：此为图标在实际使用时的样式<strong>后缀</strong>。需明确的是，最终实际生效的样式名称，是由<strong>样式前缀</strong>与该<strong>后缀</strong>组合而成 。</li>
+<li><strong>备注</strong>：通过添加备注信息，可以对图标作出特殊说明，极大地方便开发人员能够迅速理解图标的具体含义。</li>
+</ul>
+<p>当完成图标创建之后，只需将鼠标悬停在想要编辑的图标上，即可触发并打开图标操作面板。在这个操作面板中，我们能够对图标执行二次修改或者删除等操作 。
+<img src="/workbench/font-icon3.png" alt="图标操作面板"></p>
+<h3>生成字体文件</h3>
+<p>平台具备智能功能，当我们保存当前文件时，会自动将所有已上传的 SVG 文件转换生成为<code>woff</code>格式的字体文件。</p>
+<blockquote>
+<p>特别需要留意的是：只有在同时满足配置了样式前缀，并且至少维护了一个图标的条件下，平台才会在保存文件时自动为我们生成字体图标 。</p>
+</blockquote>
+<h3>如何使用</h3>
+<p>所有的字体图标在平台内均会自动实现全局引用，无需我们手动进行额外的配置操作。在维护字段的过程中，我们可以通过<code>赋值方式</code>来灵活选择使用图标组件进行配置 。
+<img src="/workbench/font-icon4.png" alt="通过赋值方式选择图标组件配置"></p>
+<p>一旦完成配置，在使用该字段时，系统将自动呈现为<code>图标选择</code>控件。借助这个控件，我们能够便捷快速地查看当前项目所拥有的所有图标文件，其中既涵盖了自身项目创建的字体图标，也包含了安装插件所提供的字体图标 。
+<img src="/workbench/font-icon5.png" alt="图标选择控件"></p>
+<h3>代码生成</h3>
+<p>在最终的代码生成阶段，平台会再次发挥其自动化优势，自动为我们生成<code>woff</code>格式的字体图标文件，并且会自动完成相关的关联引用工作。大家完全可以放心地使用这些生成的字体图标 。
+<img src="/workbench/font-icon6.png" alt="代码生成阶段的字体图标相关操作"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

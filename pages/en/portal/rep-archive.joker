@@ -1,0 +1,35 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Archive Repository</h2>
+<p>In warehouse management, archiving is a crucial operation that helps better manage and organize warehouse resources. This chapter details the specific steps and key points for archiving a repository.</p>
+<h3>Scenario</h3>
+<p>In actual project advancement and warehouse management, there are multiple scenarios where archiving a repository is necessary. For example, when a project is completed in stages and will not be updated in the short term, but it is necessary to retain the project-related code, files, and version records for future reference or traceability, the corresponding repository can be archived. Alternatively, if the content in certain repositories no longer serves as the core support for current business but still has reference value, archiving these repositories is a good choice to avoid excessive consumption of system resources while ensuring data integrity. Archiving repositories can clearly distinguish active repositories from historical ones, making warehouse management more orderly and efficient, and improving the work efficiency and resource utilization of the entire team.</p>
+<h3>Access Repository Settings</h3>
+<ol>
+<li>First, locate and open the settings page of the repository you plan to delete. In this page, click the &quot;Archive Repository&quot; menu.</li>
+<li>Click the &quot;Archive Repository&quot; button in the &quot;Repository Management&quot; menu, which officially initiates the repository archiving process.</li>
+</ol>
+<p><img src="/portal/rep-archive.png" alt="Archive Repository Interface"></p>
+<h3>Confirm Password</h3>
+<p>After clicking the &quot;Archive Repository&quot; button, for security considerations, the platform will immediately pop up a password verification window, requiring you to enter your account password. This step aims to confirm that the operation is performed by the administrator 本人 (the administrator himself), effectively preventing misoperations or illegal actions to ensure the security and stability of repository data.</p>
+<p><img src="/portal/rep-archive2.png" alt="Password Verification Window"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

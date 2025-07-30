@@ -1,0 +1,104 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Field Maintenance</h2>
+<p>This chapter focuses on the methods of adding and maintaining parameters or attributes in a project. The &quot;Field Maintenance&quot; function, as an extremely common and crucial function in the JOKER development platform, is an important means for efficiently managing project fields. By using this function, developers can accurately and conveniently configure and adjust various fields in the project, thus ensuring the accuracy and consistency of project data.</p>
+<h3>Overview</h3>
+<p>When we face various scenarios such as creating <strong>parameters</strong>, <strong>response data</strong>, <strong>global variables</strong> for components, or defining <strong>parameters</strong>, <strong>return types</strong> for methods, we can all use the <strong>Field Maintenance</strong> panel to complete the maintenance work of field information.</p>
+<p>The <strong>Field Maintenance</strong> panel combines the functions of maintaining basic field information and designing field types. It can not only help us set various basic attributes of fields in detail but also flexibly design field types to meet the diverse needs of different projects.</p>
+<p>Here, we will explain the operation process of the parameter attribute editing panel. (The creation panels for attributes and parameters are basically the same, except for some differences in certain attributes. We will mark them specifically during the explanation. Please read carefully.)</p>
+<h3>Step 1 (Basic Attribute Information)</h3>
+<p><img src="/workbench/component-data8.png" alt=""></p>
+<ul>
+<li><strong>Attribute Name</strong>: The configuration of the attribute name should be completed using English letters, and the attribute name should be unique within the current component function (that is, unique among the incoming data of the same type).</li>
+<li><strong>Remarks/Title</strong>: You can configure a title for it, which helps us understand the purpose of the attribute more quickly, such as &quot;Color&quot;, &quot;Size&quot;, etc.</li>
+<li><strong>Hint</strong>: You can configure a detailed description of the current attribute through the hint attribute. When in use, you can view the detailed description of the attribute by moving the mouse over it.</li>
+<li><strong>Classification</strong>: <strong>Only parameters need to be configured</strong>. You can configure the classification of parameters here. Parameters with the same classification will be grouped and categorized when component attributes are displayed, improving the user experience.
+<img src="/workbench/component-data9.png" alt=""></li>
+</ul>
+<h3>Step 2 (Attribute Type Information)</h3>
+<p><img src="/workbench/component-data10.png" alt=""></p>
+<ul>
+<li><strong>Type</strong>: The type of the current attribute. The following introduces each type and its applicable scenarios in detail:
+<ol>
+<li><strong>String</strong> (<code>String</code>): Used to represent text data, such as names, addresses, description information, etc. Contents like <code>&quot;John Doe&quot;</code>, <code>&quot;123 Main St&quot;</code> are suitable for storage in the string type.</li>
+<li><strong>Number</strong> (<code>Number</code>): Used to store numerical values, which can represent integers or decimals, such as age, price, quantity, etc. Values like <code>25</code>, <code>9.99</code> belong to the number type.</li>
+<li><strong>Boolean</strong> (<code>Boolean</code>): There are only two possible values, namely <code>true</code> or <code>false</code>, and it is often used to represent switch states, logical judgment results, etc. For example, to judge whether a user has logged in, it is <code>true</code> if logged in and <code>false</code> if not.</li>
+<li><strong>Array</strong> (<code>Array</code>): Used to store an ordered collection of multiple values, and these values can be of different types. For example, an array storing multiple user names <code>[&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;]</code>, or an array storing mixed-type data <code>[1, &quot;apple&quot;, true]</code>.</li>
+<li><strong>Object</strong> (<code>Object</code>): Used to store a collection of key-value pairs, which can organize related data together. For example, a user object may contain information such as name, age, and email: <code>{ name: &quot;John&quot;, age: 30, email: &quot;john@example.com&quot; }</code>.</li>
+<li><strong>Function</strong> (<code>Function</code>): Represents a reusable block of code used to implement specific functions. For example, a method for calculating the sum of two numbers: <code>function add(a, b) { return a + b; }</code>.</li>
+<li><strong>Date</strong> (<code>Date</code>): Used to handle date and time information, and operations such as date creation, comparison, and formatting can be performed. For example, creating a date object representing the current time: <code>new Date()</code>.</li>
+<li><strong>File</strong> (<code>File</code>): Only exists in server-side projects and is used to receive files uploaded by clients, such as pictures, documents, etc.</li>
+<li><strong>Any</strong> (<code>Any</code>): Indicates that the attribute can be of any type of data. When you cannot determine the specific type of the attribute or want the attribute to have flexibility, you can use this type.</li>
+</ol>
+</li>
+<li><strong>Whether it is Non-null</strong>: You can configure whether the current value is allowed to be empty (<code>undefined</code>).</li>
+<li><strong>Assignment Method</strong>: <strong>Only parameters need to be configured</strong>. When you need to set a value for it, you can use this property to decide which interactive method to use for assignment. Different data types have different optional assignment methods.
+<ol>
+<li><strong>Optional Values</strong>: You can create Key - Value data and provide a drop-down box mode for value selection.</li>
+<li><strong>Multi-line Text</strong>: Use a long text input box to enable multi-line text input.</li>
+<li><strong>Color Value</strong>: Displayed as a color setting control, which can quickly complete color configuration.</li>
+<li><strong>CSS Size Value</strong>: You can configure the CSS size value (with units) here.</li>
+<li><strong>Style Name</strong>: Displayed as a style setting control, which can quickly query the public styles in the current project and achieve quick addition.</li>
+<li><strong>Image Resource Selection</strong>: Provides a quick selection interaction for internal static resources (image display effect).</li>
+<li><strong>Resource Selection</strong>: Provides a quick selection interaction for internal static resources.</li>
+<li><strong>Style Style</strong>: Displays a visual Style configuration panel, which can complete some common style editing.</li>
+</ol>
+</li>
+<li><strong>Disable Expression</strong>: By default, all parameters can configure dynamic values through expressions. If you don't want this property to configure dynamic values, you can disable it here.</li>
+<li><strong>Default Value</strong>: As the default value of the parameter/attribute, if the value is not configured or not passed (for parameters), it will be automatically assigned this default value.</li>
+<li><strong>Demonstration Value</strong>: <strong>Only parameters need to be configured</strong>. This property is used to immediately set a value for the property when the component is introduced. The demonstration value can help developers have a better first display effect when introducing the component, and developers can modify it.</li>
+</ul>
+<p>If the current attribute type is configured as <code>Array/Object</code>, a deep-level type design panel will be displayed in Step 2, and you can configure the internal attribute types of the object or array here.</p>
+<p><img src="/workbench/component-data11.png" alt=""></p>
+<h4>Attribute Validation</h4>
+<p>Attribute validation is only used to perform input parameter validation and judgment for API interfaces in the server-side controller.</p>
+<p>In the second step of the <strong>Field Maintenance</strong> editing window, by selecting different data types, you can configure different field restriction rules.
+<img src="/workbench/server-controller1.png" alt=""></p>
+<p>The following is an introduction to all validation rules without considering data types:</p>
+<ol>
+<li><strong>Regular Expression Validation</strong>: Allows customizing regular expressions to constrain the content of input parameters.</li>
+<li><strong>Whether it is an Email</strong>: Used to verify whether the input content is in the email format.</li>
+<li><strong>Whether it is a Telephone</strong>: Judges whether the input content conforms to the telephone format.</li>
+<li><strong>Only Letters</strong>: Ensures that the input content contains only letters.</li>
+<li><strong>Only Letters and Numbers</strong>: Limits the input content to only letters and numbers.</li>
+<li><strong>Only Numbers</strong>: Only allows the input of numbers (string type numbers). If the field itself is of the number type, you can directly change the field type; this rule only provides a supplementary number format validation for the string type.</li>
+<li><strong>Whether it is an Integer</strong>: Requires the input to be an integer and does not allow floating-point numbers.</li>
+<li><strong>Contains Specific Content</strong>: The string must contain specific content.</li>
+<li><strong>Limit the Value Range</strong>: Limits the range of values. For example, gender can only be male/female, and you can manually maintain enumeration values or select enumeration values in the data table.
+<img src="/workbench/server-controller2.png" alt=""></li>
+<li><strong>Length Limit</strong>: Limits the length of the string. You can configure the maximum or minimum value separately or combine the limits simultaneously.</li>
+<li><strong>Maximum Value</strong>: For fields of the number type, you can configure the maximum value limit.</li>
+<li><strong>Minimum Value</strong>: For fields of the number type, you can configure the minimum value limit.</li>
+<li><strong>File Size Limit</strong>: When the field type is <strong>File</strong>, you can use this constraint to limit the size of the uploaded file.</li>
+<li><strong>File Quantity Limit</strong>: When the field type is <strong>File</strong>, you can limit the maximum number of uploaded files. By default, only one file is allowed to be uploaded.</li>
+<li><strong>File Type Limit</strong>: When the field type is <strong>File</strong>, you can limit the accepted types of uploaded files, and wildcards are supported. For example, for images (image/jpeg, image/<em>), the &quot;</em>&quot; wildcard is supported. If you need to limit multiple types, you can separate them with &quot;,&quot;.</li>
+</ol>
+<h3>Quick Import of Fields</h3>
+<p>To avoid repeating the filling of field content, the platform provides the <strong>Field Import</strong> function, which allows us to quickly declare variables/attributes in existing resources in the project through a quick import method.</p>
+<p><img src="/workbench/property.png" alt=""></p>
+<p>We can click <code>Import Fields from Existing Assets</code> in the first step of any <strong>Field Maintenance</strong> panel to open the field quick selection window.</p>
+<p><img src="/workbench/property1.png" alt=""></p>
+<p>We can select multiple fields that we want to add quickly here and then click the &quot;OK&quot; button to achieve the quick addition of fields.</p>
+<blockquote>
+<p>The <strong>Field Import</strong> function only quickly declares field information by copying during operation. It does not bind to the original data, and the imported fields will not change with the changes of the original variables.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

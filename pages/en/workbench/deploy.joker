@@ -1,0 +1,64 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h3>Deployment</h3>
+<p>Deploying a developed project is a critical step in the project development workflow. This chapter details how to perform online builds for completed projects and deploy them to the free cloud environment provided by the Platform. The specific operations are as follows:</p>
+<h4>Important Note</h4>
+<p>Deployment operations are only applicable to <strong>project-type</strong> repositories. Other repository types are not supported.</p>
+<h4>Overview</h4>
+<p>The Platform provides a free cloud environment, significantly facilitating the transition from project development to launch. With this environment, you can perform online build and compilation for completed projects, then deploy them to the corresponding environment. After deployment, the Platform automatically assigns a dedicated domain name, allowing access to the deployed project via this domain name.</p>
+<blockquote>
+<p>The Platform also supports source code export for projects. If you prefer not to use the Platform's cloud services, you can import the code into your own environment for self-deployment. For code generation and export methods, refer to <a href="workbench/generate" target="_blank">Code Generation</a>.</p>
+</blockquote>
+<p>After completing project development, you must first release a new version of the repository. Build and deployment apply only to released versions, so ensure the repository has at least one released version before deployment.</p>
+<h4>Build Panel</h4>
+<p>After releasing a version, locate the <code>Deploy</code> function panel on the repository homepage to start the version build and deployment process.</p>
+<p><img src="/workbench/deploy.png" alt=""></p>
+<h4>Create a Build Deployment Task</h4>
+<p>Enter the deployment panel and click the <strong>Build Now</strong> button in the upper-left corner to start creating a build deployment task.</p>
+<p><img src="/workbench/deploy1.png" alt=""></p>
+<p>When creating a build deployment task, complete the following operations:</p>
+<ol>
+<li>
+<p><strong>Select a Version</strong>: Choose the released version to build and deploy from the list of versions. If no versions are available here, it indicates that no released versions have been created for the repository. You must create a version before deploying the project.<br>
+<img src="/workbench/deploy2.png" alt=""></p>
+</li>
+<li>
+<p><strong>Select an Environment</strong>: After selecting a version, the Platform automatically analyzes the environment variables maintained in the selected version. Select the desired environment variable file for building from the list.<br>
+<img src="/workbench/deploy3.png" alt=""></p>
+<p>After selecting the environment file, the Platform automatically displays all <strong>configured</strong> environment variables in the file. Carefully verify that the environment variables match the project requirements to ensure the selected environment is correct.</p>
+</li>
+</ol>
+<h4>Confirm and Execute the Task</h4>
+<p>After filling in the build task information, click the Confirm button. The system creates the task, and the Platform initiates the automated build and deployment process.</p>
+<p><a href="/workbench/deploy.mp4" target="_blank">Video</a></p>
+<p>During the build and deployment process, you can monitor the task status in real-time to track progress. To view detailed build processes and logs, click <strong>Task Logs</strong> next to the task.</p>
+<blockquote>
+<p>To protect developers' intellectual property and sensitive data, non-team members cannot view <strong>Task Logs</strong>, ensuring project information security and confidentiality.</p>
+</blockquote>
+<h4>How to Access</h4>
+<p>After the deployment task is completed, click the <strong>Access Deployment Environment</strong> link on the repository page to visit the released project.</p>
+<p><img src="/workbench/deploy4.png" alt=""></p>
+<p>Take the <code>joker/OfficialWebsite</code> repository as an example. The Platform automatically assigns a domain name following the rule <code>organization name + repository name</code>, such as <a href="https://joker_officialwebsite.app.jokers.pub/" target="_blank">https://joker_officialwebsite.app.jokers.pub/</a>.</p>
+<blockquote>
+<p>Note that the domain name is generated based on the repository's organization and name, with automatic DNS resolution rules created. If the repository is transferred or its name is modified in the future, the deployment access address will automatically update the resolution to ensure the project remains accessible.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

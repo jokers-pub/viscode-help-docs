@@ -1,0 +1,35 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Follow Repository</h2>
+<p>This chapter details the methods for following a repository and the ways to view followed repositories.</p>
+<h3>How to Follow a Repository</h3>
+<p>In the repository list—whether it is the recommended repository list, team repository list, or repository detail page—there is a &quot;Follow&quot; button. Simply click the button to easily follow the corresponding repository. When the button icon is lit up, it indicates that the repository has been successfully added to your follow list.</p>
+<p><img src="/portal/rep-follow.png" alt="Follow Button in Repository List"></p>
+<p><img src="/portal/rep-follow2.png" alt="Follow Button on Repository Detail Page"></p>
+<h3>View Followed Repositories</h3>
+<p>After successfully following a repository, you can quickly access the followed repositories through the following two methods:</p>
+<ol>
+<li><strong>Portal Home Page</strong>: On the portal home page, you will see the &quot;My Followed Repositories&quot; panel. Here, you can directly click to enter the detail pages of each followed repository for convenient access to repository information.</li>
+<li><strong>Personal Panel</strong>: In the personal panel, find the &quot;Followed Repositories&quot; menu. Clicking it will display the complete list of all followed repositories, facilitating centralized management and search.</li>
+</ol>
+<p><img src="/portal/rep-follow3.png" alt="My Followed Repositories Panel"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

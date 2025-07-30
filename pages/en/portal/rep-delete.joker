@@ -1,0 +1,36 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Delete Repository</h2>
+<p>In the process of repository management, there may be occasions when you need to delete unused repositories. This chapter details the specific steps for deleting a repository and the restrictive conditions involved in this operation. It should be noted that the repository deletion operation is only visible to administrators.</p>
+<h3>Access Repository Settings</h3>
+<ol>
+<li>First, locate and open the settings page of the repository you plan to delete. Click the &quot;Repository Management&quot; menu on this page.</li>
+<li>Click the &quot;Delete Repository&quot; button in the &quot;Repository Management&quot; menu, which officially initiates the repository deletion process. At this point, the system will prompt you that an irreversible deletion operation is about to be performed—please confirm carefully.</li>
+</ol>
+<p><img src="/portal/rep-delete.png" alt="Delete Repository Button"></p>
+<h3>Confirm Password</h3>
+<p>After clicking the &quot;Delete Repository&quot; button, for security considerations, the platform will immediately pop up a password verification window, requiring you to enter your account password. This step aims to confirm that the deletion operation is performed by the administrator himself, effectively preventing misoperations or illegal actions to ensure the security and stability of repository data.</p>
+<p><img src="/portal/rep-delete2.png" alt="Password Verification Page"></p>
+<blockquote>
+<p><strong>Important Note</strong>: If a repository has existing release versions, since these versions may have been referenced or cloned by other projects, deleting the repository will cause serious impacts on projects dependent on these versions. Therefore, such a repository <strong>cannot be deleted</strong>. In this case, you can choose to <a href="/portal/rep-archive" target="_blank">archive the repository</a>. Although an archived repository can no longer be modified or edited, it will remain in the team as a backup of historical data for future reference and traceability.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,122 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>组件区块</h2>
+<p>本章主要阐述组件区块的概念，以及其所能实现的功能。</p>
+<h3>概述</h3>
+<p>组件区块是高级组件开发里一种关键的扩展方式。借助它，我们能够开放组件中的展示区域，使得在使用组件时，可通过自定义布局的形式，对组件布局进行深度扩展。</p>
+<h3>如何定义区块</h3>
+<p>当我们在组件开发过程中，我们可以在指定的区域位置拖入<code>渲染区块</code>组件，实现对该区域的自定义布局功能开放。</p>
+<p><img src="/workbench/component-base12.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认展示区块</td>
+<td>布尔值</td>
+<td>若该值为<strong>真</strong>，当组件被引入到其他组件或页面时，此区块将默认开启，方便快速对该区块进行编辑。</td>
+</tr>
+<tr>
+<td>标识</td>
+<td>字符串</td>
+<td>用于对渲染区块命名（需使用英文字母）。若一个组件存在多个动态渲染部分，可通过配置该标识加以区分，默认值为<code>default</code>。</td>
+</tr>
+<tr>
+<td>区块描述</td>
+<td>字符串</td>
+<td>该描述有助于开发人员在使用组件时，迅速了解该区块的功能。</td>
+</tr>
+<tr>
+<td>区块备注/名称</td>
+<td>字符串</td>
+<td>可以给区块取一个昵称，既便于开发人员快速理解区块含义，也能使大纲树中的展示更清晰。</td>
+</tr>
+<tr>
+<td>关联组件</td>
+<td>数组</td>
+<td>在此可选择与当前组件关联使用的组件，帮助开发人员快速向该区块插入符合要求的子组件。</td>
+</tr>
+<tr>
+<td>区块参数</td>
+<td>数组</td>
+<td>平台支持配置区块参数，借此可将组件内的数据通过区块传递到动态渲染的子组件中，满足更复杂灵活的开发需求。</td>
+</tr>
+</tbody>
+</table>
+<h3>默认展示区块</h3>
+<p>我们能够通过修改 <code>渲染区块</code> 组件的 <code>默认展示区块</code> 属性，来配置区块的默认展示状态。在一些特定场景中，当我们希望在引用组件时，该区块能默认处于开启状态，比如：当开发一个通用的表单组件时，其中有一个用于展示表单底部操作按钮的渲染区块。为了方便使用该表单组件的开发者，无需每次手动开启此区块来添加保存、重置等按钮，就可以将这个渲染区块的 <code>默认展示区块</code> 属性设置为 <code>true</code>。这样，在其他组件引用该表单组件时，底部操作按钮区域就会默认显示，开发者可直接在该区域添加所需按钮，提高开发效率。</p>
+<h3>区块标识</h3>
+<p>当组件存在多个区块时，我们需要为其定义区块标识，来实现对区块的区分。</p>
+<p><img src="/workbench/component-section.png" alt=""></p>
+<p>以<strong>表单输入项</strong>组件为例，它提供了三个区块：</p>
+<ol>
+<li>默认区块（default）：表单项编辑区，默认展示。</li>
+<li>标题区块（label）：用于展示表单输入项标题。</li>
+<li>错误区块（error）：用于展示表单验证失败后的提示信息。</li>
+</ol>
+<h3>关联组件</h3>
+<p>当组件间存在关联关系时，利用关联组件这一功能，能够实现向区块快速且准确地添加子组件。以下拉框组件为例，该组件的内容区块需添加 <code>选项</code> 组件，才能完成对下拉框选项的配置。此时，通过配置两者的关联关系，开发人员在操作下拉框组件的内容区块时，系统便能依据预设的关联关系，便捷地为其添加 <code>选项</code> 组件，有效提升开发效率与准确性，避免因手动添加可能出现的错误或遗漏。</p>
+<p><img src="/workbench/component-section2.png" alt=""></p>
+<p>当我们配置了关联组件，当我们在下拉框组件通过快速添加时，会首先显示关联组件，方便开发人员快速集成。
+<img src="/workbench/component-section3.png" alt=""></p>
+<h3>区块参数</h3>
+<p>区块参数是高级组件开发里一项极为实用的功能。它使得我们能够将组件内部的数据，借助区块传递至底层组件，达成在外部使用组件内部变量的目的。</p>
+<p>以树组件为例，假设我们期望对树组件中每个节点的展示效果进行拓展。此时，就需要树组件把每个节点的数据传递到区块内，以便开发人员获取树节点数据，从而自由地对展示效果进行拓展。而这一数据传递过程，就需要依靠区块参数来实现。通过这种方式，开发人员能够更灵活地定制组件的展示逻辑，满足多样化的业务需求，提升组件的复用性与可扩展性。</p>
+<h4>如何添加区块参数</h4>
+<p><img src="/workbench/component-section4.png" alt=""></p>
+<p>若要添加区块参数，可先选中需要传递参数的区块，然后在属性面板中进行相关操作。在此过程中，需要维护以下几类数据：</p>
+<ol>
+<li><strong>备注</strong>：作为参数的标题，其作用是协助开发人员迅速领会参数的意义。例如，对于一个表示用户年龄的参数，备注可设为“用户年龄”，让开发人员一眼就能明白该参数所代表的内容。</li>
+<li><strong>提示</strong>：提供全面的参数说明，助力开发人员深入理解参数。以用户年龄参数为例，提示内容可以是“此参数用于传递用户的年龄信息，取值范围为 0 - 120，在使用该参数时需确保数值在合理范围内”，使开发人员对参数的用途、范围及使用注意事项有清晰认识。</li>
+<li><strong>类型</strong>：明确参数的类型，有助于开发人员知晓参数的组成形式。比如，用户年龄参数的类型可定义为“数字型”，让开发人员清楚该参数应接收何种类型的数据。</li>
+<li><strong>值</strong>：在此处能够通过表达式的形式，绑定当前组件中的特定值。例如，若组件中有一个存储用户年龄的变量<code>userAge</code>，可在此处通过表达式<code>{{userAge}}</code>来绑定该值，实现将组件内的变量作为参数传递。</li>
+</ol>
+<blockquote>
+<p>需要注意的是，参数传递是按顺序进行的。我们可通过排序功能管理参数的传递顺序。由于是顺序传递参数，所以在定义区块参数时无需定义参数名。这种设计简化了参数传递流程，提高了开发效率。</p>
+</blockquote>
+<h4>如何接收区块参数</h4>
+<p>在组件属性面板的区块管理部分，我们仅需通过点击 “添加参数” 按钮来接收参数。当我们点击该按钮时，平台会提示从区块传递过来的所有参数。需要注意的是，接收参数必须按照顺序进行，不允许有选择性地接收。若区块没有提供任何参数，那么在此处将不会显示 “添加参数” 这个按钮。</p>
+<p><img src="/workbench/component-section5.png" alt=""></p>
+<p>我们在这里接收<code>tree</code>组件区块传递的节点数据参数，起名为<code>node</code>。这样我们便可以在该区块下的组件中通过表达式的方式来读取此参数了。
+<img src="/workbench/component-section6.png" alt=""></p>
+<h3>联动渲染</h3>
+<p>区块链动渲染是一种<strong>高级的条件式</strong>区块渲染，它允许我们通过判断是否存在渲染区块内容来开启区块。在了解这一概念之前，我们先看一段代码：</p>
+<pre><code class="language-xml">&lt;template&gt;
+    &lt;jk-input&gt;
+        @if($section.append){
+            @section('append'){
+                //TODO：
+            }
+        }
+    &lt;/jk-input&gt;
+&lt;/template&gt;
+</code></pre>
+<p>这段代码的含义是当用户开启了<code>append</code>区块，才传入 append 渲染区块，否则不传入区块。</p>
+<p>在可视化平台中我们可以在一个组件的区块中进行关联配置，平台会自动识别渲染区块。</p>
+<p><img src="/workbench/component-section7.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

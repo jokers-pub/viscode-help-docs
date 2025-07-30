@@ -1,0 +1,35 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>归档仓库</h2>
+<p>在仓库管理中，归档是一项重要操作，它有助于更好地管理和组织仓库资源。本章将详细介绍对仓库进行归档的具体步骤和相关要点。</p>
+<h3>场景</h3>
+<p>在实际的项目推进和仓库管理过程中，会出现多种需要对仓库进行归档的情况。例如，当一个项目阶段性完成，后续短期内不再进行更新，但又需要保留项目相关的代码、文件及版本记录，以便后续查阅或追溯时，就可以对其对应的仓库进行归档。又或者，某些仓库中的内容已经不再作为当前业务的核心支撑，但依然具备一定的参考价值，为了避免其占用过多的系统资源，同时又能保证数据的完整性，将这些仓库归档是一个不错的选择。通过归档仓库，既可以清晰地区分活跃仓库和历史仓库，也能让仓库管理更加有序高效，提升整个团队的工作效率和资源利用效率 。</p>
+<h3>进入仓库设置</h3>
+<ol>
+<li>首先，找到并打开你计划删除的仓库的设置页面。在该页面中点击“归档仓库”菜单。</li>
+<li>点击“仓库管理”菜单中的“归档仓库”按钮，点击之后，便正式开启归档仓库的操作流程。</li>
+</ol>
+<p><img src="/portal/rep-archive.png" alt=""></p>
+<h3>确认密码</h3>
+<p>点击“归档仓库”按钮后，出于安全考量，平台会立即弹出密码验证窗口，要求你输入账号密码。这一步骤旨在确认执行操作的确实是管理员本人，有效防止误操作或非法操作，确保仓库数据的安全性和稳定性。</p>
+<p><img src="/portal/rep-archive2.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

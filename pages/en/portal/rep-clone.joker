@@ -1,0 +1,40 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Clone Repository</h2>
+<p>This chapter elaborates on the specific operation methods for cloning a repository.</p>
+<h3>Overview</h3>
+<p>When exploring repository resources, if you find an open repository that perfectly meets your needs, you can quickly replicate all contents of the repository through the &quot;Clone&quot; operation. After cloning, an identical copy of the original repository will be generated in your team space. With this copy, you can freely carry out secondary development and modification, customizing the repository contents to meet diverse business requirements.</p>
+<h3>How to Operate</h3>
+<ol>
+<li><strong>Access the Repository Home Page</strong>: First, locate and enter the home page of the repository you want to &quot;clone&quot;. In the upper right corner of this page, you will see a &quot;Clone&quot; button.<br>
+<img src="/portal/rep-clone.png" alt="Clone Button on Repository Home Page"></li>
+<li><strong>Select Clone Version</strong>: After clicking the &quot;Clone&quot; button, the platform will automatically jump to the repository release version list page. On this page, you can clearly view all released versions of the current repository. Browse these versions carefully and select the version you intend to clone based on your actual needs.</li>
+<li><strong>Complete the Clone Operation</strong>: After selecting the version to clone, click the &quot;Clone&quot; button next to the corresponding version to successfully clone the repository. The system will generate an identical repository copy in your specified team space according to the selected version.<br>
+<img src="/portal/rep-clone3.png" alt="Repository Release Version List"></li>
+</ol>
+<blockquote>
+<p>The clone operation process is roughly similar to the repository creation process, but there are key differences. When cloning, you do not need to select the repository type, category, or platform as you would when creating a repository. The system directly replicates the source repository's settings to the target location, greatly simplifying the operation steps and allowing you to quickly obtain a copy consistent with the source repository to focus on subsequent development.</p>
+</blockquote>
+<blockquote>
+<p>Special Note: When attempting to clone a repository from a <strong>non-affiliated team</strong>, cloning is only allowed if the repository's release version is in a &quot;<strong>Public</strong>&quot; state. If the version is not public, the &quot;Clone&quot; button will not be displayed on the page. If you expect the repository to be open for cloning, you can express your needs by submitting an &quot;Issue Suggestion&quot; to the repository owner to promote open sharing of the repository.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

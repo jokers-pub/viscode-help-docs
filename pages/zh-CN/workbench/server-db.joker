@@ -1,0 +1,147 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>数据模型设计</h2>
+<p>本章主要阐述在服务端应用项目里，如何创建和管理数据模型。</p>
+<h3>概述</h3>
+<p>在<strong>服务端应用</strong>项目中，我们能够借助数据模型设计，规划数据库表结构。它能助力我们以智能可视化的方式，快速完成数据库表结构设计，涵盖<strong>数据</strong>、<strong>表字段定义</strong>、<strong>联合索引</strong>、<strong>表关联字段</strong>等方面。</p>
+<h3>创建数据表</h3>
+<p>在工作台左侧的<strong>数据库</strong>菜单中，能看到当前的数据库表结构树。在任意文件中打开此菜单，都可快速了解数据表结构。若要对其进行管理维护，点击面板下方的<strong>管理数据库</strong>按钮，即可打开数据库管理文件。在此处，可通过<strong>创建数据模型</strong>或<strong>编辑数据模型</strong>，对数据库中的表进行管理。
+<img src="/workbench/server-db.png" alt=""></p>
+<ul>
+<li><strong>模型名称</strong>：用于定义数据表名称，建议首字母大写。</li>
+<li><strong>模型备注</strong>：为模型表起一个别名，方便在开发过程中快速了解表的含义。</li>
+<li><strong>模型介绍</strong>：为模型表配置详细说明，有助于开发人员更深入地了解表。</li>
+<li><strong>使用推荐属性</strong>：创建表时，若勾选此选项，平台会在创建数据表时自动生成常用的数据字段，包括：<strong>主键 id</strong>、<strong>创建时间 createAt</strong>、<strong>更新时间 updateAt</strong> 。</li>
+</ul>
+<h3>创建表字段</h3>
+<p>当完成数据模型（数据表）的创建后，在数据模型面板中点击<strong>创建属性</strong>，即可打开数据表字段维护面板。
+<img src="/workbench/server-db1.png" alt=""></p>
+<p>在字段维护面板中，需要维护以下要素：</p>
+<ul>
+<li><strong>名称</strong>：即字段名称，建议使用英文字母，简洁准确地代表字段所存储的数据内容。</li>
+<li><strong>备注</strong>：为字段配置别名，这就像是给字段取了一个更通俗易懂的小名，帮助开发人员在快速浏览代码或数据时，能瞬间明白字段的含义。</li>
+<li><strong>注释说明</strong>：对字段进行详细解释，包括字段的用途、数据来源、取值范围等关键信息，让开发人员能深入了解其用途，避免因理解偏差导致开发错误。</li>
+<li><strong>数据类型</strong>：配置字段的数据类型，这决定了字段能够存储的数据种类和格式，具体如下：
+<ol>
+<li><strong>字符串（String）</strong>：用于存储文本信息，像姓名、地址、描述等都是常见的应用场景。根据实际需求，还可细分为不同的存储形式：UUID 常用于生成唯一标识，确保每个数据记录都有独一无二的身份识别；TEXT 适用于较长文本存储，比如文章内容、详细说明等；VARCHAR 则适合固定长度或长度有限的文本，像较短的名称、代码等，这种细分选择能在存储时合理利用空间，提高数据库性能。</li>
+<li><strong>整数（Int）</strong>：适用于存储整数数值，例如年龄、数量、序号等数据，这些数据在业务逻辑中通常以整数形式存在，使用整数类型存储简洁高效。</li>
+<li><strong>小数（Decimal）</strong>：主要用于精确计算货币金额、财务数据等对精度要求极高的场景。在金融领域，哪怕是微小的精度误差都可能导致严重后果，所以小数类型能够确保数据的准确性，避免因浮点数精度问题引发的数据不一致。</li>
+<li><strong>单精度浮点数（Float）</strong>：在对精度要求不高，且需要节省存储空间时使用，比如表示一些近似的科学计算数据、统计数据等。例如在统计人群平均身高、体重等数据时，单精度浮点数可以在满足一定精度需求的同时，减少数据存储占用的空间。</li>
+<li><strong>日期时间（DateTime）</strong>：用于记录日期和时间，在业务中常用于标记事件发生的时间节点，如订单创建时间、用户登录时间等。可选择 createAt（表示创建时间）或 updateAt（表示更新时间） ，方便对数据的时效性和操作记录进行追踪。</li>
+<li><strong>布尔值（Boolean）</strong>：只有两个取值，即 true 和 false，用于表示真/假、是/否等二元状态，像订单是否支付、用户是否激活、任务是否完成等场景都非常适用，简单直观地反映数据的状态。</li>
+<li><strong>枚举</strong>：当字段取值固定为有限的几个选项时使用，比如订单状态（待付款、已付款、已发货、已完成等） 、用户角色（普通用户、管理员、客服等）。通过枚举类型，可以确保数据的一致性和规范性，避免出现非法的取值。</li>
+<li><strong>关联字段</strong>：用于建立表与表之间的关联关系，这是实现复杂业务逻辑和多表查询的关键。比如用户表与订单表通过用户 ID 进行关联，这样就能方便地查询某个用户的所有订单信息，或者某个订单对应的用户详情，实现数据的整合与交互。</li>
+</ol>
+</li>
+<li><strong>主键</strong>：标记该字段是否为当前表的主键字段。主键是数据表的唯一标识，就像每个人的身份证号一样，一个数据表仅允许存在一个主键，它能确保数据的唯一性和完整性，方便快速定位和检索数据。若已存在主键字段，则该选项不再显示，避免重复设置导致数据逻辑混乱。</li>
+<li><strong>默认值</strong>：可以为字段设置默认值。在创建数据条目时，如果开发人员或用户未主动配置该字段，系统将按照默认值进行初始化，这能减少数据录入的工作量，同时保证数据的基本完整性，例如在创建用户时，若未设置用户等级，可默认设置为普通用户等级。</li>
+<li><strong>唯一值</strong>：除主键可保证唯一性外，平台允许通过该选项在表内实现多个字段的唯一。标记为唯一值后，平台会自动为其创建索引，索引就像是一本书的目录，能大大提高数据查询的速度，在海量数据中快速定位到所需记录，从而在查询过程中实现更好的性能优化，提升系统响应速度。</li>
+<li><strong>非空</strong>：标记当前字段是否允许为空。若字段不允许为空，则在创建数据表条目时，会强制要求填写该字段的值，确保数据的准确性和完整性。例如在订单表中，订单金额字段通常不允许为空，否则订单数据就失去了关键信息。</li>
+<li><strong>数组类型</strong>：可将该字段配置为数组类型，提供更灵活高级的使用方式，例如存储多个标签、多个联系方式、多个附件等。在一些需要存储一组相关数据的场景中，数组类型能让数据组织更加紧凑和高效。</li>
+<li><strong>字段类型</strong>：字段类型与数据类型相关联。不同的数据类型对应不同的字段类型选择，如字符串类型可选择 UUID、TEXT、VARCHAR；日期格式可选择 createAt 或 updateAt。这种紧密关联确保了数据存储和处理的准确性与高效性，开发人员需要根据具体业务需求，仔细选择合适的字段类型和数据类型组合。</li>
+</ul>
+<h3>创建表关联</h3>
+<p>平台提供了非常智能的表关联创建方式。下面结合具体数据场景，讲解如何创建表关联字段。目前有两个数据表，分别如下：</p>
+<h4>产品表</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>UUID</td>
+<td>产品 id（主键唯一）</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>产品名称</td>
+</tr>
+</tbody>
+</table>
+<h4>订单表</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>UUID</td>
+<td>订单 id（主键唯一）</td>
+</tr>
+<tr>
+<td>priductId</td>
+<td>String</td>
+<td>产品 id（存储的是产品表内的 ID）</td>
+</tr>
+<tr>
+<td>createAt</td>
+<td>CreateAt</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table>
+<h4>如何关联</h4>
+<p>当准备好两个数据表后，关键在于如何将订单表中的<code>priductId</code>与产品表的<code>id</code>字段进行关联。由于订单表需要关联到产品表，所以需在订单表内创建一个关联字段，该关联字段通过<code>priductId</code>关联到产品表的<code>id</code>字段，同时可获取产品表的所有数据。
+<img src="/workbench/server-db2.png" alt=""></p>
+<p>具体创建步骤如下：</p>
+<ol>
+<li><strong>忽略字段名称</strong>：在创建字段时，先不必考虑字段名称，后续平台会自动智能填写。</li>
+<li><strong>选择数据类型</strong>：将数据类型选择为<strong>关联字段</strong> ，明确该字段的特殊关联性质。</li>
+<li><strong>确定关联字段</strong>：分别选择自身字段<strong>产品 Id</strong>和要关联的字段<strong>产品表.id</strong> ，精准建立两者之间的关联关系。</li>
+<li><strong>字段名称处理</strong>：完成上述关联字段选择后，平台会自动生成字段名称，当然，你也可以根据实际需求自行修改。</li>
+</ol>
+<p>当完成数据表关联字段的创建后，我们可以看到以下变化：
+<img src="/workbench/server-db3.png" alt=""></p>
+<ol>
+<li>
+<p>在订单表中，产品 id 字段被标记为了<strong>外键/关联键</strong>，并且新增了一个<strong>Product</strong>字段，其数据类型为产品表数据结构。这意味着在进行关联数据表查询时，能通过该字段快速读取产品表的所有字段信息。</p>
+</li>
+<li>
+<p>在产品表内，则增加了一个<strong>Order</strong>字段，它的数据类型是<strong>Order[]<strong>数组。平台会依据数据类型自动分析关联关系是一对一还是一对多。在当前示例中，由于订单表内的产品 id 并非唯一，显然是一对多的关联模式，所以产品表中的</strong>Order</strong>字段是数组形式。如此一来，在查询产品详情时，便能通过该字段快速获取该产品下的所有关联订单。</p>
+</li>
+</ol>
+<p>这样就完成了一个表之前的关联创建，是不是非常方便呢？</p>
+<h3>创建联合索引</h3>
+<p>联合索引属于高级业务使用场景。平台支持我们通过创建联合索引，达成多个字段组合后在表内的值具有唯一性。这样的联合索引，一方面能快速确保表内业务数据的唯一性，另一方面还能有效提升数据查询效率。</p>
+<p>例如在组织权限表中，鉴于一个用户在一个组织内仅能拥有一种权限，所以<strong>用户 ID+组织 ID</strong>在表内应当是唯一的，此时我们就可以将这两个字段创建为组合索引。</p>
+<p>我们能够在数据模型中，点击<code>创建属性</code>右侧的<strong>下拉箭头</strong>来创建联合索引。
+<img src="/workbench/server-db4.png" alt=""></p>
+<p>在联合索引编辑面板中，我们可以在此处选择多个属性（至少 2 个），以此来创建表内的联合索引。
+<img src="/workbench/server-db5.png" alt=""></p>
+<blockquote>
+<p>上述内容主要围绕数据模型的设计展开讲解。若你想要了解数据查询、数据写入、删除等操作，可以查阅后面的<a href="/workbench/db-option" target="_blank">数据操作</a>章节。在后续章节中，你将获取到这些数据操作的详细步骤与注意事项，帮助你更全面地掌握数据库的使用方法 。</p>
+</blockquote>
+<h3>数据连接地址</h3>
+<p>数据连接地址需要在<strong>环境配置</strong>文件中进行设置。目前支持 <strong>pgsql</strong> 数据库。</p>
+<p><img src="/workbench/server-db6.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

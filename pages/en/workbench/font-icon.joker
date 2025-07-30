@@ -1,0 +1,63 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h3>Font Icons</h3>
+<p>This chapter focuses on introducing how to maintain font icons in projects within the Platform and how to efficiently use these font icons.</p>
+<h4>Overview</h4>
+<p>The Platform provides the convenience to create <strong>font icon</strong> files in the <strong><code>Resources</code></strong> folder. This specific folder location serves as the central hub for centrally maintaining font icons of the project.<br>
+<img src="/workbench/font-icon.png" alt="Font Icon Folder Location"></p>
+<h4>Configure Style Prefix</h4>
+<p>Before using font icons, a crucial preparatory step is to configure the <strong>style prefix</strong>. This step is extremely important because without configuring the style prefix, the Platform will not generate font files for you.<br>
+<img src="/workbench/font-icon1.png" alt="Configure Style Prefix"></p>
+<blockquote>
+<p>Ensure the icon style prefix is entered accurately. It is strongly emphasized that any modification to the icon style prefix must be done with caution. Once modified, components that previously referenced the icon are highly likely to lose the icon, severely affecting the normal use of the Platform.</p>
+</blockquote>
+<p>For example, when the style prefix is configured as <code>jk-icon</code>, the styles will be named strictly according to this prefix during actual output, such as:</p>
+<pre><code class="language-css">.jk-icon-setting {
+}
+.jk-icon-plus {
+}
+/**...*/
+</code></pre>
+<h4>Maintain Icons</h4>
+<p>Within the Platform, you can easily add new icon files to font icons by uploading SVG files.<br>
+<img src="/workbench/font-icon2.png" alt="Upload SVG Files to Maintain Icons"></p>
+<ul>
+<li><strong>Icon</strong>: The specific operation is to upload an <strong>SVG</strong>-formatted file to create and display the icon.</li>
+<li><strong>Icon Name</strong>: This serves as the style <strong>suffix</strong> for the icon during actual use. It should be clear that the final effective style name is composed of the <strong>style prefix</strong> combined with this <strong>suffix</strong>.</li>
+<li><strong>Remarks</strong>: By adding remark information, you can provide special explanations for the icon, greatly helping developers quickly understand the specific meaning of the icon.</li>
+</ul>
+<p>After creating the icon, simply hover the mouse over the icon you want to edit to trigger and open the icon operation panel. In this panel, you can modify or delete the icon.<br>
+<img src="/workbench/font-icon3.png" alt="Icon Operation Panel"></p>
+<h4>Generate Font Files</h4>
+<p>The Platform has an intelligent function: when you save the current file, it automatically converts all uploaded SVG files into font files in <code>woff</code> format.</p>
+<blockquote>
+<p>It is particularly important to note that the Platform will only automatically generate font icons when saving the file if both conditions are met: the style prefix is configured, and at least one icon is maintained.</p>
+</blockquote>
+<h4>How to Use</h4>
+<p>All font icons in the Platform are automatically globally referenced, eliminating the need for manual additional configuration. During the maintenance of fields, you can flexibly choose to use the icon component for configuration through the <code>assignment method</code>.<br>
+<img src="/workbench/font-icon4.png" alt="Select Icon Component Configuration via Assignment Method"></p>
+<p>Once configured, when using the field, the system will automatically present an <code>icon selection</code> control. With this control, you can conveniently and quickly view all icon files available in the current project, including both font icons created by the project itself and those provided by installed plugins.<br>
+<img src="/workbench/font-icon5.png" alt="Icon Selection Control"></p>
+<h4>Code Generation</h4>
+<p>During the final code generation stage, the Platform will once again leverage its automation advantage to automatically generate font icon files in <code>woff</code> format and complete the relevant associative referencing. You can confidently use these generated font icons.<br>
+<img src="/workbench/font-icon6.png" alt="Operations Related to Font Icons in Code Generation Stage"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

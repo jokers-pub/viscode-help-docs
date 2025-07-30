@@ -1,0 +1,46 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Member Management</h2>
+<p>This chapter elaborates on the management methods for team members, covering aspects such as applying to join a team, inviting members, and the specific management and role configuration of team members.</p>
+<h3>Applying to Join a Team</h3>
+<p>On the team settings page, you can decide whether to accept applications from external developers to join the team by configuring the &quot;Whether to Open Applications&quot; option.
+<img src="/portal/org-member.png" alt="Interface related to opening applications on the team settings page"></p>
+<p>If you choose to open applications, when non-team members visit the team home page, a &quot;Apply to Join&quot; button will be displayed on the page. Clicking this button allows you to submit an application to join the team.
+<img src="/portal/org-member2.png" alt="Interface of the &quot;Apply to Join&quot; button on the team home page"></p>
+<p>When a member submits an application to join the team, the platform will send an internal message reminder. You can also click on the &quot;Application Management&quot; menu on the team settings page and enter the team application management page to view the application list.
+<img src="/portal/org-member3.png" alt="Team application management page"></p>
+<p>In the application list, you can click the <strong>Approve</strong> or <strong>Reject</strong> button to decide whether to approve the member's application to join the team.</p>
+<h3>Inviting Members</h3>
+<p>In addition to waiting for members to apply to join, you can also take the initiative to invite members to join the team. The specific operations are as follows: Open the &quot;Member Management&quot; page, click the <strong>Invite Members</strong> button, and an invite members panel will pop up. In this panel, you can search for the developers you want to invite by using information such as user email addresses and account numbers. After finding the target person, click the add button, and the system will send an invitation message. Once the other party accepts the invitation, they will automatically join the current team.
+<img src="/portal/org-member4.png" alt="Interface for the operation of inviting members"></p>
+<h3>Member Management</h3>
+<p>On the &quot;Member Management&quot; page, you can manage the existing members of the team, including deleting members and setting member permissions. Currently, team member permissions are divided into the following categories:</p>
+<ul>
+<li><strong>Owner</strong>: Holds the highest permissions of the team, usually the creator of the team.</li>
+<li><strong>Administrator</strong>: Can modify the basic information of the team and has daily management permissions such as adding members, handling the issue status of team repositories, and releasing versions.</li>
+<li><strong>Developer</strong>: Only has the permission to modify the code in the repositories within the team.</li>
+</ul>
+<p><img src="/portal/org-member5.png" alt="Member Management page"></p>
+<blockquote>
+<p>New members joining the team will have the default identity of &quot;Developer&quot; by default. It should be noted that administrators can handle team applications, invite members, and delete members, but they cannot operate on member permissions or handle the information of members with the same or higher identities as themselves.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

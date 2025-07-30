@@ -1,0 +1,39 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>全局变量</h2>
+<p>全局变量允许开发人员在项目内创建统一的全局变量，并可在多个文件中共享使用。</p>
+<h3>概述</h3>
+<p>全局变量有助于解决跨文件的变量共享问题。在不同文件内，我们既能访问全局变量，也能修改变量的值。而且，若你的项目是组件/方法集，在被引用时，还会在项目引用环境中实现有效的数据隔离。</p>
+<p>我们可以在<code>项目配置</code>文件中，通过<strong>全局变量</strong>面板来维护变量。</p>
+<p><img src="/workbench/globalData.png" alt=""></p>
+<h3>如何创建变量</h3>
+<p>我们可以点击页面中的<code>创建全局变量</code>按钮来创建变量。</p>
+<p><img src="/workbench/globalData1.png" alt=""></p>
+<blockquote>
+<p>具体创建属性的教程请查阅<a href="/workbench/property" target="_blank">字段维护</a>。</p>
+</blockquote>
+<h3>如何使用</h3>
+<p>全局变量可在任意表达式中使用。</p>
+<p><img src="/workbench/globalData2.png" alt=""></p>
+<p>同时，全局变量也能在逻辑方法中使用。</p>
+<p><img src="/workbench/globalData3.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

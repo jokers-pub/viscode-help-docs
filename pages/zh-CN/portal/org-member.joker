@@ -1,0 +1,46 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>成员管理</h2>
+<p>本章详细介绍团队成员的管理方法，涵盖申请加入团队、邀请成员以及团队成员的具体管理和身份配置等内容。</p>
+<h3>申请加入团队</h3>
+<p>在团队设置页面，可通过配置<code>是否开放申请</code>选项，决定是否接受外部开发人员的入队申请。
+<img src="/portal/org-member.png" alt="团队设置开放申请相关界面"></p>
+<p>若选择开放申请，非本团队成员访问团队首页时，页面会显示<code>申请加入</code>按钮。点击该按钮，即可提交入队申请。
+<img src="/portal/org-member2.png" alt="团队首页申请加入按钮界面"></p>
+<p>当有成员提交入队申请时，平台会发送内部消息提醒。你也可以在团队设置页面点击<code>申请管理</code>菜单，进入团队申请管理页面查看申请列表。
+<img src="/portal/org-member3.png" alt="团队申请管理页面"></p>
+<p>在申请列表中，你可以点击<strong>同意</strong>或者<strong>拒绝</strong>按钮，决定是否批准该成员的入队申请。</p>
+<h3>邀请成员</h3>
+<p>除了等待成员申请加入，你还能主动邀请成员加入团队。具体操作如下：打开<code>成员管理</code>页面，点击<strong>邀请成员</strong>按钮，弹出邀请成员面板。在该面板中，你可以通过用户邮箱、账号等信息查询要邀请的开发人员。找到目标人员后，点击添加按钮，系统会发送邀请消息。对方同意邀请后，将自动加入当前团队。
+<img src="/portal/org-member4.png" alt="邀请成员操作界面"></p>
+<h3>成员管理</h3>
+<p>在<code>成员管理</code>页面，你可以对团队现有成员进行管理，包括删除成员和设置成员权限。目前，团队成员权限分为以下几种：</p>
+<ul>
+<li><strong>拥有者</strong>：拥有团队的最高权限，通常为团队的创建者。</li>
+<li><strong>管理员</strong>：可修改团队基本信息，具备添加成员、处理团队仓库议题状态、进行版本发布等日常管理权限。</li>
+<li><strong>开发者</strong>：仅拥有团队内仓库代码的修改权限。</li>
+</ul>
+<p><img src="/portal/org-member5.png" alt="成员管理页面"></p>
+<blockquote>
+<p>新加入团队的成员，默认身份为<code>开发者</code>。需要注意的是，管理员可以处理团队申请、邀请成员以及删除成员，但无法对成员权限进行操作，也不能处理与自己相同身份或更高身份成员的信息。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

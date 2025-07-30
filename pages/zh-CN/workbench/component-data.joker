@@ -1,0 +1,160 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>组件状态数据</h2>
+<p>本章主要讲解组件中的状态数据，我们可以在这里去维护一个组件的参数约束、内部响应式数据以及内部私有变量。</p>
+<h3>概述</h3>
+<p>组件状态数据是组件开发中最为常用的功能之一。</p>
+<p><img src="/workbench/component.png" alt=""></p>
+<p>当打开一个<code>组件</code>或<code>页面</code>文件时，工作台左侧菜单中会显示<code>组件数据</code>菜单，点击后即可打开组件数据面板。</p>
+<p>从数据使用的角度出发，可将其分为以下几类 <strong>输入参数（props）</strong>、 <strong>响应数据（model）</strong>、<strong>内部私有属性</strong>，接下来我们来详细讲解下这三种数据的用途和如何声明一个属性/参数。</p>
+<h3>输入参数（props）</h3>
+<p>这是当前组件所需要的参数。这些参数具有响应式特点，一旦外部使用者传递的参数发生变化，会立即通知并更新组件内部的 DOM 节点。这意味着，组件能够实时响应外部传入数据的变动，从而动态调整自身的显示与行为，大大增强了组件的灵活性与复用性。例如，一个按钮组件可能通过 props 接收按钮的文本内容、颜色等参数，当外部传入的文本或颜色改变时，按钮能立刻呈现相应的变化。</p>
+<blockquote>
+<p>仅在组件类型文件内才会展示传入参数的配置。页面类型的组件不允许配置接受参数。</p>
+</blockquote>
+<h4>如何创建/编辑</h4>
+<p>我们可以在<code>输入参数(props)</code>面板右侧的<code>加号</code>来打开参数创建面板，在创建参数面板中我们可以配置参数的名称、备注、类型、默认值、演示值。属性创建教程，请阅读本章最后<code>属性/参数创建和编辑</code>小结。</p>
+<p><img src="/workbench/component-data.png" alt=""></p>
+<h4>如何使用</h4>
+<p>创建完参数后便可开始使用，下面将从两个角度为您详细介绍：</p>
+<h5>1. 声明者视角（当前组件）</h5>
+<p>在完成参数创建后，即可在组件内部使用所创建的参数。这些参数可在布局模板和方法逻辑中使用：</p>
+<ul>
+<li><strong>布局模板</strong>：在模板里，可通过表达式的方式<code>props.</code>引用参数变量。
+<img src="/workbench/component-data1.png" alt="组件参数在模板中的使用示例"></li>
+<li><strong>方法逻辑</strong>：在逻辑编辑面板中，可通过 <code>this.props.</code> 的方式读取组件参数值。
+<img src="/workbench/component-data2.png" alt="组件参数在逻辑编辑中的使用示例"></li>
+</ul>
+<blockquote>
+<p><strong>贴心提示</strong>：若您不太熟悉代码编写，无需过度担忧。平台具备智能的数据管理功能，在表达式编辑面板中会提供智能语法提示，同时还设有数据管理面板。您可以在该面板中查看当前节点所使用的所有变量，只需点击即可快速使用相应变量。</p>
+</blockquote>
+<h5>2. 使用者视角（其他组件/页面引用当前组件）</h5>
+<p>当在其他组件或页面中引用当前组件时，点击该组件，即可在组件参数面板中看到已声明的参数。
+<img src="/workbench/component-data3.png" alt="在其他组件中查看引用组件参数示例"></p>
+<blockquote>
+<p><strong>重要建议</strong>：对组件参数进行声明时，务必尽可能完整。建议提供参数说明、交互类型、演示值等信息，以便开发人员能快速了解该属性的用途。</p>
+</blockquote>
+<h3>响应数据（model）</h3>
+<p>这是组件内部的响应数据。在组件装载开始前，该属性会被“劫持”，进而具备数据响应能力。也就是说，当这个内部数据发生改变时，与之相关联的组件部分会自动更新。比如在一个购物车组件中，商品数量作为响应数据，当数量改变时，购物车的总价显示、商品列表的渲染等相关部分会自动更新，为用户提供实时反馈。</p>
+<h4>如何创建/编辑</h4>
+<p>我们可以在<code>响应数据（model）</code>面板右侧的<code>加号</code>来打开参数创建面板，在创建属性面板中我们可以配置参数的名称、备注、类型、默认值、演示值。属性创建教程，请阅读本章最后<code>属性/参数创建和编辑</code>小结。</p>
+<p><img src="/workbench/component-data4.png" alt=""></p>
+<h4>认识响应式数据</h4>
+<p>在这里，我们借助一个 <strong>DEMO</strong> 来深入理解什么是响应式数据。响应式数据能够在一个值发生变更后，<strong>立即通知监听者</strong>。在布局模板里，一旦值有所变更，这种变化也会<strong>即刻在页面中实现更新</strong>。</p>
+<p>我们通过代码定义了一个响应式数据<code>count</code>。当点击页面上的按钮时，<code>count</code>的值会加一，并且值变更后，页面会<strong>马上体现出这一变化</strong> 。</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;button @click=&quot;handleClick&quot;&gt;点我呀  [@(model.count)]&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        count: 0
+    };
+
+    //点击事件
+    handleClick() {
+        this.model.count++;
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h4>如何使用</h4>
+<p>在完成属性创建后，即可在组件内部使用所创建的属性。这些属性可在布局模板和方法逻辑中使用：</p>
+<ul>
+<li><strong>布局模板</strong>：在模板里，可通过表达式的方式<code>model.</code>引用参数变量。
+<img src="/workbench/component-data5.png" alt=""></li>
+<li><strong>方法逻辑</strong>：在逻辑编辑面板中，可通过 <code>this.model.</code> 的方式读取组件参数值。
+<img src="/workbench/component-data6.png" alt=""></li>
+</ul>
+<blockquote>
+<p><strong>贴心提示</strong>：若您不太熟悉代码编写，无需过度担忧。平台具备智能的数据管理功能，在表达式编辑面板中会提供智能语法提示，同时还设有数据管理面板。您可以在该面板中查看当前节点所使用的所有变量，只需点击即可快速使用相应变量。</p>
+</blockquote>
+<h3>内部私有属性</h3>
+<p>这类属性既不支持外部调用，也不具备响应式能力，仅作为组件内部临时使用的变量。在这里，你可以声明内部动态数据变量，方便在多个方法中使用。例如，在一个复杂的表单组件中，可能需要一个临时变量来记录表单填写的步骤状态，这个变量只在组件内部的方法中使用，无需对外暴露，也不需要对其变化做出响应式更新。</p>
+<h4>如何创建/编辑</h4>
+<p>我们可以在<code>内部私有属性</code>面板右侧的<code>加号</code>来打开参数创建面板，在创建属性面板中我们可以配置参数的名称、备注、类型、默认值、演示值。属性创建教程，请阅读本章最后<code>属性/参数创建和编辑</code>小结。</p>
+<p><img src="/workbench/component-data7.png" alt=""></p>
+<p>它的使用方式与参数、响应数据一致，均可通过表达式的方式直接调用。不过，它与<strong>响应式数据</strong>不同之处在于，它不具备<strong>响应式能力</strong>。因此，如果该值在组件运行时会发生变更，那么不建议以<strong>私有属性</strong>的方式在模板中展现。</p>
+<p>通常情况下，我们会在多个逻辑方法中定义一个公用属性，以此完成特定的业务逻辑。由于它不具备响应能力，所以既不会造成额外的性能开销，也不会污染原始数据。</p>
+<h3>属性/参数创建和编辑</h3>
+<p>这里我们来讲解一下参数属性的编辑面板的操作流程。（属性和参数的创建面板基本一致，只是存在部分属性的差异，在讲解时我们会特别标注，请仔细阅读。）</p>
+<h4>第一步（属性基本信息）</h4>
+<p><img src="/workbench/component-data8.png" alt=""></p>
+<ul>
+<li><strong>属性名称</strong>：这里需要我们使用英文字母完成属性名的配置，属性名在当前组件功能中需要保持唯一（即在传入参数中唯一/在响应数据中唯一）</li>
+<li><strong>备注/标题</strong>：我们可以为其配置一个标题，标题的配置可以帮我们更快速的了解属性的用途，例如：颜色、尺寸等。</li>
+<li><strong>提示</strong>：我们可以通过提示属性来配置当前属性的详细描述，当我们在使用时，通过鼠标移入可以查看当前属性的详细说明。</li>
+<li><strong>分类</strong>：<strong>仅参数需要配置</strong>，我们可以在这里配置一个参数的分类，相同的分类在组件属性时会进行分组归类，可以提供使用者更好的体验性。
+<img src="/workbench/component-data9.png" alt=""></li>
+<li><strong>排序</strong>：可用于将属性进行排序，值越大在属性面板中越靠前（仅针对输入参数）</li>
+</ul>
+<h4>第二步（属性类型信息）</h4>
+<p><img src="/workbench/component-data10.png" alt=""></p>
+<ul>
+<li>
+<p><strong>类型</strong>：当前属性的类型。</p>
+<ol>
+<li><strong>字符串</strong>（<code>String</code>）</li>
+<li><strong>数字</strong>（<code>Number</code>）</li>
+<li><strong>布尔值</strong>（<code>Boolean</code>）</li>
+<li><strong>数组</strong>（<code>Array</code>）</li>
+<li><strong>对象</strong>（<code>Object</code>）</li>
+<li><strong>方法</strong>（<code>Function</code>）</li>
+<li><strong>时间</strong>（<code>Date</code>）</li>
+<li><strong>任意类型</strong>（<code>Any</code>）</li>
+</ol>
+</li>
+<li>
+<p><strong>是否非空</strong>：可配置当前值是否允许为空（<code>undefined</code>）。</p>
+</li>
+<li>
+<p><strong>赋值方式</strong>：<strong>仅参数需要配置</strong>，当需要为其设置值时，可通过该属性来决定采用何种交互方式为其赋值。不同的数据类型会有不同的赋值方式可选。</p>
+<ol>
+<li><strong>可选值</strong>：可创建 Key - Value 的数据，提供下拉框模式的值选择。</li>
+<li><strong>多行文本</strong>：采用长文本输入框，可实现多行文本的输入。</li>
+<li><strong>颜色值</strong>：展现为颜色设置控件，可快速完成颜色的配置。</li>
+<li><strong>CSS 尺寸值</strong>：在这里可以配置 CSS 的尺寸值（带单位）。</li>
+<li><strong>样式名</strong>：展示为样式设置控件，可快速查询当前项目中的公开样式，实现快速添加。</li>
+<li><strong>图片资源选择</strong>：提供内部静态资源的快速选择交互（图片展示效果）。</li>
+<li><strong>资源选择</strong>：提供内部静态资源的快速选择交互。</li>
+<li><strong>Style 样式</strong>：展现一个可视化的 Style 配置面板，可完成一些常用的样式编辑。</li>
+<li><strong>表达式</strong>：默认使用表达式（动态脚本）进行过值配置。</li>
+</ol>
+</li>
+<li>
+<p><strong>默认值</strong>：作为参数/属性的默认值，若未配置或未传递值（参数）时，会自动赋值为该默认值。</p>
+</li>
+<li>
+<p><strong>演示值</strong>：<strong>仅参数需要配置</strong>，该属性用于当该组件被引入时，为该属性立即设置一个值，通过演示值可以帮助开发人员在引入组件时有一个更好的首次展示效果，开发人员可以对其修改。</p>
+</li>
+</ul>
+<p>若当前属性类型被配置为：<code>数组/对象</code>时，会在第二步展现深层类型设计面板，我们可以在这里配置对象或数组的内部属性类型。</p>
+<p><img src="/workbench/component-data11.png" alt=""></p>
+<p>内部属性设计面板中的要素和上述内容基本一致，可参考上述功能描述。</p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo1 from '../../../examples/workbench/component-data/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

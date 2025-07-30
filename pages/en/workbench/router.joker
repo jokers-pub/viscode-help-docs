@@ -1,0 +1,50 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Routing Management</h2>
+<p>This chapter mainly elaborates on routing-related knowledge, covering aspects such as <strong>Default Routing Address</strong> and <strong>Routing Guards</strong>.</p>
+<h3>Overview</h3>
+<p><strong>Routing Global Management</strong> enables us to manage the default access address of the front-end application and, according to business requirements, has the ability to configure different <strong>Routing Guards</strong>.</p>
+<p>Before reading the content of this chapter, it is recommended that you read the <a href="/workbench/page" target="_blank">Page Management</a> chapter first.</p>
+<p>We can maintain the global routing-related configurations in the <code>Routing Management</code> panel in the <code>Project Configuration</code> file.</p>
+<p><img src="/workbench/router.png" alt="Screenshot of the Routing Management panel"></p>
+<h3>Default Address</h3>
+<p>Here, you can configure the default routing address of the current project.</p>
+<p>The platform will automatically analyze the context routing information of all page resource files and list the routing information of all leaf pages. You can select a page address from them as the default page address. If no selection is made, the default access is <code>/</code>. If this address does not exist in your project, an error may occur during runtime.</p>
+<p><img src="/workbench/router1.png" alt="Screenshot of the default address selection interface"></p>
+<blockquote>
+<p>Clicking on the file name can quickly open the target page resource, facilitating your understanding of the display situation of this address.</p>
+</blockquote>
+<h3>Routing Guards</h3>
+<p>Routing guards can help us achieve diverse business requirements before and after route jumps, such as adding a loading waiting effect during the jump or checking the login status before the jump.</p>
+<h4>beforeRouteCallbacks [Before Jump]</h4>
+<p>In <code>beforeRouteCallbacks</code>, we can add listener functions to monitor the aspect event before the route jump. In this way, we can perform some custom operations before the route jump, such as verifying user permissions, recording logs, etc. This way provides convenience for us to flexibly control the route jump process and helps optimize the performance and user experience of the application.</p>
+<p><img src="/workbench/router3.png" alt="Screenshot of operations related to beforeRouteCallbacks"></p>
+<p>When it is necessary to redirect to another page before the jump, you need to call the <code>next</code> function of the parameter and pass in the new jump address to complete the route redirection.</p>
+<blockquote>
+<p><strong>Important Note</strong>: The <strong>next</strong> function must be called. If you want to redirect, pass in the new address; if there is no need to redirect, do not pass in parameters.</p>
+</blockquote>
+<h4>afterRouteCallbacks [After Jump]</h4>
+<p><code>afterRouteCallbacks</code>, as a hook after the jump, is basically used in the same way as <code>beforeRouteCallbacks</code>. However, it does not have a mechanism like <code>next</code> or <code>return</code> for controlling the flow.</p>
+<h3>Example</h3>
+<p>Here, we take the example of judging whether the current user is logged in. If logged in, normal access is allowed; if not logged in, it will jump to the login page.</p>
+<p><img src="/workbench/router4.png" alt="Screenshot of the example operation"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,52 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h3>Event Bus</h3>
+<p>In this chapter, we will explore what an Event Bus is and the functionalities it enables.</p>
+<p><strong>Note</strong>: The Event Bus feature is only available for <code>front-end project</code> types. It cannot be used in component libraries or method set libraries.</p>
+<h4>Overview</h4>
+<p>In the front-end domain, apart from data communication between components and pages via <code>props</code> parameters, the Platform also provides a data communication method called the <code>Event Bus</code>. Under the traditional <code>parameter</code> and <code>event</code> data transfer model, data can only be passed between components with a reference relationship. When a component is <strong>not subordinate</strong> to the current page/component, data transfer via parameters or registered events is not feasible.</p>
+<p>To achieve data communication between components or pages without a reference relationship, we need the <code>Event Bus</code>. The Event Bus acts as a global event manager, allowing all pages/components/methods to register events or listen for events on it.</p>
+<h4>Create an Event Bus</h4>
+<p>First, open the <strong>Event Bus</strong> panel in the <code>Project Configuration</code> file.</p>
+<p><img src="/workbench/event-bus.png" alt=""></p>
+<p>Click the <strong>「Create Event Bus」</strong> button on the page to create an Event Bus. Note that an Event Bus can declare multiple events, so an <code>Event Bus</code> can be understood as a collection of event categories, helping us manage events by category.</p>
+<p><img src="/workbench/event-bus1.png" alt=""></p>
+<p>After creating an Event Bus for a specific category, you can define events within it.</p>
+<p><img src="/workbench/event-bus2.png" alt="">
+<img src="/workbench/event-bus3.png" alt=""></p>
+<p>Here, you need to define the event name, and the Event Bus allows setting event parameter types.</p>
+<h4>How to Use</h4>
+<p>You can perform operations through the <code>Event Bus</code> logic node in logic orchestration.</p>
+<p><img src="/workbench/event-bus4.png" alt=""></p>
+<p>After dragging in the node, complete the following two steps:</p>
+<ol>
+<li><strong>Select an Event</strong>: The Platform provides a visual selection interface where you can choose the event to trigger.</li>
+<li><strong>Select an Operation Type</strong>: Operation types include <strong>Listen for Events</strong> and <strong>Trigger Event</strong>.</li>
+</ol>
+<p>When selecting <strong>Trigger Event</strong>, if the current event has constrained event parameter types, you need to fill in the event parameter values to be passed.</p>
+<p><img src="/workbench/event-bus5.png" alt=""></p>
+<p>If selecting <strong>Listen for Events</strong>, you need to maintain a callback function for handling when the event is triggered.</p>
+<p><img src="/workbench/event-bus6.png" alt=""></p>
+<blockquote>
+<p><strong>Special Note</strong>: For the <code>Listen for Events</code> operation, the Event Bus does not automatically handle event destruction. Therefore, you need to define a receiving value (Function) as the <strong>destruction function</strong> for the event, which should be triggered during <code>component destruction</code> or at an appropriate 时机 (timing).</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

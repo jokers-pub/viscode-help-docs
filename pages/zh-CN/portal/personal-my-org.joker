@@ -1,0 +1,44 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>我的组织</h2>
+<p>在平台的协作体系中，“我的组织”是管理个人所属团队或组织关系的重要板块，它承载着组织信息展示、团队管理等关键功能，助力用户高效开展团队协作。本章将详细介绍“我的组织”的各项基本功能。</p>
+<h3>进入我的组织列表</h3>
+<ol>
+<li><strong>定位个人主页</strong>：登录平台后，点击页面右上角的头像，进入个人专属主页。个人主页作为用户在平台上的核心交互区域，汇聚了众多与个人相关的功能入口。</li>
+<li><strong>点击“我的组织”</strong>：在个人主页中，找到并点击“我的组织”菜单选项。这一操作将引导你进入“我的组织”列表页面，在这里，你能集中查看与自己相关的所有组织信息。
+<img src="/portal/personal-my-org.png" alt="进入我的组织列表操作"></li>
+</ol>
+<h3>组织管理</h3>
+<ol>
+<li><strong>组织信息展示</strong>：进入“我的组织”列表页面后，你会看到一个详细的组织清单，其中列出了你创建和加入的所有团队/组织。每个组织条目都清晰展示了关键信息，方便你快速了解相关组织的情况。</li>
+<li><strong>角色查看与团队退出</strong>：在这个页面中，你不仅可以查看自己在各个团队中的角色，明确自己在团队中的职责与权限；还能根据实际需求，主动选择退出某个团队。通过这一功能，你可以灵活管理自己的团队参与情况，确保自身在平台的组织架构中处于最适宜的位置。
+<img src="/portal/personal-my-org2.png" alt="我的组织列表页面及组织管理功能"></li>
+</ol>
+<h3>离开组织</h3>
+<ol>
+<li><strong>操作步骤</strong>：当你决定退出某个团队时，只需在“我的组织”列表页面中，找到对应团队条目，点击“离开组织”按钮，即可主动发起退出该团队/组织的操作。系统会弹出确认提示，确保你是在明确操作后果的情况下执行此操作。
+<img src="/portal/personal-my-org3.png" alt="离开团队操作按钮"></li>
+</ol>
+<blockquote>
+<p><strong>特别注意</strong>：如果你是团队/组织的创建者，出于组织管理的稳定性考虑，你无法直接退出该组织。若你希望不再担任创建者角色，可以通过<a href="/portal/org-transfer" target="_blank">转移所属权</a>的方式，将组织的控制权转移给其他合适成员，从而实现组织管理关系的平稳过渡 。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

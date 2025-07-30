@@ -1,0 +1,70 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>样式管理</h2>
+<p>本章着重介绍项目内样式管理的实现方式，涵盖组件内部私有样式管理以及项目全局样式管理。</p>
+<h3>组件内部样式</h3>
+<p>当打开一个组件或页面文件，且未选中任何组件时，默认右侧属性面板展示的是当前文件的属性面板，在此可对当前文件的私有样式进行管理。</p>
+<p><img src="/workbench/style.png" alt="组件或页面文件属性面板截图"></p>
+<p>组件内部样式遵循<code>scoped</code>样式域隔离原则。所谓样式<code>scoped</code>域隔离，即在实际运行时，当前文件的 CSS 会自动添加<code>[data-scoped-xxx]</code>标记。这一特性使得该 CSS 内容仅对当前页面内的相关元素（含区块内容）产生影响，而不会干扰其他页面或组件的样式。</p>
+<h4>样式穿透</h4>
+<p>使用<code>scoped</code>后，父组件样式不会渗透到子组件。但子组件的根节点会同时受父组件和子组件的作用域样式影响，这种设计便于父组件从布局角度调整子组件根元素的样式。</p>
+<p>在某些特定场景下，若需在父节点改变带有<code>scoped</code>的子组件样式，可使用<code>:deep()</code>进行样式穿透，以实现子组件样式的变更。例如：</p>
+<pre><code class="language-html">&lt;style scoped&gt;
+    .a :deep(.b) {
+        /*... */
+    }
+&lt;/style&gt;
+</code></pre>
+<p>上述代码会被编译为：</p>
+<pre><code class="language-css">.a[data-scoped-981d2c8a].b {
+    /*... */
+}
+</code></pre>
+<p>实际应用中，常借助样式穿透来控制子组件样式，子组件也可利用样式穿透更改父容器的区块模板样式。</p>
+<h3>项目全局样式</h3>
+<p>项目全局样式仅在“前端”项目中的“组件库”或“应用”这两类仓库中可用，方法集仓库不具备全局样式管理功能。</p>
+<p>在<code>项目配置</code>文件的<code>项目样式管理</code>面板中，点击<code>配置项目主样式文件</code>按钮，即可对当前项目内的全局样式进行管理。</p>
+<p><img src="/workbench/style2.png" alt="项目样式管理面板截图"></p>
+<blockquote>
+<p>需注意的是，若引用了第三方组件库扩展包，组件库中的主样式文件会优先加载，随后才加载当前应用项目中的主样式文件。这样安排旨在让“应用”项目能够重写第三方扩展中的样式或样式变量。</p>
+</blockquote>
+<h3>快捷样式和样式变量</h3>
+<p>在进行组件属性配置时，有时需要传入样式名或样式变量来完成组件的参数设置。然而，众多的样式名和样式变量可能会导致查找困难。此时，我们能够在 <code>项目配置</code> 文件中，借助 <strong>样式名</strong>、<strong>样式变量</strong> 管理面板，对常用的样式名和样式变量进行维护。如此一来，在需要传递配置样式值时，就能快速检索到它们。</p>
+<h4>如何定义</h4>
+<p>我们可在 <code>项目配置</code> 文件里，通过 <strong>样式名</strong>、<strong>样式变量</strong> 管理面板，实现对常用样式名和样式变量的维护。</p>
+<p><img src="/workbench/style3.png" alt="样式名和样式变量管理面板截图"></p>
+<h4>如何使用</h4>
+<p>以 Joker UI 项目为例，该仓库已对常用的样式名和样式变量进行了维护。</p>
+<ul>
+<li>
+<p><strong>快速选择样式名</strong>
+<img src="/workbench/style4.png" alt="快速选择样式名的操作截图"></p>
+</li>
+<li>
+<p><strong>快速选择样式变量</strong>
+<img src="/workbench/style5.png" alt="快速选择样式变量的操作截图"></p>
+</li>
+</ul>
+<blockquote>
+<p>注意，样式变量需要切换为 <code>var变量</code> 模式，才允许输入样式变量。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,181 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Data Operations</h2>
+<p>This chapter focuses on how to perform various operations on the database, covering basic operations such as adding, deleting, modifying, and querying, as well as advanced operations like grouped queries and aggregate statistical queries. It mainly explains the usage method of the <strong>Database Operation</strong> node in business logic orchestration.</p>
+<h3>Overview</h3>
+<p>In business orchestration, we can drag in the <strong>Database Operation</strong> node to access and operate on the database.
+<img src="/workbench/db-option.png" alt=""></p>
+<p>The specific operation steps are as follows:</p>
+<ol>
+<li><strong>Select the Database Table to Operate</strong>: First, it is necessary to clarify which database table to operate on.</li>
+<li><strong>Determine the Operation Method</strong>: After selecting the database table to operate on, then choose what specific operation to perform on this table.</li>
+</ol>
+<h3>Adding Data</h3>
+<p>Currently, the platform provides two ways to add data: adding a single record and adding multiple records in batches.</p>
+<h4>Adding a Single Record</h4>
+<p><img src="/workbench/db-option1.png" alt=""></p>
+<p>When choosing to add a single record, the platform will automatically display the required fields of the current database in the data panel, facilitating us to quickly assign values. If it is necessary to write other data fields, you can click <strong>Other Attributes</strong> below to add other field attributes.
+<img src="/workbench/db-option2.png" alt=""></p>
+<h4>Adding Multiple Records in Batches</h4>
+<p>Adding multiple records in batches requires creating multiple pieces of data by customizing an array of data items. Meanwhile, the platform will impose constraints on the array type.
+<img src="/workbench/db-option3.png" alt=""></p>
+<h3>Deleting Data</h3>
+<p>The platform provides two ways to delete data: deleting by index and deleting by condition.</p>
+<h4>Deleting by Index</h4>
+<p>Deleting by index is the fastest deletion method.
+<img src="/workbench/db-option4.png" alt=""></p>
+<p>The operation steps are as follows:</p>
+<ol>
+<li><strong>Select the Data Index</strong>: You can choose the unique value index in the data table or the combined index.</li>
+<li><strong>Fill in the Index Value</strong>: If the selected index is a combined index, multiple values may need to be filled in here.</li>
+</ol>
+<h4>Deleting Multiple Records by Condition</h4>
+<p><img src="/workbench/db-option5.png" alt=""></p>
+<p>The platform provides rich condition constraints and supports us to perform the following operations:</p>
+<ul>
+<li><strong>Configuring Multiple Constraints for a Single Field</strong>: Different constraint conditions can be set for a single field.</li>
+<li><strong>Cross-Table Association Constraints</strong>: Constraints can be set based on the association relationship between tables.</li>
+<li><strong>AND/OR Grouping Conditions</strong>: Conditions can be grouped and combined using AND or OR logic to achieve more complex condition judgments.</li>
+</ul>
+<h3>Updating Data</h3>
+<p>The platform provides two methods for updating data: updating a single record and updating multiple records according to conditions.</p>
+<h4>Updating a Single Record</h4>
+<p>Updating by index is the fastest way to modify data.
+<img src="/workbench/db-option6.png" alt=""></p>
+<ol>
+<li><strong>Select the Data Index</strong>: You can choose the unique value index in the data table or the combined index.</li>
+<li><strong>Fill in the Index Value</strong>: If the selected index is a combined index, multiple values may need to be filled in here.</li>
+<li><strong>Configure the Data to be Changed</strong>: Select the fields to be changed and configure new values.</li>
+</ol>
+<h4>Updating Multiple Records According to Conditions</h4>
+<p><img src="/workbench/db-option7.png" alt=""></p>
+<p>The platform provides rich condition constraints and supports us to perform the following operations:</p>
+<ul>
+<li><strong>Configuring Multiple Constraints for a Single Field</strong>: Different constraint conditions can be set for a single field.</li>
+<li><strong>Cross-Table Association Constraints</strong>: Constraints can be set based on the association relationship between tables.</li>
+<li><strong>AND/OR Grouping Conditions</strong>: Conditions can be grouped and combined using AND or OR logic to achieve more complex condition judgments.</li>
+</ul>
+<h3>Data Query</h3>
+<p>Data query is a commonly used data operation. The platform provides the following options: <strong>Querying a Single Record</strong>, <strong>Returning the First Record</strong>, <strong>Querying Multiple Records According to Conditions</strong>, <strong>Querying Multiple Records According to Conditions and Paging Data</strong>, <strong>Querying the Number of Records Meeting Requirements According to Conditions</strong>.</p>
+<h4>Querying a Single Record</h4>
+<p>Querying a single record is an operation method for quickly querying data based on the index within the table. It can help developers query a single record through the index.</p>
+<p><img src="/workbench/db-option8.png" alt=""></p>
+<ol>
+<li><strong>Select the Data Index</strong>: You can choose the unique value index in the data table or the combined index.</li>
+<li><strong>Fill in the Index Value</strong>: If the selected index is a combined index, multiple values may need to be filled in here.</li>
+<li><strong>Configure the Query Data</strong>: We can decide which data to query by checking here.</li>
+</ol>
+<blockquote>
+<p>As can be seen from the above figure, our query supports <strong>multi-table association query</strong>. The system will <strong>automatically analyze</strong> the table association relationship and present it in a <strong>hierarchical manner</strong>. You can intuitively check the fields you want to output, and the operation is very convenient.</p>
+</blockquote>
+<blockquote>
+<p>What you can rest assured about is that the underlying ORM system will automatically analyze the attributes you have checked and automatically complete SQL optimization. For the associated tables that are not selected, there will be no performance consumption.</p>
+</blockquote>
+<h4>Returning the First Record</h4>
+<p>Both returning the first record and returning a single record can help developers return one record according to the screening conditions. However, there are obvious differences between them.</p>
+<p>Returning a single record returns the unique record in the table according to the index. This method has high specificity and certainty. Returning the first record first screens out multiple records according to the screening conditions and then only queries the first record after sorting.</p>
+<p>From the performance perspective, the performance of returning the first record is lower than that of querying a single record according to the index. This is because returning the first record needs to first screen out multiple records that meet the conditions and perform sorting, while querying according to the index can directly locate the target data and avoid additional screening and sorting operations.</p>
+<p><img src="/workbench/db-option9.png" alt=""></p>
+<p>From the above operation example, it can be found that when performing query operations, we have more query screening conditions to choose from, and the system allows us to sort the data. This greatly enhances the flexibility and specificity of the query. More screening conditions allow us to more accurately locate the required data, and the sorting function can display the data in the order we expect. Whether it is arranged in ascending order to view the order from small to large or in descending order to obtain the result from large to small, it can be easily achieved. Such a design enables data query to better meet diverse business needs and improves the efficiency and quality of data acquisition.</p>
+<h4>Querying Multiple Records According to Conditions</h4>
+<p>In this operation, we can return multiple records that meet the requirements according to the <strong>query conditions</strong>.
+<img src="/workbench/db-option10.png" alt=""></p>
+<p>The platform provides rich configuration options to facilitate the setting of filtered data:</p>
+<ul>
+<li><strong>Reading Range</strong>: You can configure the number of rows to skip and the number of rows to read, which allows us to flexibly obtain specific parts of the data. For example, only obtain a certain section of the data to avoid reading too much unnecessary data at one time and improve query efficiency.</li>
+<li><strong>Filtering Conditions</strong>: Supports complex query methods. It can filter a single attribute or filter based on table associations. And it can group and combine conditions using AND or OR logic to achieve more complex condition judgments and accurately locate the data we need.</li>
+<li><strong>Output Fields</strong>: Select output fields by checking. It also supports outputting in table association queries. This means that we can only select the fields we care about for output, avoid returning a large amount of useless data, reduce the amount of data transmission, and in queries involving multiple table associations, it is also convenient to select fields from different tables for output.</li>
+<li><strong>Sorting Configuration</strong>: Allows configuring complex sorting rules and supports complex scenarios such as grouped sorting. For example, we can group by a certain field and then sort by other fields within each group, so that the returned data is presented in the order we expect.</li>
+</ul>
+<blockquote>
+<p>It should be noted that the result returned by this method is an array.</p>
+</blockquote>
+<h4>Querying Multiple Records According to Query Conditions and Paging</h4>
+<p>The platform provides a function for quick paging query. We can pass in the page number and quickly return the data of one page.</p>
+<p><img src="/workbench/db-option11.png" alt=""></p>
+<p>Return values:</p>
+<pre><code class="language-js">// Total number of records
+data.total;
+// Current page number
+data.page;
+// Number of records per page
+data.pageSize;
+// Data list
+data.list[0].email;
+</code></pre>
+<h4>Querying the Number of Records According to Conditions</h4>
+<p>We can return the number of records that meet the requirements according to the query conditions.</p>
+<p><img src="/workbench/db-option12.png" alt=""></p>
+<blockquote>
+<p>The result returned by this method is a positive integer of the <strong>number</strong> type.</p>
+</blockquote>
+<h3>Advanced Operations</h3>
+<p>The platform provides advanced data operations, including: <strong>Grouped Queries</strong>, <strong>Updating or Adding</strong>, <strong>Aggregate Statistical Queries</strong>.</p>
+<h4>Updating or Adding</h4>
+<p>As can be known from the name, this method realizes the combination of updating and adding. It will first query the target data according to the index. If it is found, it will perform an update operation. If it is not found, it will add new data. It is an advanced combination usage of data.
+<img src="/workbench/db-option15.png" alt=""></p>
+<h4>Grouped Queries</h4>
+<p>Grouped queries are a practical function in database operations for grouping data according to specified fields and performing aggregate statistics. In the platform, this operation can be completed by using the &quot;Database Operation&quot; node. First, select the database table to operate on, specify the grouping fields to divide the data groups. It supports configuring multiple aggregate functions to perform statistics on each group. It can return the number of grouped queries (using the COUNT function), the maximum value (using the MAX function), the minimum value (using the MIN function), and the average value (using the AVG function). It can also configure filtering conditions to preprocess the data participating in the grouping and supports various filtering rules. Finally, check the fields to be output.</p>
+<p><img src="/workbench/db-option13.png" alt=""></p>
+<p>In grouped queries, the following common aggregate statistical operations can be performed:</p>
+<ul>
+<li><strong>Counting</strong>: Used to count the number of records hit in each group after grouped queries. Aggregate counting can be performed according to specific fields. The platform also provides the <strong>all</strong> field, which can be used to count based on all data to comprehensively count the data volume.</li>
+<li><strong>Maximum Value</strong>: Find the maximum value of the specified field in each group to help understand the upper limit of each group of data on this field.</li>
+<li><strong>Minimum Value</strong>: Determine the minimum value of the specified field in each group to master the lower limit level of each group of data on this field.</li>
+<li><strong>Summation</strong>: It can only operate on numeric attribute fields. Add up all the values of this numeric field in each group to obtain the sum of each group, which is often used to summarize the data such as quantity and amount.</li>
+<li><strong>Average Value</strong>: It is also only applicable to numeric attributes. Calculate the average value of the specified numeric field in each group to reflect the average level of each group of data on this field.</li>
+</ul>
+<h4>Aggregate Queries</h4>
+<p>Aggregate queries are a way of performing statistical analysis on data grouped according to specific rules in database operations. They can be implemented by using the &quot;Database Operation&quot; node on the platform. They support operations such as counting (including counting all data by the all field), finding the maximum value, the minimum value, summing and averaging numeric attributes, and can also configure filtering conditions to preprocess data and check the fields to be output.</p>
+<p><img src="/workbench/db-option14.png" alt=""></p>
+<h4>Emphasis on the Concepts of Grouping/Aggregation</h4>
+<ul>
+<li><strong>Grouped Queries</strong>: The core is to group data according to one or more specified fields, focusing on the classification method of data. It groups data with the same field values together, aiming to perform further operations on the data within each group. For example, in an employee information table, group by department and group all employee data belonging to the same department together.</li>
+<li><strong>Aggregate Queries</strong>: It emphasizes more on performing statistics and calculations on data and obtaining a summary result by using aggregate functions (such as COUNT, SUM, AVG, MAX, MIN, etc.). It can perform calculations based on grouped data or on the entire data set, and it does not necessarily have to perform a grouping operation. For example, calculating the total salary of all employees is a simple aggregate query.</li>
+</ul>
+<h5>Operation Process</h5>
+<ul>
+<li><strong>Grouped Queries</strong>:
+<ul>
+<li>First, clarify the grouping fields, which are the basis for grouping.</li>
+<li>Then, aggregate operations can be performed on each group, such as counting the number of records in each group and calculating the average value of each group.</li>
+<li>For example, in a student grade table, group by class and then count the number of students in each class.</li>
+</ul>
+</li>
+<li><strong>Aggregate Queries</strong>:
+<ul>
+<li>Aggregate functions can be directly applied to the entire data set without involving the grouping step. For example, calculate the average grade of all students.</li>
+<li>It can also be combined with grouped queries. First, group and then perform aggregate calculations on each group. For example, after grouping by class, calculate the average grade of students in each class.</li>
+</ul>
+</li>
+</ul>
+<h5>Result Presentation</h5>
+<ul>
+<li><strong>Grouped Queries</strong>: The results are usually each group and the results of aggregate operations performed on each group, presenting multiple groups and their corresponding statistical information. For example, after grouping by department, information such as the number of employees and the average salary of each department will be obtained.</li>
+<li><strong>Aggregate Queries</strong>: If no grouping is performed, the result is a single summary value, such as the total sales amount of all products. If combined with grouping, the result is similar to that of grouped queries, which is the aggregate value corresponding to each group.</li>
+</ul>
+<h5>Usage Scenario Examples in the Platform</h5>
+<ul>
+<li><strong>Grouped Queries</strong>: When you need to analyze the characteristics of different categories of data, such as analyzing the sales situation of different product categories, you can group by product category and then count the sales quantity and sales amount of each category.</li>
+<li><strong>Aggregate Queries</strong>: When you only need an overall statistical result, such as calculating the total salary of all employees in the company, you can directly use aggregate queries. When you need to perform statistics on different groups separately, use it in combination with grouped queries.</li>
+</ul>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

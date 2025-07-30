@@ -1,0 +1,104 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>组件事件</h2>
+<p>本章将介绍组件事件的相关内容，主要涵盖以下几个方面：<strong>如何注册组件事件</strong>，<strong>如何对外提供事件</strong>，以及<strong>如何进行事件的参数传递</strong>。</p>
+<h3>如何注册组件参数</h3>
+<p>当我们选中一个组件后，我们可以在组件属性面板中的<code>事件</code>标签中查看当前组件对外提供的事件，我们可以在这里选择要注册的事件点击<strong>创建事件</strong>来注册对应的事件。</p>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/component-event.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<h3>事件参数</h3>
+<p>事件参数分为两种：组件对外传递参数和当前上下文参数。</p>
+<h4>组件对外传递参数</h4>
+<p>在组件的事件处理过程中，触发事件的组件有可能向外传递数据参数。举个例子，在产品列表页面，当用户点击产品项时，系统会通过事件将所点击产品的详情数据传递出去。在事件逻辑里，我们需要借助<code>e.data</code>变量来接收这些参数。</p>
+<p><img src="/workbench/component-event1.png" alt="组件对外传递参数相关图片"></p>
+<p>在每个组件的事件处理函数中，都会有一个<strong>e</strong>变量，它承载着事件处理数据，具体包含以下内容：</p>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eventName</td>
+<td>字符串</td>
+<td>代表事件的名称</td>
+</tr>
+<tr>
+<td>event</td>
+<td>对象</td>
+<td>属于原生事件处理对象</td>
+</tr>
+<tr>
+<td>target</td>
+<td>虚拟节点</td>
+<td>即当前触发事件的虚拟节点（VNode）</td>
+</tr>
+<tr>
+<td>preventDefault</td>
+<td>方法</td>
+<td>调用此方法可阻止默认事件发生</td>
+</tr>
+<tr>
+<td>stopPropagation</td>
+<td>方法</td>
+<td>调用该方法能阻止事件继续传播</td>
+</tr>
+<tr>
+<td>data</td>
+<td>对象</td>
+<td>是组件对外传递的数据，其数据类型依据事件声明时的参数类型而确定</td>
+</tr>
+</tbody>
+</table>
+<h4>当前上下文参数</h4>
+<p>当我们在<strong>当前文件</strong>中注册组件的事件，并且想要传递<strong>当前文件</strong>里的数据时，就需要用到第二种数据传递参数的方式。这种方式能够让我们把<strong>自身文件</strong>中的数据作为参数，传递到事件方法里。它通常应用在页面的<code>for</code>循环中，在点击事件触发时，将每一项的数据进行传递，而这些数据是来源于<strong>自身上下文</strong>，并非触发事件的组件内部 。</p>
+<p><img src="/workbench/component-event2.png" alt=""></p>
+<p>当我们添加参数后，我们可以在事件处理逻辑编排面板中找打这个参数。</p>
+<p><img src="/workbench/component-event3.png" alt=""></p>
+<blockquote>
+<p>这里的参数传递是<strong>顺序传递</strong>，类似于方法的传参方式。我们能够通过排序的方式，对这些参数进行排列顺序的调整 ，确保它们按照我们期望的顺序传递。</p>
+</blockquote>
+<h3>如何对外提供事件</h3>
+<p>当我们在开发组件时，我们可以声明当前组件对外提供的事件信息。</p>
+<h4>定义事件信息</h4>
+<p>要定义事件信息，需在<code>组件数据</code>菜单中的<code>逻辑/事件</code>面板操作。点击对外事件右侧的<strong>加号按钮</strong>，即可声明事件信息。</p>
+<p><img src="/workbench/component-event4.png" alt="声明事件信息的界面截图"></p>
+<p>当点击<strong>添加</strong>或者<strong>编辑</strong>某一个事件信息时，会打开事件<code>触发事件</code>编辑面板。
+<img src="/workbench/component-event5.png" alt="事件触发事件编辑面板截图"></p>
+<p>在此编辑面板中，我们需要维护以下内容：</p>
+<ol>
+<li><strong>事件名称</strong>：使用英文字母为事件定义一个名称，该名称在代码逻辑中用于识别和调用此事件。</li>
+<li><strong>备注标题</strong>：给事件取一个昵称，便于开发人员快速理解该事件的作用与用途，提升开发效率。</li>
+<li><strong>提示</strong>：提供全面、详细的事件介绍，让开发人员对事件的功能、触发条件、预期效果等有更深入的了解。</li>
+<li><strong>事件参数</strong>：在此处定义事件参数类型。若事件无需传递参数，可保持为空。</li>
+</ol>
+<h4>触发事件</h4>
+<p>在完成对外触发事件的信息声明后，就能在对应的逻辑中借助<code>触发事件</code>节点来触发相应事件。</p>
+<p><img src="/workbench/component-event6.png" alt="触发事件的操作界面截图"></p>
+<p>操作时，可通过下拉框选择要触发的事件。平台会自动读取当前组件注册的<strong>所有对外触发事件</strong>，方便开发人员快速定位所需事件。</p>
+<p>倘若事件存在参数，此时系统会要求开发人员添加事件参数，以确保事件按照预期逻辑正确执行。</p>
+<h3>查看已注册事件方法</h3>
+<p>在页面布局中注册了大量交互事件后，想要快速查找它们，可以通过<code>组件数据</code>菜单中的<code>逻辑/事件 - 内部事件</code>面板来管理。该面板会展示<strong>所有内部注册的事件</strong>。点击事件名称，会打开对应的事件处理函数；点击事件右侧的<strong>定位组件</strong>按钮，能够快速选中事件来源组件。这一操作方式，大大提高了开发过程中查找和管理事件的效率。</p>
+<p><img src="/workbench/component-event7.png" alt="查看已注册事件方法的界面截图"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

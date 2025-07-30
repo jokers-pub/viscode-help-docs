@@ -1,0 +1,29 @@
+<template>
+    <p>
+        当前值: @model.value
+    </p>
+    <button @click="handleClick">将值变更为当前时间</button>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { MessageBox } from "@joker.front/ui";
+
+export default class extends Component {
+    model = {
+        value: "v1"
+    };
+
+    mounted() {
+        this.$watch(
+            () => this.model.value,
+            (nv, ov) => {
+                MessageBox.alert(`值变更了：${ov}=>${nv}`);
+            }
+        );
+    }
+
+    handleClick() {
+        this.model.value = new Date().toLocaleTimeString();
+    }
+}
+</script>

@@ -1,0 +1,151 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Component State Data</h2>
+<p>This chapter mainly explains the state data in components. We can maintain the parameter constraints, internal reactive data and internal private variables of a component here.</p>
+<h3>Overview</h3>
+<p>Component state data is one of the most commonly used features in component development.</p>
+<p><img src="/workbench/component.png" alt=""></p>
+<p>When opening a <code>component</code> or <code>page</code> file, the <code>Component Data</code> menu will be displayed in the left menu of the workbench. Click it to open the component data panel.</p>
+<p>From the perspective of data usage, it can be divided into the following categories: <strong>Input Parameters (props)</strong>, <strong>Reactive Data (model)</strong>, <strong>Internal Private Attributes</strong>. Next, we will explain in detail the uses of these three types of data and how to declare an attribute/parameter.</p>
+<h3>Input Parameters (props)</h3>
+<p>These are the parameters required by the current component. These parameters have reactive characteristics. Once the parameters passed by external users change, the component will immediately be notified and the internal DOM nodes will be updated. This means that the component can respond in real time to changes in the externally passed-in data, thus dynamically adjusting its own display and behavior, greatly enhancing the flexibility and reusability of the component. For example, a button component may receive parameters such as the text content and color of the button through props. When the externally passed-in text or color changes, the button can immediately present corresponding changes.</p>
+<blockquote>
+<p>The configuration of the passed-in parameters will only be displayed in the component type file. Page type components are not allowed to configure to accept parameters.</p>
+</blockquote>
+<h4>How to Create/Edit</h4>
+<p>We can click the <code>plus sign</code> on the right side of the <code>Input Parameters (props)</code> panel to open the parameter creation panel. In the parameter creation panel, we can configure the name, remarks, type, default value, and demonstration value of the parameter. For the attribute creation tutorial, please read the <code>Attribute/Parameter Creation and Editing</code> section at the end of this chapter.</p>
+<p><img src="/workbench/component-data.png" alt=""></p>
+<h4>How to Use</h4>
+<p>After creating the parameters, you can start using them. The following will introduce it to you in detail from two perspectives:</p>
+<h5>1. Declarer's Perspective (Current Component)</h5>
+<p>After completing the parameter creation, the created parameters can be used inside the component. These parameters can be used in the layout template and method logic:</p>
+<ul>
+<li><strong>Layout Template</strong>: In the template, the parameter variables can be referenced in the way of expressions <code>props.</code>.
+<img src="/workbench/component-data1.png" alt="Example of Using Component Parameters in the Template"></li>
+<li><strong>Method Logic</strong>: In the logic editing panel, the component parameter values can be read in the way of <code>this.props.</code>.
+<img src="/workbench/component-data2.png" alt="Example of Using Component Parameters in Logic Editing"></li>
+</ul>
+<blockquote>
+<p><strong>Friendly Tip</strong>: If you are not very familiar with code writing, don't worry too much. The platform has an intelligent data management function. The expression editing panel will provide intelligent syntax prompts, and there is also a data management panel. You can view all the variables used by the current node in this panel, and you can quickly use the corresponding variables by just clicking.</p>
+</blockquote>
+<h5>2. User's Perspective (Other Components/Pages Referencing the Current Component)</h5>
+<p>When the current component is referenced in other components or pages, click on the component, and you can see the declared parameters in the component parameter panel.
+<img src="/workbench/component-data3.png" alt="Example of Viewing the Referenced Component Parameters in Other Components"></p>
+<blockquote>
+<p><strong>Important Suggestion</strong>: When declaring component parameters, be sure to make it as complete as possible. It is recommended to provide parameter descriptions, interaction types, demonstration values and other information so that developers can quickly understand the purpose of the attribute.</p>
+</blockquote>
+<h3>Reactive Data (model)</h3>
+<p>This is the reactive data inside the component. Before the component is loaded, this attribute will be &quot;hijacked&quot; and then have the data responsiveness. That is to say, when this internal data changes, the associated parts of the component will be automatically updated. For example, in a shopping cart component, the quantity of goods is the reactive data. When the quantity changes, the total price display of the shopping cart, the rendering of the goods list and other related parts will be automatically updated to provide real-time feedback to users.</p>
+<h4>How to Create/Edit</h4>
+<p>We can click the <code>plus sign</code> on the right side of the <code>Reactive Data (model)</code> panel to open the parameter creation panel. In the attribute creation panel, we can configure the name, remarks, type, default value, and demonstration value of the parameter. For the attribute creation tutorial, please read the <code>Attribute/Parameter Creation and Editing</code> section at the end of this chapter.</p>
+<p><img src="/workbench/component-data4.png" alt=""></p>
+<h4>Understanding Reactive Data</h4>
+<p>Here, we use a <strong>DEMO</strong> to deeply understand what reactive data is. Reactive data can <strong>immediately notify the listener</strong> once a value changes. In the layout template, once the value changes, this change will also <strong>be immediately updated on the page</strong>.</p>
+<p>We define a reactive data <code>count</code> through code. When the button on the page is clicked, the value of <code>count</code> will increase by one, and after the value changes, the page will <strong>immediately reflect this change</strong>.</p>
+<DemoContainer component="@(components.DEMO_JOKER_demo1)">
+<pre><code class="language-html">&lt;template&gt;
+    &lt;button @click=&quot;handleClick&quot;&gt;点我呀  [@(model.count)]&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { Component } from &quot;@joker.front/core&quot;;
+
+export default class extends Component {
+    model = {
+        count: 0
+    };
+
+    //点击事件
+    handleClick() {
+        this.model.count++;
+    }
+}
+&lt;/script&gt;
+
+</code></pre>
+</DemoContainer>
+<h4>How to Use</h4>
+<p>After completing the attribute creation, the created attributes can be used inside the component. These attributes can be used in the layout template and method logic:</p>
+<ul>
+<li><strong>Layout Template</strong>: In the template, the parameter variables can be referenced in the way of expressions <code>model.</code>.
+<img src="/workbench/component-data5.png" alt=""></li>
+<li><strong>Method Logic</strong>: In the logic editing panel, the component parameter values can be read in the way of <code>this.model.</code>.
+<img src="/workbench/component-data6.png" alt=""></li>
+</ul>
+<blockquote>
+<p><strong>Friendly Tip</strong>: If you are not very familiar with code writing, don't worry too much. The platform has an intelligent data management function. The expression editing panel will provide intelligent syntax prompts, and there is also a data management panel. You can view all the variables used by the current node in this panel, and you can quickly use the corresponding variables by just clicking.</p>
+</blockquote>
+<h3>Internal Private Attributes</h3>
+<p>This type of attribute neither supports external calls nor has reactive capabilities. It is only used as a variable for temporary use inside the component. Here, you can declare internal dynamic data variables for convenient use in multiple methods. For example, in a complex form component, a temporary variable may be needed to record the step status of form filling. This variable is only used in the methods inside the component, does not need to be exposed externally, and does not require reactive updates for its changes.</p>
+<h4>How to Create/Edit</h4>
+<p>We can click the <code>plus sign</code> on the right side of the <code>Internal Private Attributes</code> panel to open the parameter creation panel. In the parameter creation panel, we can configure the name, remarks, type, default value, and demonstration value of the parameter. For the attribute creation tutorial, please read the <code>Attribute/Parameter Creation and Editing</code> section at the end of this chapter.</p>
+<p><img src="/workbench/component-data7.png" alt=""></p>
+<p>Its usage is the same as that of parameters and reactive data, and it can be directly called through expressions. However, the difference from <strong>reactive data</strong> is that it does not have <strong>reactive capabilities</strong>. Therefore, if the value will change during the component's operation, it is not recommended to display it in the template in the form of <strong>private attributes</strong>.</p>
+<p>Usually, we will define a common attribute in multiple logical methods to complete specific business logic. Since it does not have reactive capabilities, it will neither cause additional performance overhead nor pollute the original data.</p>
+<h3>Attribute/Parameter Creation and Editing</h3>
+<p>Here we will explain the operation process of the parameter/attribute editing panel. (The creation panels of attributes and parameters are basically the same, except for some differences in some attributes. We will mark them specially when explaining. Please read carefully.)</p>
+<h4>Step 1 (Basic Attribute Information)</h4>
+<p><img src="/workbench/component-data8.png" alt=""></p>
+<ul>
+<li><strong>Attribute Name</strong>: Here we need to use letters to configure the attribute name. The attribute name needs to be unique in the current component function (that is, unique among the input parameters/unique among the reactive data).</li>
+<li><strong>Remarks/Title</strong>: We can configure a title for it. The configuration of the title can help us understand the purpose of the attribute more quickly, such as color, size, etc.</li>
+<li><strong>Hint</strong>: We can configure the detailed description of the current attribute through the hint attribute. When we use it, we can view the detailed description of the current attribute by moving the mouse over it.</li>
+<li><strong>Classification</strong>: <strong>Only parameters need to be configured</strong>. We can configure a classification of a parameter here. The same classification will be grouped and classified when it comes to component attributes, which can provide a better user experience.
+<img src="/workbench/component-data9.png" alt=""></li>
+</ul>
+<h4>Step 2 (Attribute Type Information)</h4>
+<p><img src="/workbench/component-data10.png" alt=""></p>
+<ul>
+<li><strong>Type</strong>: The type of the current attribute.
+<ol>
+<li><strong>String</strong> (<code>String</code>)</li>
+<li><strong>Number</strong> (<code>Number</code>)</li>
+<li><strong>Boolean</strong> (<code>Boolean</code>)</li>
+<li><strong>Array</strong> (<code>Array</code>)</li>
+<li><strong>Object</strong> (<code>Object</code>)</li>
+<li><strong>Function</strong> (<code>Function</code>)</li>
+<li><strong>Date</strong> (<code>Date</code>)</li>
+<li><strong>Any</strong> (<code>Any</code>)</li>
+</ol>
+</li>
+<li><strong>Whether It Can Be Empty</strong>: It can be configured whether the current value is allowed to be empty (<code>undefined</code>).</li>
+<li><strong>Assignment Method</strong>: <strong>Only parameters need to be configured</strong>. When it is necessary to set a value for it, this attribute can be used to decide which interaction method to adopt to assign a value. Different data types will have different assignment methods available.
+<ol>
+<li><strong>Optional Values</strong>: Key - Value data can be created to provide a drop-down box mode for value selection.</li>
+<li><strong>Multi-line Text</strong>: A long text input box is used to enable multi-line text input.</li>
+<li><strong>Color Value</strong>: It is displayed as a color setting control, which can quickly complete the configuration of colors.</li>
+<li><strong>CSS Size Value</strong>: CSS size values (with units) can be configured here.</li>
+<li><strong>Style Name</strong>: It is displayed as a style setting control, which can quickly query the public styles in the current project and achieve quick addition.</li>
+<li><strong>Image Resource Selection</strong>: It provides a quick selection interaction for internal static resources (image display effect).</li>
+<li><strong>Resource Selection</strong>: It provides a quick selection interaction for internal static resources.</li>
+<li><strong>Style Style</strong>: A visual Style configuration panel is displayed, which can complete some common style editing.</li>
+</ol>
+</li>
+<li><strong>Disable Expression</strong>: By default, all parameters can configure dynamic values through expressions. If you don't want this attribute to configure dynamic values, you can disable it here.</li>
+<li><strong>Default Value</strong>: As the default value of the parameter/attribute, if the value is not configured or passed (parameter), it will be automatically assigned this default value.</li>
+<li><strong>Demonstration Value</strong>: <strong>Only parameters need to be configured</strong>. This attribute is used to immediately set a value for the attribute when the component is introduced. The demonstration value can help developers have a better first display effect when introducing the component, and developers can modify it.</li>
+</ul>
+<p>If the current attribute type is configured as: <code>Array/Object</code>, a deep-level type design panel will be displayed in Step 2. We can configure the internal attribute types of objects or arrays here.</p>
+<p><img src="/workbench/component-data11.png" alt=""></p>
+<p>The elements in the internal attribute design panel are basically the same as the above content. You can refer to the above function descriptions.</p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+import DEMO_JOKER_demo1 from '../../../examples/workbench/component-data/demo1.joker';
+export default class extends Component {
+components={
+BottomNav,
+DEMO_JOKER_demo1
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

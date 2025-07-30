@@ -1,0 +1,39 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>运行调试</h2>
+<p>本章主要讲述如何快速实现项目的<strong>运行调试</strong>，<strong>运行调试</strong>仅针对<code>应用</code>类型的仓库项目。</p>
+<blockquote>
+<p>目前服务端项目暂未开放调试功能，它依赖于我们本地 JOKER 开发工具进行<strong>调试</strong>，目前正在研发中，你可以导出代码在本地运行项目进行<strong>调试</strong>。</p>
+</blockquote>
+<h3>概述</h3>
+<p>在当前的开发过程中，我们采用的是所见即所得的开发模式，在开发时能够直接看到项目的实际运行效果。然而，若我们希望将项目作为一个整体来<strong>运行</strong>，预览整个项目的路由页面跳转情况，或者想要连接业务服务器以验证服务的整体<strong>运行</strong>效果，这时就需要借助我们的<strong>运行调试</strong>工具了。</p>
+<h3>开启运行调试</h3>
+<p>我们可以在工作台面板中点击<code>运行和调试</code>菜单，来打开运行调试面板。
+<img src="/workbench/debugger.png" alt=""></p>
+<p>在这里我们可以<strong>选择环境配置</strong>文件，并点击<strong>运行调试</strong>按钮，来在浏览器中进行整体的<strong>运行</strong>。</p>
+<blockquote>
+<p>你可以通过浏览器自带的调试工具进行代码的<strong>调试</strong>工作。</p>
+</blockquote>
+<h3>中断运行调试</h3>
+<p>平台内部使用心跳包的方式来检测调试运行状态。你可以直接关闭调试窗口来中断<strong>调试</strong>，也可以点击<strong>停止调试</strong>按钮来关闭调试窗口。</p>
+<p><img src="/workbench/debugger1.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

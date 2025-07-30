@@ -1,0 +1,41 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Understanding Teams/Organizations</h2>
+<p>This chapter mainly introduces the basic functions of teams/organizations.</p>
+<h3>Team Home Page</h3>
+<p><img src="/portal/org-info.png" alt=""></p>
+<p>When we enter the home page of a team/organization, we can view the basic information of the current team here, including information such as the team name, team introduction, team members, README, and team repositories.</p>
+<h3>Team Repositories</h3>
+<p>Here, we can quickly understand the number of repositories under the current team as well as the basic status of the repositories.</p>
+<p><img src="/portal/org-info2.png" alt=""></p>
+<p>When we click on the <code>Repositories</code> menu or click on <code>View More</code> in the repository panel on the team home page, we can jump to the team/organization repository list page. This page provides more flexible query and filtering functions, allowing for precise query and filtering according to conditions such as repository type and classification.</p>
+<p><img src="/portal/org-info3.png" alt=""></p>
+<blockquote>
+<p>If you want to delete or modify a team's repositories, you can enter the setting panel of the repository page to be operated on and perform the operations.</p>
+</blockquote>
+<h3>Team Activity</h3>
+<p>On the team activity page, you can view the latest activities of the current team, including newly added issues, changes in team members, changes in repository versions, and other activities.</p>
+<p><img src="/portal/org-info4.png" alt=""></p>
+<h3>Team Settings</h3>
+<p>When we are in the role of the team administrator and enter the team home page, we can see the <code>Settings</code> button in the menu. Clicking on the <code>Settings</code> button will allow us to jump to the team settings page, which includes functions such as editing team information, managing team members, and transferring team ownership.</p>
+<p><img src="/portal/org-info5.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

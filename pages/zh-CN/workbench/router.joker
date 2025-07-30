@@ -1,0 +1,50 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>路由管理</h2>
+<p>本章着重阐述路由相关知识，内容涵盖 <strong>默认路由地址</strong> 与 <strong>路由守卫</strong> 等方面。</p>
+<h3>概述</h3>
+<p><strong>路由全局管理</strong> 使我们能够对前端应用的默认访问地址进行管理，同时依据业务需求，具备配置不同 <strong>路由守卫</strong> 的能力。</p>
+<p>在研读本章内容之前，建议您先阅读 <a href="/workbench/page" target="_blank">页面管理</a> 章节。</p>
+<p>我们可在 <code>项目配置</code> 文件中的 <code>路由管理</code> 面板，对全局路由相关配置进行维护。</p>
+<p><img src="/workbench/router.png" alt="路由管理面板截图"></p>
+<h3>默认地址</h3>
+<p>在此处，您能够配置当前项目的默认路由地址。</p>
+<p>平台会自动分析所有页面资源文件的上下文路由信息，罗列出所有叶子页面的路由信息。您可从中挑选一个页面地址作为默认页面地址。若未进行选择，默认访问 <code>/</code>。倘若您的项目中不存在该地址，运行时可能会出现报错。</p>
+<p><img src="/workbench/router1.png" alt="默认地址选择界面截图"></p>
+<blockquote>
+<p>点击文件名称，能够快速打开目标页面资源，方便您了解该地址的展示情况。</p>
+</blockquote>
+<h3>路由守卫</h3>
+<p>路由守卫可助力我们在路由跳转前、跳转后实现多样化的业务需求，例如在跳转时增加 loading 等待效果，或是在跳转前进行登录状态检查等操作。</p>
+<h4>beforeRouteCallbacks [跳转前]</h4>
+<p>在 <code>beforeRouteCallbacks</code> 中，我们能够添加监听函数，以此实现对路由跳转前切面事件的监听。如此一来，便能够在路由跳转之前执行一些自定义操作，比如验证用户权限、记录日志等。这种方式为我们灵活控制路由跳转过程提供了便利，有助于优化应用程序的性能与用户体验。</p>
+<p><img src="/workbench/router3.png" alt="beforeRouteCallbacks 相关操作截图"></p>
+<p>当需要在跳转前重定向到另一个页面时，需调用参数 <code>next</code> 函数，并传入新的跳转地址，即可完成路由的重定向。</p>
+<blockquote>
+<p><strong>重要提示</strong>：<strong>next</strong> 函数必须调用。若要重定向，就传入新的地址；若无需重定向，则不传递参数。</p>
+</blockquote>
+<h4>afterRouteCallbacks [跳转后]</h4>
+<p><code>afterRouteCallbacks</code> 作为跳转后的 HOOK，其使用方式与 <code>beforeRouteCallbacks</code> 基本一致。不过，它不存在 <code>next</code> 或 <code>return</code> 这样用于控制流转的机制。</p>
+<h3>示例</h3>
+<p>在此，我们以判断当前用户是否登录为例。若已登录，则可正常访问；若未登录，则跳转到登录页面。</p>
+<p><img src="/workbench/router4.png" alt="示例操作截图"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

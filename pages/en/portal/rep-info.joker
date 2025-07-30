@@ -1,0 +1,48 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Understand Repository Functions</h2>
+<p>This chapter focuses on the basic capabilities of repositories, aiming to help you quickly familiarize yourself with repositories for efficient utilization.</p>
+<h3>Function Display</h3>
+<p>Upon entering the repository page, you will first see the basic introduction and core functions of the repository, as shown in the following figure:</p>
+<p><img src="/portal/rep-info.png" alt="Repository Information Display"></p>
+<p>The repository page is one of the most frequently used pages. Here, you can not only jump to the Workbench to start project development conveniently but also maintain repository versions to ensure orderly code iteration. Meanwhile, promptly handling repository Issues helps continuous project optimization, fully meeting key needs in the development process.</p>
+<h3>Access Workbench</h3>
+<p>Click the <code>Enter Workbench</code> button at the top of the repository to enter the repository's Workbench, where you can complete daily development tasks.<br>
+<img src="/portal/rep-info3.png" alt="Enter Workbench Button"></p>
+<h3>Code</h3>
+<p>Here, you can quickly preview the code directory structure of a repository. Clicking on a file will automatically jump to the Workbench and open the target file. Additionally, you can quickly view the file's update time and content here, helping you stay informed about the code update dynamics of the repository.</p>
+<p><img src="/portal/rep-info2.png" alt="Code Directory Preview"></p>
+<h3>Issues</h3>
+<p>In our platform, the Issues function is a practical tool to assist repository optimization. When issues occur in a repository, such as code errors, functional abnormalities, or improvement suggestions like optimizing code structure or enhancing operational efficiency, team members can create Issues for feedback. In an Issue, detail the problem phenomenon, expected results, and relevant suggestions.</p>
+<p>Issues have a status tracking function, clearly displaying the processing progress from &quot;New&quot; to &quot;In Progress&quot; and then to &quot;Resolved,&quot; facilitating team members in understanding the advancement. Members can also comment and communicate under Issues to jointly discuss solutions, promoting rapid problem resolution and ensuring stable repository operation.</p>
+<p><img src="/portal/rep-info4.png" alt="Issue Management Interface"></p>
+<h3>Activities</h3>
+<p>In the repository Activities panel, you can quickly grasp the real-time dynamics of the repository. This panel integrates repository release information, keeping you informed of code updates and iterations, and displays repository Issue activities, making it clear whether new problems are raised or solutions are in progress, helping you comprehensively control the repository status.</p>
+<p><img src="/portal/rep-info5.png" alt="Repository Activity Timeline"></p>
+<h3>Releases</h3>
+<p>As the core area for repository version management, Releases provide you with comprehensive and convenient version management functions. Here, you can clearly view all version lists of the repository, with the release time and update content of each version at a glance.</p>
+<p>Moreover, Releases endow you with multiple practical operation capabilities. When you need to work based on a specific version, you can easily <code>Clone</code> a specified version; if you need to obtain code from a specific version for other purposes, it also supports <code>Exporting the code of a version</code>, meeting diversified development and management needs to facilitate efficient development. <a href="/portal/rep-version" target="_blank">Version Release</a></p>
+<p><img src="/portal/rep-info6.png" alt="Repository Release Management"></p>
+<h3>Repository Settings</h3>
+<p>In the Repository Settings module, you can modify basic information of the repository such as the name, description, and README. Additionally, we provide advanced repository settings, including <code>Delete Repository</code>, <code>Archive Repository</code>, and <code>Transfer Repository</code> functions.</p>
+<p><img src="/portal/rep-info7.png" alt="Repository Settings Interface"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

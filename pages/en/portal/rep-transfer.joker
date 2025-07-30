@@ -1,0 +1,40 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Transfer Repository Ownership</h2>
+<p>In the process of team collaboration and project advancement, transferring repository ownership is sometimes a necessary operation. This chapter focuses on how to transfer repository ownership, explaining the relevant processes and key points in detail. This operation is only visible to administrators.</p>
+<h3>Overview</h3>
+<p>Transferring repository ownership means shifting the ownership of a repository from the current team/organization to another team/organization. This operation holds significant importance in practical business scenarios. For example, when a project completes phased development and needs to be fully delivered to another team for subsequent maintenance and operation, transferring repository ownership enables a smooth transition of project ownership. This ensures all project-related code, files, historical records, etc., are transferred together, safeguarding the integrity and continuity of project delivery.</p>
+<h3>Operation Steps</h3>
+<ol>
+<li><strong>Access the Repository Settings Page</strong>: First, open the repository for which you need to transfer ownership, and find and click to enter the repository settings page.</li>
+<li><strong>Trigger the Transfer Operation</strong>: In the repository settings page, locate the <code>Repository Management</code> menu and click the <strong>Transfer Repository Ownership</strong> button under this menu to trigger the repository ownership transfer operation.<br>
+<img src="/portal/rep-transfer.png" alt="Transfer Repository Ownership Button"></li>
+<li><strong>Search for and Select the Target Team</strong>: After entering the transfer operation interface, you can search for the target team receiving the repository by inputting the team name or email to accurately locate it. In the search results, confirm that the target team information is correct, then click the Confirm button.<br>
+<img src="/portal/rep-transfer2.png" alt="Target Team Search Interface"></li>
+<li><strong>Complete the Transfer</strong>: After clicking Confirm, the system will automatically execute the repository ownership transfer process, changing the repository's ownership to the target team.</li>
+</ol>
+<p><strong>Important Notes</strong>:</p>
+<ul>
+<li>Once repository ownership is transferred, it is <strong>irreversible</strong>. Please confirm the information is accurate and exercise caution before operating.</li>
+<li>The platform currently provides each team with one free repository usage quota. If the repository to be transferred is a private repository and the target team already owns a private repository, the transfer operation will fail. In this case, the target team needs to increase its private repository quota first to successfully complete the repository ownership transfer.</li>
+</ul>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

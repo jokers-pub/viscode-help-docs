@@ -1,0 +1,39 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>全局方法</h2>
+<p>本章主要围绕前端项目中的全局方法展开，全局方法通常用于实现公共的业务逻辑，能够跨组件或页面文件快速调用其提供的业务方法。</p>
+<blockquote>
+<p>全局函数在页面模板开发时，能提供便捷的全局方法调用，例如日期格式化、金额格式化、邮箱检验等功能。它会在项目主入口文件中通过 <code>registerGlobalFunction</code> 方法进行注册。详细内容可查阅框架官方帮助文档。不过，全局函数仅允许在 <strong>布局模板语法</strong> 中使用。</p>
+</blockquote>
+<h3>如何创建</h3>
+<p>在 <code>项目配置</code> 文件的 <code>全局方法</code> 面板中，可对项目的全局方法进行维护。</p>
+<p><img src="/workbench/global.png" alt="全局方法维护面板截图"></p>
+<p>创建好公共方法后，点击 <code>逻辑编排</code> 按钮，就能对其内部的方法逻辑进行编辑。</p>
+<p>全局方法在项目内部相互隔离，不会对外公开。在应用类型的前端项目中，平台支持通过快速导入的方式，引入三方库中的公开方法。</p>
+<p><img src="/workbench/global1.png" alt="快速导入三方库公开方法的界面截图"></p>
+<h3>如何使用</h3>
+<p>在组件或页面资源的组件属性面板中，可以快速调用全局方法。</p>
+<p><img src="/workbench/global3.png" alt="在组件属性面板调用全局方法的界面截图"></p>
+<blockquote>
+<p>由于只有 <code>应用</code> 类型的项目才允许注册全局方法，因此只有在应用类型的项目中才会出现 <code>Global.</code> 这样的语法。组件库和方法集虽无法使用全局方法，但能够对外提供全局方法逻辑，并支持在应用项目中通过快速导入的方式进行集成。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

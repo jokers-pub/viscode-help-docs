@@ -1,0 +1,61 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>部署</h2>
+<p>在项目开发流程里，将开发好的项目部署上线是关键步骤。本章会详细说明如何对开发完成的项目开展在线构建，并部署到平台提供的免费云环境，具体操作如下。</p>
+<blockquote>
+<p>特别提醒，部署操作仅针对<strong>项目</strong>类型的仓库，其他类型仓库不适用。</p>
+</blockquote>
+<h3>概述</h3>
+<p>平台提供免费云环境，极大便利了项目从开发到上线。借助该环境，可对已开发完成的项目在线构建编译，随后部署到相应环境。部署结束，平台自动分配专属域名，通过此域名就能访问部署好的项目。</p>
+<blockquote>
+<p>平台还支持项目源码输出。若不想用平台云服务，可将代码导入自有环境自行部署。代码生成及导出方式可参考<a href="workbench/generate" target="_blank">代码生成</a>。</p>
+</blockquote>
+<p>完成项目开发后，要先对仓库发布新版本。构建部署仅针对已发行版本，所以部署前仓库中至少得有一个发行版本。</p>
+<h3>构建面板</h3>
+<p>完成版本发布后，在仓库首页找到<code>部署</code>功能面板，就能开启版本构建部署流程。</p>
+<p><img src="/workbench/deploy.png" alt=""></p>
+<h3>创建构建部署任务</h3>
+<p>进入部署面板，点击左上角的<strong>立即构建</strong>按钮，开始创建构建部署任务。</p>
+<p><img src="/workbench/deploy1.png" alt=""></p>
+<p>创建构建部署任务时，需完成以下操作：</p>
+<ol>
+<li><strong>选择版本</strong>：从众多版本中，选定要构建部署的发行版本。若此处无可选版本，说明仓库尚未创建发行版本，需先创建版本，才能进行项目部署。
+<img src="/workbench/deploy2.png" alt=""></li>
+<li><strong>选择环境</strong>：完成版本选择后，平台自动分析所选版本维护的环境变量。在列表中挑选期望用于构建的环境变量文件。
+<img src="/workbench/deploy3.png" alt="">
+选定环境文件后，平台自动展示文件中所有<strong>已配置</strong>的环境变量。此时需仔细核对，确保环境变量与项目需求一致，确认所选环境无误。</li>
+</ol>
+<h3>确认并执行任务</h3>
+<p>完成构建任务信息填写后，点击确定按钮，系统创建任务，平台随即启动自动化构建和部署流程。</p>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/deploy.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<p>构建和部署过程中，可实时查看任务状态，了解任务进展。若想深入了解构建详细流程和日志，点击任务后的<strong>任务日志</strong>选项即可。</p>
+<blockquote>
+<p>为保护开发人员知识产权和数据敏感信息，非团队成员无法查看<strong>任务日志</strong>，以此保障项目信息安全与保密。</p>
+</blockquote>
+<h3>如何访问</h3>
+<p>部署任务完成后，在仓库页点击<strong>访问部署环境</strong>链接，即可访问发布后的项目。</p>
+<p><img src="/workbench/deploy4.png" alt=""></p>
+<p>以<code>joker/OfficialWebsite</code>仓库为例，平台按组织名+仓库名规则，自动分配域名<a href="https://joker_officialwebsite.app.jokers.pub/" target="_blank">https://joker_officialwebsite.app.jokers.pub/</a>。</p>
+<blockquote>
+<p>需注意，域名依仓库组织名和仓库名生成，并自动创建 DNS 解析规则。后续若转让仓库或修改仓库名称，部署访问地址会自动更新解析，确保项目正常访问不受影响。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

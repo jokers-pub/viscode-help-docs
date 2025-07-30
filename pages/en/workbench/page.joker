@@ -1,0 +1,100 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Page Management</h2>
+<p>This chapter mainly elaborates on how to maintain the pages in the &quot;Front-end - Application&quot; project, how to achieve the layout of nested pages, and how to complete the configuration of page routing information.</p>
+<h3>Overview</h3>
+<p><strong>Page</strong> resources are indispensable file resources in the &quot;Front-end - Application&quot; project. They are not only the entry points during the final actual operation but also the key functional files that determine the display effects at different addresses.</p>
+<p>We can manage and view all the page resources in our project in the <code>Pages</code> folder under the root directory.</p>
+<p><img src="/workbench/page.png" alt=""></p>
+<h3>Create Pages</h3>
+<p>We can create page files in the <code>Pages</code> folder.</p>
+<p><img src="/workbench/page1.png" alt=""></p>
+<p>Here, we need to fill in the following content:</p>
+<ol>
+<li>Page Name: The file name of the page file (in English letters).</li>
+<li>Remarks: Give an alias to the file to facilitate quick understanding of the meaning of the file.</li>
+<li>Page Route: Here, we can configure the routing address of our page resources (which will be introduced in detail in the following chapters).</li>
+</ol>
+<h3>How to Create Layout Files</h3>
+<p>The platform has the <strong>Layout File</strong> function. In the <strong>Page File</strong>, we can generate layout files by creating <strong>Sub-pages</strong>. The layout page is not the final <strong>Routing Address</strong> but a kind of <strong>Public Layout File</strong>. It can integrate the <strong>Public Areas</strong> into layout files and render the <strong>Dynamically Rendered Areas</strong> according to the addresses of different sub-pages.</p>
+<p>We can add a <code>Page Container</code> component to the parent page to mark which part of the layout page is the dynamically displayed area, and create sub-pages under this resource file to meet the requirement of displaying different sub-pages for different routes.</p>
+<p><img src="/workbench/page2.png" alt=""></p>
+<p>If you are a developer, you may better understand the meaning of layout files/nested routes according to the following code:</p>
+<pre><code class="language-js">export let router = new Router({
+    routes: [
+        {
+            path: &quot;/&quot;,
+            //Layout file
+            component: core,
+            children: [
+                {
+                    path: &quot;&quot;,
+                    component: index
+                },
+                {
+                    path: &quot;/about&quot;,
+                    component: about,
+                    theme: &quot;white&quot;
+                },
+                {
+                    path: &quot;/docs&quot;,
+                    component: docs
+                }
+            ]
+        }
+    ]
+});
+</code></pre>
+<blockquote>
+<p>The creation of sub-pages will inherit the routing information of the parent page. We can see the preceding routing information when creating sub-pages.</p>
+</blockquote>
+<p><img src="/workbench/page3.png" alt=""></p>
+<h3>Sub-components</h3>
+<p>Although the platform has a unified <code>Components</code> folder, for <strong>private components</strong> under specific <strong>pages</strong> or <strong>modules</strong>, it may not be appropriate to place them in the <code>Components</code> folder in the root directory. For this reason, the platform allows us to create <strong>component type files</strong> under the <strong>page resources</strong>. The development mode of this type of component file is the same as that of <strong>public components</strong>. The only difference is that it is only recommended to be used in the <strong>current level</strong> as well as <strong>lower-level pages</strong> or <strong>components</strong>. If this level usage requirement is not met, the platform will issue a warning. In this way, it can better meet our management needs for <strong>private components</strong> and <strong>public components</strong>.</p>
+<p><img src="/workbench/page4.png" alt=""></p>
+<blockquote>
+<p>To better distinguish between private components and public components when displaying, the icons of the components will be different.</p>
+</blockquote>
+<h3>Routing Information Configuration</h3>
+<p>During the file creation stage, whether it is the <strong>Layout Page File</strong> or the final displayed <strong>Routing Page File</strong>, the <strong>routing information</strong> can be set during the creation or maintenance process of the file.</p>
+<p>Just click the <strong>Plus Sign</strong> behind the <strong>Routing Address</strong> to add routing information. It should be noted that the <strong>Routing Address</strong> is separated by multiple nodes with <code>/</code>. In this way, we can create multi-level routes.</p>
+<p><img src="/workbench/page5.png" alt="Routing information addition interface"></p>
+<p>When you click to add a routing node, a routing node editing window will pop up.</p>
+<p><img src="/workbench/page6.png" alt="Routing node editing window interface"></p>
+<ul>
+<li><strong>Routing Node</strong>: Use English letters to define the routing node.</li>
+<li><strong>Dynamic Parameter</strong>: Determine whether the current routing node is a dynamic parameter.</li>
+</ul>
+<p>For example, if you want to configure a routing address like <code>/info/:id</code>, you need to set <code>id</code> as a dynamic parameter. When configuring dynamic parameters, the platform supports us to configure relevant information such as the parameter title, whether it is an optional parameter, and parameter MOCK.</p>
+<p><img src="/workbench/page7.png" alt="Dynamic parameter configuration interface"></p>
+<ul>
+<li><strong>Title</strong>: Give an alias to the current dynamic parameter to facilitate developers to quickly understand the meaning of the parameter.</li>
+<li><strong>Whether it is an Optional Parameter</strong>: If it is set as an optional parameter, then the parameter can be empty or does not need to be passed. For example, for the routing address <code>/info/:id</code>, when we visit the addresses <code>/info/123</code> and <code>/info</code>, both will match this page.</li>
+<li><strong>Parameter MOCK</strong>: Here, you can maintain a Mock data so that there will be no error reporting due to the parameter having no value during the development process.</li>
+</ul>
+<blockquote>
+<p>In some scenarios, the <strong>Routing Address</strong> may not be filled in. When the routing address is not filled in, the system will sort out and generate the actual routing address of the leaf page node according to the routing relationship of the upper and lower levels.</p>
+</blockquote>
+<blockquote>
+<p>For the introduction to the function of global routing configuration, please read <a href="/workbench/router" target="_blank">Routing Management</a>.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,53 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>议题</h2>
+<p>本章主要介绍仓库中的议题相关操作。</p>
+<h3>概述</h3>
+<p>在我们的平台中，议题功能是助力仓库优化的实用工具。当仓库出现问题，比如代码报错、功能异常，或是有改进建议，像优化代码结构、提升运行效率等，成员都能创建议题进行反馈。在议题里，详细阐述问题现象、预期效果和相关建议。
+议题具备状态跟踪功能，从 “新建” 到 “处理中”，再到 “已解决”，全程清晰展示处理进度，方便团队成员了解进展。成员还能在议题下评论交流，共同探讨解决方案，推动问题快速解决，保障仓库稳定运行 。</p>
+<p><img src="/portal/rep-info4.png" alt=""></p>
+<h3>创建议题</h3>
+<p>当我们发现仓库中的问题或者需要提供一些开发建议时，我们可以在议题列表页面点击<code>新建议题</code>按钮，来创建一个议题。</p>
+<p><img src="/portal/rep-issues.png" alt=""></p>
+<p>打开新建议题弹窗后，我们可以在这里填写我们的议题标题、内容，然后点击提交按钮，即可完成一个议题的创建。</p>
+<p><img src="/portal/rep-issues2.png" alt=""></p>
+<blockquote>
+<p>当我们是该仓库的管理人员时，当我们收到一个新的议题时，会通过站内消息的方式通知到管理员，我们可以第一时间收集该仓库的问题和意见。</p>
+</blockquote>
+<h3>评论议题</h3>
+<p>当我们进入议题查看详情时，平台提供了对议题的评论和回复功能，我们可以在这里去交流问题。</p>
+<p><img src="/portal/rep-issues3.png" alt=""></p>
+<h3>议题状态</h3>
+<p>当我们是仓库管理员时，我们可以对议题的状态进行更改，议题的状态流转可以帮助问题提出者和管理者快速了解当前仓库的问题情况。</p>
+<p>从一个议题的周期可以分为：</p>
+<ol>
+<li><strong>打开</strong>：此状态意味着议题刚刚创建，关于是否对其进行修改尚未得到确认。在这一阶段，管理人员能够在处于打开状态的议题详情页面，通过指定负责人的方式，对议题进行合理分配，以便后续跟进处理。
+<img src="/portal/rep-issues4.png" alt=""></li>
+<li><strong>进行中</strong>：表明该议题已经确定要进行修改，并且负责人已分配到位，正处于跟踪处理的进程中，各项针对议题的解决措施正在有序推进。</li>
+<li><strong>待发布</strong>：代表议题相关的问题已经完成了修复与优化工作。然而，由于当前版本尚未发布，所以需要等待创建发行版本之后，才能正式完成该问题的全部修复流程，使修复成果得以呈现。</li>
+<li><strong>已完成</strong>：说明议题所涉及的问题已成功修复，并且在新的版本中，能够清晰地看到对问题的优化或修复内容，标志着整个议题处理流程的圆满结束。</li>
+<li><strong>关闭</strong>：表示该议题未被采纳，不再对其进行跟踪管理，已正式关闭，不再列入后续的工作事项。</li>
+</ol>
+<p>需要注意的是，正常情况下，议题流转流程需依照上述顺序推进。但对于一些属于建议或其他非代码类问题的议题，平台允许直接将其从<strong>进行中</strong>状态更改为<strong>已完成</strong>状态，不过在执行此操作时，平台会弹出警告确认提醒，以避免误操作。</p>
+<p>此外，平台还赋予管理人员在不同状态节点对议题进行<strong>状态回退</strong>的权限 ，方便灵活调整议题处理流程，满足多样化的管理需求。
+<img src="/portal/rep-issues5.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

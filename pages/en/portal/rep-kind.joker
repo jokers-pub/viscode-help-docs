@@ -1,0 +1,65 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Repository Types</h2>
+<p>This chapter focuses on explaining the differences between different repository types and their applicable scenarios.</p>
+<p>The JOKER Intelligent Development Platform follows a <strong>front-end and back-end separation</strong> development model, which grants developers greater flexibility. They can independently complete visual rapid development for front-end projects or server-side projects. Meanwhile, even when front-end and back-end development are in the same team, the platform provides API quick association functions to ensure seamless synchronization between front-end and back-end.</p>
+<h3>Front-end</h3>
+<p>Front-end projects generally refer to projects, components, or method-related projects that can run on terminals.</p>
+<h4>Categories</h4>
+<p>Front-end projects can be subdivided into three types: Applications, UI Components, and Method Sets.</p>
+<ol>
+<li>
+<p><strong>Application</strong>: Application-type repositories are mainly used to store projects that finally run for users. When creating practical projects such as a <code>lucky draw application</code>, <code>form collection application</code>, or <code>mall application</code>, you should select the <code>Application</code> category. In this type of repository, you can create various resources such as <code>Components</code>, <code>Method Sets</code>, <code>Pages</code>, and <code>Interfaces</code> to fully meet the operational needs of the project.<br>
+<img src="/portal/rep-kind.png" alt="Repository Type Selection Interface"></p>
+</li>
+<li>
+<p><strong>Component Library</strong>: The Component Library aims to provide a complete set of UI component libraries externally. If you choose this type of repository, you can create resources like <code>Components</code>, <code>Method Sets</code>, and <code>Style Variables/Public Styles</code> in the Workbench, which is conducive to centralized management and reuse of UI-related resources.<br>
+<img src="/portal/rep-kind2.png" alt="Component Library Repository Interface"></p>
+</li>
+<li>
+<p><strong>Method Set</strong>: A Method Set generally cannot be deployed independently. It exists mainly as a collection of methods and class libraries to provide public method calls externally. After selecting a repository of this category, you can only create <code>Method</code>-type resources in the Workbench.<br>
+<img src="/portal/rep-kind3.png" alt="Method Set Repository Interface"></p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Special Note</strong>: Except for <code>Application</code>-type repositories, UI Component Libraries and Method Sets can be <strong>referenced</strong> by other repositories after version release. When an Application project <strong>references</strong> a Component Library or Method Set project, it can call the components or methods therein. <code>Application</code>-type repositories are not allowed to be referenced, but after version release, they can be cloned as project templates for secondary development.</p>
+</blockquote>
+<h4>Running Platform</h4>
+<p>Configure the current repository's running platform here. The current options are <strong>PC 端 (PC 端)</strong>, <strong>移动端 (Mobile 端)</strong>, and <strong>不限 (Unlimited)</strong>. Accurately selecting based on the project's actual running environment helps optimize the project's performance on different platforms.</p>
+<blockquote>
+<p>If you want to develop an application that can adaptively run on both PC and mobile ends, you can choose <strong>不限 (Unlimited)</strong>.</p>
+</blockquote>
+<blockquote>
+<p>Please carefully select the running platform, as it will affect the display of panels in the Workbench and the recommendation and filtering of the Extension Market in the Workbench.</p>
+</blockquote>
+<h3>Server-side</h3>
+<ol>
+<li>
+<p><strong>Application</strong>: Application-type repositories are mainly used to store projects that finally run for users. When creating practical projects such as a <code>lucky draw application</code>, <code>form collection application</code>, or <code>mall application</code>, you should select the <code>Application</code> category. In this type of repository, you can create various resources such as <code>Controllers</code>, <code>Databases</code>, <code>Caches</code>, and <code>Method Sets</code> to fully meet the operational needs of the project.<br>
+<img src="/portal/rep-kind4.png" alt="Server-side Application Repository Interface"></p>
+</li>
+<li>
+<p><strong>Method Set</strong>: A Method Set generally cannot be deployed independently. It exists mainly as a collection of methods and class libraries to provide public method calls externally. After selecting a repository of this category, you can only create <code>Method</code>-type resources in the Workbench.<br>
+<img src="/portal/rep-kind3.png" alt="Method Set Repository Interface"></p>
+</li>
+</ol>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

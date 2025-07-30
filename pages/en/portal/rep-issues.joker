@@ -1,0 +1,53 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Issues</h2>
+<p>This chapter mainly introduces operations related to Issues in repositories.</p>
+<h3>Overview</h3>
+<p>In our platform, the Issues function serves as a practical tool to facilitate repository optimization. When issues occur in a repository, such as code errors, functional abnormalities, or improvement suggestions like optimizing code structure or enhancing operational efficiency, team members can create Issues for feedback. In an Issue, the problem phenomenon, expected results, and relevant suggestions should be elaborated in detail.</p>
+<p>Issues have a status tracking function, clearly displaying the processing progress from &quot;New&quot; to &quot;In Progress&quot; and then to &quot;Resolved,&quot; enabling team members to understand the advancement conveniently. Members can also comment and communicate under Issues to jointly discuss solutions, promoting rapid problem resolution and ensuring stable repository operation.</p>
+<p><img src="/portal/rep-info4.png" alt="Issue Management Interface"></p>
+<h3>Create an Issue</h3>
+<p>When you discover problems in the repository or need to provide development suggestions, you can click the <code>New Issue</code> button on the Issues list page to create an Issue.</p>
+<p><img src="/portal/rep-issues.png" alt="New Issue Button"></p>
+<p>After opening the New Issue pop-up window, you can fill in the Issue title and content here, then click the Submit button to complete the creation of an Issue.</p>
+<p><img src="/portal/rep-issues2.png" alt="New Issue Form"></p>
+<blockquote>
+<p>When you are a manager of the repository, upon receiving a new Issue, administrators will be notified via internal messages, allowing you to collect repository problems and suggestions in a timely manner.</p>
+</blockquote>
+<h3>Comment on Issues</h3>
+<p>When you enter an Issue to view details, the platform provides comment and reply functions for Issues, where you can communicate about the problem.</p>
+<p><img src="/portal/rep-issues3.png" alt="Issue Comment Interface"></p>
+<h3>Issue Status</h3>
+<p>As a repository administrator, you can change the status of Issues. The status transition of Issues helps problem submitters and managers quickly understand the current problem situation of the repository.</p>
+<p>The lifecycle of an Issue can be divided into:</p>
+<ol>
+<li><strong>Open</strong>: This status indicates that the Issue has just been created, and whether to modify it has not been confirmed yet. In this stage, managers can assign Issues by designating responsible persons on the detail page of Open Issues for follow-up processing.<br>
+<img src="/portal/rep-issues4.png" alt="Open Issue Status"></li>
+<li><strong>In Progress</strong>: It means the Issue has been confirmed for modification, the responsible person is assigned, and it is under tracking and processing, with solutions being implemented in an orderly manner.</li>
+<li><strong>Pending Release</strong>: It represents that the problems related to the Issue have been fixed and optimized. However, since the current version has not been released, it needs to wait for creating a Release version to formally complete the entire Issue resolution process and present the fixes.</li>
+<li><strong>Completed</strong>: It indicates that the problems involved in the Issue have been successfully fixed, and the optimization or fix content can be clearly seen in the new version, marking the successful completion of the entire Issue processing flow.</li>
+<li><strong>Closed</strong>: It means the Issue was not adopted, no longer under tracking management, and has been formally closed, excluding it from subsequent work items.</li>
+</ol>
+<p>It should be noted that under normal circumstances, the Issue transition process should follow the above order. However, for Issues that are suggestions or other non-code-related problems, the platform allows directly changing their status from <strong>In Progress</strong> to <strong>Completed</strong>, but a warning confirmation prompt will pop up when performing this operation to avoid misoperations.</p>
+<p>In addition, the platform grants administrators the permission to <strong>roll back the status</strong> of Issues at different status nodes, facilitating flexible adjustment of the Issue processing flow to meet diversified management needs.<br>
+<img src="/portal/rep-issues5.png" alt="Issue Status Management Interface"></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

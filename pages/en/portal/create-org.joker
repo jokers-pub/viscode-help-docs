@@ -1,0 +1,45 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Create teams/organizations</h2>
+<p>This chapter mainly introduces how to create a team/organization.</p>
+<h3>How to create a team</h3>
+<p>After logging in, you can click the plus button in the &quot;My Organization&quot; panel on the home page to create a team/organization.</p>
+<p><img src="/portal/create-org.png" alt=""></p>
+<h3>Fill in the team information.</h3>
+<p>In the pop-up window for creating an organization/team, we need to fill in the name, nickname and brief introduction information of the organization to be created, and then click the Confirm button to complete the creation of an organization.</p>
+<ul>
+<li>
+<p>Organization Name: It should be filled with English letters. This name will serve as the unique identifier of the team, which is used for accurate identification and differentiation of different teams in the system to ensure the accuracy and uniqueness of team information.</p>
+</li>
+<li>
+<p>Organization Nickname: You can set an alias for the team. It is recommended to use a concise, intuitive, and easy-to-understand name to facilitate quick recognition and memory by team members and relevant personnel.</p>
+</li>
+</ul>
+<blockquote>
+<p>It should be noted here that the organization name is unique across the entire platform and serves as the unique identifier for your organization/team.</p>
+</blockquote>
+<p><img src="/portal/create-org2.png" alt=""></p>
+<h3>Complete the registration of the team/organization.</h3>
+<p>After clicking &quot;Submit&quot; to complete the creation of the &quot;organization/team&quot;, the platform will automatically create a team home page for you. You can view and manage all the contents of the team here, including the team nickname, README, avatar, repository, team and so on.</p>
+<p><img src="/portal/create-org3.png" alt=""></p>
+<p>For detailed instructions on team management, please refer to: <a href="/portal/org" target="_blank">Team Management</a></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

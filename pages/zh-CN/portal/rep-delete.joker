@@ -1,0 +1,36 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>删除仓库</h2>
+<p>在仓库管理过程中，有时需要对不再使用的仓库进行删除操作。本章将详细介绍删除仓库的具体步骤，以及此操作所涉及的限制条件。需特别注意的是，删除仓库这一操作仅对管理员可见。</p>
+<h3>进入仓库设置</h3>
+<ol>
+<li>首先，找到并打开你计划删除的仓库的设置页面。在该页面中点击“仓库管理”菜单。</li>
+<li>点击“仓库管理”菜单中的“删除仓库”按钮，点击之后，便正式开启删除仓库的操作流程。此时，系统会提示你即将进行不可逆的删除操作，请谨慎确认。</li>
+</ol>
+<p><img src="/portal/rep-delete.png" alt="删除仓库按钮"></p>
+<h3>确认密码</h3>
+<p>点击“删除仓库”按钮后，出于安全考量，平台会立即弹出密码验证窗口，要求你输入账号密码。这一步骤旨在确认执行删除操作的确实是管理员本人，有效防止误操作或非法操作，确保仓库数据的安全性和稳定性。</p>
+<p><img src="/portal/rep-delete2.png" alt="密码验证页面"></p>
+<blockquote>
+<p><strong>重要提示</strong>：如果仓库已存在发行版本，由于这些版本可能已被其他项目引用或克隆，一旦删除仓库，将会对依赖这些版本的项目造成严重影响，因此该仓库无法被删除。在这种情况下，你可以选择将仓库进行<a href="/portal/rep-archive" target="_blank">归档处理</a>。归档后的仓库虽然无法再进行修改和编辑，但依然会保留在团队中，作为历史数据的备份，方便后续查阅和追溯 。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

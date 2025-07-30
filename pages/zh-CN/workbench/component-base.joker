@@ -1,0 +1,473 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>基础组件</h2>
+<p>本章主要讲述平台提供的基础布局组件。</p>
+<p><img src="/workbench/component-base.png" alt=""></p>
+<h3>文本</h3>
+<p><img src="/workbench/component-base2.png" alt="">
+文本节点可以让我们在页面中添加一个文本展示节点，它允许我们通过静态文本或者动态文本的方式来配置文本展示值。它具备以下属性：</p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组件标识</td>
+<td>字符串</td>
+<td>在这里我们可以为其定义<code>ref</code>值，用于在逻辑方法中获取文本虚拟节点，并对其操作</td>
+</tr>
+<tr>
+<td>文本内容</td>
+<td>字符串</td>
+<td>文本展示值，在这里我们可以配置静态文本值，也可以使用表达式来配置动态值</td>
+</tr>
+<tr>
+<td>自定义样式名</td>
+<td>数组</td>
+<td>可以配置文本节点的 class 名</td>
+</tr>
+<tr>
+<td>自定义样式</td>
+<td>对象</td>
+<td>可通过可视化样式编辑器来编辑文本节点的<code>style</code>属性</td>
+</tr>
+</tbody>
+</table>
+<h3>元素</h3>
+<p>元素节点是我们在页面布局中最为常用的组件之一，我们可以拖入元素组件，通过变更它的<code>标签Tag</code>来使其展示为不同的 <strong>DOM</strong> 节点，默认使用 <strong>DIV</strong> 进行渲染。</p>
+<p>元素组件支持我们自定义组件属性和自定义元素事件，这使得我们可以通过元素组件来实现任意 DOM 节点的展示和交互，无论是一个 div 容器还是 i 标签或者是 input 输入框，都可以通过元素标签进行实现。</p>
+<p><img src="/workbench/component-base3.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组件标识</td>
+<td>字符串</td>
+<td>在这里我们可以为其定义<code>ref</code>值，用于在逻辑方法中获取文本虚拟节点，并对其操作</td>
+</tr>
+<tr>
+<td>标签 Tag</td>
+<td>字符串</td>
+<td>可以通过该属性来决定标签类型，默认使用 DIV 进行渲染。</td>
+</tr>
+<tr>
+<td>自定义样式名</td>
+<td>数组</td>
+<td>可以配置文本节点的 class 名</td>
+</tr>
+<tr>
+<td>自定义样式</td>
+<td>对象</td>
+<td>可通过可视化样式编辑器来编辑文本节点的<code>style</code>属性</td>
+</tr>
+<tr>
+<td>自定义组件属性</td>
+<td>字符串</td>
+<td>可以自定义添加组件属性，添加后可对属性值进行修改/删除</td>
+</tr>
+</tbody>
+</table>
+<h4>区块</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>名称</th>
+<th>备注</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>容器内容</td>
+<td>通过配置容器内容区块，可以实现嵌套层级的展示</td>
+</tr>
+</tbody>
+</table>
+<h4>事件</h4>
+<p>元素组件允许开发人员自定义节点事件。</p>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/component-base4.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<h3>按钮</h3>
+<p>平台提供了简易的按钮组件，我们可以通过该组件来实现点击交互效果。</p>
+<p><img src="/workbench/component-base5.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组件标识</td>
+<td>字符串</td>
+<td>在这里我们可以为其定义<code>ref</code>值，用于在逻辑方法中获取文本虚拟节点，并对其操作</td>
+</tr>
+<tr>
+<td>按钮内容</td>
+<td>字符串</td>
+<td>文本展示值，在这里我们可以配置静态文本值，也可以使用表达式来配置动态值</td>
+</tr>
+<tr>
+<td>自定义样式名</td>
+<td>数组</td>
+<td>可以配置文本节点的 class 名</td>
+</tr>
+<tr>
+<td>自定义样式</td>
+<td>对象</td>
+<td>可通过可视化样式编辑器来编辑文本节点的<code>style</code>属性</td>
+</tr>
+</tbody>
+</table>
+<h4>组件事件</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名</th>
+<th>事件含义</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>鼠标点击事件</td>
+<td>-</td>
+<td>当在单个元素上按下并释放指示设备按钮（例如，鼠标的主按钮）时，click 事件触发。如果按下一个元素上的按钮并在另一个元素上释放，则会在包含这两个元素的最具体的祖先元素上触发该事件。按顺序单击 mousedown 和 mouseup 事件后触发 click。</td>
+</tr>
+<tr>
+<td>mouseenter</td>
+<td>鼠标移入事件</td>
+<td>-</td>
+<td>此事件通常与 mouseleave 事件一起使用，当鼠标指针移入元素时会发生该事件。</td>
+</tr>
+<tr>
+<td>mouseleave</td>
+<td>鼠标移出事件</td>
+<td>-</td>
+<td>此事件通常与 mouseenter 事件一起使用，当鼠标指针移出元素时会发生该事件。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>平台所提供的 <strong>BUTTON 组件</strong>相对较为简单，比较适合在 <strong>DEMO</strong> 演示或者调试过程中快速集成使用。倘若需要实现功能复杂的按钮，可考虑使用元素节点自行封装按钮组件，也可以选择安装第三方 UI 组件库来满足需求。</p>
+</blockquote>
+<h3>条件判断</h3>
+<p>条件判断节点主要用于控制页面中元素的展示状态。</p>
+<p><img src="/workbench/component-base4.png" alt=""></p>
+<p>我们可以在这里去配置<strong>首位条件</strong>，也可以为其扩展<code>else if</code>、<code>else</code>条件，你可以在面板中通过添加条件分支的方式来配置条件分支，并且该操作会自动在大纲树中创建对应的分支条件区块，你可以选中条件区块，并项条件分支中添加不同的展示元素。</p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>条件</td>
+<td>布尔值</td>
+<td>当该值为<strong>真</strong>时，条件判断所包含的内容将会被渲染；若为<strong>假</strong>，则不会渲染。通常借助表达式来实现复杂的交互逻辑。</td>
+</tr>
+</tbody>
+</table>
+<p>在此示例中，我们利用条件判断组件包裹了一个 <code>button</code> 按钮组件。通过更改条件值，能够观察到按钮会依据条件的变化而相应地展示或隐藏。
+<video width="80%" controls autoplay muted loop><source src="/workbench/component-base6.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<blockquote>
+<p>需注意，由于条件组件属于命令组件，一旦其包含内容，便不再以可选中元素的形式呈现。此时，若要选中条件判断组件，可在大纲树中进行操作。</p>
+</blockquote>
+<h3>循环</h3>
+<p>循环功能能够助力我们在页面中以循环的方式渲染重复数据显示节点。</p>
+<p><img src="/workbench/component-base7.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>循环对象</td>
+<td>数组/对象</td>
+<td>这是我们要进行循环操作的数据源，它既可以是数组，也可以是对象。</td>
+</tr>
+<tr>
+<td>循环项名</td>
+<td>字符串</td>
+<td>该字符串用于定义循环时产生的<strong>项</strong>的变量名。在循环组件内部的元素或组件中，可通过表达式来使用这个变量名。</td>
+</tr>
+<tr>
+<td>循环索引</td>
+<td>字符串</td>
+<td>此字符串用于定义循环时产生的<strong>索引</strong>的变量名。在循环组件内部，能通过表达式使用该变量名。若循环对象为数组，该变量的值即为数组索引；若循环对象为对象，该变量的值则代表对象的 KEY。</td>
+</tr>
+</tbody>
+</table>
+<h4>如何使用循环变量</h4>
+<p>一旦定义了循环项名或循环索引变量，便能够在循环组件 <strong>内部</strong> 以表达式的形式使用这些变量。</p>
+<p><img src="/workbench/component-base8.png" alt=""></p>
+<p>通过上图示例可以清晰看到，在循环内部的图标组件里，运用表达式调用了在循环组件中定义的 <strong>item</strong> 变量。</p>
+<h3>动态组件</h3>
+<p>动态组件与元素组件有相似之处，二者均支持在组件内部设置自定义属性和自定义事件。然而，<strong>动态组件</strong> 具有独特用途，它通常用于依据标签名动态渲染第三方底层组件，并且支持自定义区块。
+<img src="/workbench/component-base9.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组件标识</td>
+<td>字符串</td>
+<td>在此处可定义 <code>ref</code> 值，以便在逻辑方法中获取文本虚拟节点并对其进行操作。</td>
+</tr>
+<tr>
+<td>标签 Tag</td>
+<td>字符串</td>
+<td>通过该属性可确定标签类型。</td>
+</tr>
+<tr>
+<td>自定义组件属性</td>
+<td>字符串</td>
+<td>能够自定义添加组件属性，添加后可对属性值进行修改或删除。</td>
+</tr>
+</tbody>
+</table>
+<h4>区块</h4>
+<p>动态组件允许开发人员自定义节点区块。
+<img src="/workbench/component-base10.png" alt=""></p>
+<h4>事件</h4>
+<p>动态组件允许开发人员自定义节点事件。
+<img src="/workbench/component-base11.png" alt=""></p>
+<blockquote>
+<p>此组件常用于快速集成 NPM 第三方底层库，实现对底层库组件的可视化声明封装。</p>
+</blockquote>
+<h3>渲染区块</h3>
+<p>渲染区块组件仅在 <strong>组件</strong> 类型的文件中可供引用。借助此组件，能够确定组件内支持动态渲染的区域。所谓动态渲染，即指在引用组件时，调用方有权决定该区域的渲染内容。</p>
+<p><img src="/workbench/component-base12.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认展示区块</td>
+<td>布尔值</td>
+<td>若该值为<strong>真</strong>，当组件被引入到其他组件或页面时，此区块将默认开启，方便快速对该区块进行编辑。</td>
+</tr>
+<tr>
+<td>标识</td>
+<td>字符串</td>
+<td>用于对渲染区块命名（需使用英文字母）。若一个组件存在多个动态渲染部分，可通过配置该标识加以区分，默认值为<code>default</code>。</td>
+</tr>
+<tr>
+<td>区块描述</td>
+<td>字符串</td>
+<td>该描述有助于开发人员在使用组件时，迅速了解该区块的功能。</td>
+</tr>
+<tr>
+<td>区块备注/名称</td>
+<td>字符串</td>
+<td>可以给区块取一个昵称，既便于开发人员快速理解区块含义，也能使大纲树中的展示更清晰。</td>
+</tr>
+<tr>
+<td>关联组件</td>
+<td>数组</td>
+<td>在此可选择与当前组件关联使用的组件，帮助开发人员快速向该区块插入符合要求的子组件。</td>
+</tr>
+<tr>
+<td>区块参数</td>
+<td>数组</td>
+<td>平台支持配置区块参数，借此可将组件内的数据通过区块传递到动态渲染的子组件中，满足更复杂灵活的开发需求。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如需详细了解区块相关内容，可阅读<a href="/workbench/component-section" target="_blank">组件组块</a>。</p>
+</blockquote>
+<h4>如何使用</h4>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/component-base13.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<p>在此视频中，我们能观察到，在 <code>input</code> 组件里添加了多个前后排列的动态渲染区块。当在另一个组件中引入 <code>input</code> 组件后，可在 <strong>组件属性 - 区块</strong> 面板中查看该 <code>input</code> 组件所提供的区块，并且能够在此处配置是否开启这些区块。这一操作方式，使得开发人员能够根据实际需求，灵活地控制组件内不同区块的显示与隐藏，进而实现更具个性化和定制化的组件应用。</p>
+<h3>图片</h3>
+<p>图片组件可助力我们快速展示单张图片。</p>
+<p><img src="/workbench/component-base14.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组件标识</td>
+<td>字符串</td>
+<td>在此处可定义<code>ref</code>值，以便在逻辑方法中获取与图片相关的虚拟节点并对其操作</td>
+</tr>
+<tr>
+<td>图片地址</td>
+<td>字符串</td>
+<td>平台提供便捷的资源选择功能以挑选展示的图片资源，也能通过表达式配置动态图片地址</td>
+</tr>
+<tr>
+<td>自定义样式名</td>
+<td>数组</td>
+<td>可用于配置图片节点的 class 名，以应用特定样式</td>
+</tr>
+<tr>
+<td>自定义样式</td>
+<td>对象</td>
+<td>借助可视化样式编辑器编辑图片节点的<code>style</code>属性，实现个性化样式设置</td>
+</tr>
+</tbody>
+</table>
+<h4>组件事件</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>事件名</th>
+<th>事件含义</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>鼠标点击事件</td>
+<td>-</td>
+<td>当在图片元素上按下并释放鼠标主按钮时，触发此事件。若在一个元素按下按钮，在另一元素释放，则在包含这两个元素的最近祖先元素上触发。该事件按顺序在 mousedown 和 mouseup 事件之后触发。</td>
+</tr>
+<tr>
+<td>load</td>
+<td>图片加载完成后</td>
+<td>-</td>
+<td>当图片成功加载到页面时执行，可用于执行与图片加载成功相关的操作，如显示加载成功提示等。</td>
+</tr>
+<tr>
+<td>error</td>
+<td>图片加载失败触发</td>
+<td>-</td>
+<td>当图片加载过程中出现错误，无法正常显示时执行，可用于提示用户图片加载失败或采取其他补救措施。</td>
+</tr>
+</tbody>
+</table>
+<h4>如何快速选择内部资源</h4>
+<p><img src="/workbench/component-base15.png" alt=""></p>
+<p>我们可在 <code>资源管理器</code> 的 <code>资源</code> 文件夹内，上传项目所需的图片资源。之后，在图片属性面板里，利用快速资源选择功能，就能便捷地选取本地已上传的资源。这一操作流程，为项目中图片资源的管理与使用提供了便利，使得我们能够高效地将所需图片应用到对应的组件中。</p>
+<h4>HTML 渲染</h4>
+<p>HTML 渲染节点一般用于将动态的 HTML 数据渲染到画布指定位置，我们一般用它来实现一些动态 HTML 片段的渲染工作，例如：新闻内容、评论内容等渲染。</p>
+<p><img src="/workbench/component-base16.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组件标识</td>
+<td>字符串</td>
+<td>在此处可定义<code>ref</code>值，以便在逻辑方法中获取与图片相关的虚拟节点并对其操作</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>字符串</td>
+<td>要插入的 HTML 片段内容，一般我们使用表达式的方式来渲染动态 HTML</td>
+</tr>
+<tr>
+<td>关闭沙箱隔离</td>
+<td>布尔值</td>
+<td>默认平台会使用 HTML Sandbox 实现样式的隔离，可以在这里选择关闭它实现对内部样式的修改。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>一般我们使用表达式的方式来渲染动态 HTML，若静态 HTML 数据，我们不建议使用它渲染，而是使用元素节点去开发。
+不建议关闭沙箱隔离，沙箱隔离可以有效对 CSS 隔离，防止内部 style 影响全局样式。变更后需要刷新画布才会更新渲染
+需要注意内容安全防止 XSS 注入风险。请注意拖入的 Html 渲染组件在画布中无法被选中，请在大纲树中选中它并进行操作。</p>
+</blockquote>
+<h3>SVG 组件</h3>
+<p>鉴于 SVG 通常借助极为复杂的多层级内容来完成图形绘制，倘若采用普通元素实现 SVG 渲染，可能因层级过多而难以有效维护。因此，平台特别推出了 SVG 组件，支持以字符串形式管理 SVG 内容。
+<img src="/workbench/component-base17.png" alt=""></p>
+<h4>组件属性</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组件标识</td>
+<td>字符串</td>
+<td>在此处定义<code>ref</code>值，可在逻辑方法中获取与 SVG 相关的虚拟节点并对其进行操作</td>
+</tr>
+<tr>
+<td>值</td>
+<td>字符串</td>
+<td>用于输入 SVG 代码，以此确定 SVG 组件所呈现的图形内容</td>
+</tr>
+</tbody>
+</table>
+<h3>页面容器</h3>
+<p>页面容器组件仅在 <strong>页面</strong> 类型的资源中可用。借助此组件，我们能够在页面里插入页面容器，实现页面中动态区域的渲染。它与组件中的 “渲染区块” 有相似之处，区别在于页面容器是由路由信息驱动渲染的，不同的路由地址会展示不同的子页面。</p>
+<p>利用该组件，我们能够进行深层次的页面布局开发。若想深入了解相关内容，可查阅 <a href="/workbench/page" target="_blank">页面</a> 帮助文档。</p>
+<p><img src="/workbench/component-base18.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

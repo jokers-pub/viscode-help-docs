@@ -1,0 +1,100 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>页面管理</h2>
+<p>本章着重阐述如何维护 “前端 - 应用” 项目中的页面，如何达成嵌套页面的布局，以及怎样完成页面路由信息的配置。</p>
+<h3>概述</h3>
+<p><strong>页面</strong>资源是 “前端 - 应用” 项目里不可或缺的文件资源。它不仅是最终实际运行时的入口，更是决定不同地址展示效果的关键功能性文件。</p>
+<p>我们可以在根目录下的<code>页面</code>文件夹中去管理查看我们项目中的所有页面资源。</p>
+<p><img src="/workbench/page.png" alt=""></p>
+<h3>创建页面</h3>
+<p>我们可以在<code>页面</code>文件夹中去创建页面文件。</p>
+<p><img src="/workbench/page1.png" alt=""></p>
+<p>在这里我们需要填写以下内容：</p>
+<ol>
+<li>页面名称：页面文件的文件名称（英文字母）</li>
+<li>备注：为该文件起一个别名，便于快速理解文件含义。</li>
+<li>页面路由：在这里可以配置我们的页面资源路由地址（下面章节会详细介绍）。</li>
+</ol>
+<h3>如何创建布局文件</h3>
+<p>平台设有<strong>布局文件</strong>功能。在<strong>页面文件</strong>中，我们可通过创建<strong>子页面</strong>的方式来生成布局文件。布局页面，并非最终的<strong>路由地址</strong>，而是一种<strong>公共布局文件</strong>。它能够把<strong>公共区域</strong>整合为布局文件，同时将<strong>动态渲染区域</strong>，依据不同的子页面地址进行渲染。</p>
+<p>我们可以在父级页面添加<code>页面容器</code>组件，来标记布局页面中哪一部分是动态显示区域，并在该资源文件下创建子页面，实现不同路由展示不同子页面的需求。</p>
+<p><img src="/workbench/page2.png" alt=""></p>
+<p>如果你是开发人员，你可能根据下面这段代码可以更好的理解布局文件/嵌套路由的含义：</p>
+<pre><code class="language-js">export let router = new Router({
+    routes: [
+        {
+            path: &quot;/&quot;,
+            //布局文件
+            component: core,
+            children: [
+                {
+                    path: &quot;&quot;,
+                    component: index
+                },
+                {
+                    path: &quot;/about&quot;,
+                    component: about,
+                    theme: &quot;white&quot;
+                },
+                {
+                    path: &quot;/docs&quot;,
+                    component: docs
+                }
+            ]
+        }
+    ]
+});
+</code></pre>
+<blockquote>
+<p>子页面的创建会即成父页面的路由信息，我们可以在创建子页面时看到前置路由信息。</p>
+</blockquote>
+<p><img src="/workbench/page3.png" alt=""></p>
+<h3>子组件</h3>
+<p>平台虽设有统一的<code>组件</code>文件夹，但对于特定<strong>页面</strong>或<strong>模块</strong>下的<strong>私有组件</strong>而言，将其置于根目录的<strong>组件</strong>文件夹可能并不适宜。为此，平台允许我们在<strong>页面资源</strong>下创建<strong>组件类型文件</strong>。这种类型的组件文件，其开发模式与<strong>公共组件</strong>相同，唯一区别在于，它仅建议在<strong>当前层级</strong>以及<strong>下级页面</strong>或<strong>组件</strong>中使用。若不满足此层级使用要求，平台会发出警告。如此一来，能更好地满足我们对<strong>私有组件</strong>和<strong>公共组件</strong>的管理需求。</p>
+<p><img src="/workbench/page4.png" alt=""></p>
+<blockquote>
+<p>在展现时为了更好区分私有组件和公共组件，组件的图标会有区分。</p>
+</blockquote>
+<h3>路由信息配置</h3>
+<p>在创建文件阶段，无论是 <strong>布局页面文件</strong> 还是最终展示的 <strong>路由页面文件</strong>，均能够在文件的创建或维护过程中对其 <strong>路由信息</strong> 加以设置。</p>
+<p>只需点击 <strong>路由地址</strong> 后方的 <strong>加号</strong> 就能添加路由信息。要特别留意的是， <strong>路由地址</strong> 由多个节点通过<code>/</code>进行分隔，借助这种方式，我们便能够创建多层次的路由。</p>
+<p><img src="/workbench/page5.png" alt="路由信息添加界面"></p>
+<p>当点击添加路由节点后，会弹出路由节点编辑窗口。</p>
+<p><img src="/workbench/page6.png" alt="路由节点编辑窗口界面"></p>
+<ul>
+<li><strong>路由节点</strong>：使用英文字母来定义路由节点。</li>
+<li><strong>动态参数</strong>：判断当前路由节点是否属于动态参数。</li>
+</ul>
+<p>例如，若要配置<code>/info/:id</code>这样的路由地址，就需要将<code>id</code>作为动态参数进行设置。在配置动态参数时，平台支持我们配置参数标题、是否为可选参数、参数 MOCK 等相关信息。</p>
+<p><img src="/workbench/page7.png" alt="动态参数配置界面"></p>
+<ul>
+<li><strong>标题</strong>：为当前动态参数取一个别名，方便开发人员迅速理解参数的含义。</li>
+<li><strong>是否可选参数</strong>：若设置为可选参数，那么该参数可以为空或者无需传递。比如对于<code>/info/:id</code>这个路由地址，当我们访问<code>/info/123</code>和<code>/info</code>这两个地址时，都会匹配到该页面。</li>
+<li><strong>参数 MOCK</strong>：在此处可以维护一个 Mock 数据，这样在开发过程中，就不会因为参数没有值而出现报错情况。</li>
+</ul>
+<blockquote>
+<p>在某些场景中，<strong>路由地址</strong>可不进行填写。当不填写路由地址时，系统将依据上下层级的路由关系，梳理并生成叶子页面节点的实际路由地址。</p>
+</blockquote>
+<blockquote>
+<p>路由全局配置的功能介绍阅读<a href="/workbench/router" target="_blank">路由管理</a>。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,40 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>转移仓库所有权</h2>
+<p>在团队协作与项目推进过程中，仓库所有权的转移有时是必要操作。本章将围绕如何转移仓库所有权展开，为你详细讲解相关流程与要点。本操作仅限管理员可见。</p>
+<h3>概述</h3>
+<p>转移仓库所有权，意味着将一个仓库的归属关系从当前团队/组织转移至另一个团队/组织 。这一操作在实际业务中有着重要意义，比如当项目完成阶段性开发，需要将其完整交付给其他团队进行后续维护和运营时，通过转移仓库所有权，就能实现项目所属权的顺利过渡，确保项目相关的所有代码、文件及历史记录等一并转移，保障项目交付工作的完整性与连贯性。</p>
+<h3>操作步骤</h3>
+<ol>
+<li><strong>进入仓库设置页面</strong>：首先，打开你需要转移所有权的仓库，找到并点击进入仓库设置页面。</li>
+<li><strong>触发转移操作</strong>：在仓库设置页面中，找到<code>仓库管理</code>菜单，点击该菜单下的<strong>转移仓库所有权</strong>按钮，由此触发仓库所有权转移操作。
+<img src="/portal/rep-transfer.png" alt=""></li>
+<li><strong>搜索并选定目标团队</strong>：进入转移操作界面后，你可以通过输入团队名称或邮箱进行搜索，精准定位到目标接收仓库的团队。在搜索结果中，确认目标团队信息无误后，点击确定按钮。
+<img src="/portal/rep-transfer2.png" alt=""></li>
+<li><strong>完成转移</strong>：点击确定后，系统将自动执行仓库所有权转移流程，将仓库的归属权变更至目标团队名下。</li>
+</ol>
+<p><strong>重要提示</strong>：</p>
+<ul>
+<li>仓库所有权一旦转移，将<strong>无法撤销</strong>，请在操作前务必确认信息准确无误，谨慎执行操作。</li>
+<li>目前平台为每个团队提供一个免费仓库的使用权限。若当前要转移的仓库是私有仓库，而目标团队已拥有私有仓库，转移操作将会失败。此时，需要目标团队先提升私有仓库额度，之后才能顺利完成仓库所有权的转移。</li>
+</ul>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

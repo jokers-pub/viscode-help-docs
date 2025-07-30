@@ -1,0 +1,36 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>我的议题</h2>
+<p>在项目协作与任务管理过程中，“我的议题”功能模块能够帮助您高效梳理和跟进与自己密切相关的议题。通过该功能，您可以集中管理、快速筛选各类议题，有效提升工作效率。本章将详细介绍“我的议题”功能。</p>
+<h3>进入我的议题列表</h3>
+<ol>
+<li><strong>打开个人主页</strong>：登录平台后，在页面右上角找到并点击您的头像，即可顺利进入个人专属主页。个人主页整合了一系列与您个人相关的功能及信息，是操作的重要入口。</li>
+<li><strong>点击“我的议题”</strong>：在个人主页中，清晰标注着“我的议题”菜单选项，点击它，系统将自动跳转至“我的议题”列表页面。从此处开始，您便能全面管理和查看与自己紧密相关的议题内容。
+<img src="/portal/personal-my-issues.png" alt="进入我的议题列表操作"></li>
+</ol>
+<h3>筛选</h3>
+<ol>
+<li><strong>议题展示范围</strong>：进入“我的议题”列表页面后，这里展示的议题主要包含“我提出的”和“我负责的”两类。这一设定确保您能快速聚焦与自己直接关联的工作内容，避免在众多议题中耗费时间查找。</li>
+<li><strong>筛选操作方式</strong>：为了进一步满足您精细化管理议题的需求，平台提供了便捷的筛选工具。您只需点击页面上的切换按钮，即可在“我提出的”和“我负责的”议题类别间快速切换；同时，通过点击状态按钮，如“待处理”“进行中”“已完成”等，能够依据议题的不同状态筛选出符合条件的议题列表。通过这些筛选操作，您可以轻松梳理出特定类型和状态的议题，让工作安排更加清晰有序。
+<img src="/portal/personal-my-issues2.png" alt="我的议题列表筛选功能"></li>
+</ol>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

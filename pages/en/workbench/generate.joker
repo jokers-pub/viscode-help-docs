@@ -1,0 +1,47 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Code Generation</h2>
+<p>This chapter mainly explains how to generate code and export it to the local machine.</p>
+<h3>Overview</h3>
+<p>The JOKER intelligent development platform uses an advanced <strong>DSL language</strong> to maintain the resource content in the current project, which endows the JOKER with the ability to generate code. With the help of JOKER's unique <strong>expressions</strong> and advanced <strong>type declarations</strong>, high-quality code generation can be achieved.</p>
+<p>The platform provides the code generation and export capabilities in two scenarios:</p>
+<ul>
+<li><strong>Exporting the Release Version Code</strong>: The platform supports code generation and export for the released project versions, which helps to realize the automatic <strong>CICD function</strong> through version release.</li>
+<li><strong>Exporting the Development Version Code</strong>: The platform allows the project code in the development process to be generated and exported, which facilitates developers to understand the actual operation principle of the project in real time during the development process and also provides more flexible operation scenarios.</li>
+</ul>
+<h3>Exporting the Release Version Code</h3>
+<p>First, make sure that the current project has completed the release of a version. For the version release process, you can refer to the content of <a href="/portal/rep-version" target="_blank">Portal - Create Version</a> and <a href="/workbench/check-code-version" target="_blank">Workbench - Code Inspection and Release</a> to complete the version release.</p>
+<p>After completing the release of a version, you can view the released version on the <strong>Project Release Version</strong> page and click <strong>Export Code</strong> to implement the code generation work.</p>
+<p><img src="/workbench/generate.png" alt=""></p>
+<h3>Exporting the Development Version Code</h3>
+<p>The platform allows the code of the development version to be generated and exported. You can click the <code>Generate Code</code> menu in the workbench to start the code generation work.</p>
+<p><img src="/workbench/generate1.png" alt=""></p>
+<p>When generating the development code, the platform will complete the preparatory work according to the following process:</p>
+<ol>
+<li>Check whether there are unsaved codes.</li>
+<li>Scan the entire code. If there are code exceptions, the code generation operation will be interrupted.</li>
+<li>Trigger the code generation logic.</li>
+</ol>
+<blockquote>
+<p>The generated and exported code will be provided for download in the form of a ZIP package. After downloading and unzipping, please read the <code>readme.md</code> file first, which contains information on how to start the project, an introduction to the project directory, and so on.</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

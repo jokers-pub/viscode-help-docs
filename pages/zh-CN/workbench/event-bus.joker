@@ -1,0 +1,52 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>事件总线</h2>
+<p>在这一章节，我们一同了解什么是事件总线，以及事件总线能够助力实现哪些功能。</p>
+<p><strong>注意</strong>：事件总线功能仅允许在<code>前端-项目</code>类型中使用。组件库、方法集库无法运用事件总线功能。</p>
+<h3>概述</h3>
+<p>在前端领域，组件与页面之间除了借助<code>props</code>参数进行数据通讯传递外，平台还提供了一种名为<code>事件总线</code>的数据通讯方式。在传统的<code>参数</code>与<code>事件</code>数据传递模式下，仅允许在存在引用关系的组件之间进行数据传递。当组件<strong>不从属于</strong>当前页面/组件时，便无法通过传递参数或者注册事件的方式实现数据传递。</p>
+<p>若要在无引用关系的情况下达成组件或者页面之间的数据通讯，就需要用到我们的<code>事件总线</code>。事件总线类似于一种全局的事件管理器，它允许所有页面/组件/方法为其注册事件或者监听事件。</p>
+<h3>创建事件总线</h3>
+<p>首先，需在<code>项目配置</code>文件中打开<strong>事件总线</strong>面板。</p>
+<p><img src="/workbench/event-bus.png" alt=""></p>
+<p>可点击页面中的**「创建事件总线」**按钮来创建一个事件总线。此处要留意，一个事件总线中能够声明多个事件，所以<code>事件总线</code>可理解为是某一类事件的集合，它能帮助我们按类别管理事件。</p>
+<p><img src="/workbench/event-bus1.png" alt=""></p>
+<p>当创建完某一分类的事件总线后，即可对其进行事件定义。</p>
+<p><img src="/workbench/event-bus2.png" alt="">
+<img src="/workbench/event-bus3.png" alt=""></p>
+<p>在此处需定义事件名称，并且事件总线还允许设置事件参数类型。</p>
+<h3>如何使用</h3>
+<p>可在逻辑编排中通过<code>事件总线</code>逻辑节点开展操作。</p>
+<p><img src="/workbench/event-bus4.png" alt=""></p>
+<p>拖入该节点后，需完成以下两步操作：</p>
+<ol>
+<li><strong>选择事件</strong>：平台提供了可视化选择操作，可在此选择要触发的事件。</li>
+<li><strong>选择操作类型</strong>：操作类型包含<strong>监听事件</strong>和<strong>触发事件</strong>。</li>
+</ol>
+<p>当选择<strong>触发事件</strong>时，若当前事件约束了事件参数类型，需在此填写要传递的事件参数值。</p>
+<p><img src="/workbench/event-bus5.png" alt=""></p>
+<p>若选择<strong>监听事件</strong>，则需维护事件触发时的处理回调函数。</p>
+<p><img src="/workbench/event-bus6.png" alt=""></p>
+<blockquote>
+<p><strong>特别注意</strong>：对于<code>监听事件</code>操作，事件总线不会自动处理事件销毁方法。因此，我们需要定义一个接收值（Function），此方法即为<strong>该事件的销毁</strong>函数，需在<code>组件销毁</code>或者<strong>合适的时机</strong>触发此方法。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

@@ -1,0 +1,35 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>关注仓库</h2>
+<p>本章将详细介绍关注仓库的操作方法，以及查看已关注仓库的途径。</p>
+<h3>关注仓库的方法</h3>
+<p>在仓库列表中，无论是推荐仓库列表、团队仓库列表，还是仓库详情页面，都设有“关注”按钮。只需点击该按钮，即可轻松关注对应的仓库。当按钮图标被点亮，就表明该仓库已成功添加至您的关注列表。</p>
+<p><img src="/portal/rep-follow.png" alt=""></p>
+<p><img src="/portal/rep-follow2.png" alt=""></p>
+<h3>查看已关注的仓库</h3>
+<p>成功关注仓库后，您可以通过以下两种方式快速访问已关注的仓库：</p>
+<ol>
+<li><strong>门户首页</strong>：在门户首页，您会看到“我关注的仓库”面板。在这里，您能直接点击进入各个关注仓库的详情页面，便捷地获取仓库信息。</li>
+<li><strong>个人面板</strong>：在个人面板中，找到“关注的仓库”菜单，点击即可查看所有已关注仓库的完整列表，便于集中管理和查找。</li>
+</ol>
+<p><img src="/portal/rep-follow3.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

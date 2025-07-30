@@ -1,0 +1,87 @@
+<template>
+    <div class="bottom-nav">
+        @if(menus.length > 1) {
+            <div class="left">
+                @if(prev) {
+                    <p>
+                        @(lang === "zh-CN" ? "上一篇" : "Previous")
+                    </p>
+                    <a href="@prev.path">@prev.title</a>
+                }
+            </div>
+            <div class="right">
+                @if(next) {
+                    <p>
+                        @(lang === "zh-CN" ? "下一篇" : "Next")
+                    </p>
+                    <a href="@next.path">@next.title</a>
+                }
+            </div>
+        }
+    </div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import { router } from "@joker.front/router";
+import { MenuEn, MenuZhCN } from "../datas/menu";
+import { getLang } from "../utils";
+
+export default class extends Component {
+    menus: any[] = [];
+    prev: any;
+    next: any;
+
+    lang = getLang();
+    created() {
+        let currentRoutePath = router.route.value.fullPath;
+        let moduleName = currentRoutePath.substring(1).split("/")[0];
+        this.setMenus(moduleName);
+
+        let index = this.menus.findIndex((n) => n.path === currentRoutePath);
+        if (index > -1) {
+            this.prev = this.menus[index - 1];
+        }
+
+        if (index !== this.menus.length - 1) {
+            this.next = this.menus[index + 1];
+        }
+    }
+    setMenus(moduleName: string) {
+        let menusData = getLang() === "zh-CN" ? MenuZhCN : MenuEn;
+        let menus =
+            {
+                portal: menusData.PORTAL_MENUS,
+                workbench: menusData.WORKBENCH_MENUS
+            }[moduleName] || [];
+
+        for (let group of menus) {
+            this.menus.push(...(group.children || []));
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.bottom-nav {
+    border-top: solid 1px var(--jk-border-color-base);
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 100px;
+    font-size: 12px;
+    color: var(--jk-color-text-secondary);
+
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    p {
+        font-size: 12px;
+    }
+    .left {
+        text-align: left;
+    }
+
+    .right {
+        text-align: right;
+    }
+}
+</style>

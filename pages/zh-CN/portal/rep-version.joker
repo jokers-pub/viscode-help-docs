@@ -1,0 +1,68 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>创建版本</h2>
+<p>在软件开发与项目管理过程中，对仓库版本进行有效的管理是保障项目顺利推进、确保代码质量与可追溯性的关键环节。本章将深入且细致地介绍创建仓库发行版的具体方法、发布新版本的详细流程，以及维护和管理各个版本的核心要点。</p>
+<h3>概述</h3>
+<p>在仓库代码持续迭代的进程中，版本管理功能对于代码维护起着举足轻重的作用。在特定的开发周期内，我们能够创建仓库版本。一旦创建完成，系统便会自动对该版本的代码进行备份，为用户提供固定版本的克隆以及代码生成服务。同时，还会触发 CICD 流程，确保开发、测试、部署等各个环节紧密衔接，实现高效、连贯的项目运作。</p>
+<p><img src="/portal/flow.png" alt="版本管理流程"></p>
+<p>当项目顺利完成一个版本的迭代工作后，即可通过创建发行版来生成新的仓库版本。需要注意的是，创建发行版的按钮仅对当前仓库的<strong>管理员</strong>可见。</p>
+<p><img src="/portal/rep-version.png" alt="创建发行版按钮"></p>
+<p>点击该按钮后，便正式进入版本发布流程：</p>
+<h3>代码检查</h3>
+<p>首先进入的是第一步——<strong>代码检查</strong>。进入这一环节后，除<strong>管理员</strong>之外，其他成员将不再被允许提交新的代码。在此期间，管理员需要在工作台中仔细进行代码检查，并对发现的问题加以修复，直至平台检测出的所有错误都被完全修复，才能够进入下一步骤。</p>
+<p><img src="/portal/rep-version2.png" alt="代码检查页面"></p>
+<p>进入工作台后，平台会自动触发代码检查流程。此时，平台会对全量资源文件进行扫描，全面检查代码的类型和语法是否正确。</p>
+<p><img src="/portal/rep-version3.png" alt="代码扫描详情"></p>
+<p>当完成平台检查出的所有错误异常修复后，平台界面会展示“完成代码检查”按钮，点击此按钮，即可进入版本发布的下一步骤。</p>
+<p><img src="/portal/rep-version4.png" alt="完成代码检查按钮"></p>
+<p><strong>重要提示</strong>：在代码验证过程中，平台仅会依据代码规范给出代码异常建议，无法确保业务逻辑的正确性。因此，请务必在操作前仔细检查并确认相关代码逻辑。</p>
+<h2>选择相关议题</h2>
+<p>完成代码检查后，平台会自动返回到仓库首页，此时“代码检查”按钮会变更为“申请发布”按钮。点击“申请发布”按钮，便开始下一步——<strong>选择议题</strong>。</p>
+<p><img src="/portal/rep-version5.png" alt="申请发布按钮"></p>
+<p>在此步骤中，平台会自动筛选出所有处于“待发布”状态的议题。我们可以在这里关联当前版本所解决的议题。一旦版本发布完成，关联的议题会自动变更为“已完成”状态，并且所有关联议题都会自动关联当前的版本号，极大地方便了查看该议题是在哪个版本中得到解决的。</p>
+<h3>更新日志</h3>
+<p>在这一环节，我们可以对更新日志进行维护，平台提供了便捷的自动导入日志功能。</p>
+<p><img src="/portal/rep-version6.png" alt="更新日志页面"></p>
+<ul>
+<li><strong>新建</strong>：我们可以通过新建的方式，根据实际情况自定义更新日志内容，详细记录本次版本更新的关键信息。</li>
+<li><strong>导入更新日志</strong>：平台会自动导入上一个版本到当前时间内所有的提交日志，帮助我们快速梳理版本变更内容。</li>
+</ul>
+<p><img src="/portal/rep-version7.png" alt="导入更新日志详情"></p>
+<h3>确认版本</h3>
+<p>当完成以上步骤后，就可以在此处确认发布版本号和相关信息了。</p>
+<p><img src="/portal/rep-version8.png" alt="确认版本页面"></p>
+<ul>
+<li><strong>主版本</strong>：通常代表软件或产品的重大更新和主要功能变化，例如从 1.0 升级到 2.0，可能意味着软件架构的重大调整或全新核心功能的引入。</li>
+<li><strong>次版本</strong>：表示在主版本基础上的较次要的改进和新增功能，如 1.1 相较于 1.0，可能新增了一些辅助功能或对现有功能进行了优化。</li>
+<li><strong>补丁版本</strong>：主要针对软件或产品的漏洞修复、细节优化和小的调整，比如 1.0.1 版本可能只是修复了 1.0 版本中发现的一些小漏洞。</li>
+</ul>
+<p>在完成<strong>版本号</strong>确认后，点击提交即可完成一个版本的创建。</p>
+<h3>公开版本</h3>
+<p>当我们希望将该版本对外开放，供所有平台开发者使用时，可以点击版本后的“对外公开”按钮，实现版本的对外公开。</p>
+<p><img src="/portal/rep-version9.png" alt="对外公开及封面上传"></p>
+<p>对外公开后的版本，会在平台<a href="https://viscode.jokers.pub/market" target="_blank">市场</a>中进行展示。若该版本获得官方认证，还可以添加官方认证图标，从而获得更多开发人员的认可和使用。</p>
+<p>此外，我们可以在发行版页面上传自己仓库的封面，以提供更好的预览效果，吸引更多开发者关注。</p>
+<p><img src="/portal/market.png" alt="市场"></p>
+<blockquote>
+<p><strong>特别注意</strong>：无论项目是否为私有项目，都可以将发行版本对外公开。但由于公开后的版本即可被他人引用，且一旦公开无法撤销，所以请务必谨慎选择是否公开版本。</p>
+</blockquote>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

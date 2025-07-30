@@ -1,0 +1,39 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>Running and Debugging</h2>
+<p>This chapter mainly describes how to quickly implement the <strong>running and debugging</strong> of projects. The <strong>running and debugging</strong> is only applicable to the repository projects of the <code>application</code> type.</p>
+<blockquote>
+<p>Currently, the debugging function for server-side projects has not been opened yet. It relies on our local JOKER development tools for <strong>debugging</strong>, and it is currently under development. You can export the code and run the project locally for <strong>debugging</strong>.</p>
+</blockquote>
+<h3>Overview</h3>
+<p>In the current development process, we adopt a WYSIWYG (What You See Is What You Get) development mode, and we can directly see the actual running effect of the project during development. However, if we want to run the project as a whole, preview the routing page jump situation of the entire project, or connect to the business server to verify the overall <strong>running</strong> effect of the service, we need to use our <strong>running and debugging</strong> tools at this time.</p>
+<h3>Starting Running and Debugging</h3>
+<p>We can click on the <code>Run and Debug</code> menu in the workbench panel to open the running and debugging panel.
+<img src="/workbench/debugger.png" alt=""></p>
+<p>Here, we can <strong>select the environment configuration</strong> file and click the <strong>Run and Debug</strong> button to conduct the overall <strong>running</strong> in the browser.</p>
+<blockquote>
+<p>You can use the built-in debugging tools of the browser to carry out the <strong>debugging</strong> work of the code.</p>
+</blockquote>
+<h3>Stopping Running and Debugging</h3>
+<p>The platform internally uses heartbeat packets to detect the debugging running status. You can directly close the debugging window to interrupt the <strong>debugging</strong>, or click the <strong>Stop Debugging</strong> button to close the debugging window.
+<img src="/workbench/debugger1.png" alt=""></p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>

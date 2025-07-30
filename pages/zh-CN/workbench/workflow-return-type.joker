@@ -1,0 +1,51 @@
+<template>
+<div ref='container' class='joker-demo-container'>
+<h2>方法返回类型推导</h2>
+<p>在开发方法逻辑时，平台提供了一种灵活的方式来指定方法的返回类型，无需在开发前预先设计。这种方法允许我们在逻辑编排过程中，根据声明的变量类型进行返回类型的推导，从而大大简化方法声明工作。</p>
+<h3>如何开启</h3>
+<p>方法返回类型推导并非在所有方法编辑场景中都能生效。例如，在组件生命周期、组件事件函数、请求切面、路由切面等平台已强制约束返回类型的场景下，不允许进行返回类型推导。该功能仅在允许自定义返回类型的场景中生效。</p>
+<p><img src="/workbench/workflow-return-type.png" alt=""></p>
+<blockquote>
+<p><strong>注意</strong>：平台会依据逻辑编排中声明的变量类型进行类型推导，因此，“根据变量推导返回类型”按钮仅在存在逻辑节点且有声明变量时才会显示。</p>
+</blockquote>
+<h3>如何操作</h3>
+<p>当需要进行方法返回类型推导时，点击逻辑编排面板下方的<strong>根据变量推导返回类型</strong>按钮，即可打开操作面板。
+<img src="/workbench/workflow-return-type1.png" alt=""></p>
+<ul>
+<li><strong>左侧</strong>：显示当前方法实际的返回类型。</li>
+<li><strong>右侧</strong>：列出逻辑中已经声明的变量及其类型。</li>
+</ul>
+<p>若方法的返回类型与某个变量的类型匹配，右侧会显示<strong>替换返回</strong>按钮。点击该按钮，可将该变量的类型设置为方法的返回类型。
+<img src="/workbench/workflow-return-type2.png" alt=""></p>
+<p>若要向某个对象中导入属性，可在<strong>左侧面板</strong>中选中想要操作的对象节点。当选中的是<code>对象</code>类型节点时，右侧面板会显示<strong>导入为字段</strong>按钮，点击此按钮即可将该字段导入到对象中。
+<img src="/workbench/workflow-return-type3.png" alt=""></p>
+<p>在左侧的方法返回类型面板中，还支持以下常见操作：
+<img src="/workbench/workflow-return-type4.png" alt=""></p>
+<ol>
+<li><strong>重置</strong>：将方法返回类型恢复为上一次保存的状态，方便进行操作的回滚。</li>
+<li><strong>清空</strong>：清空现有方法的返回类型。</li>
+<li><strong>删除</strong>：允许删除某一个属性。</li>
+</ol>
+<p><strong>提示</strong>：若需要修改属性名称、标题、备注等其他信息，建议在保存逻辑后，在方法编辑面板中对返回类型进行详细修改。本操作面板主要提供快速的类型导入功能。</p>
+<h3>如何生效</h3>
+<p>完成方法返回类型的编辑后，点击面板下方的保存按钮，即可完成返回类型的编辑操作。需要注意的是，此操作仅在逻辑编排中生效，会立即在逻辑编排面板中更新方法的返回类型，并快速暴露一些语法问题。当完成逻辑编排后，方法返回类型会随着逻辑编排的保存而统一进行方法信息的修改和保存。</p>
+
+<BottomNav />
+</div>
+</template>
+<script>
+import { Component } from "@joker.front/core";
+import hljs from "highlight.js/lib/common";
+import BottomNav from "../../../common/components/bottom-nav.joker";
+export default class extends Component {
+components={
+BottomNav
+}
+mounted(){
+let container= this.$getRef('container')?.output!;
+container.querySelectorAll('pre code').forEach((el:HTMLElement) => {
+        hljs.highlightElement(el);
+      });
+}
+}
+</script>
