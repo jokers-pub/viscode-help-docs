@@ -121,7 +121,7 @@ export default class extends Component {
                 : "Joker Visual Development Platform Help Documentation";
         for (let group of menus.allMenus) {
             for (let item of group.children || []) {
-                if (item.path === router.route.value.path) {
+                if (item.path === (this.lang === "zh-CN" ? "/cn" : "") + router.route.value.path) {
                     document.title = `${group.title} - ${item.title} ${defaultTitle}`;
                     return;
                 }
