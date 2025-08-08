@@ -1,63 +1,37 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Transfer Repository Ownership</h2>
-<p>In team collaboration and project advancement, transferring repository ownership is sometimes a necessary operation. This chapter will focus on how to transfer repository ownership, providing you with a detailed explanation of the related processes and key points. <strong>This operation is only visible to administrators.</strong></p>
+<p>During team collaboration and project progression, transferring Repository ownership may become necessary. This chapter focuses on how to transfer Repository ownership and explains the complete process and key considerations. This action is visible and executable <strong>only by administrators</strong>.</p>
 <h3>Overview</h3>
-<p>Transferring repository ownership means changing the ownership of a repository from the current team/organization to another team/organization. This operation holds significant importance in real-world business scenarios. For example, when a project completes a phase of development and needs to be formally handed over to another team for subsequent maintenance and operation, transferring repository ownership enables a smooth transition of project ownership. This ensures that all relevant code, files, historical records, etc., are transferred seamlessly, guaranteeing the integrity and continuity of project delivery.</p>
-<h3>Steps for Transferring Ownership</h3>
+<p>Transferring Repository ownership relocates a Repository’s ownership from one team/organization to another. This is critical for business scenarios such as when a project reaches a milestone and needs to be handed off to another team for ongoing maintenance and operations. A full transfer ensures that all source code, assets, and complete commit history move together, guaranteeing integrity and continuity of the hand-off.</p>
+<h3>Procedure</h3>
 <ol>
-<li><strong>Access the Repository Settings Page</strong>: First, open the repository for which you want to transfer ownership, then locate and enter the <strong>Repository Settings</strong> page.</li>
-<li><strong>Initiate the Transfer Operation</strong>: On the Repository Settings page, find the <code>Repository Management</code> menu and click the <strong>Transfer Repository Ownership</strong> button under this menu to trigger the transfer process.<br>
-<img src="/portal/rep-transfer.png" alt=""></li>
-<li><strong>Search and Select the Target Team</strong>: After entering the transfer interface, you can search for the target team receiving the repository by entering the team name or email address. Verify the target team's details and confirm they are correct, then click the <strong>Confirm</strong> button.<br>
-<img src="/portal/rep-transfer2.png" alt=""></li>
-<li><strong>Complete the Transfer</strong>: Once confirmed, the system will automatically execute the repository ownership transfer process, changing the repository's ownership to the target team.</li>
+<li>
+<p><strong>Navigate to Repository Settings</strong><br>
+Open the Repository whose ownership you wish to transfer, then navigate to its <strong>Settings</strong> page.</p>
+</li>
+<li>
+<p><strong>Initiate the Transfer</strong><br>
+Inside <strong>Settings</strong>, locate the <strong>Repository Management</strong> menu, then click the <strong>Transfer Repository Ownership</strong> button to start the process.<br>
+<img src="/portal/rep-transfer.png" alt=""></p>
+</li>
+<li>
+<p><strong>Search and Select the Target Team</strong><br>
+In the transfer interface, enter the target team’s name or email to search. Once the correct team appears, verify its details and click <strong>Confirm</strong>.<br>
+<img src="/portal/rep-transfer2.png" alt=""></p>
+</li>
+<li>
+<p><strong>Complete the Transfer</strong><br>
+After confirmation, the platform automatically executes the transfer, reassigning the Repository to the chosen team.</p>
+</li>
 </ol>
-<p><strong>Important Notes</strong>:</p>
-<p>Bonus: <s>目前平台为每个团队提供一个免费仓库的使用权限。若当前要转移的仓库是私有仓库，而目标团队已拥有私有仓库，转移操作将会失败。此时，需要目标团队先提升私有仓库额度，之后才能顺利完成仓库所有权的转移。</s>
-Fine-tuned for clarity/conciseness:
-Bonus:</p>
+<blockquote>
+<p><strong>Important Notes</strong></p>
 <ul>
-<li>Alternatively, if the repository to be transferred is <strong>private</strong> and the target team has already exhausted its private repository quota, the transfer will fail. To proceed, the target team must first upgrade its private repository capacity.</li>
+<li>Repository ownership transfers are <strong>irreversible</strong>—double-check every detail before proceeding.</li>
+<li>Each team is entitled to one free Repository. If the Repository you are transferring is <strong>Private</strong> and the target team already has a Private Repository, the transfer will fail until the target team increases its Private Repository allowance.</li>
 </ul>
-<p>Rephrased for natural flow (preferred version):</p>
-<ul>
-<li>Currently, the platform provides each team with a free private repository. If the repository to be transferred is private and the target team already owns one, the transfer will fail. To proceed, the target team must first upgrade its private repository quota.</li>
-</ul>
-<p>Final optimized version integrating both:</p>
-<ul>
-<li><strong>Quota Considerations</strong>: The platform provides each team with one free private repository. If transferring a private repository to a team that has already exhausted its quota, the operation will fail. The target team must first increase its private repository capacity to proceed.</li>
-</ul>
-<p>Original phrasing kept for context:</p>
-<ul>
-<li><strong>This operation cannot be undone</strong>. Please ensure all details are accurate before proceeding, as the transfer is irreversible.</li>
-<li>Currently, the platform allows each team <strong>one free private repository</strong>. If the repository being transferred is private and the recipient team already has one, the transfer will fail. In this case, the recipient team must first upgrade their private repository quota to proceed.</li>
-</ul>
-<p>Final polished version after review:</p>
-<ul>
-<li>Repository ownership transfers <strong>cannot be reversed</strong>—please verify all information carefully before confirming.</li>
-<li>Important: Each team gets <strong>one free private repository</strong>. If transferring a premium/private repository to a team that has already claimed theirs, the receiving team must first upgrade their plan to accommodate additional repositories.</li>
-</ul>
-<p>Final recommendation (concise + explicit):</p>
-<ul>
-<li><strong>⚠️ Irreversible Action</strong>: Once transferred, ownership cannot be reverted. Verify all details before proceeding.</li>
-<li><strong>Quota Limit</strong>: The target team must have available private repository slots (each team gets 1 free private repo initially). If their quota is full, upgrade their plan before transferring.</li>
-</ul>
-<p>Deployed choice (technical precision + readability):</p>
-<ul>
-<li><strong>Warning</strong>: The transfer is <strong>permanent</strong>—double-check all details before confirmation.</li>
-<li><strong>Quota Rule</strong>: Transfers fail if the target team lacks private repository slots (1 free private repo/team). Upgrade their plan if needed.</li>
-</ul>
-<p>Package it cleanly:<br>
-<strong>Critical Checks Before Transfer</strong>:<br>
-✅ Confirm target team details are accurate (transfer is irreversible)<br>
-✅ Ensure the target team has available private repository quota (default: 1 free/team)</p>
-<p>Final answer (structured as bullet points under <strong>Important Notes</strong>):</p>
-<ul>
-<li><strong>Irreversible action</strong>: Ownership transfers cannot be undone after confirmation.</li>
-<li><strong>Quota check</strong>: The target team must have an available private repository slot (1 free private repository per team by default).</li>
-<li><strong>Private repository limitation</strong>: If the target team has no available slots, they must upgrade their plan before the transfer can proceed.</li>
-</ul>
+</blockquote>
 
 <BottomNav />
 </div>

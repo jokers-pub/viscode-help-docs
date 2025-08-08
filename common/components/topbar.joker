@@ -51,7 +51,7 @@ import docsearch from "@docsearch/js";
 import { getNavData } from "../datas/nav";
 import "@docsearch/css";
 import { getLang } from "../utils";
-
+let description = "";
 export default class extends Component {
     model = {
         navIsOpen: false,
@@ -89,8 +89,15 @@ export default class extends Component {
         router.push(path);
         e.preventDefault();
     }
-
+    metaDescription: HTMLMetaElement | null = null;
     created() {
+        // 获取 description 元标签
+        this.metaDescription = document.querySelector('meta[name="description"]');
+
+        // 检查是否存在该标签，如果存在则获取其 content 属性值
+        if (this.metaDescription && !description) {
+            description = this.metaDescription.getAttribute("content") || "";
+        }
         this.$watch(
             () => router.route.value,
             () => {
@@ -119,10 +126,14 @@ export default class extends Component {
             this.lang === "zh-CN"
                 ? "Joker 可视化开发平台帮助文档"
                 : "Joker Visual Development Platform Help Documentation";
+        this.metaDescription?.setAttribute("content", description);
         for (let group of menus.allMenus) {
             for (let item of group.children || []) {
                 if (item.path === (this.lang === "zh-CN" ? "/cn" : "") + router.route.value.path) {
                     document.title = `${group.title} - ${item.title} ${defaultTitle}`;
+                    if (item.description) {
+                        this.metaDescription?.setAttribute("content", item.description + " | " + description);
+                    }
                     return;
                 }
             }

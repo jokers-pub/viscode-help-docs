@@ -115,7 +115,10 @@ body {
         padding: 15px;
         max-width: 250px;
     }
-
+    video {
+        margin: 10px auto;
+        display: block;
+    }
     table.mkd-table th {
         text-align: left;
         white-space: nowrap;
