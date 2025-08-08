@@ -1,56 +1,54 @@
 ## Cache Design
 
-This chapter mainly describes how to develop the cache function in server-side applications and introduces the specific configurations of the cache function.
+This chapter focuses on how to implement cache functionality development in server-side applications and introduces specific configurations for cache features.
 
 ### Overview
 
-Cache files play a crucial role in server-side performance optimization. They can help us cache hot data. By caching hot data, frequent access to the database is effectively avoided, thus reducing the pressure on the database service, significantly improving server performance, accelerating data access speed, and greatly enhancing user access efficiency.
+Cache files play a critical role in server-side performance optimization, enabling the caching of hot data. By caching frequently accessed data, it effectively reduces frequent database queries, alleviating database server pressure and significantly improving server performance. This also accelerates data access speeds, greatly enhancing user access efficiency.
 
-We can create our cache files in the **Cache** folder.
+You can create cache files in the **Cache** folder.
 
-![Screenshot related to cache](/workbench/back-end6.png)
+![Cache-related Screenshot](/workbench/back-end6.png)
 
 ### Cache Configuration
 
-When opening the cache configuration file, you will find that the platform has already provided us with a standard cache configuration scheme, which contains the following configuration elements:
+When opening the cache configuration file, you will find that the platform has already provided a standardized cache configuration solution, which includes the following elements:
 
-- **Cache Expiration Time**: You can configure the expiration time of the cache here. If not configured, it means that the current cache will never expire.
-- **Cache Type**: Different cache types can be configured according to business scenarios:
-    1. **Single-item Storage**: It mainly provides simple and direct value operations, including getting, setting, and deleting values. With these basic operations, the caching needs of a single piece of data can be quickly handled, which is suitable for cache management scenarios where single data is frequently read and written.
-    2. **Array Storage**: It provides a series of cache operations based on the characteristics of arrays. It can not only obtain the cache length to understand the number of data items in the current cache, but also perform cache insertion to dynamically add new data to the cache array. If you need to clear the cache array, you can use the cache clearing function. If you want to obtain data within a specific interval range, you can achieve it through the cache list (interval range) operation. Moreover, you can accurately obtain the data in the cache according to the index, meeting the diverse access requirements for array-type cached data.
-    3. **Object Storage**: It provides flexible cache operations based on key-value pairs. You can obtain the cache according to the Key, and support batch retrieval of cache data corresponding to multiple Keys, greatly improving the data retrieval efficiency. When setting the cache, batch operations are also supported, facilitating the one-time update of multiple cache data. It can also check whether the cache of a specified Key exists, which is convenient for confirming the data status before operation. If you need to clear the cache, you can perform the delete cache operation. In addition, you can obtain all cache KEYs, which is convenient for comprehensive management and maintenance of cached data, and is suitable for complex business scenarios where cached data is organized and managed in the form of objects.
-- **Data Type**: It allows us to design the data type of cache items. The data type of the cache helps us better use the values in the cache in business logic development.
-- **Cache Item Loading Method**: The cache supports manually increasing, modifying, and deleting the cache by calling methods. Of course, the platform also provides an automatic cache loading mechanism. Its operation principle is that when querying the cache, if the cache does not exist, the cache loading method will be called to set the cache value through this method, thus avoiding the complexity of manual configuration.
+- **Cache Expiration Time**: Configure the expiration time for the cache here. If left unconfigured, the cache will never expire.
+- **Cache Type**: Configure different cache types based on business scenarios:
+  1. **Single-Item Storage**: Provides simple and direct value operations, including value retrieval, setting, and deletion. These basic operations allow for quick handling of single-data caching needs, suitable for scenarios requiring frequent read/write operations on individual data.
+  2. **Array Storage**: Offers a series of cache operations based on array characteristics. These include getting the cache length (to understand the number of data items), inserting data (adding new data dynamically), clearing the cache array, retrieving data within a specific range (via the "cache list (range)" operation), and accessing data precisely by index, catering to diverse access needs for array-type cached data.
+  3. **Object Storage**: Provides flexible cache operations based on key-value pairs. These include retrieving cache by key (supporting batch retrieval for multiple keys to improve efficiency), setting cache (also supporting batch operations), checking if a specified key exists in the cache, deleting cache, and retrieving all cache keys for comprehensive management. This is ideal for complex business scenarios requiring object-form cache organization and management.
+- **Data Type**: Allows you to define the data type of cache items, which helps in better utilization of cached values during business logic development.
+- **Cache Loading Method**: Cache supports manual methods to add, modify, or delete cache entries. Additionally, the platform provides an automatic cache loading mechanism. Its principle is: when querying the cache, if the data is absent, the cache loading method is invoked to set the cache value, eliminating the need for manual configuration.
 
 ### Cache Loading Method
 
-The cache loading method can only be set when the cache type is **Single-item Storage** or **Object Storage**. With this method, we can perform database queries or conduct complex calculations to complete the loading of cache values.
-
+The cache loading method can only be configured when the cache type is **Single-Item Storage** or **Object Storage**. Using this method, you can implement database queries or perform complex calculations to complete cache value loading.
 ![](/workbench/server-cache.png)
 
-> This method can return data as the cache value through the `return` statement, and the type of the return value needs to match the design requirements of the cache data type.
+> This method can return data as the cache value via the `return` statement, and the returned value type must match the cache data type requirements.
 
-If you don't want to use the cache loading method to configure the cache value, the cache also supports manual setting. In **Logic Orchestration**, you can use the **Cache Operation** node to perform cache operations.
-
+If you prefer not to use the cache loading method, manual configuration is also supported. In **Logic Orchestration**, you can use the **Cache Operations** node to perform cache operations and set cache values.
 ![](/workbench/server-cache1.png)
 
-> Different cache types will provide different interaction methods.
+> Different cache types provide different interaction methods.
 
 ### How to Use Cache
 
-We can use the **Cache Operation** node in **Logic Orchestration** to perform cache operations.
+You can use the **Cache Operations** node in **Logic Orchestration** to perform cache operations.
 
 ![](/workbench/server-cache2.png)
 
-> The benefits of such operations are significant. When we obtain user information according to the id, the system will first access the cache. If the required data is hit in the cache, the cached data will be directly returned, which greatly saves data acquisition time. If the cache misses the data, the cache management mechanism will automatically call the cache loading method to query the corresponding value from the database. After querying the data, it will be set in the cache and then the required data will be returned to us. In this way, when the same access operation is performed next time, the data can be directly obtained from the cache without consuming the access performance of the database again, effectively improving the overall response speed and operation efficiency of the system.
+> The benefits of this approach are significant. When fetching user information by ID, the system first checks the cache. If the data is present in the cache, it is returned directly, significantly reducing data retrieval time. If the data is not found in the cache, the cache management mechanism automatically invokes the cache loading method to query the corresponding value from the database. Once retrieved, the data is stored in the cache and then returned. This ensures that subsequent identical requests can be served directly from the cache, avoiding repeated database queries and improving overall system responsiveness and efficiency.
 
-### Cache Storage Method
+### Cache Storage Methods
 
-The platform provides us with two cache storage methods:
+The platform provides two cache storage methods:
 
-1. **Memory Storage**: Store data in the memory of the business service. Its advantages are extremely obvious. Without the need for other hardware services, read and write operations are directly carried out in the business memory, achieving the highest efficiency. However, it also has significant limitations. On the one hand, it cannot store a large amount of data. On the other hand, when the business service needs to be deployed in a cluster, cache sharing cannot be achieved.
-2. **Redis Cache**: The platform supports accessing Redis cache through simple configuration. This cache method has many advantages. It can store a large amount of cached data, and cache sharing can be achieved among multiple business services. Moreover, as the business volume continues to increase, the Redis cache can also be deployed in a cluster. However, the disadvantage is that the Redis service needs to be deployed and installed, and there is a certain technical threshold.
+1. **In-Memory Storage**: Stores data in the business service's memory. Its advantages are evident—it requires no additional hardware services, and read/write operations are performed directly in memory for maximum efficiency. However, it has notable limitations: it cannot store large amounts of data, and when business services require cluster deployment, cache sharing is not possible.
+2. **Redis Cache**: The platform supports easy configuration for Redis cache integration. This method offers numerous benefits, including the ability to store large amounts of cached data, enabling cache sharing across multiple business services. Moreover, as business demands grow, Redis cache can be deployed in a clustered setup. The downside is that Redis requires separate deployment and installation, posing a technical barrier.
 
-We can modify the cache storage method in the **Cache Configuration** file.
+You can modify the cache storage method in the **Cache Configuration** file.
 
-![](/workbench/server-cache3.png) 
+![](/workbench/server-cache3.png)

@@ -1,27 +1,28 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Component/Method Set Release</h2>
-<p>This chapter focuses on how to carry out the version release work for component library/method set type repositories and how to choose the public capabilities.</p>
+<h2>Component/Method Set Publishing</h2>
+<p>This chapter focuses on how to conduct version releases for component library/method set type repositories and how to select publicly available capabilities.</p>
 <h3>Overview</h3>
-<p>Before reading the content of this chapter, it is recommended to read the following two chapters first:</p>
+<p>Before reading this chapter, it is recommended to review the following two sections first:</p>
 <ul>
-<li><a href="/portal/rep-version" target="_blank">Version Release</a></li>
-<li><a href="/workbench/check-code-version" target="_blank">Code Inspection and Version Release</a></li>
+<li><a href="/portal/rep-version" target="_blank">Version Publishing</a></li>
+<li><a href="/workbench/check-code-version" target="_blank">Code Review and Version Publishing</a></li>
 </ul>
-<p>UI component and method set type repositories are extensible plugins that can be referenced, and their version releases require some operations for external public declarations. With this function, we can mark which components, method sets, styles, and style variables can be used by external callers and which are only used internally as internal resources.</p>
-<p>Here, we will explain how the external output of each function is labeled according to its functions.</p>
-<h3>Open Components</h3>
-<p>In a front-end component library project, if you want to provide some developed components externally to facilitate quick reference by users, you need to make relevant selections in the <code>Project Configuration</code> file and carry out personalized configurations for the open components.</p>
+<p>UI component and method set type repositories are referenceable extension plugins, and their version releases require some publicly declared operations. With this functionality, we can mark which components, method sets, styles, and style variables are available for external callers and which are only used as internal resources within the project.</p>
+<p>Here, we will explain how each functional output is annotated according to its purpose.</p>
+<h3>Public Components</h3>
+<p>In frontend component library projects, to make certain developed components available for external use and facilitate quick referencing by users, relevant selections need to be made in the <code>project configuration</code> file, and specialized configurations must be applied to the public components.</p>
 <p><img src="/workbench/package-release.png" alt=""></p>
-<p>The platform will display all components. We just need to select the components to be publicly disclosed from them and check the boxes on the far left. After checking, three personalized configuration operation areas will appear on the right side of the selected components:</p>
+<p>The platform will display all components, and we only need to select the components to be made public and check the box on the far left. After selection, three personalized configuration areas will appear on the right side of the selected component:</p>
 <ol>
-<li><strong>Configure Component Introduction</strong>: Here, you can describe the component in detail. When developers reference the component, a tooltip will pop up when the mouse hovers over it, helping them understand the component's characteristics better.</li>
-<li><strong>Component Icon ICON</strong>: The platform supports configuring the ICON icon of the component, and the icon format supports SVG. We can copy the SVG code on <a href="https://www.iconfont.cn/" target="_blank">iconfont</a> and then paste it into the component icon editing window to easily complete the editing of the component ICON.
+<li><strong>Configure Component Description</strong>: Here, you can provide detailed explanations about the component. When developers reference this component, a tooltip will appear on hover, helping them better understand its features.</li>
+<li><strong>Only Show in Quick Add</strong>: Developers can use this property to configure whether the component is for internal use. Internal-use components are publicly available but cannot be used independently; they can only exist as subsets of fixed components. For example, a dropdown component and dropdown option component, where the dropdown option component can be configured to &quot;only show in quick add.&quot; After this configuration, the component will not appear in the component center but can only be added via the &quot;associated component&quot; quick-add feature within the dropdown component.</li>
+<li><strong>Component Icon (ICON)</strong>: The platform supports configuring the ICON for components, and the icon format supports SVG. We can copy SVG code from <a href="https://www.iconfont.cn/" target="_blank">iconfont</a> and paste it into the component icon editing window to easily edit the component ICON.
 <video width="80%" controls autoplay muted loop><source src="/workbench/package-release2.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></li>
-<li><strong>Configure Component Cover</strong>: You can configure a cover for the component. After configuration, the component will be displayed in a large format in the component center, making it more convenient for developers to select.
+<li><strong>Configure Component Cover</strong>: You can configure a cover for the component. Once configured, the component will be displayed as a large image in the component center, making it easier for developers to select.
 <img src="/workbench/package-release3.png" alt=""></li>
 </ol>
-<p>The mapping relationship of the source of personalized data for a component:</p>
+<p>The mapping relationship for a component's personalized data sources:</p>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -40,52 +41,52 @@
 </tr>
 <tr>
 <td>Component ICON</td>
-<td>ICON configured in the <code>Project Configuration</code> file</td>
+<td>ICON configured in the <code>project configuration</code> file</td>
 </tr>
 <tr>
-<td>Component Introduction</td>
-<td>Component introduction configured in the <code>Project Configuration</code> file</td>
+<td>Component Description</td>
+<td>Component description configured in the <code>project configuration</code> file</td>
 </tr>
 <tr>
 <td>Component Cover</td>
-<td>Component cover configured in the <code>Project Configuration</code> file</td>
+<td>Component cover configured in the <code>project configuration</code> file</td>
 </tr>
 <tr>
-<td>Component Grouping</td>
-<td>Automatically analyzed from the directory structure of the actual files in the project</td>
+<td>Component Group</td>
+<td>Automatically derived from the directory structure of the project's actual files</td>
 </tr>
 </tbody>
 </table>
-<h3>Open Method Sets</h3>
-<p>Whether it is a front-end project or a server-side type project, in the method set type repositories (including front-end component library type projects), we can select the method sets to be publicly disclosed in the <code>Project Configuration</code> file.</p>
+<h3>Public Method Sets</h3>
+<p>For both frontend and backend-type projects, as well as method set-type repositories (including frontend component library projects), we can select the method sets to be made public in the <code>project configuration</code> file.</p>
 <p><img src="/workbench/package-release4.png" alt=""></p>
-<p>We can select the method set files to be disclosed here, and after checking, we can configure personalized information on the right side:</p>
+<p>Here, we can choose the method set files to be made public. After selection, we can configure personalized information on the right side:</p>
 <ol>
-<li>Default ICON of Method Set: The platform supports configuring the ICON icon of the component, and the icon format supports SVG. We can copy the SVG code on <a href="https://www.iconfont.cn/" target="_blank">iconfont</a> and then paste it into the icon editing window to easily complete the editing of the component ICON. For the copy tutorial, you can refer to the ICON copy video tutorial in the Open Components section.</li>
-<li>Default Background Color of Method Set: Allows us to configure the default logical background color for the method set. It is not recommended to configure it as a light color.</li>
-<li>Default Font Color of Method Set: Allows us to configure the default logical font color for the method set. The default is white.</li>
+<li>Default Method Set ICON: The platform supports configuring the ICON for components, and the icon format supports SVG. We can copy SVG code from <a href="https://www.iconfont.cn/" target="_blank">iconfont</a> and paste it into the icon editing window to easily edit the component ICON. For the copying tutorial, refer to the ICON copying video in the Public Components section.</li>
+<li>Default Method Set Background Color: Allows us to configure the default logical background color for the method set. It is not recommended to set this to a light color.</li>
+<li>Default Method Set Font Color: Allows us to configure the default logical font color for the method set. The default is white.</li>
 </ol>
-<p>These personalized elements will affect the actual display effect in logical orchestration.
+<p>These personalized elements affect the display effect in logical orchestration.
 <img src="/workbench/package-release5.png" alt=""></p>
-<h5>Select Open Methods</h5>
-<p>Just now we selected the method set to be opened to the outside world. This only means that we publicly disclose which method set file, but it does not mean that all the methods in the method set will be opened to the outside world.</p>
+<h5>Selecting Public Methods</h5>
+<p>Earlier, we selected the method sets to be made public. This only indicates which method set files are publicly available but does not mean all methods within the set will be open to external use.</p>
 <p><img src="/workbench/package-release6.png" alt=""></p>
-<p>We can modify the <code>Whether to be Public</code> property of the method in the method set to determine whether the current method is publicly disclosed or used internally.</p>
-<p>When we choose to disclose it, we can configure different personalized configurations here, including the background color and font color of the method set.</p>
-<p>If the background color and font color are configured here, the personalized data configured according to the method will be executed; otherwise, the default personalized data in the <code>Project Configuration</code> file will be executed.</p>
-<h3>Open Style Names</h3>
-<p>In a component library project, if the default style code has been provided and commonly used style names are used for quickly configuring data, you need to create style name data in the <code>Project Configuration</code> file and choose to disclose it to the outside world.</p>
+<p>We can modify the <code>isPublic</code> property of methods in the method set to determine whether the current method is publicly available or for internal use only.</p>
+<p>After selecting public, we can configure differentiated personalized settings here, including the method set background color and font color.</p>
+<p>If background and font colors are configured here, they will follow the method's personalized data; otherwise, they will follow the default personalized data in the <code>project configuration</code> file.</p>
+<h3>Public Style Names</h3>
+<p>In component library projects, if default style code is provided and common style names are included for quick data configuration, it is necessary to create style name data in the <code>project configuration</code> file and select it for public release.</p>
 <p><img src="/workbench/package-release7.png" alt=""></p>
-<p>Here, we can check the style names we want to disclose. Once disclosed, these style names will provide quick style data for the outside world.</p>
+<p>Here, we can check the style names we want to make public. Once made public, these style names will provide quick style data externally.</p>
 <blockquote>
-<p>For the usage method of styles, please refer to <a href="/workbench/style" target="_blank">Component Styles</a>.</p>
+<p>For style usage, refer to <a href="/workbench/style" target="_blank">Component Styles</a>.</p>
 </blockquote>
-<h3>Open Style Variables</h3>
-<p>When the component library project already has the default style code and provides commonly used style variables for quickly configuring data, you need to create style variable values in the <code>Project Configuration</code> file and choose to disclose them to the outside world.</p>
+<h3>Public Style Variables</h3>
+<p>When a component library project includes default style code and provides common style variables for quick configuration, style variable values need to be created in the <code>project configuration</code> file and selected for public release.</p>
 <p><img src="/workbench/package-release8.png" alt=""></p>
-<p>Here, we can check the style variables to be disclosed. The disclosed style variables will provide data for quick selection to the outside world.</p>
+<p>Here, we can check the style variables to be made public. Publicly available style variables will provide quick selection data externally.</p>
 <blockquote>
-<p>For the usage method of styles, please refer to <a href="/workbench/style" target="_blank">Component Styles</a>.</p>
+<p>For style usage, refer to <a href="/workbench/style" target="_blank">Component Styles</a>.</p>
 </blockquote>
 
 <BottomNav />

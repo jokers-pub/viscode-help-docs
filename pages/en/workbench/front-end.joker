@@ -1,75 +1,75 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Understanding Front-end Projects</h2>
-<p>This chapter will focus on elaborating on the functions of front-end projects and their convenient development capabilities.</p>
-<p>The JOKER platform adheres to the front-end and back-end separation development model, which endows developers with flexibility, enabling them to concentrate on the development of either front-end or back-end projects. This article focuses on the front-end part and elaborates on its functions in detail.</p>
+<h2>Understanding Frontend Projects</h2>
+<p>This chapter focuses on the functionalities of frontend projects and their convenient development capabilities.</p>
+<p>The JOKER platform adheres to a frontend-backend separation development model, providing developers with the flexibility to concentrate on either frontend or backend project development. This article specifically addresses the frontend portion, offering a detailed explanation of its features.</p>
 <h3>Overview</h3>
-<p>The front-end project is mainly responsible for rendering pages on terminals and handling business logic, and it is a crucial presentation layer for Internet applications.</p>
-<p>In the field of front-end development, the JOKER intelligent development platform offers an extremely flexible development experience. With the help of this platform, we can complete the development of all front-end assets in a visual way, covering aspects such as <strong>front-end components</strong>, <strong>front-end methods</strong>, and <strong>front-end pages</strong>.</p>
-<p>The platform has created a complete development environment that supports various flexible development scenarios, such as <strong>event parameter passing</strong>, <strong>event modifiers</strong>, <strong>block rendering</strong>, <strong>block parameter passing</strong>, <strong>component life cycle</strong>, etc. On this platform, developers can have an experience similar to local development, freely display their creativity and realize various development ideas.</p>
+<p>Frontend projects are primarily responsible for rendering pages and handling business logic at the terminal level, serving as the critical presentation layer of internet applications.</p>
+<p>In the realm of frontend development, the JOKER Intelligent Development Platform offers an exceptionally flexible development experience. This platform enables us to visually develop all frontend assets, including <strong>frontend components</strong>, <strong>frontend methods</strong>, and <strong>frontend pages</strong>.</p>
+<p>The platform provides a comprehensive development environment supporting diverse flexible development scenarios such as <strong>event parameter passing</strong>, <strong>event modifiers</strong>, <strong>section rendering</strong>, <strong>section parameter passing</strong>, and <strong>component lifecycle</strong>. Developers on this platform enjoy an experience akin to local development, unleashing their creativity to realize various development ideas.</p>
 <p><img src="/workbench/front-end.png" alt=""></p>
 <h3>Functional Elements</h3>
-<p>A complete front-end project (application) consists of various types of files. These files mainly include the following types:</p>
+<p>A complete frontend project (application) combines various types of files, including:</p>
 <ul>
-<li><strong>Components</strong>: As a public UI interaction area, it can be encapsulated into a component. When using it, you just need to drag it into the specified position to achieve component reference, which effectively improves code reusability and reduces development difficulty.</li>
-<li><strong>Method Sets</strong>: They mainly carry the collection of public methods in the project. We can encapsulate method sets with different business functions according to specific business scopes and provide the ability to call methods externally. For example, common ones include time processing method sets, encryption method sets, etc.</li>
-<li><strong>Pages</strong>: A page is essentially also a kind of component, but different from general components, its purpose is to achieve the final page rendering. It has no input parameters, but it has the function of configuring routing information. By configuring the routing information of the current page, the association relationship between the method address and the page can be established.</li>
-<li><strong>Configuration Files</strong>: They are used to manage the public configurations in the current project, such as public styles, which components are open (for component library type projects), which method sets are open (applicable to component library and method set type projects), routing management, global variables, global methods, and NPM references.</li>
-<li><strong>Environment Variables</strong>: This file is mainly responsible for declaring and managing variables in different environments. With the help of different environment variables, the differential running effects of the project in different environments can be achieved.</li>
-<li><strong>Request Management</strong>: It is mainly responsible for managing all the API interfaces that can be called under the current application. Here, we can maintain the addresses, inputs, outputs, and global request configurations of APIs. The declared requests can help quickly implement interface calls in a visual way during the logic development process.</li>
+<li><strong>Components</strong>: A public UI interaction area can be encapsulated as a component. By simply dragging it into a designated location, components can be referenced, improving code reusability and reducing development complexity.</li>
+<li><strong>Method Sets</strong>: Mainly host public method collections in projects. We can encapsulate method sets for specific business scopes and provide method invocation capabilities. Common examples include time-handling method sets and encryption method sets.</li>
+<li><strong>Pages</strong>: Essentially, a page is also a component, but unlike general components, its purpose is final page rendering. It lacks input parameters but supports routing configuration to establish relationships between method addresses and pages.</li>
+<li><strong>Configuration Files</strong>: Manage public configurations in the current project, such as common styles, exposed components (for component library projects), exposed method sets (for component library or method set projects), routing management, global variables, global methods, and NPM references.</li>
+<li><strong>Environment Variables</strong>: This file declares and manages variables across different environments, enabling projects to run with differentiated effects in various scenarios.</li>
+<li><strong>Request Management</strong>: Manages all API calls available for the current application. Here, we maintain API addresses, inputs and outputs, and global request configurations. Declared requests facilitate rapid visual API invocation during logic development.</li>
 </ul>
 <h3>Component/Page Development</h3>
-<p>In the front-end editor, the interface is divided into two areas on the left and right, namely the <code>Development Canvas Area</code> and the <code>Property Area</code>.</p>
-<p><img src="/workbench/front-end2.png" alt="Screenshot of the Front-end Editor"></p>
+<p>In the frontend editor, the interface divides into two areas: the <code>Development Canvas</code> and the <code>Properties Panel</code>.</p>
+<p><img src="/workbench/front-end2.png" alt="Frontend Editor Screenshot"></p>
 <ol>
-<li><strong>Development Canvas Area</strong>: In this area, we can drag <strong>components</strong> into the working canvas to complete the addition operation of components. Meanwhile, if a component has been added, after selecting it, we can modify its properties or perform operations such as deleting the component.</li>
-<li><strong>Property Area</strong>: When no component is selected, the component property panel is displayed by default. Here, we can change the style file of the component or quickly import nodes through HTML. When a component is selected, the property area will display the exclusive property panel of this component, which contains three types of property configurations: <code>Properties</code>, <code>Events</code>, and <code>Areas</code>.</li>
+<li><strong>Development Canvas</strong>: We can drag <strong>components</strong> here to add them. Selected components allow property modifications or deletions.</li>
+<li><strong>Properties Panel</strong>: When no component is selected, the component properties panel appears by default, allowing style adjustments or HTML node imports. Selecting a component reveals its specific properties panel, including <code>Attributes</code>, <code>Events</code>, and <code>Section</code> configurations.</li>
 </ol>
-<p>When we open <code>component</code> or <code>page</code> type files, we will find that there are two menus, <code>Component Data</code> and <code>Component Center</code>, displayed on the left side of the workbench.</p>
+<p>When opening a <code>Component</code> or <code>Page</code> file, two menus appear on the left: <code>Component Data</code> and <code>Component Center</code>.</p>
 <p><img src="/workbench/front-end3.png" alt="Related Screenshot"></p>
 <ul>
-<li><strong>Component Data</strong>: With the help of this menu, we can manage all the data inside the component, covering <strong>state data</strong>, <strong>logic/events</strong>, and the layout <strong>outline</strong>.</li>
-<li><strong>Component Center</strong>: With the help of the component center, we can quickly introduce third-party referenced components into our components or pages by dragging.</li>
+<li><strong>Component Data</strong>: Manages all data within the component, covering <strong>state data</strong>, <strong>logic/events</strong>, and the layout <strong>outline</strong>.</li>
+<li><strong>Component Center</strong>: Allows drag-and-drop import of third-party components into our components or pages.</li>
 </ul>
 <h3>Method Set Development</h3>
-<p>We can create method set files in the <code>Method</code> folder. A method set has the ability to provide multiple methods externally.</p>
-<p><img src="/workbench/front-end4.png" alt="Screenshot Related to Method Set Development"></p>
-<p>During method development, the platform also provides unit test scripts. These scripts can assist us to effectively verify the correctness and stability of methods, ensure that each method can run as expected under various input conditions, help to discover and correct potential logical errors in a timely manner, improve code quality, and ensure the reliability and robustness of the entire method set.</p>
+<p>We can create method set files in the <code>Methods</code> folder, where each set can expose multiple methods.</p>
+<p><img src="/workbench/front-end4.png" alt="Method Set Development Screenshot"></p>
+<p>During method development, the platform provides unit test scripts. These help verify the correctness and stability of methods, ensuring robustness across various input conditions.</p>
 <h3>Configuration Files</h3>
-<p>There is a <code>Project Configuration</code> file in each repository, and we can configure and manage the public data of the project through this file.</p>
+<p>Each repository includes a <code>Project Configuration</code> file for managing public project data.</p>
 <p><img src="/workbench/front-end5.png" alt=""></p>
-<p>This file has the following capabilities (which may vary according to different repository classifications):</p>
-<h4>Exposing Components Externally</h4>
-<p>You can check the components that need to be exposed externally here, so that when they are referenced by other projects, they can provide corresponding component capabilities. (It only takes effect in component type projects)</p>
+<p>This file offers the following capabilities (varies by repository type):</p>
+<h4>Exposed Components</h4>
+<p>Components marked here become available for other projects to reference (applicable only to component-type projects).</p>
 <p><img src="/workbench/front-end6.png" alt=""></p>
-<h4>Exposing Methods Externally</h4>
-<p>You can check the methods that need to be exposed externally here, so that when they are referenced by other projects, they can provide corresponding method functions. (It only takes effect in component and method set type projects)</p>
+<h4>Exposed Methods</h4>
+<p>Selected methods here are exposed for other projects to use (applies to component and method set projects).</p>
 <p><img src="/workbench/front-end7.png" alt=""></p>
 <h4>Project Style Management</h4>
-<p>The platform provides us with a dedicated area for maintaining the public styles of the global application. In this area, we can centrally manage public style names and style variables. After these style names and style variables are uniformly maintained, we can quickly call them during the development of components and pages, which greatly improves the development efficiency and ensures the consistency and standardization of the style presentation of the entire application.</p>
+<p>A dedicated area for maintaining global application styles, including style names and variables, ensuring consistency across components and pages.</p>
 <p><img src="/workbench/front-end8.png" alt=""></p>
 <h4>NPM Package Management</h4>
-<p>The underlying dependent packages of the current project can be maintained here. By installing dependent packages, the integration of third-party functions can be achieved, and the relevant functions in the packages can be used in the project.</p>
+<p>Manages project dependencies, enabling integration of third-party libraries for enhanced functionality.</p>
 <p><img src="/workbench/front-end9.png" alt=""></p>
 <blockquote>
-<p>Different from the <code>Component Method Market</code>, what is provided here is a more underlying library reference, while the component method market is an extended reference for packaged and visualized assets.</p>
+<p>Unlike the <code>Component Method Marketplace</code>, this feature handles lower-level library references, while the marketplace focuses on pre-packaged visual assets.</p>
 </blockquote>
 <h4>Routing Management</h4>
-<p>In the front-end projects of the <strong>application</strong> type, we can maintain the routing information of the current project here, including: the default routing address and routing guards.</p>
+<p>In <strong>application-type</strong> frontend projects, we can manage routing information, including default routes and route guards.</p>
 <p><img src="/workbench/front-end10.png" alt=""></p>
-<h4>Global Methods/Global Variables</h4>
-<p>The platform allows us to create global variables and global methods, and this function corresponds to <code>@Gloabl</code> in the front-end core.</p>
+<h4>Global Methods/Variables</h4>
+<p>The platform supports creating global variables and methods, corresponding to <code>@Global</code> in the frontend core.</p>
 <p><img src="/workbench/front-end11.png" alt=""></p>
 <h3>Environment Variables</h3>
-<p>The platform provides a complete function for maintaining environment variables.</p>
+<p>The platform provides comprehensive environment variable management.</p>
 <p><img src="/workbench/front-end12.png" alt=""></p>
-<p>The platform allows us to create multiple sets of environments inside it and also customize environment variables. The declared environment variables can be called through <code>import.meta.define</code>.</p>
+<p>Multiple environments can be created, with custom variables accessible via <code>import.meta.define</code>.</p>
 <p><img src="/workbench/front-end13.png" alt=""></p>
 <h3>Request Management</h3>
-<p>In the front-end projects of the &quot;application&quot; type, the <code>Request Management</code> option will be displayed in the left menu. Through this menu, we can comprehensively maintain all the API interfaces in the current project. The platform endows powerful, complete, and rich interface processing capabilities, which are manifested as follows:</p>
+<p>In &quot;application-type&quot; frontend projects, the <code>Request Management</code> menu appears, allowing full API maintenance. Key features include:</p>
 <ul>
-<li><strong>Configuring Request Parameters</strong>: We can freely set the <strong>request timeout period</strong> to avoid long waiting times for requests due to network problems and improve the user experience; we can also customize the <strong>request data processing</strong> method to ensure that data is passed between interfaces in an appropriate format; at the same time, we can flexibly configure the <strong>request aspect events</strong> to execute specific logic before and after requests to meet diverse business needs.</li>
-<li><strong>Convenient Interface Declaration and Data Simulation</strong>: It supports quickly importing interface declarations according to JSON, which greatly improves the efficiency of interface creation and reduces the workload of manual writing; in addition, it also has the advanced function of automatically generating MOCK data. During the development process, without relying on real back-end data, the front-end functions can be quickly debugged and developed, accelerating the project iteration speed.</li>
+<li><strong>Configuring Request Parameters</strong>: Set <strong>request timeout</strong>, customize <strong>data processing</strong>, and define <strong>request aspect events</strong>.</li>
+<li><strong>Efficient Interface Declaration &amp; Data Mocking</strong>: Supports JSON imports for quick API declaration and automated MOCK data generation for faster frontend debugging.</li>
 </ul>
 <p><img src="/workbench/front-end14.png" alt=""></p>
 

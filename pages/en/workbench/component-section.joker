@@ -1,11 +1,11 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Component Blocks</h2>
-<p>This chapter mainly elaborates on the concept of component blocks and the functions they can achieve.</p>
+<h2>Component Section</h2>
+<p>This chapter elaborates on the concept of component sections and their functionalities.</p>
 <h3>Overview</h3>
-<p>Component blocks are a crucial expansion method in advanced component development. With their help, we can open up the display areas within components, enabling in-depth expansion of the component layout in the form of custom layouts when using components.</p>
-<h3>How to Define Blocks</h3>
-<p>During the component development process, we can drag the &quot;Rendering Block&quot; component into the specified area position to open up the custom layout function for that area.</p>
+<p>Component sections are a crucial extension method in advanced component development. They allow us to expose display areas within components, enabling deep layout extensions through custom layouts when using the component.</p>
+<h3>How to Define a Section</h3>
+<p>During component development, we can drag and drop a <code>Render Section</code> component into specified areas to open up custom layout capabilities for those regions.</p>
 <p><img src="/workbench/component-base12.png" alt=""></p>
 <h4>Component Properties</h4>
 <table class="mkd-table">
@@ -18,75 +18,75 @@
 </thead>
 <tbody>
 <tr>
-<td>Default Display Block</td>
+<td>Default Section</td>
 <td>Boolean</td>
-<td>If this value is <strong>true</strong>, when the component is introduced into other components or pages, this block will be enabled by default, facilitating quick editing of the block.</td>
+<td>If set to <strong>true</strong>, when the component is imported into other components or pages, this section will be enabled by default for quick editing.</td>
 </tr>
 <tr>
 <td>Identifier</td>
 <td>String</td>
-<td>Used to name the rendering block (English letters are required). If a component has multiple dynamic rendering parts, they can be distinguished by configuring this identifier. The default value is <code>default</code>.</td>
+<td>Used to name the render section (must use English letters). If a component has multiple dynamic rendering parts, this identifier helps differentiate them (default: <code>default</code>).</td>
 </tr>
 <tr>
-<td>Block Description</td>
+<td>Section Description</td>
 <td>String</td>
-<td>This description helps developers quickly understand the function of the block when using the component.</td>
+<td>Helps developers quickly understand the section's functionality.</td>
 </tr>
 <tr>
-<td>Block Remark/Name</td>
+<td>Section Note/Name</td>
 <td>String</td>
-<td>A nickname can be given to the block, which not only helps developers quickly understand the meaning of the block but also makes the display in the outline tree clearer.</td>
+<td>A nickname for the section, facilitating quick comprehension and clearer display in the outline tree.</td>
 </tr>
 <tr>
 <td>Associated Components</td>
 <td>Array</td>
-<td>Components that can be used in association with the current component can be selected here, helping developers quickly insert sub-components that meet the requirements into the block.</td>
+<td>Select components related to the current one to help developers quickly insert compliant child components into the section.</td>
 </tr>
 <tr>
-<td>Block Parameters</td>
+<td>Section Parameters</td>
 <td>Array</td>
-<td>The platform supports configuring block parameters, through which data within the component can be passed to dynamically rendered sub-components via the block, meeting the needs of more complex and flexible development.</td>
+<td>Supports configuring section parameters to pass internal component data to dynamically rendered child components, enabling more flexible development.</td>
 </tr>
 </tbody>
 </table>
-<h3>Default Display Block</h3>
-<p>We can configure the default display state of a block by modifying the &quot;Default Display Block&quot; property of the &quot;Rendering Block&quot; component. In some specific scenarios, when we hope that a block is enabled by default when the component is referenced, for example, when developing a general form component, there is a rendering block for displaying the operation buttons at the bottom of the form. To make it convenient for developers using the form component, without having to manually enable this block to add buttons like &quot;Save&quot; and &quot;Reset&quot; every time, the &quot;Default Display Block&quot; property of this rendering block can be set to <code>true</code>. In this way, when other components reference this form component, the bottom operation button area will be displayed by default, and developers can directly add the required buttons in this area, improving development efficiency.</p>
-<h3>Block Identifier</h3>
-<p>When a component has multiple blocks, we need to define block identifiers for them to distinguish the blocks.</p>
+<h3>Default Section</h3>
+<p>We can modify the <code>Default Section</code> property of the <code>Render Section</code> component to configure its default display state. In specific scenarios, such as when developing a universal form component with a section for action buttons, setting <code>Default Section</code> to <code>true</code> allows the button area to display by default when the form is imported, saving developers from manually enabling it each time.</p>
+<h3>Section Identifier</h3>
+<p>When a component contains multiple sections, we need to define identifiers to distinguish them.</p>
 <p><img src="/workbench/component-section.png" alt=""></p>
-<p>Take the <strong>Form Input Item</strong> component as an example. It provides three blocks:</p>
+<p>For example, a <strong>Form Input</strong> component provides three sections:</p>
 <ol>
-<li>Default Block (<code>default</code>): The form item editing area, which is displayed by default.</li>
-<li>Title Block (<code>label</code>): Used to display the title of the form input item.</li>
-<li>Error Block (<code>error</code>): Used to display the prompt information after form validation fails.</li>
+<li>Default section (<code>default</code>): Form item editing area (displayed by default).</li>
+<li>Label section (<code>label</code>): Displays the form input title.</li>
+<li>Error section (<code>error</code>): Displays validation error messages.</li>
 </ol>
 <h3>Associated Components</h3>
-<p>When there is an association relationship between components, by using the function of associated components, sub-components can be added to blocks quickly and accurately. Take the drop-down box component as an example. The content block of this component needs to add the &quot;Option&quot; component to complete the configuration of the drop-down box options. At this time, by configuring the association relationship between the two, when developers operate on the content block of the drop-down box component, the system can conveniently add the &quot;Option&quot; component for it according to the preset association relationship, effectively improving development efficiency and accuracy and avoiding errors or omissions that may occur due to manual addition.</p>
+<p>When components are interrelated, the <em>Associated Components</em> feature enables quick and accurate addition of child components to sections. For instance, a dropdown component's content section requires adding <code>Option</code> components to configure dropdown options. By establishing this association, the system can automatically suggest adding <code>Option</code> components when editing the dropdown's content section, improving efficiency and reducing errors.</p>
 <p><img src="/workbench/component-section2.png" alt=""></p>
-<p>After we configure the associated components, when we quickly add them through the drop-down box component, the associated components will be displayed first, facilitating developers to quickly integrate them.
+<p>When associated components are configured, they appear first in the quick-add menu.
 <img src="/workbench/component-section3.png" alt=""></p>
-<h3>Block Parameters</h3>
-<p>Block parameters are an extremely practical function in advanced component development. They enable us to pass the data inside the component to the underlying components through the block, achieving the purpose of using the internal variables of the component externally.</p>
-<p>Take the tree component as an example. Suppose we want to expand the display effect of each node in the tree component. At this time, the tree component needs to pass the data of each node into the block so that developers can obtain the tree node data and freely expand the display effect. And this data transfer process needs to rely on block parameters to achieve. In this way, developers can customize the display logic of components more flexibly, meet diverse business needs, and improve the reusability and expandability of components.</p>
-<h4>How to Add Block Parameters</h4>
+<h3>Section Parameters</h3>
+<p>Section parameters are an extremely practical feature in advanced component development. They allow internal component data to be passed to child components via sections, enabling external use of internal variables.</p>
+<p>For example, with a tree component, if we want to customize the display of each node, the tree component needs to pass node data to the section. Developers can then access this data to freely extend the display logic. This data transfer is achieved through section parameters, enhancing component reusability and scalability.</p>
+<h4>How to Add Section Parameters</h4>
 <p><img src="/workbench/component-section4.png" alt=""></p>
-<p>To add block parameters, you can first select the block that needs to pass parameters, and then perform relevant operations in the property panel. During this process, the following types of data need to be maintained:</p>
+<p>To add parameters, select the target section and operate in the properties panel. The following data must be maintained:</p>
 <ol>
-<li><strong>Remark</strong>: As the title of the parameter, its role is to help developers quickly understand the meaning of the parameter. For example, for a parameter representing the user's age, the remark can be set as &quot;User Age&quot;, allowing developers to understand what the parameter represents at a glance.</li>
-<li><strong>Tip</strong>: Provide comprehensive parameter descriptions to help developers understand the parameters in depth. Taking the user age parameter as an example, the tip content can be &quot;This parameter is used to pass the user's age information, with a value range of 0 - 120. When using this parameter, it is necessary to ensure that the value is within a reasonable range&quot;, so that developers have a clear understanding of the purpose, range, and precautions for using the parameter.</li>
-<li><strong>Type</strong>: Clearly define the type of the parameter, which helps developers know the composition form of the parameter. For example, the type of the user age parameter can be defined as &quot;Numeric&quot;, so that developers know what type of data the parameter should receive.</li>
-<li><strong>Value</strong>: Here, specific values in the current component can be bound in the form of expressions. For example, if there is a variable <code>userAge</code> storing the user's age in the component, the value can be bound here through the expression <code>{{userAge}}</code>, realizing the transfer of variables within the component as parameters.</li>
+<li><strong>Note</strong>: The parameter title helps developers quickly understand its purpose (e.g., &quot;User Age&quot;).</li>
+<li><strong>Hint</strong>: A detailed explanation of the parameter (e.g., &quot;This parameter passes user age data, ranging from 0–120. Ensure values are within bounds.&quot;).</li>
+<li><strong>Type</strong>: Specifies the parameter type (e.g., &quot;Number&quot; for age).</li>
+<li><strong>Value</strong>: Binds to a component variable via expressions (e.g., <code>{{userAge}}</code>).</li>
 </ol>
 <blockquote>
-<p>It should be noted that parameter transfer is carried out in order. We can manage the transfer order of parameters through the sorting function. Since parameters are transferred in order, there is no need to define parameter names when defining block parameters. This design simplifies the parameter transfer process and improves development efficiency.</p>
+<p>Note: Parameters are passed sequentially. Use the sort function to manage their order. Since parameters are positional, names are unnecessary, simplifying the process.</p>
 </blockquote>
-<h4>How to Receive Block Parameters</h4>
-<p>In the block management part of the component property panel, we only need to click the &quot;Add Parameter&quot; button to receive parameters. When we click this button, the platform will prompt all the parameters passed from the block. It should be noted that parameters must be received in order, and selective reception is not allowed. If the block does not provide any parameters, the &quot;Add Parameter&quot; button will not be displayed here.</p>
+<h4>How to Receive Section Parameters</h4>
+<p>In the section management panel, click &quot;Add Parameter&quot; to receive parameters. The platform lists all parameters passed from the section. Parameters must be received in order, and the button is hidden if no parameters are provided.</p>
 <p><img src="/workbench/component-section5.png" alt=""></p>
-<p>We receive the node data parameter passed by the <code>tree</code> component block here and name it <code>node</code>. In this way, we can read this parameter in the form of an expression in the components under this block.
+<p>Here, we receive the <code>tree</code> component's node data parameter as <code>node</code>, making it accessible via expressions in child components.
 <img src="/workbench/component-section6.png" alt=""></p>
-<h3>Linked Rendering</h3>
-<p>Block-linked rendering is an <strong>advanced conditional</strong> block rendering. It allows us to open a block by judging whether there is content in the rendering block. Before understanding this concept, let's first look at a piece of code:</p>
+<h3>Conditional Rendering</h3>
+<p>Conditional section rendering is an <strong>advanced feature</strong> that enables sections to render based on whether they contain content. Consider this code snippet:</p>
 <pre><code class="language-xml">&lt;template&gt;
     &lt;jk-input&gt;
         @if($section.append){
@@ -97,8 +97,8 @@
     &lt;/jk-input&gt;
 &lt;/template&gt;
 </code></pre>
-<p>The meaning of this code is that the <code>append</code> rendering block will be passed in only when the user enables the <code>append</code> block; otherwise, the block will not be passed in.</p>
-<p>In the visual platform, we can perform association configuration in a component's block, and the platform will automatically identify the rendering block.</p>
+<p>This code means the <code>append</code> section is only passed if the user enables it. Otherwise, the section is omitted.</p>
+<p>In the visual platform, we can configure this association in a component's section, and the platform will automatically recognize the render section.</p>
 <p><img src="/workbench/component-section7.png" alt=""></p>
 
 <BottomNav />

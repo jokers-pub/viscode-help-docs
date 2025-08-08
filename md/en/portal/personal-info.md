@@ -1,18 +1,29 @@
-## Profile Modification
+## Profile Modification  
 
-During the use of the platform, the accuracy and personalized display of personal information are of great importance. This chapter will elaborate on how to modify personal information to help you better manage your image and profile on the platform.
+Maintaining accurate and personalized information is crucial when using the platform. This chapter provides a detailed guide on how to modify your profile to better manage your presence and information on the platform.  
 
-### Entering the Profile Modification Page
+### Accessing the Profile Modification Page  
 
-1. **Step 1: Open the Personal Home Page**: First, click on the avatar in the upper right corner of the platform interface to enter your personal home page. The personal home page is the central place where your personal information on the platform is aggregated, and multiple operations related to personal profiles can be carried out here.
-2. **Step 2: Locate the Profile Modification Entrance**: In the left menu area of the personal home page, carefully look for and click on the "Profile Modification" menu option. This entrance is the key access to the page for modifying personal detailed information.
-  ![Profile Modification Entrance](/portal/personal-info.png)
+1. **Step 1: Open Your Personal Page**  
+   First, click on your avatar in the top-right corner of the platform interface to enter your personal homepage. Your personal homepage serves as the central hub for all your profile-related information and operations.  
 
-### Modifying Personal Information
+2. **Step 2: Locate the Profile Modification Entry**  
+   In the left-hand menu section of your personal homepage, locate and click on the **"Profile Modification"** option. This entry serves as the gateway to the page where you can update your personal details.  
+   ![Profile Modification Entry](/portal/personal-info.png)  
 
-1. **Modifiable Content**: After entering the profile modification page, you will find that there are abundant editable options provided here, mainly including the nickname, personal introduction, and avatar. This information not only represents your identity on the platform but also enables other users to better understand you.
-2. **Operation for Modifying the Avatar**: If you want to change your personal avatar to make it more in line with your style or display a specific image, just click on the prominent "Set Avatar" button on the page. After clicking, the system will pop up a corresponding file selection window, and you can select the desired picture from your local device as the new avatar. Common picture formats such as JPEG and PNG are supported to ensure that you can easily find a suitable picture for replacement.
-  ![Avatar Modification Interface](/portal/personal-info2.png)
-3. **Modifying the Nickname and Personal Introduction**: For modifying the nickname, you can input a new nickname that is concise, easy to remember, and has personal characteristics according to your preferences or needs. When modifying the personal introduction, you can use brief and refined language to describe your hobbies, professional skills, or goals on the platform, etc., so that other users can have a deeper understanding of you through the introduction. After completing all the modifications, click on the "Save" button to successfully update your personal information.
+### Modifying Personal Information  
 
-Through the above simple steps, you can easily modify your personal information on the platform to better display yourself and enhance your usage experience on the platform. 
+1. **Editable Fields**  
+   Upon entering the profile modification page, you will see multiple editable options, including your **nickname, bio, and profile picture**. This information represents your identity on the platform and helps other users learn more about you.  
+
+2. **Changing Your Profile Picture**  
+   To update your profile picture and better reflect your personal style or preferred representation, simply click the prominent **"Set Avatar"** button. A file selection window will appear, allowing you to choose an image from your local device. The platform supports common formats such as **JPEG, PNG**, and others, ensuring you can easily locate and upload a suitable replacement.  
+   ![Profile Picture Modification Interface](/portal/personal-info2.png)  
+
+3. **Updating Nickname and Bio**  
+   - **Nickname:** Modify your nickname to something concise, memorable, and uniquely representative of your identity.  
+   - **Bio:** Use brief yet expressive text to describe your interests, professional skills, or goals on the platform, enabling other users to understand you better.  
+   
+   After making all desired changes, click the **Save** button to successfully update your profile information.  
+
+By following these simple steps, you can effortlessly customize your profile to better represent yourself and enhance your overall experience on the platform.

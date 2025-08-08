@@ -1,19 +1,19 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>My Repository</h2>
-<p>During the use of the platform, &quot;My Repository&quot; is an important module for centrally managing and viewing the repositories related to individuals. It provides users with convenient operation entrances and helps them manage relevant project resources efficiently. This chapter will introduce the basic functions of &quot;My Repository&quot; in detail.</p>
-<h3>Entering My Repository</h3>
+<p>In the platform's usage workflow, &quot;My Repository&quot; serves as a critical module for centralized management and viewing of all repositories associated with your account. It provides users with streamlined access to efficiently manage project resources. This chapter details the core functionalities of &quot;My Repository.&quot;</p>
+<h3>Accessing My Repository</h3>
 <ol>
-<li><strong>Locate the Personal Homepage</strong>: Firstly, open the platform and log in to your personal account. Then, find and click on the profile picture in the upper right corner of the page to enter the personal homepage. The personal homepage is the exclusive space for users on the platform, gathering various personal-related settings and function entrances.</li>
-<li><strong>Click on &quot;My Repository&quot;</strong>: On the personal homepage, carefully look for and click on the &quot;My Repository&quot; option. This operation will directly jump to the repository list page, where you can comprehensively browse and manage the repository resources associated with yourself.
-<img src="/portal/personal-my-repository.png" alt="Operation of entering My Repository"></li>
+<li><strong>Navigate to Personal Homepage</strong>: First, log in to the platform and locate your profile avatar in the top-right corner of the page. Click it to enter your personal homepage, a dedicated space that aggregates all your account settings and functional entry points.</li>
+<li><strong>Click &quot;My Repository&quot;</strong>: On the personal homepage, find and select the &quot;My Repository&quot; option. This action will redirect you to the repository list page, where you can comprehensively browse and manage all repositories linked to your account.<br>
+<img src="/portal/personal-my-repository.png" alt="Accessing My Repository"></li>
 </ol>
-<p><strong>Note</strong>: The page displays all the repositories in the teams you joined or created, covering all the repository projects you are involved in under different team collaboration scenarios, facilitating you to manage and view them in one stop.</p>
-<h3>Filtering and Searching</h3>
+<p><strong>Note</strong>: This page displays all repositories from teams you’ve joined or created, covering every repository involved in your collaborative workflows across different teams. It enables centralized management for convenience.</p>
+<h3>Filter and Search</h3>
 <ol>
-<li><strong>Location of the Query Function</strong>: When you enter the repository list page, you will find that the platform thoughtfully provides a query function. The entrance of this function is usually located in a conspicuous position on the page, making it convenient for you to quickly find and use it.
-<img src="/portal/personal-my-repository2.png" alt="Query function on the repository list page"></li>
-<li><strong>Usage Method</strong>: You just need to input keywords in the query box, such as the name of the repository, keywords related to relevant projects, etc. Then the platform will quickly conduct a matching search among all the repositories and rapidly filter out the repositories that you participate in and meet the conditions, helping you accurately locate the target repositories among numerous repositories, saving your searching time and improving work efficiency.</li>
+<li><strong>Locating the Search Feature</strong>: Upon entering the repository list page, you’ll notice a prominently placed search function designed for quick access.<br>
+<img src="/portal/personal-my-repository2.png" alt="Search Function on the Repository List Page"></li>
+<li><strong>Usage Method</strong>: Simply enter a keyword in the search box—such as a repository name or project-related term—and the platform will instantly perform a matching search across all repositories. This allows you to quickly identify target repositories, saving time and enhancing productivity.</li>
 </ol>
 
 <BottomNav />

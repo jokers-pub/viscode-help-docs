@@ -1,50 +1,68 @@
-## Understand Repository Functions
+## Understanding Repository Features
 
-This chapter focuses on the basic capabilities of repositories, aiming to help you quickly familiarize yourself with repositories for efficient utilization.
+This chapter focuses on the core functionalities of repositories, designed to help you quickly familiarize yourself with the system and enhance your operational efficiency.
 
-### Function Display
+### Feature Overview
 
-Upon entering the repository page, you will first see the basic introduction and core functions of the repository, as shown in the following figure:
+Upon entering the repository page, you will immediately see a concise introduction to the repository and its core functions, as illustrated below:
 
-![Repository Information Display](/portal/rep-info.png)
+![](/portal/rep-info.png)
 
-The repository page is one of the most frequently used pages. Here, you can not only jump to the Workbench to start project development conveniently but also maintain repository versions to ensure orderly code iteration. Meanwhile, promptly handling repository Issues helps continuous project optimization, fully meeting key needs in the development process.
+The repository page is one of the most frequently used interfaces in daily operations. Here, you can:  
+- Seamlessly navigate to the **Workspace** to initiate project development.  
+- Perform **repository version maintenance** to ensure orderly code iterations.  
+- Address **repository issues** promptly to facilitate continuous project optimization.  
 
-### Access Workbench
+This comprehensive page meets all critical requirements throughout the development lifecycle.
 
-Click the `Enter Workbench` button at the top of the repository to enter the repository's Workbench, where you can complete daily development tasks.  
-![Enter Workbench Button](/portal/rep-info3.png)
+### Accessing the Workspace
 
-### Code
+Click the `Enter Workspace` button at the top of the repository page to access the development environment, where daily coding tasks are performed.  
+![](/portal/rep-info3.png)
 
-Here, you can quickly preview the code directory structure of a repository. Clicking on a file will automatically jump to the Workbench and open the target file. Additionally, you can quickly view the file's update time and content here, helping you stay informed about the code update dynamics of the repository.
+### Code Section
 
-![Code Directory Preview](/portal/rep-info2.png)
+This section provides a quick preview of the repository's **directory structure**. Key features include:  
+- **One-click navigation**: Clicking a file automatically opens it in the Workspace.  
+- **Update tracking**: View file modification timestamps and change logs to stay informed about codebase updates.  
+
+![](/portal/rep-info2.png)
 
 ### Issues
 
-In our platform, the Issues function is a practical tool to assist repository optimization. When issues occur in a repository, such as code errors, functional abnormalities, or improvement suggestions like optimizing code structure or enhancing operational efficiency, team members can create Issues for feedback. In an Issue, detail the problem phenomenon, expected results, and relevant suggestions.
+Our platform's **Issue Tracker** is a powerful tool for repository optimization. Users can:  
+- **Report problems**: Document bugs, functional anomalies, or enhancement suggestions (e.g., code structure improvements, performance optimizations).  
+- **Track resolution progress**: Issues transition through statuses ("New" → "In Progress" → "Resolved") for transparency.  
+- **Collaborate**: Team members can discuss solutions via comments to accelerate issue resolution and maintain repository stability.  
 
-Issues have a status tracking function, clearly displaying the processing progress from "New" to "In Progress" and then to "Resolved," facilitating team members in understanding the advancement. Members can also comment and communicate under Issues to jointly discuss solutions, promoting rapid problem resolution and ensuring stable repository operation.
+![](/portal/rep-info4.png)
 
-![Issue Management Interface](/portal/rep-info4.png)
+### Activity Feed
 
-### Activities
+The **Repository Activity Panel** delivers real-time updates, including:  
+- **Version release information** for tracking code iterations.  
+- **Issue lifecycle updates** to monitor problem resolution statuses at a glance.  
 
-In the repository Activities panel, you can quickly grasp the real-time dynamics of the repository. This panel integrates repository release information, keeping you informed of code updates and iterations, and displays repository Issue activities, making it clear whether new problems are raised or solutions are in progress, helping you comprehensively control the repository status.
-
-![Repository Activity Timeline](/portal/rep-info5.png)
+![](/portal/rep-info5.png)
 
 ### Releases
 
-As the core area for repository version management, Releases provide you with comprehensive and convenient version management functions. Here, you can clearly view all version lists of the repository, with the release time and update content of each version at a glance.
+The **Releases** section serves as the central hub for **version control**, offering:  
+- A complete **version history** with publish dates and changelogs.  
+- Key operations:  
+  - `Clone` specific versions for branch-based work.  
+  - `Export code` from selected versions for external use.  
 
-Moreover, Releases endow you with multiple practical operation capabilities. When you need to work based on a specific version, you can easily `Clone` a specified version; if you need to obtain code from a specific version for other purposes, it also supports `Exporting the code of a version`, meeting diversified development and management needs to facilitate efficient development. [Version Release](/portal/rep-version)
-
-![Repository Release Management](/portal/rep-info6.png)
+Learn more: [Version Publishing](/portal/rep-version)  
+![](/portal/rep-info6.png)
 
 ### Repository Settings
 
-In the Repository Settings module, you can modify basic information of the repository such as the name, description, and README. Additionally, we provide advanced repository settings, including `Delete Repository`, `Archive Repository`, and `Transfer Repository` functions.
+This module enables adjustments to:  
+- **Basic information**: Repository name, description, README, etc.  
+- **Advanced functions**:  
+  - `Delete Repository`  
+  - `Archive Repository`  
+  - `Transfer Repository Ownership`  
 
-![Repository Settings Interface](/portal/rep-info7.png)
+![](/portal/rep-info7.png)

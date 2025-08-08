@@ -1,36 +1,40 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Issues</h2>
-<p>This chapter mainly introduces operations related to Issues in repositories.</p>
+<p>This chapter introduces operations related to Issues in the repository.</p>
 <h3>Overview</h3>
-<p>In our platform, the Issues function serves as a practical tool to facilitate repository optimization. When issues occur in a repository, such as code errors, functional abnormalities, or improvement suggestions like optimizing code structure or enhancing operational efficiency, team members can create Issues for feedback. In an Issue, the problem phenomenon, expected results, and relevant suggestions should be elaborated in detail.</p>
-<p>Issues have a status tracking function, clearly displaying the processing progress from &quot;New&quot; to &quot;In Progress&quot; and then to &quot;Resolved,&quot; enabling team members to understand the advancement conveniently. Members can also comment and communicate under Issues to jointly discuss solutions, promoting rapid problem resolution and ensuring stable repository operation.</p>
-<p><img src="/portal/rep-info4.png" alt="Issue Management Interface"></p>
-<h3>Create an Issue</h3>
-<p>When you discover problems in the repository or need to provide development suggestions, you can click the <code>New Issue</code> button on the Issues list page to create an Issue.</p>
-<p><img src="/portal/rep-issues.png" alt="New Issue Button"></p>
-<p>After opening the New Issue pop-up window, you can fill in the Issue title and content here, then click the Submit button to complete the creation of an Issue.</p>
-<p><img src="/portal/rep-issues2.png" alt="New Issue Form"></p>
+<p>On our platform, the Issue feature serves as a practical tool for optimizing repositories. When issues arise, such as code errors, functional anomalies, or suggestions for improvements—like optimizing code structure or enhancing runtime efficiency—members can create Issues to provide feedback. In an Issue, members can elaborate on problem symptoms, expected outcomes, and relevant suggestions.</p>
+<p>Issues come with status tracking, transitioning from <strong>Open</strong> to <strong>In Progress</strong>, and then to <strong>Resolved</strong>, clearly showcasing the progress of issue resolution. This helps team members stay informed. Members can also comment under Issues to discuss solutions collaboratively, ensuring quick resolution and maintaining repository stability.</p>
+<p><img src="/portal/rep-info4.png" alt=""></p>
+<h3>Creating an Issue</h3>
+<p>When encountering a problem in the repository or wanting to propose development suggestions, we can click the <strong>New Issue</strong> button on the Issues page to create one.</p>
+<p><img src="/portal/rep-issues.png" alt=""></p>
+<p>Upon opening the <strong>New Issue</strong> dialog, we can fill in the title and description, then click <strong>Submit</strong> to finalize the Issue creation.</p>
+<p><img src="/portal/rep-issues2.png" alt=""></p>
 <blockquote>
-<p>When you are a manager of the repository, upon receiving a new Issue, administrators will be notified via internal messages, allowing you to collect repository problems and suggestions in a timely manner.</p>
+<p>If we are administrators of the repository, we’ll receive platform notifications for new Issues, allowing us to immediately gather feedback or identify problems.</p>
 </blockquote>
-<h3>Comment on Issues</h3>
-<p>When you enter an Issue to view details, the platform provides comment and reply functions for Issues, where you can communicate about the problem.</p>
-<p><img src="/portal/rep-issues3.png" alt="Issue Comment Interface"></p>
+<h3>Commenting on an Issue</h3>
+<p>When viewing Issue details, the platform provides commenting and reply functionality for collaborative discussions.</p>
+<p><img src="/portal/rep-issues3.png" alt=""></p>
 <h3>Issue Status</h3>
-<p>As a repository administrator, you can change the status of Issues. The status transition of Issues helps problem submitters and managers quickly understand the current problem situation of the repository.</p>
-<p>The lifecycle of an Issue can be divided into:</p>
+<p>For repository administrators, it’s possible to update Issue statuses to help track and manage progress.</p>
+<p>An Issue’s lifecycle consists of the following stages:</p>
 <ol>
-<li><strong>Open</strong>: This status indicates that the Issue has just been created, and whether to modify it has not been confirmed yet. In this stage, managers can assign Issues by designating responsible persons on the detail page of Open Issues for follow-up processing.<br>
-<img src="/portal/rep-issues4.png" alt="Open Issue Status"></li>
-<li><strong>In Progress</strong>: It means the Issue has been confirmed for modification, the responsible person is assigned, and it is under tracking and processing, with solutions being implemented in an orderly manner.</li>
-<li><strong>Pending Release</strong>: It represents that the problems related to the Issue have been fixed and optimized. However, since the current version has not been released, it needs to wait for creating a Release version to formally complete the entire Issue resolution process and present the fixes.</li>
-<li><strong>Completed</strong>: It indicates that the problems involved in the Issue have been successfully fixed, and the optimization or fix content can be clearly seen in the new version, marking the successful completion of the entire Issue processing flow.</li>
-<li><strong>Closed</strong>: It means the Issue was not adopted, no longer under tracking management, and has been formally closed, excluding it from subsequent work items.</li>
+<li><strong>Open</strong>—This status indicates the Issue has just been created, pending confirmation on whether it will be addressed.
+<ul>
+<li>Administrators can assign the Issue to a responsible member at this stage for follow-up.<br>
+<img src="/portal/rep-issues4.png" alt=""></li>
+</ul>
+</li>
+<li><strong>In Progress</strong>—Confirms the Issue is being actively worked on by the assigned owner.</li>
+<li><strong>Pending Release</strong>—The fix is complete, but pending release in the next version.</li>
+<li><strong>Resolved</strong>—The Issue is fully addressed, with optimizations visible in the latest release.</li>
+<li><strong>Closed</strong>—The Issue was rejected and will no longer be tracked.</li>
 </ol>
-<p>It should be noted that under normal circumstances, the Issue transition process should follow the above order. However, for Issues that are suggestions or other non-code-related problems, the platform allows directly changing their status from <strong>In Progress</strong> to <strong>Completed</strong>, but a warning confirmation prompt will pop up when performing this operation to avoid misoperations.</p>
-<p>In addition, the platform grants administrators the permission to <strong>roll back the status</strong> of Issues at different status nodes, facilitating flexible adjustment of the Issue processing flow to meet diversified management needs.<br>
-<img src="/portal/rep-issues5.png" alt="Issue Status Management Interface"></p>
+<p>By default, Issues follow the above workflow. However, for non-code-related suggestions, administrators can directly transition an Issue from <strong>In Progress</strong> to <strong>Resolved</strong>, though a confirmation warning will appear to prevent mistakes.</p>
+<p>Additionally, administrators can <strong>revert statuses</strong> when necessary for flexible workflow adjustments.<br>
+<img src="/portal/rep-issues5.png" alt=""></p>
 
 <BottomNav />
 </div>

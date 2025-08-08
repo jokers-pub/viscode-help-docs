@@ -1,61 +1,73 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Understanding the Server Side</h2>
-<p>This chapter will focus on elaborating the functions of the server-side project and its convenient development capabilities.</p>
-<p>The Joker Visual Dev Platform adheres to the front-end and back-end separation development model, endowing developers with the flexibility of independent choice. Developers can focus on the development work of the front-end or server-side projects according to their own expertise and project requirements. This article will focus on the server-side part and conduct in-depth and detailed explanations of its functions to help readers fully understand the development and application of the server side in the Joker Visual Dev Platform.</p>
+<p>This chapter focuses on the capabilities of the <strong>server-side project</strong> and the convenient development features it delivers.</p>
+<p>JOKER embraces a <strong>front-end/back-end decoupled</strong> architecture, granting developers the flexibility to choose their area of expertise. Depending on individual strengths and project requirements, they can fully concentrate on either the front-end or the server-side. This document narrows in on the server side, providing an in-depth explanation of its features to help readers master server-focused development within the JOKER platform.</p>
 <h3>Overview</h3>
-<p>The server-side project undertakes the important task of processing data and is an indispensable data processing layer in Internet applications. In the entire application architecture, it is like the &quot;data steward&quot; behind the scenes, efficiently managing and processing a large amount of data and providing stable data support for front-end applications.</p>
-<p>In the field of server-side development, the Joker Visual Dev Platform has opened the door to flexible development for developers. Through this platform, developers can easily complete the development of all server-side assets in a visual way. For example, in terms of database table structure design, developers can plan and construct the structure of database tables intuitively like building blocks, clarify the relationships between fields, and ensure the efficiency and rationality of data storage; when designing controllers (APIs), they can conveniently define various interfaces, standardize the input and output of data, and make the data interaction between the front end and the server side smoother; in cache processing design, it can also be set visually to optimize the reading and storage speed of data and improve the overall performance of the application.</p>
-<p><img src="/workbench/back-end.png" alt=""></p>
-<h3>Functional Elements</h3>
-<p>A complete server-side project (application) is composed of various types of files collaborating with each other. These files mainly cover the following categories in terms of types:</p>
+<p>The server-side project is the <strong>critical data-processing layer</strong> indispensable to any modern web application—acting as the invisible “data steward” behind the scenes. Its mission is to manage and manipulate large volumes of data efficiently, ensuring rock-solid data services for the front end.</p>
+<p>In the server-development space, JOKER’s <strong>intelligent development platform</strong> opens the door to flexible coding. By leveraging its <strong>visual code builder</strong>, developers can complete all server-side assets without writing boilerplate SQL or boilerplate Node.js code. Examples include:</p>
 <ul>
-<li><strong>Data Model</strong>: With the help of the visual operation interface, developers can complete the database table structure design of the project in all aspects. This function supports highly flexible independent design. Whether it is common table associations, primary key settings, or joint index configurations, etc., they can all be easily achieved, fully meeting the complex data management needs.</li>
-<li><strong>Controller</strong>: As the key bridge for the server side to interact with the outside world, it is mainly responsible for the declaration of external interfaces (APIs) and related logic processing. Through it, we can flexibly configure a variety of API interfaces. The platform relies on <code>@joker.server/core</code> at the bottom layer to further strengthen the control ability, allowing developers to easily design interface authentication mechanisms, conduct data security checks and other functions to ensure the security and reliability of interface use.</li>
-<li><strong>Cache</strong>: The cache mechanism plays an important role in optimizing the performance of server-side projects. It can perform efficient read and write operations on hot data, avoid repeated calculations and frequent accesses to the underlying database, thereby significantly improving the response speed of the system, effectively reducing the overall performance burden of the system, and ensuring that the server side can run stably under high-concurrency and other scenarios.</li>
-<li><strong>Configuration File</strong>: It is used to centrally manage various public configurations in the current project. This includes public style settings, specifying which components are open in component library type projects, determining which method sets are open in component library and method set type projects, performing route management, setting global variables and global methods, and handling NPM references. Through unified management of these configurations, the standardization and efficiency of project development and operation can be ensured.</li>
-<li><strong>Environment Variable</strong>: This file is specifically responsible for declaring and managing variables in different environments. By cleverly setting different environment variables, it is possible to achieve different running effects of the project in different environments such as development, testing, and production, meeting the specific needs of each stage for the project.</li>
+<li>Designing database table structures as intuitively as snapping LEGO blocks together—defining relationships, composite keys, and composite indexes in minutes.</li>
+<li>Declaring controllers (API endpoints) visually while enforcing request/response contracts, ensuring seamless front-end/back-end data exchange.</li>
+<li>Configuring caching layers in drag-and-drop fashion to accelerate read/write operations and slash database contention.</li>
 </ul>
-<h3>Data Model</h3>
-<p>Click the &quot;Database&quot; option in the left menu of the console to open the data model design panel. On this panel, the database table structure is presented in an intuitive form, which is convenient for us to manage and maintain it.</p>
-<p><img src="/workbench/back-end2.png" alt="Screenshot of the data model design panel"></p>
-<p>Fortunately, the platform is extremely intuitive and convenient in terms of table relationship configuration. It can automatically and completely complete the relationship binding according to type matching. Moreover, the platform has a perfect code inspection ability and can quickly help us analyze the problems existing in the table design process.</p>
-<p><img src="/workbench/back-end3.png" alt="Screenshot related to code inspection"></p>
+<p><img src="/workbench/back-end.png" alt="Server-side visual workbench"></p>
+<h3>Component Files</h3>
+<p>A complete server-side application comprises several file types working in concert:</p>
+<ul>
+<li><strong>Data Models</strong> – Design entire database schemas visually. Supports complex business rules such as table relations, PK definition, composite and unique indexes, etc.</li>
+<li><strong>Controllers</strong> – The public contract layer. Exposes APIs and business logic, powered by <code>@joker.server/core</code>. Includes visual JWT setup, RBAC, input sanitisation, and security audits.</li>
+<li><strong>Caching</strong> – Caches hot data to cut database traffic, raise throughput and maintain responsiveness under high concurrency.</li>
+<li><strong>Configuration Files</strong> – Single source of truth for global settings, reusable styles, component/method visibility, route mapping, environment variables, and NPM references.</li>
+<li><strong>Environment Variables</strong> – Isolate dev/test/prod behaviour by injecting different values without modifying code.</li>
+</ul>
+<hr>
+<h3>Data Models</h3>
+<p>Select <strong>Database</strong> in the left sidebar to open the <strong>Data Model Designer</strong>. Table schemas appear graphically for easy management.</p>
+<p><img src="/workbench/back-end2.png" alt="Schema Designer"></p>
+<p>Relation mapping is astonishingly simple: the platform auto-detects types and completes foreign-key bindings automatically. A built-in schema linter flags design issues instantly and suggests fixes.</p>
+<p><img src="/workbench/back-end3.png" alt="Schema linter"></p>
 <blockquote>
-<p><strong>Special Note</strong>: The database underlying layer uses the &quot;prisma&quot; <strong>pgsql</strong> method to implement database management, which not only supports the synchronization of the data table structure but also enables automated data migration, greatly improving the efficiency and convenience of database management.</p>
+<p><strong>Info</strong>: Under the hood, Prisma with <strong>PostgreSQL</strong> is the default stack, enabling <strong>schema sync</strong> and <strong>auto-migration</strong> for frictionless life-cycle management.</p>
 </blockquote>
-<h3>Controller</h3>
-<p>The controller file plays a key role in server-side development. It helps us complete interface declarations and can realize the internal processing of APIs in a visual way. During this process, you can either choose to directly write business logic in the controller or create a method set to conduct hierarchical management of business interfaces, making the code structure clearer and easier to maintain and expand.</p>
-<p><img src="/workbench/back-end4.png" alt="Screenshot related to the controller"></p>
-<p>In terms of controller operations, the platform gives developers great flexibility. It not only allows us to freely configure request types but also enables us to enable JWT authentication with one click, providing a secure and reliable identity verification mechanism for interfaces. In addition, the platform also provides a visual database operation mode. Common database operations such as single-table queries, multi-table join queries, group queries, and aggregate statistical queries can all be quickly completed through the visual operation interface, greatly improving the development efficiency and making the development process more convenient and efficient.</p>
-<p><img src="/workbench/back-end5.png" alt="Screenshot of the visual database operation"></p>
-<h3>Cache</h3>
-<p>The cache file plays a key role in optimizing the performance of the server side. It can help us perform cache processing on hot data. By caching hot data, it effectively avoids frequent accesses to the database, thereby reducing the pressure on the database service, significantly improving the server performance, and also accelerating the data access speed, greatly improving the user access efficiency.</p>
-<p><img src="/workbench/back-end6.png" alt="Screenshot related to the cache"></p>
-<p>Currently, the platform provides rich and practical three-dimensional cache structure data, and is still continuously expanding new cache structures (the content is constantly being added):</p>
+<hr>
+<h3>Controllers</h3>
+<p>Controllers are the gateway layer. Through the visual editor you declare REST endpoints and map them to server-side logic—either inline in the controller or via reusable <strong>method collections</strong> for clean layering.</p>
+<p><img src="/workbench/back-end4.png" alt="Controller editor"></p>
+<p>The IDE provides:</p>
 <ul>
-<li><strong>Single-item Storage</strong>: It mainly provides simple and direct value operations, including value acquisition, setting, and deletion. Through these basic operations, the cache requirements for single data can be quickly handled, which is suitable for cache management in scenarios where single data is frequently read and written.</li>
-<li><strong>Array Storage</strong>: It provides a series of cache operations centered around the characteristics of arrays. It can not only obtain the cache length to understand the number of data items in the current cache but also perform cache insertion to dynamically add new data to the cache array; when it is necessary to clean the cache array, the cache clearing function can be used; if you want to obtain data within a specific interval range, the cache list (interval range) operation can meet the requirements; and it can accurately obtain the data in the cache according to the index, meeting the diverse access requirements for array-type cache data.</li>
-<li><strong>Object Storage</strong>: It provides flexible cache operations based on key-value pairs. Cache can be obtained according to the Key, and it supports batch acquisition of cache data corresponding to multiple Keys, greatly improving the data acquisition efficiency; when setting the cache, batch operations are also supported, which is convenient for updating multiple cache data at one time; it can also check whether the cache of the specified Key exists, which is convenient for confirming the data state before operation; when it is necessary to clean the cache, the delete cache operation can be executed; in addition, all cache KEYs can be obtained, which is convenient for comprehensive management and maintenance of cache data, and is applicable to complex business scenarios where cache data is organized and managed in the form of objects.</li>
+<li>One-click REST method selection (GET/POST/PUT/PATCH/DELETE).</li>
+<li>One-click JWT authentication toggle.</li>
+<li>Visual query builders for single-table, multi-table JOIN, GROUP BY, aggregation, and pagination pipelines.</li>
 </ul>
-<h3>Configuration File</h3>
-<p>There is a <code>Project Configuration</code> file in each repository, and we can configure and manage the public data of the project through this file.</p>
-<p><img src="/workbench/back-end7.png" alt=""></p>
-<p>This file has the following capabilities (which will vary according to different repository classifications):</p>
+<p><img src="/workbench/back-end5.png" alt="Visual query builder"></p>
+<hr>
+<h3>Caching</h3>
+<p>Cache files enable high-speed retrieval of hot data, eliminating repetitive database hits and cutting average response latency.</p>
+<p><img src="/workbench/back-end6.png" alt="Cache editor"></p>
+<p>JOKER currently supports <strong>three cache topologies</strong> (more coming soon):</p>
+<ul>
+<li><strong>Single Value</strong> – Basic get/set/del operations for atomic data.</li>
+<li><strong>Array/List</strong> – Push, pop, len, range slice, index lookup, clear.</li>
+<li><strong>Object/Hash</strong> – Key-value store with batch get, batch set, exists, del, list keys—all suited for hierarchical cache objects.</li>
+</ul>
+<hr>
+<h3>Configuration Files</h3>
+<p>Every <strong>Repository</strong> contains a <strong>project config</strong> file governing shared metadata.</p>
+<p><img src="/workbench/back-end7.png" alt="Project Config editor"></p>
+<p>Depending on the project type, the file exposes:</p>
 <h4>NPM Package Management</h4>
-<p>The underlying dependent packages of the current project can be maintained here. By installing dependent packages, the integration of third-party functions can be achieved, and the relevant functions in the packages can be used in the project.</p>
-<p><img src="/workbench/back-end8.png" alt=""></p>
-<blockquote>
-<p>Different from the <code>Component Method Market</code>, what is provided here is a more underlying library reference, while the Component Method Market is an extended reference for packaged and formed visual assets.</p>
-</blockquote>
+<p>Install underlying libraries here to tap into third-party capabilities—unlike the <em>Component &amp; Method Marketplace</em>, which exposes pre-packaged visual assets.</p>
+<p><img src="/workbench/back-end8.png" alt="NPM tab"></p>
 <h4>Global Variables</h4>
-<p>The platform allows us to create global variables.</p>
-<p><img src="/workbench/back-end9.png" alt=""></p>
-<h3>Environment Variable</h3>
-<p>The platform provides a complete function for maintaining environment variables.</p>
-<p><img src="/workbench/back-end10.png" alt=""></p>
-<p>The platform allows us to create multiple sets of environments inside it and also customize environment variables. The declared environment variables can be called through <code>process.env</code>.</p>
-<p><img src="/workbench/back-end11.png" alt=""></p>
+<p>Define truly global, runtime-safe constants that every part of the application can reach.</p>
+<p><img src="/workbench/back-end9.png" alt="Global Variables"></p>
+<hr>
+<h3>Environment Variables</h3>
+<p>The platform ships with full-featured environment management.</p>
+<p><img src="/workbench/back-end10.png" alt="Env Variables"></p>
+<p>Create multiple named environments—e.g., <code>dev</code>, <code>staging</code>, <code>prod</code>—and assign custom key/value pairs. Access them via <code>process.env.KEY</code> anywhere in code.</p>
+<p><img src="/workbench/back-end11.png" alt="Env Editor"></p>
 
 <BottomNav />
 </div>

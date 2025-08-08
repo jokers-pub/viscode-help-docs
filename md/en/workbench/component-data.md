@@ -1,137 +1,153 @@
 ## Component State Data
 
-This chapter mainly explains the state data in components. We can maintain the parameter constraints, internal reactive data and internal private variables of a component here.
+This chapter focuses on **component state data**. Here you can maintain parameter constraints, internal reactive data, and private variables of a component.
 
 ### Overview
 
-Component state data is one of the most commonly used features in component development.
+Component state data is one of the most frequently used features in component development.
 
 ![](/workbench/component.png)
 
-When opening a `component` or `page` file, the `Component Data` menu will be displayed in the left menu of the workbench. Click it to open the component data panel.
+When you open a `component` or `page` file, the **Component Data** entry appears on the left side of the Workbench. Click it to open the **Component Data** panel.
 
-From the perspective of data usage, it can be divided into the following categories: **Input Parameters (props)**, **Reactive Data (model)**, **Internal Private Attributes**. Next, we will explain in detail the uses of these three types of data and how to declare an attribute/parameter.
+From a data-usage perspective, the data can be classified into three types: **Input Props**, **Reactive Data (model)**, and **Internal Private Properties**. The next sections describe their purposes and how to declare a property or parameter.
 
-### Input Parameters (props)
+---
 
-These are the parameters required by the current component. These parameters have reactive characteristics. Once the parameters passed by external users change, the component will immediately be notified and the internal DOM nodes will be updated. This means that the component can respond in real time to changes in the externally passed-in data, thus dynamically adjusting its own display and behavior, greatly enhancing the flexibility and reusability of the component. For example, a button component may receive parameters such as the text content and color of the button through props. When the externally passed-in text or color changes, the button can immediately present corresponding changes.
+### Input Props (props)
 
-> The configuration of the passed-in parameters will only be displayed in the component type file. Page type components are not allowed to configure to accept parameters.
+These are the arguments required by the current component. They are **reactive**—whenever the caller passes new values, the component receives the update instantly and re-renders its DOM nodes. This makes the component highly flexible and reusable.  
+For instance, a button component may accept text and color through props; when those props change, the button immediately reflects the new text or color.
 
-#### How to Create/Edit
+> Configuration of input props is **only available in component-type files**. Page-type components do **not** allow prop configuration.
 
-We can click the `plus sign` on the right side of the `Input Parameters (props)` panel to open the parameter creation panel. In the parameter creation panel, we can configure the name, remarks, type, default value, and demonstration value of the parameter. For the attribute creation tutorial, please read the `Attribute/Parameter Creation and Editing` section at the end of this chapter.
+#### Creation / Edit
+
+Click the **+** icon on the right side of the **Input Props** panel to open the property-creation dialog. There you can specify the **name**, **description**, **type**, **default value**, and **demo value** of the prop.  
+For step-by-step instructions, refer to the last section **Creating & Editing Properties / Parameters**.
 
 ![](/workbench/component-data.png)
 
-#### How to Use
+#### Usage
 
-After creating the parameters, you can start using them. The following will introduce it to you in detail from two perspectives:
+After creation, the prop is ready for use from two distinct angles:
 
-##### 1. Declarer's Perspective (Current Component)
+##### 1. Declarer’s View – Inside the Component
 
-After completing the parameter creation, the created parameters can be used inside the component. These parameters can be used in the layout template and method logic:
+-   **Layout Template**: Use `${props.variableName}` expressions to reference the prop.  
+    ![Example of referencing a prop in template](/workbench/component-data1.png)
 
-- **Layout Template**: In the template, the parameter variables can be referenced in the way of expressions `props.`.
-   ![Example of Using Component Parameters in the Template](/workbench/component-data1.png)
-- **Method Logic**: In the logic editing panel, the component parameter values can be read in the way of `this.props.`.
-   ![Example of Using Component Parameters in Logic Editing](/workbench/component-data2.png)
+-   **Method Logic**: In the **logic editor**, reference the value via `this.props.variableName`.  
+    ![Example of referencing a prop in logic](/workbench/component-data2.png)
 
-> **Friendly Tip**: If you are not very familiar with code writing, don't worry too much. The platform has an intelligent data management function. The expression editing panel will provide intelligent syntax prompts, and there is also a data management panel. You can view all the variables used by the current node in this panel, and you can quickly use the corresponding variables by just clicking.
+> **Tip**: If you are not comfortable writing code yet, don’t worry. The platform provides intelligent code completion and a **Data Management Panel** where you can click to insert variables quickly.
 
-##### 2. User's Perspective (Other Components/Pages Referencing the Current Component)
+##### 2. Consumer’s View – When Other Components or Pages Use It
 
-When the current component is referenced in other components or pages, click on the component, and you can see the declared parameters in the component parameter panel.
-![Example of Viewing the Referenced Component Parameters in Other Components](/workbench/component-data3.png)
+When another component or page references this component, simply select the component instance and open its **Property Panel**. All declared props appear there, ready for configuration.  
+![Viewing declared props in a parent component](/workbench/component-data3.png)
 
-> **Important Suggestion**: When declaring component parameters, be sure to make it as complete as possible. It is recommended to provide parameter descriptions, interaction types, demonstration values and other information so that developers can quickly understand the purpose of the attribute.
+> **Strong recommendation**: Always **fully declare** the props. Provide descriptions, interaction types, and demo values so other developers can understand the prop’s intent at a glance.
+
+---
 
 ### Reactive Data (model)
 
-This is the reactive data inside the component. Before the component is loaded, this attribute will be "hijacked" and then have the data responsiveness. That is to say, when this internal data changes, the associated parts of the component will be automatically updated. For example, in a shopping cart component, the quantity of goods is the reactive data. When the quantity changes, the total price display of the shopping cart, the rendering of the goods list and other related parts will be automatically updated to provide real-time feedback to users.
+These are the **internal reactive values** of the component. Before the component is mounted, they’re **wrapped** as reactive observers. Whenever any of these values change, the relevant parts of the component re-render automatically.  
+Example: In a shopping-cart component, the item **quantity** is reactive—changing it instantly updates the displayed **total price** and the item list.
 
-#### How to Create/Edit
+#### Creation / Edit
 
-We can click the `plus sign` on the right side of the `Reactive Data (model)` panel to open the parameter creation panel. In the attribute creation panel, we can configure the name, remarks, type, default value, and demonstration value of the parameter. For the attribute creation tutorial, please read the `Attribute/Parameter Creation and Editing` section at the end of this chapter.
+Click the **+** icon on the right side of the **Reactive Data (model)** panel. Configure **name**, **description**, **type**, **default value**, and **demo value** following the same workflow as above.  
+See section “Creating & Editing Properties/Parameters” for detailed steps.
 
 ![](/workbench/component-data4.png)
 
 #### Understanding Reactive Data
 
-Here, we use a **DEMO** to deeply understand what reactive data is. Reactive data can **immediately notify the listener** once a value changes. In the layout template, once the value changes, this change will also **be immediately updated on the page**.
-
-We define a reactive data `count` through code. When the button on the page is clicked, the value of `count` will increase by one, and after the value changes, the page will **immediately reflect this change**.
+A simple **DEMO** helps illustrate the concept—when the reactive variable `count` is incremented by a button click, the DOM updates immediately.
 
 !!!demo1!!!
 
-#### How to Use
+#### Usage
 
-After completing the attribute creation, the created attributes can be used inside the component. These attributes can be used in the layout template and method logic:
+Once defined:
 
-- **Layout Template**: In the template, the parameter variables can be referenced in the way of expressions `model.`.
-   ![](/workbench/component-data5.png)
-- **Method Logic**: In the logic editing panel, the component parameter values can be read in the way of `this.model.`.
-   ![](/workbench/component-data6.png)
+-   **Layout Template**: Reference via `model.variableName` in expressions.  
+    ![Example referencing model in template](/workbench/component-data5.png)
 
-> **Friendly Tip**: If you are not very familiar with code writing, don't worry too much. The platform has an intelligent data management function. The expression editing panel will provide intelligent syntax prompts, and there is also a data management panel. You can view all the variables used by the current node in this panel, and you can quickly use the corresponding variables by just clicking.
+-   **Method Logic**: Access via `this.model.variableName`.  
+    ![Example referencing model in logic](/workbench/component-data6.png)
 
-### Internal Private Attributes
+> **Tip**: Same as with props, smart completion and the **Data Management Panel** will help you insert variables without manual typing.
 
-This type of attribute neither supports external calls nor has reactive capabilities. It is only used as a variable for temporary use inside the component. Here, you can declare internal dynamic data variables for convenient use in multiple methods. For example, in a complex form component, a temporary variable may be needed to record the step status of form filling. This variable is only used in the methods inside the component, does not need to be exposed externally, and does not require reactive updates for its changes.
+---
 
-#### How to Create/Edit
+### Internal Private Properties
 
-We can click the `plus sign` on the right side of the `Internal Private Attributes` panel to open the parameter creation panel. In the parameter creation panel, we can configure the name, remarks, type, default value, and demonstration value of the parameter. For the attribute creation tutorial, please read the `Attribute/Parameter Creation and Editing` section at the end of this chapter.
+Private properties are **not** accessible from the outside and are **non-reactive**. They make perfect temporary or utility variables within the component.  
+For instance, a multi-step form component could hold a private `stepIndex` to track the current active step—only relevant inside the component’s methods.
+
+#### Creation / Edit
+
+Click the **+** on the right side of the **Private Properties** panel and fill in the **name**, **description**, **type**, **default value**, and **demo value** as described earlier.
 
 ![](/workbench/component-data7.png)
 
-Its usage is the same as that of parameters and reactive data, and it can be directly called through expressions. However, the difference from **reactive data** is that it does not have **reactive capabilities**. Therefore, if the value will change during the component's operation, it is not recommended to display it in the template in the form of **private attributes**.
+Usage is identical to props or reactive data (expressions can read them directly), but remember:
 
-Usually, we will define a common attribute in multiple logical methods to complete specific business logic. Since it does not have reactive capabilities, it will neither cause additional performance overhead nor pollute the original data.
+- They **do not trigger re-renders**.  
+- Therefore, **never expose them in the template** if the value can change at runtime.  
+- Ideal for state that is shared among multiple methods without side effects introduced by reactivity.
 
-### Attribute/Parameter Creation and Editing
+---
 
-Here we will explain the operation process of the parameter/attribute editing panel. (The creation panels of attributes and parameters are basically the same, except for some differences in some attributes. We will mark them specially when explaining. Please read carefully.)
+### Creating & Editing Properties / Parameters
 
-#### Step 1 (Basic Attribute Information)
+Here is a step-by-step guide to the property editor (parameters and reactive data share the same UI, but some options appear only for props).
+
+#### Step 1 – Basic Information
 
 ![](/workbench/component-data8.png)
 
-- **Attribute Name**: Here we need to use letters to configure the attribute name. The attribute name needs to be unique in the current component function (that is, unique among the input parameters/unique among the reactive data).
-- **Remarks/Title**: We can configure a title for it. The configuration of the title can help us understand the purpose of the attribute more quickly, such as color, size, etc.
-- **Hint**: We can configure the detailed description of the current attribute through the hint attribute. When we use it, we can view the detailed description of the current attribute by moving the mouse over it.
-- **Classification**: **Only parameters need to be configured**. We can configure a classification of a parameter here. The same classification will be grouped and classified when it comes to component attributes, which can provide a better user experience.
-   ![](/workbench/component-data9.png)
+-   **Property Name**: English letters; must be unique within its own scope (props, model or private).  
+-   **Title / Remarks**: A human-readable label like Color, Size, etc.  
+-   **Tooltip**: Detailed description that appears as a tooltip on hover.  
+-   **Category**: Only **for props**; groups related props under a category.  
+    ![Property categories](/workbench/component-data9.png)  
+-   **Sort Order**: Determines order in the property panel; larger values appear first (**props only**).
 
-#### Step 2 (Attribute Type Information)
+#### Step 2 – Type Configuration
 
 ![](/workbench/component-data10.png)
 
-- **Type**: The type of the current attribute.
-    1. **String** (`String`)
-    2. **Number** (`Number`)
-    3. **Boolean** (`Boolean`)
-    4. **Array** (`Array`)
-    5. **Object** (`Object`)
-    6. **Function** (`Function`)
-    7. **Date** (`Date`)
-    8. **Any** (`Any`)
-- **Whether It Can Be Empty**: It can be configured whether the current value is allowed to be empty (`undefined`).
-- **Assignment Method**: **Only parameters need to be configured**. When it is necessary to set a value for it, this attribute can be used to decide which interaction method to adopt to assign a value. Different data types will have different assignment methods available.
-    1. **Optional Values**: Key - Value data can be created to provide a drop-down box mode for value selection.
-    2. **Multi-line Text**: A long text input box is used to enable multi-line text input.
-    3. **Color Value**: It is displayed as a color setting control, which can quickly complete the configuration of colors.
-    4. **CSS Size Value**: CSS size values (with units) can be configured here.
-    5. **Style Name**: It is displayed as a style setting control, which can quickly query the public styles in the current project and achieve quick addition.
-    6. **Image Resource Selection**: It provides a quick selection interaction for internal static resources (image display effect).
-    7. **Resource Selection**: It provides a quick selection interaction for internal static resources.
-    8. **Style Style**: A visual Style configuration panel is displayed, which can complete some common style editing.
-- **Disable Expression**: By default, all parameters can configure dynamic values through expressions. If you don't want this attribute to configure dynamic values, you can disable it here.
-- **Default Value**: As the default value of the parameter/attribute, if the value is not configured or passed (parameter), it will be automatically assigned this default value.
-- **Demonstration Value**: **Only parameters need to be configured**. This attribute is used to immediately set a value for the attribute when the component is introduced. The demonstration value can help developers have a better first display effect when introducing the component, and developers can modify it.
+-   **Type**  
+    1. String  
+    2. Number  
+    3. Boolean  
+    4. Array  
+    5. Object  
+    6. Function  
+    7. Date  
+    8. Any
 
-If the current attribute type is configured as: `Array/Object`, a deep-level type design panel will be displayed in Step 2. We can configure the internal attribute types of objects or arrays here.
+-   **Required**: Mark whether the value can be `undefined`.  
+-   **Value Assignment** (props only) chooses how the consumer provides a value. Each data type exposes a different set of UI controls:
+    1. Select (Key–Value options)
+    2. Multiline Text
+    3. Color Picker
+    4. CSS Dimension
+    5. Style Name Selector
+    6. Image Asset Selector
+    7. Asset Selector
+    8. Inline Style Editor
+    9. Expression (default)
+
+-   **Default Value**: Applied if no value is supplied.  
+-   **Demo Value** (props only): Immediately assigned when the component is dragged onto a page, providing a better first impression. Developers can still override it.
+
+When the property type is **Array** or **Object**, Step 2 displays a **deep-type designer** where you can further define nested properties/columns.
 
 ![](/workbench/component-data11.png)
 
-The elements in the internal attribute design panel are basically the same as the above content. You can refer to the above function descriptions. 
+The nested designer shares the same options as above.

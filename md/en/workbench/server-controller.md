@@ -1,220 +1,204 @@
-## Controller Design
+## Controller Design  
+
+This chapter focuses on the controller, a core functional module in server-side applications that is responsible for designing API interfaces, serving as the sole entry point for requests—a design hub for server-side applications.  
+
+### Overview  
+
+The platform empowers users to rapidly create API interfaces for server-side applications through a visual interface. Within the `Controller` folder, developers can create different controllers based on business types, with each controller supporting multiple API methods.  
+![](/workbench/back-end.png)  
 
-This chapter mainly elaborates on controller-related content. The controller, as the core functional module of server-side applications, undertakes the important task of designing application API interfaces and can be regarded as the design hub for the only request entry of server-side applications.
+The explanation of controller functionalities will follow this sequence: **API Creation → Input Parameters → API Method Parameters → API Method Return Types → Authentication**.  
+
+### Creating an API  
+
+In a controller file, multiple API methods can be created. Click the **Create API** button in the top-right corner to open the API editor window.  
+![](/workbench/server-controller.png)  
 
-### Overview
+Within this window, the following configurations can be applied to an API interface:  
+
+- **Name**: The name of the API method. Note that this is not the final API access URL, which follows the format: `service-root`/`controller-name`/`api-name`.  
+- **Alias Title**: A user-defined name for the API method to help developers quickly understand its purpose.  
+- **Description**: A detailed explanation of the API method for deeper comprehension.  
+- **Request Type**: Configures the allowed HTTP request method(s). Only requests matching the configured type(s) will map to this API method. Options include: **POST**, **GET**, **PUT**, **DELETE**.  
+- **Authorization**: When enabled, the system validates the JWT before accessing the API. If verification fails or the JWT expires, it returns a **401** error.  
+- **Input Parameters**: Configures API input parameters.  
 
-The platform enables us to quickly create API interfaces for server-side applications in a visual way. We can create different controllers according to business types in the `Controllers` folder, and multiple API methods can be created under each controller.
+### Input Parameter Validation  
 
-![](/workbench/back-end.png)
+As mentioned earlier, input parameters for API interfaces can be configured in the editor panel, following the general **Field Management** rules. Detailed documentation on this topic is available in the [Field Management](/workbench/property) section.  
 
-Next, we will explain in detail the various functions of the controller in the order of "API Creation -> Input Parameters -> API Method Parameters -> API Method Return Value Types -> Authorization".
+Here, we highlight a special feature in **Field Management** for API input parameters: **Input Parameter Validation**.  
 
-### Create API
+In the second step of the **Field Management** editor window, different data types allow for varying constraint rules.  
+![](/workbench/server-controller1.png)  
 
-Multiple API methods can be created in the controller file. Click the **Create API** button in the upper right corner to open the API editor window.
+Below are all validation rules, regardless of data type:  
 
-![](/workbench/server-controller.png)
+1. **Regex Validation**: Custom regex patterns for parameter constraints.  
+2. **Email Format**: Ensures input matches email format.  
+3. **Phone Number Format**: Validates phone number formatting.  
+4. **Alphabetic Only**: Restricts input to letters only.  
+5. **Alphanumeric Only**: Allows only letters and numbers.  
+6. **Numeric Only**: Permits numeric strings (for string-type fields). For numeric fields, change the type directly—this rule supplements string-type validation.  
+7. **Integer Only**: Requires strict integer input (no decimals).  
+8. **Contains Specific Content**: Ensures the string contains predefined content.  
+9. **Value Range Restriction**: Limits values (e.g., gender selection: male/female). Supports manual enumeration or table-based enums.  
+   ![](/workbench/server-controller2.png)  
+10. **Length Restriction**: Limits string length (min/max or combined).  
+11. **Maximum Value**: Numeric field upper limit.  
+12. **Minimum Value**: Numeric field lower limit.  
+13. **File Size Limit**: For **File**-type fields, restricts upload size.  
+14. **File Format Limit**: For **File**-type fields, limits the number of uploads (default: 1).  
+15. **File Type Limit**: Restricts allowed file types for upload (supports wildcards, e.g., `image/jpeg, image/*`, with multiple types separated by commas).  
 
-In this window, the following information of the API interface can be configured:
+### File Upload  
 
-- **Name**: This is the name of the API method of the interface. It should be noted that this is not the final API access address. The format of the API access address is `Service Root`/`Controller Name`/`API Name`.
-- **Remarks Title**: Configure an alias for the API method to help developers quickly understand the meaning of the API.
-- **Description**: Write detailed description information for the API method to facilitate developers' in-depth understanding.
-- **Request Type**: Multiple request types can be configured here. Only requests that match the configured request type will be mapped to this API method. The optional values include: **POST**, **GET**, **PUT**, **DELETE**.
-- **Authorization Authentication**: If this function is enabled, the system will authenticate the JWT before accessing the API interface. Once the JWT verification fails or expires, a 401 error will be directly returned.
-- **Input Parameters**: The input parameters of the API can be configured here.
+In server-side projects, the **Field Management** panel supports selecting **File** as a field type, enabling file uploads via APIs.  
 
-### Input Parameter Validation
+Earlier sections introduced file-type constraints; here, we focus on **File**-type properties and operations.  
+![](/workbench/server-controller3.png)  
 
-As mentioned earlier, we can create the input parameters of the API interface in the API interface editing panel, and their creation follows the general `Field Maintenance` rules. For detailed content, please refer to the [Field Maintenance](/workbench/property) chapter.
+If an input parameter `userImg` is created, the uploaded file can be accessed via `data.userImg` and manipulated accordingly.  
 
-Here, we mainly explain a special function of API input parameters in field maintenance: **Input Parameter Validation**.
+The **File** type provides the following attributes:  
+| Name | Type | Description |  
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |  
+| `checkMimeType` | Function | Validates file type compliance (supports wildcards, e.g., `image/*` or array of types). |  
+| `checkSize` | Function | Validates file size compliance. |  
+| `fileCount` | Number | Number of files. |  
+| `files` | File[] | Array of all files. |  
+| `save` | Function | Saves files to a specified server directory. |  
 
-In the second step of the **Field Maintenance** editing window, different field restriction rules can be configured by selecting different data types.
+The **save** method is particularly important. Other properties are typically configured via constraints unless custom validation for file type/size is required.  
 
-![](/workbench/server-controller1.png)
+#### File Saving  
 
-The following is an introduction to all validation rules without considering data types:
+```js  
+// Save directly to the default upload directory without modifications  
+await data.userImg.save();  
 
-1. **Regular Expression Validation**: Allows customizing regular expressions to constrain the content of input parameters.
-2. **Whether it is an Email**: Used to verify whether the input content is in the email format.
-3. **Whether it is a Telephone**: Judges whether the input content conforms to the telephone format.
-4. **Only Letters**: Ensures that the input content contains only letters.
-5. **Only Letters and Numbers**: Limits the input content to only letters and numbers.
-6. **Only Numbers**: Only allows the input of numbers (string type numbers). If the field itself is of the number type, the field type can be directly changed; this rule only provides a supplementary number format validation for the string type.
-7. **Whether it is an Integer**: Requires the input to be an integer and does not allow floating-point numbers.
-8. **Contains Specific Content**: The string must contain specific content.
-9. **Limit the Value Range**: Limits the range of values. For example, gender can only be male/female, and enumeration values can be manually maintained or selected from the data table.
-![](/workbench/server-controller2.png)
-10. **Length Limit**: Limits the length of the string. The maximum or minimum value can be configured separately, or the limits can be combined simultaneously.
-11. **Maximum Value**: For fields of the number type, the maximum value limit can be configured.
-12. **Minimum Value**: For fields of the number type, the minimum value limit can be configured.
-13. **File Size Limit**: When the field type is **File**, the size of the uploaded file can be limited by this constraint.
-14. **File Quantity Limit**: When the field type is **File**, the maximum number of uploaded files can be limited. By default, only one file is allowed to be uploaded.
-15. **File Type Limit**: When the field type is **File**, the accepted types of uploaded files can be limited, and wildcards are supported. For example, for images (image/jpeg, image/*), the "*" wildcard is supported. If multiple types need to be limited, they can be separated by ",".
+// Full parameter example: Save to the 'user' subdirectory  
+await data.userImg.save("user/", {  
+    // Custom filename  
+    newFileName: (file) => {  
+        // Format: userId.ext (e.g., 123.jpg)  
+        return userId + "." + file.ext;  
+    },  
+    // Disable image compression (default: false)  
+    uncompressedImage: false,  
+    // Image compression settings (if enabled)  
+    imageCompressionOption: {  
+        // Quality (0–100, default: 80)  
+        quality: 80,  
+        // Max width in pixels (default: unlimited)  
+        maxWidth: 1000,  
+        // Max height in pixels (default: unlimited)  
+        maxHeight: 1000  
+    }  
+});  
+```  
 
-### File Upload
+> The upload directory path can be configured via the `UPLOAD_ROOT_DIR` environment variable in server settings.  
 
-In server-side projects, the `Field Maintenance` panel supports selecting the field type as the `File` file type. With this function, we can implement file upload in the API interface.
+#### Save Method Return Value  
 
-The above has mentioned the configuration of the constraint conditions for file types. Here, we will focus on the attributes and operation methods of the File type.
+The **save** method returns an asynchronous response as an array:  
 
-![](/workbench/server-controller3.png)
+```typescript  
+{  
+    success: string[];  // Array of successfully saved file paths  
+    error: string[];    // Array of error messages for failed saves  
+}  
+```  
 
-Suppose an input parameter `userImg` is created, and the uploaded file can be obtained and operated through the way of `data.userImg`.
+Usage example:  
 
-The data of the file type provides us with the following attributes:
+```js  
+let uploadResult = await data.userImg.save();  
 
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| checkMimeType | Function | Checks whether it meets the file type requirements and supports wildcards. For example, for images (image/jpeg, image/*), the "*" wildcard is supported. If multiple types are limited, it can be a single string or an array of strings. |
-| checkSize | Function | Checks whether it meets the file size limit. |
-| fileCount | Number | The number of files. |
-| files | File[] | All files. |
-| save | Function | Through this method, the file can be saved to the specified directory on the server side. |
+if (uploadResult.error.length) {  
+    // Log errors  
+    return ActionError("Upload failed");  // ActionError is covered in the API Return Types section.  
+}  
 
-Here, we will focus on the **save** file saving method. Other attributes can usually be configured in the input item condition constraints. Unless there are special requirements, custom methods will be considered to judge the file format and file size.
+let userImg = uploadResult.success[0];  
+```  
 
-#### File Saving
+![](/workbench/server-controller4.png)  
 
-```js
-// Save directly to the project upload directory without any adjustment
-await data.userImg.save();
+### API Method Parameters  
 
-// Complete parameter example, save the file to the user folder in the upload directory.
-await data.userImg.save("user/", {
-    // Customize the saved file name
-    newFileName: (file) => {
-        // Name it in the format of userId.ext, where file.ext is the extension of the uploaded file
-        return userId + "." + file.ext;
-    },
-    // Whether to not compress the image. The default here is false. By default, the platform will compress the uploaded image resources at the bottom layer. If you don't want to compress it, you can configure it as true.
-    uncompressedImage: false,
-    // Image compression processing configuration, which only takes effect when image compression is enabled
-    imageCompressionOption: {
-        // Image compression ratio 0 - 100, default 80
-        quality: 80,
-        // Maximum width of the image, not limited by default, in pixels. If the configured value is less than the actual image value, it will be scaled proportionally.
-        maxWidth: 1000,
-        // Maximum height of the image, not limited by default, in pixels. If the configured value is less than the actual image value, it will be scaled proportionally.
-        maxHeight: 1000
-    }
-});
-```
+During API logic orchestration, the platform provides commonly used parameters:  
 
-> The project upload directory can be configured through **UPLOAD_ROOT_DIR** in the server-side environment variables.
+- `data`: Input parameters (defined in API configurations).  
+- `context`: Routing context data, including:  
+  1. `jwt`: Decrypted JWT payload (available only if authentication is enabled).  
+  2. `url`: Request URL.  
+  3. `request`: Raw request object (for IP, referrer, etc.).  
+  4. `logger`: Centralized logging object.  
+- `logger`: For structured logging (file, console, or database), configurable in [Environment Settings](/workbench/env).  
 
-#### Save Return Value
+### API Return Types  
 
-The call of the **save** method is an asynchronous operation, and its return value is an array:
+The platform enforces a standardized response structure:  
 
-```typescript
-{
-    // List of successfully saved files, with the value being the saved path
-    success: string[];
-    // List of error messages for failed saves
-    error: string[];
-}
-```
+```json  
+{  
+    "header": {  
+        "code": "Status Code",  // "JK000000" indicates success; others denote errors.  
+        "msg": "Error Message"  
+    },  
+    "data": {}  // Business data payload  
+}  
+```  
 
-Complete example:
+#### Helper Methods  
 
-```js
-// Save directly to the project upload directory without any adjustment
-let uploadResult = await data.userImg.save();
+**Ok**  
+Returns successful responses:  
 
-if (uploadResult.error.length) {
-    // TODO: Record the log
-    return ActionError("Save failed"); // ActionError is introduced in the API return value type.
-}
+```js  
+return Ok(businessData);  
+```  
 
-let userImg = uploadResult.success[0];
-```
+Equivalent to the **Return Success Data** node in logic orchestration:  
+![](/workbench/server-controller5.png)  
 
-![](/workbench/server-controller4.png)
+**ActionError**  
+Returns error responses:  
 
-### API Method Parameters
+```js  
+return ActionError(errorMessage, errorCode, businessData);  
+// errorCode defaults to "JK999999" if omitted.  
+```  
 
-In API logic orchestration, the platform provides us with commonly used data parameters.
+> Custom error codes enable frontend conditional handling.  
 
-- **data**: Input parameters, and the type can be designed and maintained in the API interface input parameters.
-- **context**: Routing context, which is the routing context data processed by the API interface and contains:
-    1. **jwt**: Authentication token content. The `jwt` property will only exist if the current controller has enabled **Authorization**. The token value has been parsed, and internal properties can be directly obtained.
-    2. **url**: Request address
-    3. **request**: Underlying request object. We can obtain data such as the request IP and source address through it.
-    4. **logger**: Log processing object, which can help us achieve centralized log output and collection.
-- **logger**: Log processing object, which can help us achieve centralized log output and collection. It is different from `console` in that it is a centralized log collector, and it allows us to use file logs, console logs, and database logs. Different requirements can be configured in [Environment Configuration](/workbench/env).
+This can also be achieved via the **Return Error Data** node:  
+![](/workbench/server-controller6.png)  
 
-### API Return Value Types
+#### Fallback Handling  
 
-The platform provides us with a unified data return structure, as shown below:
+In controllers, returning raw data (e.g., via `return`) triggers automatic wrapping with `Ok` if the response doesn't match the standard format.  
 
-```json
-{
-    "header": {
-        "code": "Status Code", // When JK000000 is returned, it represents business success, and all others are business exceptions.
-        "msg": "Error Message"
-    },
-    "data": {} // Returned business data
-}
-```
+### Authentication  
 
-The platform also provides a method for quickly creating the interface return value:
+This section details JWT token configuration.  
 
-#### Ok
+#### Generating JWT Tokens  
 
-Used to return correct business data. The sample code is as follows:
+Tokens are typically generated in login APIs using `generateJwtToken`:  
+![](/workbench/server-controller7.png)  
 
-```js
-return Ok(业务数据);
-```
+Key considerations:  
+- The example demonstrates user lookup and token generation.  
+- Avoid storing sensitive data (e.g., passwords) in JWT payloads.  
 
-Of course, in the logic orchestration panel, you can also use the **Return Success Data** node to return the correct business data.
+#### Frontend Token Submission  
 
-![](/workbench/server-controller5.png)
+Frontends must include the JWT in the `sid` header.  
 
-#### ActionError
+In the JOKER platform, `sid` can be injected globally via `transformReqData`:  
+![](/workbench/server-controller8.png)  
 
-Used to return abnormal business data. The sample code is as follows:
-
-```js
-return ActionError(错误信息, 错误码, 业务数据);
-// Among them, the error message is a required item. If the error code is not configured, the general exception code JK999999 will be used.
-```
-
-> Developers can configure different error codes so that the front end can implement different business processing branches according to the status code when the request is abnormal.
-
-Similarly, in the logic orchestration panel, you can also use the **Return Failure Data** node to return abnormal business data.
-
-![](/workbench/server-controller6.png)
-
-#### Data Fallback
-
-In the controller, we can directly return business data through `return`. The platform will judge at the bottom layer. If the returned data meets the required API data format, it will be returned according to the return value; otherwise, it will be automatically wrapped with the `Ok` method and returned as correct data.
-
-### Authorization Authentication
-
-Next, we will explain in detail how to configure the JWT token function of the project.
-
-#### How to Generate a JWT Token
-
-A JWT token can be generated in a certain API interface and returned to the front end, usually completed in the login interface.
-
-The `generateJwtToken` method can be used to generate the token.
-
-![](/workbench/server-controller7.png)
-
-From the logic in the above figure, first query user information according to the interface input items. If the user information is queried, use this information to generate JWT and return `Ok`; if the user information is not queried, return `ActionError`.
-
-> The above content is only an example. It is especially reminded that sensitive data such as passwords should not be stored in the JWT content.
-
-#### How the Front End Sends the JWT Token
-
-The front end needs to send the JWT token through **sid** in the interface request header `header`.
-
-In the JOKER visual platform, the `sid` can be uniformly injected in the `transformReqData` data request conversion method.
-
-![](/workbench/server-controller8.png)
-
-> It should be noted here that if the API has enabled the **Authorization** function, the value obtained through `context.jwt` in the API method is the `payload` of the JWT. At this time, there is no need to use the `verifyJwtToken` method to verify the legality of the token, because the platform will pre-judge whether the token is legal in the routing aspect. If the token is invalid, the logic in the API will not be executed. The `verifyJwtToken` method is only used for advanced and complex custom verification scenarios to provide token parsing operations. 
+> **Important**: For authenticated APIs, `context.jwt` provides the decoded payload. No manual `verifyJwtToken` call is needed—platform middleware handles validation. Use `verifyJwtToken` only for advanced custom validation.

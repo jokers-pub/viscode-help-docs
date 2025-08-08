@@ -1,26 +1,26 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Modify Repository Information</h2>
-<p>In the process of repository management, adjusting and improving repository information according to actual needs is a common operation. This chapter details the specific methods for modifying repository information and the modifiable content supported by the platform, helping you manage repositories more flexibly and efficiently.</p>
-<h3>Access the Repository Modification Page</h3>
+<h2>Repository Information Modification</h2>
+<p>During repository management, adjusting and updating repository information based on actual requirements is a common task. This chapter provides a detailed guide on modifying repository information, including the editable fields supported by the platform, to help you manage repositories more flexibly and efficiently.</p>
+<h3>Accessing the Repository Editing Page</h3>
 <ol>
-<li><strong>Locate the Repository Settings Page</strong>: First, find and open the repository for which you need to modify information. On the repository page, find and click to enter the repository settings page, which serves as the core area for configuring and managing various repository settings.</li>
-<li><strong>Click the &quot;Basic Information&quot; Menu</strong>: After entering the repository settings page, locate and click the &quot;Basic Information&quot; menu in the left-side menu list. Upon clicking, the system will open the repository information modification page, where you can edit and adjust various basic details of the repository.<br>
-<img src="/portal/rep-base.png" alt="Repository Information Modification Entry"></li>
+<li><strong>Locate the Repository Settings Page</strong>: First, navigate to and open the repository you wish to modify. On the repository page, locate and enter the repository settings page—the central hub for configuring and managing repositories.</li>
+<li><strong>Click the &quot;Basic Information&quot; Menu</strong>: After entering the repository settings page, find and click the &quot;Basic Information&quot; option in the left-hand menu. This will open the repository information editing interface, where you can update basic repository details.<br>
+<img src="/portal/rep-base.png" alt="Repository Information Editing Entry"></li>
 </ol>
-<h3>Modifiable Content</h3>
+<h3>Editable Content</h3>
 <ol>
-<li><strong>Repository Name</strong>: In this area, you can modify the repository name. Note that the repository name must consist of English letters and serve as a unique identifier within the team, ensuring each repository can be accurately recognized and distinguished by its name.</li>
-<li><strong>Project Title</strong>: The project title provides a brief descriptive title for the repository, enabling users to quickly understand its core content. It also serves as the <code>title</code> data during code generation, providing key information for code generation.</li>
-<li><strong>Homepage URL</strong>: You can enter a URL pointing to the external network here, allowing users to quickly access external resources or webpages related to the repository through this address.</li>
-<li><strong>Repository Tags</strong>: Maintaining repository tags helps viewers quickly identify the business scope of the repository. It also facilitates users in locating target repositories more accurately via tags during searches, improving repository retrieval efficiency.</li>
-<li><strong>Repository Description</strong>: Provide a detailed textual description of the repository to help others better understand its purpose, functions, objectives, and other key information, enabling first-time users to quickly grasp the core points of the repository.</li>
-<li><strong>Mandatory Submission Information</strong>: This option is disabled by default. When enabled, developers must fill in an update log when saving changes on the workbench; otherwise, submission is prohibited. This helps standardize information recording during development for easier traceability and management.</li>
-<li><strong>Set as Private Repository</strong>: You can configure whether the current repository is private based on actual needs. Private repositories restrict access permissions, ensuring repository information and resources are visible only to authorized personnel, safeguarding data security and privacy.</li>
-<li><strong>Set Avatar</strong>: Upload a repository avatar. A unique and representative avatar makes the repository more easily recognizable among lists, enhancing its 辨识度 (recognizability) and personalization.<br>
-<img src="/portal/rep-base1.png" alt="Repository Information Modification Details"></li>
+<li><strong>Repository Name</strong>: In this section, you can update the repository name. Note that repository names must consist of English letters and be unique within the team, ensuring accurate identification and distinction.</li>
+<li><strong>Project Title</strong>: The project title provides a brief description of the repository. It helps users quickly grasp the repository’s purpose and serves as the <code>title</code> data for code generation, offering crucial context.</li>
+<li><strong>Homepage URL</strong>: Enter an external website URL here, allowing users to access relevant resources or web pages directly.</li>
+<li><strong>Repository Tags</strong>: By maintaining repository tags, viewers can quickly assess its business scope. Tags also enhance searchability, enabling precise repository discovery.</li>
+<li><strong>Repository Description</strong>: Provide a detailed textual description of the repository’s purpose, functionality, and objectives. This helps newcomers understand its core aspects efficiently.</li>
+<li><strong>Mandatory Commit Messages</strong>: This option is disabled by default. When enabled, developers must include an update log when saving changes in the workspace. This promotes standardized documentation for traceability.</li>
+<li><strong>Set as Private Repository</strong>: Configure whether the repository is private based on your needs. Private repositories restrict access to authorized personnel, ensuring data security and privacy.</li>
+<li><strong>Set an Icon</strong>: Upload a unique and representative icon for the repository. A distinct icon improves recognition and differentiation in listings.<br>
+<img src="/portal/rep-base1.png" alt="Repository Information Editing Details"></li>
 </ol>
-<p>Through the above operations to modify repository information, you can flexibly adjust repository details according to business needs and management requirements at different stages, making repository management more aligned with actual work needs.</p>
+<p>By following these steps, you can flexibly adjust repository information to align with evolving business and management requirements.</p>
 
 <BottomNav />
 </div>

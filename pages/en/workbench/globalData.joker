@@ -1,21 +1,21 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Global Variables</h2>
-<p>Global variables allow developers to create unified global variables within a project and share them among multiple files.</p>
+<p>Global variables allow developers to create unified variables that can be shared and used across multiple files within a project.</p>
 <h3>Overview</h3>
-<p>Global variables are helpful in solving the problem of variable sharing across files. In different files, we can both access global variables and modify their values. Moreover, if your project is a component/method set, when it is referenced, effective data isolation will also be achieved in the project reference environment.</p>
-<p>We can maintain variables through the <strong>Global Variables</strong> panel in the <code>Project Configuration</code> file.</p>
+<p>Global variables help solve the problem of variable sharing across different files. They can be accessed and modified in any file. Moreover, if your project is a component/method set, data isolation is effectively maintained in the referencing environment when the project is imported.</p>
+<p>Global variables can be managed via the <strong>Global Variables</strong> panel in the <code>Project Configuration</code> file.</p>
 <p><img src="/workbench/globalData.png" alt=""></p>
 <h3>How to Create Variables</h3>
-<p>We can click the <code>Create Global Variable</code> button on the page to create variables.</p>
+<p>You can click the <code>Create Global Variable</code> button on the page to create a variable.</p>
 <p><img src="/workbench/globalData1.png" alt=""></p>
 <blockquote>
-<p>For the tutorial on specific creation attributes, please refer to <a href="/workbench/property" target="_blank">Field Maintenance</a>.</p>
+<p>For a detailed tutorial on property creation, refer to <a href="/workbench/property" target="_blank">Field Maintenance</a>.</p>
 </blockquote>
 <h3>How to Use</h3>
 <p>Global variables can be used in any expression.</p>
 <p><img src="/workbench/globalData2.png" alt=""></p>
-<p>At the same time, global variables can also be used in logical methods.</p>
+<p>Additionally, global variables can also be utilized within logic methods.</p>
 <p><img src="/workbench/globalData3.png" alt=""></p>
 
 <BottomNav />

@@ -1,67 +1,67 @@
-## Style Management
+## Style Management  
 
-This chapter mainly introduces the implementation methods of style management within the project, covering the management of private styles inside components and the management of global styles of the project.
+This chapter focuses on the implementation of style management within projects, covering both private style management within components and global style management across projects.  
 
-### Component Internal Styles
+### Component-Specific Styles  
 
-When opening a component or page file and no component is selected, the attribute panel on the right side by default shows the attribute panel of the current file. Here, the private styles of the current file can be managed.
+When opening a component or page file without selecting any component, the default view on the right-hand property panel displays the attributes of the current file. Here, you can manage the private styles of the current file.  
 
-![Screenshot of the component or page file attribute panel](/workbench/style.png)
+![Screenshot of Component or Page File Attribute Panel](/workbench/style.png)  
 
-The internal styles of components follow the `scoped` style scope isolation principle. The so-called style `scoped` scope isolation means that during actual operation, the CSS of the current file will automatically add the `[data-scoped-xxx]` mark. This feature makes the CSS content only affect the relevant elements (including block content) within the current page and will not interfere with the styles of other pages or components.
+Component-specific styles adhere to the `scoped` style isolation principle. The `scoped` isolation ensures that, during runtime, the CSS of the current file automatically appends a `[data-scoped-xxx]` marker. This feature restricts the CSS scope so that styles only affect elements (including Section content) within the current page, without interfering with styles on other pages or components.  
 
-#### Style Penetration
+#### Style Penetration  
 
-After using `scoped`, the styles of the parent component will not penetrate into the sub-component. However, the root node of the sub-component will be affected by the scoped styles of both the parent component and the sub-component. This design facilitates the parent component to adjust the styles of the root element of the sub-component from the layout perspective.
+With `scoped` applied, parent component styles do not penetrate child components. However, the root node of a child component is affected by both the parent and child component’s scoped styles. This design allows parent components to adjust the layout-related styles of child component root elements.  
 
-In some specific scenarios, if it is necessary to change the styles of the sub-component with `scoped` in the parent node, `:deep()` can be used for style penetration to achieve the change of the sub-component styles. For example:
+In certain scenarios, if you need to modify the styles of a child component with `scoped` from a parent node, you can use `:deep()` for style penetration to achieve the desired changes. For example:  
 
-```html
-<style scoped>
-   .a :deep(.b) {
-        /*... */
-    }
-</style>
-```
+```html  
+<style scoped>  
+    .a :deep(.b) {  
+        /*... */  
+    }  
+</style>  
+```  
 
-The above code will be compiled into:
+The above code will be compiled as:  
 
-```css
-.a[data-scoped-981d2c8a].b {
-    /*... */
-}
-```
+```css  
+.a[data-scoped-981d2c8a].b {  
+    /*... */  
+}  
+```  
 
-In practical applications, style penetration is often used to control the styles of sub-components, and sub-components can also use style penetration to change the block template styles of the parent container.
+In practice, style penetration is often used to control child component styles, and child components may also utilize it to modify the Section template styles of parent containers.  
 
-### Project Global Styles
+### Global Project Styles  
 
-The project global styles are only available in the "Component Library" or "Application" repositories in the "Front-end" project. The method set repository does not have the function of global style management.
+Global project styles are only available in "frontend" projects under "Component Libraries" or "Applications" repositories. Method-based repositories do not support global style management.  
 
-In the `Project Style Management` panel of the `Project Configuration` file, click the `Configure Project Main Style File` button to manage the global styles within the current project.
+In the `Project Configuration` file, under the `Project Style Management` panel, click the `Configure Project Main Style File` button to manage global styles for the current project.  
 
-![Screenshot of the Project Style Management panel](/workbench/style2.png)
+![Screenshot of Project Style Management Panel](/workbench/style2.png)  
 
-> It should be noted that if a third-party component library extension package is referenced, the main style file in the component library will be loaded first, and then the main style file in the current application project will be loaded. This arrangement aims to enable the "Application" project to rewrite the styles or style variables in the third-party extension.
+> Note: If a third-party component library extension is referenced, the main style file from the component library loads first, followed by the main style file from the current application project. This arrangement ensures that "Application" projects can override styles or style variables from third-party extensions.  
 
-### Quick Styles and Style Variables
+### Quick Styles and Style Variables  
 
-When configuring component attributes, sometimes it is necessary to pass in style names or style variables to complete the parameter setting of the component. However, numerous style names and style variables may lead to difficulties in searching. At this time, we can use the **Style Name** and **Style Variable** management panels in the `Project Configuration` file to maintain the commonly used style names and style variables. In this way, when it is necessary to pass and configure style values, they can be quickly retrieved.
+When configuring component properties, you may need to pass style names or style variables to complete parameter settings. However, the sheer number of style names and variables can make them difficult to locate. To address this, the `Project Configuration` file includes **Style Name** and **Style Variable** management panels to maintain commonly used style names and variables. This enables quick retrieval when configuring style values.  
 
-#### How to Define
+#### Definition  
 
-We can maintain the commonly used style names and style variables through the **Style Name** and **Style Variable** management panels in the `Project Configuration` file.
+In the `Project Configuration` file, use the **Style Name** and **Style Variable** management panels to maintain frequently used style names and variables.  
 
-![Screenshot of the Style Name and Style Variable management panels](/workbench/style3.png)
+![Screenshot of Style Name and Style Variable Management Panel](/workbench/style3.png)  
 
-#### How to Use
+#### Usage  
 
-Taking the Joker UI project as an example, this repository has already maintained the commonly used style names and style variables.
+Take the Joker UI project as an example—this Repository has already maintained commonly used style names and variables.  
 
-- **Quickly Select Style Names**
-![Screenshot of the operation of quickly selecting style names](/workbench/style4.png)
+-   **Quickly Select Style Names**  
+    ![Screenshot of Quick Style Name Selection](/workbench/style4.png)  
 
-- **Quickly Select Style Variables**
-![Screenshot of the operation of quickly selecting style variables](/workbench/style5.png)
+-   **Quickly Select Style Variables**  
+    ![Screenshot of Quick Style Variable Selection](/workbench/style5.png)  
 
-> Note that style variables need to be switched to the `var variable` mode before style variables can be input. 
+> Note: Style variables must be switched to `var variable` mode before they can be input.

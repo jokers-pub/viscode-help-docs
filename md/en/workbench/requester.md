@@ -1,88 +1,104 @@
-## Request Management
+## Request Management  
 
-This chapter mainly describes how to manage our API interfaces in front-end application type projects and how to quickly implement a request in a visual way.
+This chapter primarily explains how to manage API interfaces in front-end application projects and how to quickly implement requests through a visual approach.  
 
-### Overview
+### Overview  
 
-The request management function is only provided in the `Front-end - Application` type of repositories. As an actual application implementation project, we can achieve unified management and maintenance of API interfaces within it.
+The Request Management feature is only available in repositories of the **Frontend - Application** type. As an actual implementation project, it allows for the unified management and maintenance of API interfaces.  
 
-We can click on the `Service Interface` menu in the right menu panel to open this function.
+You can open this feature by clicking the **Service Interfaces** menu in the right-side panel.  
 
-![](/workbench/requester.png)
+![](/workbench/requester.png)  
 
-### Create/Edit Interface
+### Create/Edit an Interface  
 
-In the request management page, we can click the `New Interface` button in the **upper right corner** of the page to create a new service interface; we can also click the edit button in the interface list to edit the service interface.
+On the Request Management page, you can create a new service interface by clicking the **New Interface** button in the **top-right corner** or edit an existing one by clicking the **Edit** button in the interface list.  
 
-![](/workbench/requester1.png)
+![](/workbench/requester1.png)  
 
-After we open the interface edit window, the following content elements need to be maintained:
+When the interface editing window opens, the following elements need to be maintained:  
 
-![](/workbench/requester2.png)
+![](/workbench/requester2.png)  
 
-1. **Interface Address**: Here, you need to fill in the interface address. Please do not fill in the interface domain name here. The request root can be configured in the environment variables.
-2. **Request Type**: Click on the request type in front of the interface address input box to allow switching of the request type. Currently, two request methods, `POST` and `GET`, are supported.
-3. **Remarks Title**: The interface title can help developers quickly understand the meaning of the interface.
-4. **Interface Description**: Complete interface introduction information to help developers understand the interface in depth.
-5. **Input**: Interface input fields. You can click to add parameters or edit an already added interface input parameter.
-6. **Output**: Interface output fields. You can click to add parameters or edit an already added interface input parameter.
+1. **Interface URL**: Enter the interface URL here. Do not include the domain name—the request base URL can be configured in environment variables.  
+2. **Request Type**: Click the dropdown before the URL input field to switch the request type (currently supports **POST** and **GET**).  
+3. **Title**: A brief title helps developers quickly understand the interface's purpose.  
+4. **Description**: Detailed interface information to help developers gain a deeper understanding.  
+5. **Input Fields**: Click **Add Parameter** or edit an existing input parameter.  
+6. **Output Fields**: Click **Add Parameter** or edit an existing output parameter.  
 
-> After we create a service interface, the platform will automatically categorize it according to the root level, providing better service interface management.
-> For the configuration of the request root in multiple environments, please read the **requesterRoot** variable in the [Environment Variables](/workbench/env) article.
+> Once an interface is created, the platform automatically categorizes it based on the file hierarchy for better management.  
+> For multi-environment base URL configuration, refer to the **requesterRoot** variable in the [Environment Variables](/workbench/env) documentation.  
 
-### Interface Input
+### Import/Update  
 
-We can click the `Add Parameter` button to add interface input parameters:
+The platform provides a quick interface import/update feature, allowing you to rapidly import all API interfaces from existing, accessible backend projects.  
 
-![](/workbench/requester3.png)
+![](/workbench/requester11.png)  
 
-For detailed field creation help documentation, please refer to: [Field Maintenance](/workbench/property)
+Click the **Import/Update** button in the top-right corner to open the import panel. Enter the name of the backend repository to search for the target project.  
 
-### Interface Output
+![](/workbench/requester12.png)  
 
-The interface output refers to the data format type returned by an interface. We can click on the `Output` tab to maintain the interface output fields.
+Only backend projects accessible to the current user will be displayed. After selecting a backend project, you can choose a version (e.g., the **DEV** development version).  
 
-![](/workbench/requester4.png)
+Once selected, you can click **Import/Update** to import individual interfaces or controllers, or use the **Sync All** button to synchronize all backend interfaces.  
 
-For detailed field creation help documentation, please refer to: [Field Maintenance](/workbench/property)
+> If the imported interface URL already exists, it will only update the input/output fields without modifying **MOCK** data. If the data structure changes, update the MOCK data promptly.  
 
-In addition to the traditional field creation function provided by the platform, it also provides a function of automatic recognition according to JSON content. We can directly copy the return data of the existing interface into the JSON parsing window, and the platform will automatically parse the fields.
+### Interface Input  
 
-[video](/workbench/requester5.mp4)
+Click **Add Parameter** to define input fields:  
 
-### MOCK Data
+![](/workbench/requester3.png)  
 
-The JOKER intelligent development platform has the MOCK data capability. With the convenient Mock syntax, the declaration of Mock stub data for fields can be achieved.
+For detailed field creation, refer to: [Field Maintenance](/workbench/property)  
 
-![Interface showing the implementation of stub data declaration using Mock syntax](/workbench/requester6.png)
+### Interface Output  
 
-In addition to using the `mock.js` syntax to write stub data, the platform also supports manual maintenance of Mock data and provides an advanced stub function with conditional branches.
+The output section defines the data structure returned by an interface. Click the **Output** tab to manage output fields.  
 
-![Interface showing manual maintenance of Mock data and advanced stub with conditional branches](/workbench/requester7.png)
+![](/workbench/requester4.png)  
 
-> During manual maintenance, we can set the **Condition** field to determine the hit condition of the current Mock data, so as to flexibly control the usage scenarios of Mock data.
+For detailed field creation, refer to: [Field Maintenance](/workbench/property)  
 
-### Request Global Management
+Beyond manual field creation, the platform supports **JSON auto-parsing**. Simply paste a sample JSON response, and the system will automatically extract the fields.  
 
-In the request management editor, click on the `Request Global Management` tab to enable this function.
+[video](/workbench/requester5.mp4)  
 
-![Screenshot of the entrance to Request Global Management](/workbench/requester8.png)
+### MOCK Data  
 
-This function covers the following key configuration items:
+The JOKER development platform includes MOCK capabilities, enabling realistic test data generation using Mock.js syntax.  
 
-- **Request Timeout**: The default request timeout is 10 seconds. You can configure the global request timeout here. For interfaces that require long processing time, the timeout can also be set separately during the request, and the timeout configured here will be the default setting when the timeout is not specified.
-- **Data Conversion Configuration**: Here, you can configure the data conversion before and after the request. Utilize this aspect event to achieve the transformation to meet different server-side interface specifications.
-- **Request Status Judgment**: (Recommended configuration) After the interface responds, use this configuration to judge whether the interface data is a business success or a business failure. If not configured, except for abnormal network status, it will be regarded as a business success.
-- **Global Exception Handling**: (Recommended configuration) You can configure the global common handling method for request exceptions here. For example, a unified pop-up window can be used to prompt error information after a request fails. If the `Error` method within the request returns `true`, the global exception handling will not be triggered.
-- **Request Custom Configuration**: You can add some personalized configuration items here to meet personalized business needs. For example, add a parameter to determine whether to enable loading.
-- **Request Guard**: Here, you can configure the request guard logic to achieve functions such as the request loading effect. The guard mainly includes the management of three aspect events: pre, post, and error.
+![Interface showing Mock syntax for test data generation](/workbench/requester6.png)  
 
-### How to Call the Interface
+In addition to Mock.js syntax, manual MOCK data customization is supported, along with **conditional branching** for advanced use cases.  
 
-After we have completed the maintenance of the interface, we can use the `Data Request` node in any method logic editor to quickly call the interface request.
+![Interface for manual MOCK data and conditional branching](/workbench/requester7.png)  
 
-![](/workbench/requester9.png)
+> Condition-based MOCK data allows you to control data variability based on specific logic (e.g., simulating success/failure responses).  
 
-When requesting an interface, we can also customize the configuration of the interface request.
+### Global Request Management  
 
-![](/workbench/requester10.png) 
+Click the **Global Request Management** tab in the request editor to configure:  
+
+![Screenshot of Global Request Management](/workbench/requester8.png)  
+
+Key configurations:  
+
+- **Timeout**: Default is 10s (override per request if needed).  
+- **Data Transformation**: Modify request/response formats to adapt to different backend standards.  
+- **Status Validation**: (Recommended) Define logic to distinguish between business success/failure. If unset, all non-network errors are treated as successes.  
+- **Global Error Handling**: (Recommended) Centralize error handling (e.g., showing error popups). Return `true` in the `Error` method to bypass this.  
+- **Custom Configs**: Add specialized options (e.g., enabling loading animations).  
+- **Request Interceptors**: Use pre/post/error hooks for tasks like displaying loading states.  
+
+### How to Call an Interface  
+
+After defining an interface, use the **Data Request** node in any method editor to invoke it:  
+
+![](/workbench/requester9.png)  
+
+Customize request parameters during invocation:  
+
+![](/workbench/requester10.png)

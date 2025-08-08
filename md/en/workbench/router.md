@@ -1,47 +1,47 @@
-## Routing Management
+## Routing Management  
 
-This chapter mainly elaborates on routing-related knowledge, covering aspects such as **Default Routing Address** and **Routing Guards**.
+This chapter focuses on routing-related knowledge, covering topics such as **Default Route Address** and **Routing Guards**.  
 
-### Overview
+### Overview  
 
-**Routing Global Management** enables us to manage the default access address of the front-end application and, according to business requirements, has the ability to configure different **Routing Guards**.
+**Global Routing Management** enables us to control the default access address of front-end applications while providing the ability to configure different **Routing Guards** based on business requirements.  
 
-Before reading the content of this chapter, it is recommended that you read the [Page Management](/workbench/page) chapter first.
+Before diving into this chapter, we recommend reviewing the [Page Management](/workbench/page) section.  
 
-We can maintain the global routing-related configurations in the `Routing Management` panel in the `Project Configuration` file.
+You can maintain global routing configurations in the **Routing Management** panel within the `Project Configuration` file.  
 
-![Screenshot of the Routing Management panel](/workbench/router.png)
+![Routing Management Panel Screenshot](/workbench/router.png)  
 
-### Default Address
+### Default Address  
 
-Here, you can configure the default routing address of the current project.
+Here, you can configure the default route address for the current project.  
 
-The platform will automatically analyze the context routing information of all page resource files and list the routing information of all leaf pages. You can select a page address from them as the default page address. If no selection is made, the default access is `/`. If this address does not exist in your project, an error may occur during runtime.
+The platform automatically analyzes the routing context of all page resource files and lists the routing information for all leaf pages. You can select one of the addresses as the default page route. If left unconfigured, the default access path will be `/`. If your project does not include this route, runtime errors may occur.  
 
-![Screenshot of the default address selection interface](/workbench/router1.png)
+![Default Address Selection Interface Screenshot](/workbench/router1.png)  
 
-> Clicking on the file name can quickly open the target page resource, facilitating your understanding of the display situation of this address.
+> Clicking the file name allows quick access to the target page resource, helping you understand how the route renders.  
 
-### Routing Guards
+### Routing Guards  
 
-Routing guards can help us achieve diverse business requirements before and after route jumps, such as adding a loading waiting effect during the jump or checking the login status before the jump.
+Routing Guards assist in executing diverse business requirements before or after route navigation, such as adding a loading state during redirection or performing login status checks beforehand.  
 
-#### beforeRouteCallbacks [Before Jump]
+#### beforeRouteCallbacks [Before Navigation]  
 
-In `beforeRouteCallbacks`, we can add listener functions to monitor the aspect event before the route jump. In this way, we can perform some custom operations before the route jump, such as verifying user permissions, recording logs, etc. This way provides convenience for us to flexibly control the route jump process and helps optimize the performance and user experience of the application.
+In `beforeRouteCallbacks`, you can register listener functions to intercept pre-navigation events. This enables custom operations—like validating user permissions or logging—before routing occurs. This flexibility in controlling the navigation process helps optimize application performance and user experience.  
 
-![Screenshot of operations related to beforeRouteCallbacks](/workbench/router3.png)
+![beforeRouteCallbacks Operations Screenshot](/workbench/router3.png)  
 
-When it is necessary to redirect to another page before the jump, you need to call the `next` function of the parameter and pass in the new jump address to complete the route redirection.
+To redirect to another page before navigation, invoke the `next` function and pass the new target address to complete the redirection.  
 
-> **Important Note**: The **next** function must be called. If you want to redirect, pass in the new address; if there is no need to redirect, do not pass in parameters.
+> **Important Note**: The **next** function **must** be called. Pass a new address for redirection; otherwise, omit the parameter.  
 
-#### afterRouteCallbacks [After Jump]
+#### afterRouteCallbacks [After Navigation]  
 
-`afterRouteCallbacks`, as a hook after the jump, is basically used in the same way as `beforeRouteCallbacks`. However, it does not have a mechanism like `next` or `return` for controlling the flow.
+`afterRouteCallbacks` serves as a post-navigation hook, functioning similarly to `beforeRouteCallbacks`. However, it lacks flow-control mechanisms like `next` or `return`.  
 
-### Example
+### Example  
 
-Here, we take the example of judging whether the current user is logged in. If logged in, normal access is allowed; if not logged in, it will jump to the login page.
+Here, we demonstrate checking a user’s login status. If logged in, access proceeds; otherwise, the user is redirected to the login page.  
 
-![Screenshot of the example operation](/workbench/router4.png) 
+![Example Operation Screenshot](/workbench/router4.png)

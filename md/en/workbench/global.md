@@ -1,25 +1,25 @@
 ## Global Methods
 
-This chapter mainly focuses on the global methods in front-end projects. Global methods are usually used to implement public business logic and can quickly call the provided business methods across component or page files.
+This chapter focuses on global methods in front-end projects, which are typically used to implement shared business logic and can be quickly invoked across components or page files to provide business methods.
 
-> Global functions can provide convenient global method calls during page template development, such as functions like date formatting, amount formatting, and email verification. They will be registered through the `registerGlobalFunction` method in the main entry file of the project. For detailed information, you can refer to the official help documentation of the framework. However, global functions are only allowed to be used in the **layout template syntax**.
+> Global functions enable convenient method calls during page template development, such as date formatting, currency formatting, email validation, and other common functionalities. These methods are registered in the project's main entry file via the `registerGlobalFunction` method. For detailed information, please refer to the framework's official documentation. However, global functions can only be used within **layout template syntax**.
 
 ### How to Create
 
-The global methods of the project can be maintained in the `Global Methods` panel of the `Project Configuration` file.
+In the `Global Methods` panel of the `Project Configuration` file, you can maintain the global methods for the project.
 
 ![Screenshot of the Global Methods Maintenance Panel](/workbench/global.png)
 
-After creating the public methods, click the `Logic Orchestration` button to edit the internal method logic.
+After creating a shared method, click the `Logic Orchestration` button to edit its internal method logic.
 
-Global methods are isolated from each other within the project and will not be exposed externally. In front-end projects of the application type, the platform supports the introduction of public methods in third-party libraries through the quick import method.
+Global methods are isolated within the project and are not exposed externally. For application-type front-end projects, the platform supports importing public methods from third-party libraries via quick import.
 
-![Screenshot of the Interface for Quickly Importing Public Methods of Third-Party Libraries](/workbench/global1.png)
+![Screenshot of the Quick Import Interface for Third-Party Library Public Methods](/workbench/global1.png)
 
 ### How to Use
 
-Global methods can be quickly called in the component property panel of component or page resources.
+You can quickly invoke global methods in the component attribute panel of component or page resources.
 
-![Screenshot of the Interface for Calling Global Methods in the Component Property Panel](/workbench/global3.png)
+![Screenshot of Invoking Global Methods in the Component Attribute Panel](/workbench/global3.png)
 
-> Since only projects of the `application` type are allowed to register global methods, the syntax like `Global.` will only appear in projects of the application type. Although component libraries and method sets cannot use global methods, they can provide global method logic externally and support integration in application projects through the quick import method. 
+> Only `Application`-type projects are allowed to register global methods, which is why the `Global.` syntax appears exclusively in such projects. While component libraries and method collections cannot use global methods directly, they can provide global method logic externally and support integration into application projects via quick import.

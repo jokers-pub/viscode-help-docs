@@ -1,88 +1,87 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Component Development</h2>
-<p>This chapter focuses on the specific process of component development, as well as various properties and methods that components possess.</p>
+<p>This chapter focuses on the detailed workflow of component development, as well as the various properties and methods that components possess.</p>
 <h3>Overview</h3>
-<p>In front-end project development, component development plays a pivotal role. Through component encapsulation, common business or UI interactions can be unified and integrated, effectively avoiding repetitive development and greatly improving development efficiency.</p>
-<p>The JOKER development platform demonstrates outstanding advantages. It supports online component development, and the developed components can be directly referenced and rendered within the platform without the need for compilation. This is due to the rendering and sandbox mechanisms independently developed by the JOKER development platform, achieving a high level of flexibility at the framework level.</p>
-<p>A complete component mainly consists of the following major functional points:</p>
+<p>In front-end project development, component development plays a pivotal role. By encapsulating components, common business or UI interactions can be unified and consolidated, effectively avoiding redundant development and significantly improving efficiency.</p>
+<p>The <strong>JOKER</strong> development platform demonstrates exceptional advantages by supporting online component development. Completed components can be directly referenced and rendered within the platform without compilation, thanks to its self-developed rendering and sandbox mechanisms, enabling framework-level flexibility.</p>
+<p>A complete component primarily consists of the following key functionalities:</p>
 <ul>
-<li><strong>State Data</strong>: This part is used to maintain the component's data, covering incoming parameters, reactive data, and internal private variables. Incoming parameters allow the component to receive data passed from the outside, enhancing the component's universality; reactive data can respond to data changes in real time, ensuring the timely update of the component interface; internal private variables are used for internal logic processing of the component, guaranteeing the security and independence of the data.</li>
-<li><strong>Lifecycle</strong>: During the process from component creation to destruction, hook functions at different stages will be provided. Developers can use these hook functions to execute specific business logic at various stages of the component's lifecycle. For example, initialize data when the component is created and clean up relevant resources when it is destroyed, thus ensuring the normal operation of the component and the rational management of resources. <a href="https://front.jokers.pub/base/component-lifecycle" target="_blank">Component Lifecycle</a></li>
-<li><strong>Method Logic</strong>: Developers can create public or private methods here. Public methods can be called externally, facilitating interaction between other components or modules and this component, realizing the reuse and expansion of functions; private methods are used for internal logic processing of the component, ensuring the encapsulation and independence of the component's internal logic.</li>
-<li><strong>Event Handling</strong>: Events are mainly divided into two types: component/element events and internal component events. Component/element events are used to respond to user operations on components or elements, such as clicks, mouse movements, etc.; internal component events are used for communication and interaction between different parts within the component, ensuring the coherence and coordination of the component's internal logic.</li>
-<li><strong>Component Layout</strong>: Developers can manage the component layout through visual drag-and-drop, and can also configure the component's properties, blocks, and events. In addition, the outline tree function provided by the platform can help developers view and manage the component structure in a more intuitive way, making the design and adjustment of the component layout more convenient and efficient.</li>
+<li><strong>State Data</strong>: This section maintains component data, including input parameters, reactive data, and internal private variables. Input parameters allow components to receive externally passed data, enhancing reusability. Reactive data ensures real-time updates to the UI when data changes. Internal private variables handle component logic securely and independently.</li>
+<li><strong>Lifecycle</strong>: Throughout a component's lifecycle—from creation to destruction—hooks are provided at different stages. Developers can use these hooks to execute specific business logic at various phases (e.g., initializing data on creation or releasing resources on destruction). <a href="https://front.jokers.pub/base/component-lifecycle" target="_blank">Component Lifecycle</a></li>
+<li><strong>Method Logic</strong>: Developers can create public or private methods here. Public methods allow external invocation, facilitating interaction between components or modules, whereas private methods handle internal logic while maintaining encapsulation.</li>
+<li><strong>Event Handling</strong>: Events are categorized into <strong>component/element events</strong> (responding to user actions like clicks or mouse movements) and <strong>internal component events</strong> (enabling communication between different parts of the component).</li>
+<li><strong>Component Layout</strong>: Developers can manage layouts via drag-and-drop visualization, configure properties, <strong>Sections</strong>, and events. The platform’s outline tree feature provides an intuitive way to review and manage component structures.</li>
 </ul>
-<p>If you want to gain an in-depth understanding of the underlying details of component development, you can refer to the <a href="https://front.jokers.pub/base/component" target="_blank">Core Framework</a> document.</p>
+<p>For an in-depth understanding of component development, refer to the <a href="https://front.jokers.pub/base/component" target="_blank">Core Framework</a> documentation.</p>
 <h3>State Data</h3>
 <p><img src="/workbench/component.png" alt=""></p>
-<p>When opening a <code>Component</code> or <code>Page</code> file, the <code>Component Data</code> menu will be displayed in the left menu of the workbench. Click on it to open the component data panel.</p>
-<p>From the perspective of data usage, it can be divided into the following categories:</p>
+<p>When opening a <code>Component</code> or <code>Page</code> file, the workspace’s left-hand menu displays the <strong>Component Data</strong> option. Clicking it reveals the component data panel.</p>
+<p>Data can be classified as follows:</p>
 <ul>
-<li>
-<p><strong>Incoming Parameters (props)</strong>: These are the parameters required by the current component. These parameters have reactive characteristics. Once the parameters passed by external users change, the DOM nodes inside the component will be immediately notified and updated. This means that the component can respond in real time to changes in externally incoming data, thereby dynamically adjusting its own display and behavior, greatly enhancing the component's flexibility and reusability. For example, a button component may receive parameters such as the button's text content and color through props. When the externally incoming text or color changes, the button can immediately present corresponding changes.</p>
-</li>
-<li>
-<p><strong>Reactive Data (model)</strong>: This is the reactive data inside the component. Before the component is loaded, this property will be &quot;hijacked&quot; and then possess data response capabilities. That is to say, when this internal data changes, the associated parts of the component will be automatically updated. For example, in a shopping cart component, the quantity of goods is reactive data. When the quantity changes, related parts such as the total price display of the shopping cart and the rendering of the goods list will be automatically updated to provide real-time feedback to users.</p>
-</li>
-<li>
-<p><strong>Internal Private Attributes</strong>: These attributes neither support external calls nor have reactive capabilities. They are only used as temporary variables for internal use within the component. Here, you can declare internal dynamic data variables for use in multiple methods. For example, in a complex form component, a temporary variable may be needed to record the step status of form filling. This variable is only used in the methods inside the component, does not need to be exposed externally, and does not require reactive updates for its changes.</p>
-</li>
+<li><strong>Props</strong>: Input parameters for the component. These are reactive—when externally passed data changes, the component’s DOM nodes update immediately. For example, a button component’s text or color can dynamically adjust based on prop changes.</li>
+<li><strong>Model</strong>: Internal reactive data. Before the component mounts, this property is &quot;hijacked&quot; to become reactive. For instance, changes to a shopping cart component’s item quantity trigger automatic updates to the total price display.</li>
+<li><strong>Internal Private Properties</strong>: Non-reactive variables used temporarily within the component (e.g., tracking form completion steps). These are neither externally callable nor reactive.</li>
 </ul>
 <h3>Lifecycle</h3>
-<p>We can manage our component lifecycle in &quot;Logic/Events - Lifecycle&quot; within the &quot;Component Data&quot; panel. After clicking the plus button on the right side of the lifecycle, we can add lifecycle functions. Once added, we can maintain our lifecycle logic here. (The logic orchestration help document can be viewed <a href="/workbench/workflow" target="_blank">here</a>.)
+<p>The <strong>Component Data</strong> panel’s <em>Logic/Events &gt; Lifecycle</em> section lets you manage lifecycle hooks. Click the &quot;+&quot; button to add lifecycle functions, then maintain the logic. (Refer to <a href="/workbench/workflow" target="_blank">Workflow Documentation</a> for details.)<br>
 <img src="/workbench/component2.png" alt=""></p>
-<p>A component or page has a complete set of lifecycle functions from creation to destruction. We can use these functions to implement business processing at different nodes. <a href="/workbench/component-life" target="_blank">Component Lifecycle</a></p>
+<p>A component or page follows a complete lifecycle from creation to destruction. These hooks enable business processing at different stages. <a href="/workbench/component-life" target="_blank">Component Lifecycle</a></p>
 <h3>Method Logic</h3>
-<p>We can manage component methods in the &quot;Logic/Events - Component Methods&quot; area of the &quot;Component Data&quot; panel.</p>
-<p><img src="/workbench/component3.png" alt="Screenshot of the Component Method Management Panel"></p>
-<p>When creating a method, whether the method is open to the outside world can be determined according to the specific usage scenario:</p>
+<p>Component methods are managed in the <em>Logic/Events &gt; Component Methods</em> section of the <strong>Component Data</strong> panel.</p>
+<p><img src="/workbench/component3.png" alt="Component Methods Panel"></p>
+<p>When creating a method, choose its visibility:</p>
 <ul>
-<li><strong>Private Methods</strong>: They are only for internal use within the component and are mainly used to handle the business logic inside the component. They are like the &quot;secret weapons&quot; inside the component, focusing on completing specific tasks within the component, not exposing interfaces externally, ensuring the encapsulation and independence of the component's internal logic.</li>
-<li><strong>Public Methods</strong>: They can be used both internally within the component and provide the ability to be called externally. This enables effective interaction and cooperation between components, enhancing the component's reusability and expandability.</li>
+<li><strong>Private Methods</strong>: Internal-only, handling component-specific logic. These ensure encapsulation.</li>
+<li><strong>Public Methods</strong>: Callable internally or externally, facilitating component interaction and reusability.</li>
 </ul>
-<p>When we set a method as publicly exposed, it can be called through the <code>ref</code> method. This is just a simple demonstration. If you want to know the detailed content, you can refer to the <a href="/workbench/component-method" target="_blank">Component Methods</a>, <a href="/workbench/layout" target="_blank">Component Layout</a> documents.</p>
-<p><img src="/workbench/component5.png" alt="Screenshot of Demonstration for Calling Public Methods"></p>
-<p>It is worth mentioning that the platform will automatically analyze the parameter types and return types of public methods and provide a visual method calling interface, greatly improving the convenience of development and enabling developers to use and manage component methods more easily.</p>
+<p>Public methods can be invoked via <code>ref</code>. The platform automatically analyzes parameter and return types, providing a visual interface for method invocation.</p>
+<p><img src="/workbench/component5.png" alt="Public Method Demo"></p>
+<p>For details, see <a href="/workbench/component-method" target="_blank">Component Methods</a> and <a href="/workbench/component-layout" target="_blank">Component Layout</a>.</p>
 <h3>Event Handling</h3>
-<p>We can manage component methods in the &quot;Logic/Events - Component Methods&quot; area of the &quot;Component Data&quot; panel, and this is also an important entry point for viewing information related to component events.</p>
-<p><img src="/workbench/component6.png" alt="Screenshot of the Component Event Information Panel"></p>
-<p>In this area, we can view all the information about the events of the current component. These events are mainly divided into two categories:</p>
+<p>Events are managed in the <em>Logic/Events &gt; External/Internal Events</em> section of the <strong>Component Data</strong> panel.</p>
+<p><img src="/workbench/component6.png" alt="Component Events Panel"></p>
+<p>Events are categorized as:</p>
 <ul>
-<li><strong>External Events</strong>: This is the event handling mechanism provided by the current component to the outside world. It should be noted that this function only exists in component files, and page files will not trigger such events externally. External events enable the component to interact effectively with the outside world. When a specific situation occurs inside the component, it can send signals to the outside world and notify other parts to make corresponding responses. For example, in a custom drop-down menu component, when the user selects a certain menu item, it can notify the parent component to update data through an external event.</li>
-<li><strong>Internal Events</strong>: They mainly handle events that monitor the template nodes within the current component. For example, a button click event belongs to an internal event. By monitoring these internal events, we can implement various interaction logics inside the component. When users interact with elements inside the component, the corresponding processing functions will be triggered to complete specific tasks, such as displaying prompt information and modifying the component state.</li>
+<li><strong>External Events</strong>: Triggered by the component for external consumption (exclusive to components, not pages). Example: A dropdown component notifying a parent of selection changes.</li>
+<li><strong>Internal Events</strong>: Listeners for template node interactions (e.g., button clicks).</li>
 </ul>
-<p>If you want to know the detailed content about component events, you can refer to the <a href="/workbench/component-event" target="_blank">Component Events</a> document.</p>
+<p>For more, see <a href="/workbench/component-event" target="_blank">Component Events</a>.</p>
 <h3>Component Layout</h3>
-<p>Component layout is one of the most important aspects in component/page development. We can use the work canvas to arrange the layout of components/pages and achieve the display and development of components.</p>
-<p>In the front-end editor, the interface is divided into two areas on the left and right, namely the <code>Development Canvas Area</code> and the <code>Property Area</code>.</p>
-<p><img src="/workbench/front-end2.png" alt="Screenshot of the Front-End Editor"></p>
+<p>Layout is a critical aspect of component/page development. The workspace canvas enables visual styling and arrangement.</p>
+<p>The front-end editor divides into two areas: the <strong>Development Canvas</strong> and the <strong>Properties Panel</strong>.</p>
+<p><img src="/workbench/front-end2.png" alt="Front-End Editor"></p>
 <ol>
-<li><strong>Development Canvas Area</strong>: In this area, we can drag <strong>Components</strong> into the work canvas to complete the component addition operation. Meanwhile, if a component has been added, we can modify its properties or perform operations such as deleting the component after selecting it.</li>
-<li><strong>Property Area</strong>: When no component is selected, the component property panel is displayed by default. Here, we can change the component's style files or quickly import nodes through HTML. When a component is selected, the property area will display the exclusive property panel of that component, which includes three types of property configurations: <code>Properties</code>, <code>Events</code>, and <code>Areas</code>.</li>
-</ol>
-<h4>How to Add Components</h4>
-<p>The platform allows us to add components through drag-and-drop.</p>
+<li><strong>Development Canvas</strong>: Drag <strong>components</strong> here to add them. Select a component to modify properties or delete it.</li>
+<li><strong>Properties Panel</strong>:
 <ul>
-<li><strong>Component Center</strong>: We can reference components by dragging them in the <code>Component Center</code>.
+<li>Displays component attributes by default. Edit styles or import nodes via HTML.</li>
+<li>When a component is selected, the panel shows specific configs: <em>Properties</em>, <em>Events</em>, <em>Sections</em>.</li>
+</ul>
+</li>
+</ol>
+<h4>Adding Components</h4>
+<p>Components can be added via:</p>
+<ul>
+<li><strong>Component Center</strong>: Drag from the component library.<br>
 <video width="80%" controls autoplay muted loop><source src="/workbench/component4.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></li>
-<li><strong>Resource Manager</strong>: We can reference component files within the project by dragging <strong>Component</strong>-type files in the resource management.
+<li><strong>Resource Manager</strong>: Drag <strong>Component</strong>-type files from the project.<br>
 <video width="80%" controls autoplay muted loop><source src="/workbench/component7.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></li>
-<li><strong>Layout Quick Add</strong>: When we select a component, we can click <code>Quick Add</code> on the component to open the quick add component panel and achieve quick reference of the component.
+<li><strong>Quick Add</strong>: Select a component and use the <em>Quick Add</em> panel.<br>
 <video width="80%" controls autoplay muted loop><source src="/workbench/component8.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></li>
 </ul>
-<h4>How to Configure Components</h4>
-<p>We can select a certain component by clicking on the canvas. After selecting the component, we can view the configuration information of the current component in the left panel of the canvas and modify the component's parameters here, including component parameters, component events, and component blocks.</p>
+<h4>Configuring Components</h4>
+<p>Select a component on the canvas to view/modify its properties, events, or Sections in the left panel.</p>
 <p><img src="/workbench/component9.png" alt=""></p>
 <h4>Component Styles</h4>
-<p>The platform empowers users to write styles for individual components. Users can use nested CSS syntax to write component styles. The platform supports <code>scoped</code> style isolation by default, effectively avoiding style conflicts. At the same time, it also provides the <code>deep()</code> style penetration function to meet the needs of style overwriting in specific scenarios.</p>
-<p>When we do not select any component in the canvas (you can click to cancel the selected component in the shortcut operation panel below the canvas), the left side of the canvas will display the property panel of the current component, where we can maintain the styles of our components.</p>
+<p>Users can write scoped CSS for components, with <code>scoped</code> isolation by default. The <code>deep()</code> selector enables style penetration when needed.</p>
+<p>To edit styles, deselect all components in the canvas (via the quick-action panel), then access the style settings in the left panel:</p>
 <p><img src="/workbench/component10.png" alt=""></p>
 <h4>Outline Tree</h4>
-<p>The platform has an overall layout outline display function. You can view the layout structure in the <code>Outline Tree</code> of the <code>Component Data</code> panel. In addition, the outline tree also provides rich shortcut layout operations to help you complete layout adjustments more efficiently.
-<img src="/workbench/component11.png" alt=""></p>
+<p>The <strong>Component Data</strong> panel’s <em>Outline Tree</em> displays the layout hierarchy and offers quick layout operations.</p>
+<p><img src="/workbench/component11.png" alt=""></p>
 <blockquote>
-<p>For detailed component layout, please refer to <a href="/workbench/layout" target="_blank">Component Layout</a>.</p>
+<p>For detailed layouts, refer to <a href="/workbench/component-layout" target="_blank">Component Layout</a>.</p>
 </blockquote>
 
 <BottomNav />

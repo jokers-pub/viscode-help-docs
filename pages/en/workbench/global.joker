@@ -1,21 +1,21 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Global Methods</h2>
-<p>This chapter mainly focuses on the global methods in front-end projects. Global methods are usually used to implement public business logic and can quickly call the provided business methods across component or page files.</p>
+<p>This chapter focuses on global methods in front-end projects, which are typically used to implement shared business logic and can be quickly invoked across components or page files to provide business methods.</p>
 <blockquote>
-<p>Global functions can provide convenient global method calls during page template development, such as functions like date formatting, amount formatting, and email verification. They will be registered through the <code>registerGlobalFunction</code> method in the main entry file of the project. For detailed information, you can refer to the official help documentation of the framework. However, global functions are only allowed to be used in the <strong>layout template syntax</strong>.</p>
+<p>Global functions enable convenient method calls during page template development, such as date formatting, currency formatting, email validation, and other common functionalities. These methods are registered in the project's main entry file via the <code>registerGlobalFunction</code> method. For detailed information, please refer to the framework's official documentation. However, global functions can only be used within <strong>layout template syntax</strong>.</p>
 </blockquote>
 <h3>How to Create</h3>
-<p>The global methods of the project can be maintained in the <code>Global Methods</code> panel of the <code>Project Configuration</code> file.</p>
+<p>In the <code>Global Methods</code> panel of the <code>Project Configuration</code> file, you can maintain the global methods for the project.</p>
 <p><img src="/workbench/global.png" alt="Screenshot of the Global Methods Maintenance Panel"></p>
-<p>After creating the public methods, click the <code>Logic Orchestration</code> button to edit the internal method logic.</p>
-<p>Global methods are isolated from each other within the project and will not be exposed externally. In front-end projects of the application type, the platform supports the introduction of public methods in third-party libraries through the quick import method.</p>
-<p><img src="/workbench/global1.png" alt="Screenshot of the Interface for Quickly Importing Public Methods of Third-Party Libraries"></p>
+<p>After creating a shared method, click the <code>Logic Orchestration</code> button to edit its internal method logic.</p>
+<p>Global methods are isolated within the project and are not exposed externally. For application-type front-end projects, the platform supports importing public methods from third-party libraries via quick import.</p>
+<p><img src="/workbench/global1.png" alt="Screenshot of the Quick Import Interface for Third-Party Library Public Methods"></p>
 <h3>How to Use</h3>
-<p>Global methods can be quickly called in the component property panel of component or page resources.</p>
-<p><img src="/workbench/global3.png" alt="Screenshot of the Interface for Calling Global Methods in the Component Property Panel"></p>
+<p>You can quickly invoke global methods in the component attribute panel of component or page resources.</p>
+<p><img src="/workbench/global3.png" alt="Screenshot of Invoking Global Methods in the Component Attribute Panel"></p>
 <blockquote>
-<p>Since only projects of the <code>application</code> type are allowed to register global methods, the syntax like <code>Global.</code> will only appear in projects of the application type. Although component libraries and method sets cannot use global methods, they can provide global method logic externally and support integration in application projects through the quick import method.</p>
+<p>Only <code>Application</code>-type projects are allowed to register global methods, which is why the <code>Global.</code> syntax appears exclusively in such projects. While component libraries and method collections cannot use global methods directly, they can provide global method logic externally and support integration into application projects via quick import.</p>
 </blockquote>
 
 <BottomNav />

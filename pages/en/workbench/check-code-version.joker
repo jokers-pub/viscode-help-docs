@@ -1,35 +1,35 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Code Inspection and Version Release</h2>
-<p>This chapter focuses on introducing the platform's code inspection capabilities and how to conduct code inspections completely during the version release process.</p>
+<h2>Code Inspection &amp; Version Release</h2>
+<p>This chapter focuses on the platform’s code-inspection capabilities and how to perform a complete code check during the release process.</p>
 <h3>Overview</h3>
-<p>In the <code>Repository Status</code> area at the bottom of the platform, click on the <code>Problem Panel</code> to open the repository problem panel. In this panel, developers can quickly view the existing problems in the current project and solve the corresponding problems promptly according to the problem descriptions and optimization suggestions.</p>
-<p><img src="/workbench/check-code-version.png" alt=""></p>
-<p>The platform uses a real-time scanning mechanism. During the development process, it will check the changed code in real time, aiming to inform developers of the abnormal situations found as soon as possible. Meanwhile, it uses color changes to visually present the health level of the current project:</p>
+<p>In the <strong><code>Repository Status</code></strong> section at the bottom of the platform, click <strong><code>Problem Panel</code></strong> to open the Repository Problem Panel. Developers can quickly view all outstanding issues in the project and follow the descriptions and improvement suggestions to resolve them promptly.<br>
+<img src="/workbench/check-code-version.png" alt=""></p>
+<p>The platform uses a <strong>real-time scanning mechanism</strong> that analyzes <strong>only the changed code</strong> while you type—alerts appear immediately when anomalies are found. The overall health of the project is reflected through intuitive color coding:</p>
 <ul>
-<li><strong>Yellow</strong>: It indicates that there are warning exceptions. Such exceptions are non-blocking, for example, situations like empty methods, irregular naming, etc. Although they won't hinder the project's operation, they may affect the readability and maintainability of the code, and developers need to pay attention to and optimize them in a timely manner.</li>
-<li><strong>Red</strong>: It means that there are serious blocking exceptions, usually code errors or type errors, such as variables that don't exist, components that don't exist, or variable types that don't meet the requirements. These exceptions will cause the project to fail to operate normally and must be fixed in time.</li>
-<li><strong>Blue</strong>: It represents that no exceptions are detected in the code under development, indicating that the current code is in a relatively healthy state and the development process is progressing smoothly.</li>
+<li><strong>Yellow</strong>: Warning-level exceptions—non-blocking issues such as empty methods, non-standard naming, etc. They do not stop execution but degrade readability and maintainability; attention and periodic refactoring are recommended.</li>
+<li><strong>Red</strong>: Critical blocking exceptions—actual syntax or type errors (e.g., undefined variables, missing components, incorrect type usage). These prevent compilation or runtime and must be fixed immediately.</li>
+<li><strong>Blue</strong>: No anomalies detected; the currently edited code is in a healthy state and development is progressing smoothly.</li>
 </ul>
 <blockquote>
-<p><strong>Special Note</strong>: The platform only conducts code inspections on the file resources that are being edited, rather than checking all the code in real time. This is done to ensure the smoothness of the development process while ensuring that code problems can be found in a timely manner, avoiding development lags caused by a large number of code inspections.</p>
+<p><strong>Important Note</strong>: The platform performs inspection <strong>only on the file(s) currently being edited</strong>, <strong>not</strong> on the entire codebase in real time. This design balances immediate feedback with editing smoothness—avoiding the performance overhead of scanning large repositories on every keystroke.</p>
 </blockquote>
-<h3>Viewing Problems</h3>
-<p>Click on the <code>Problem Panel</code> to open the corresponding interface, which displays the problems found in the current repository.</p>
-<p><img src="/workbench/check-code-version2.png" alt="Screenshot of the Problem Panel"></p>
-<p>The problems here can be divided into two categories:</p>
+<h3>Reviewing Issues</h3>
+<p>Click <strong><code>Problem Panel</code></strong> to open the pane displaying all discovered issues for the active Repository.</p>
+<p><img src="/workbench/check-code-version2.png" alt="Problem Panel Screenshot"></p>
+<p>Issues fall into two categories:</p>
 <ul>
-<li><strong>Errors</strong>: Such problems are relatively serious and may cause the program to fail to operate normally or have logical errors.</li>
-<li><strong>Warnings</strong>: Although they won't directly cause the program to crash, they may imply potential risks or irregularities in the code and need attention.</li>
+<li><strong>Error</strong>: Severe problems that may prevent the program from compiling or running correctly, or can cause logical failures.</li>
+<li><strong>Warning</strong>: Non-critical issues that hint at potential bugs or violations of best practices; they warrant attention but do not immediately break the program.</li>
 </ul>
-<p>For some abnormal situations, the platform will provide an <code>Auto-fix Function</code> according to the actual scenarios. If there are problems that can be automatically fixed, when you click on the problem entry, the system will pop up a reminder asking whether to perform automatic repair. In addition, by directly clicking on the problem entry, the platform will automatically locate the source position of the problem in the code, which is convenient for developers to quickly find and solve the problem.</p>
-<h3>Full Problem Scanning</h3>
-<p>If you need to conduct a full scan of all the files in the current repository, you can click the <code>Full File Inspection</code> button in the upper right corner of the <code>Problem Panel</code> to trigger the full file problem inspection function. This function will conduct a comprehensive and detailed code inspection of all the files in the repository, helping developers to understand the existing problems in the project more comprehensively.</p>
-<p><img src="/workbench/check-code-version3.png" alt="Screenshot of the Full File Inspection Button"></p>
+<p>For certain anomalies, the platform offers an <strong><code>Auto-Fix</code></strong> feature. When a problem supports auto-repair, clicking the issue entry will trigger a prompt asking whether to apply the automatic fix. Alternatively, simply clicking any problem entry navigates the cursor directly to the offending line in the editor, making the failure location instantly discoverable.</p>
+<h3>Full-Repository Scan</h3>
+<p>To check every file in the repository at once, use the <strong><code>Full File Check</code></strong> button in the top-right corner of the <strong><code>Problem Panel</code></strong>. This launches a comprehensive scan across the entire codebase, producing an exhaustive issue report.</p>
+<p><img src="/workbench/check-code-version3.png" alt="Full File Check Button Screenshot"></p>
 <h3>Version Release</h3>
-<p>When the <code>Create Release Version</code> process is triggered, the first step is to complete the code inspection work (you can refer to the <a href="/portal/rep-version" target="_blank">Create Version Help Document</a>). When entering the workbench, the platform will automatically guide us to conduct code inspections.</p>
-<p><img src="/portal/rep-version4.png" alt="Screenshot of the Version Release Guidance"></p>
-<p>We must fix all the discovered problems and then click the green button to complete the code inspection work and prepare for the subsequent version release.</p>
+<p>When you initiate the <strong><code>Create Release</code></strong> flow, the first mandatory step is to complete a code inspection (see <a href="/portal/rep-version" target="_blank">Create Release Help Doc</a>). Entering the Workbench automatically triggers the platform’s code-analysis guide:</p>
+<p><img src="/portal/rep-version4.png" alt="Release Prompt Screenshot"></p>
+<p>All detected issues <strong>must</strong> be resolved. Once the codebase is clean, click the green button to finalize the check—clearing the path for the actual version release.</p>
 
 <BottomNav />
 </div>

@@ -1,34 +1,34 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h3>Event Bus</h3>
-<p>In this chapter, we will explore what an Event Bus is and the functionalities it enables.</p>
-<p><strong>Note</strong>: The Event Bus feature is only available for <code>front-end project</code> types. It cannot be used in component libraries or method set libraries.</p>
-<h4>Overview</h4>
-<p>In the front-end domain, apart from data communication between components and pages via <code>props</code> parameters, the Platform also provides a data communication method called the <code>Event Bus</code>. Under the traditional <code>parameter</code> and <code>event</code> data transfer model, data can only be passed between components with a reference relationship. When a component is <strong>not subordinate</strong> to the current page/component, data transfer via parameters or registered events is not feasible.</p>
-<p>To achieve data communication between components or pages without a reference relationship, we need the <code>Event Bus</code>. The Event Bus acts as a global event manager, allowing all pages/components/methods to register events or listen for events on it.</p>
-<h4>Create an Event Bus</h4>
-<p>First, open the <strong>Event Bus</strong> panel in the <code>Project Configuration</code> file.</p>
+<h2>Event Bus</h2>
+<p>In this chapter, we will explore what an event bus is and the functionalities it enables.</p>
+<p><strong>Note</strong>: The event bus feature is only available for <code>Frontend - Project</code> types. It cannot be used in component libraries or method set repositories.</p>
+<h3>Overview</h3>
+<p>In frontend development, apart from using <code>props</code> for data communication between components and pages, the platform also provides a data communication method called <code>Event Bus</code>. In the traditional <code>props</code> and <code>events</code> data passing model, data can only be transmitted between components that have a reference relationship. When a component <strong>does not belong</strong> to the current page/component, it is impossible to pass data via props or register events.</p>
+<p>To achieve data communication between components or pages without a reference relationship, we use the <code>Event Bus</code>. The event bus acts like a global event manager, allowing all pages/components/methods to register or listen to events.</p>
+<h3>Creating an Event Bus</h3>
+<p>First, you need to open the <strong>Event Bus</strong> panel in the <code>Project Configuration</code> file.</p>
 <p><img src="/workbench/event-bus.png" alt=""></p>
-<p>Click the <strong>「Create Event Bus」</strong> button on the page to create an Event Bus. Note that an Event Bus can declare multiple events, so an <code>Event Bus</code> can be understood as a collection of event categories, helping us manage events by category.</p>
+<p>Click the <strong>&quot;Create Event Bus&quot;</strong> button to create an event bus. Note that multiple events can be declared within a single event bus, so an <code>Event Bus</code> can be understood as a collection of events within a category, helping us manage events by classification.</p>
 <p><img src="/workbench/event-bus1.png" alt=""></p>
-<p>After creating an Event Bus for a specific category, you can define events within it.</p>
-<p><img src="/workbench/event-bus2.png" alt="">
+<p>Once an event bus for a specific category is created, you can define events within it.</p>
+<p><img src="/workbench/event-bus2.png" alt=""><br>
 <img src="/workbench/event-bus3.png" alt=""></p>
-<p>Here, you need to define the event name, and the Event Bus allows setting event parameter types.</p>
-<h4>How to Use</h4>
-<p>You can perform operations through the <code>Event Bus</code> logic node in logic orchestration.</p>
+<p>Here, you need to define the event name, and the event bus also allows you to set the event parameter types.</p>
+<h3>How to Use</h3>
+<p>You can use the <code>Event Bus</code> logic node in logical orchestration to perform operations.</p>
 <p><img src="/workbench/event-bus4.png" alt=""></p>
 <p>After dragging in the node, complete the following two steps:</p>
 <ol>
-<li><strong>Select an Event</strong>: The Platform provides a visual selection interface where you can choose the event to trigger.</li>
-<li><strong>Select an Operation Type</strong>: Operation types include <strong>Listen for Events</strong> and <strong>Trigger Event</strong>.</li>
+<li><strong>Select Event</strong>: The platform provides a visual selection interface where you can choose the event to trigger.</li>
+<li><strong>Select Operation Type</strong>: The operation types include <strong>Listen to Event</strong> and <strong>Trigger Event</strong>.</li>
 </ol>
-<p>When selecting <strong>Trigger Event</strong>, if the current event has constrained event parameter types, you need to fill in the event parameter values to be passed.</p>
+<p>If you select <strong>Trigger Event</strong>, and the event has constrained parameter types, you need to fill in the event parameter values to be passed here.</p>
 <p><img src="/workbench/event-bus5.png" alt=""></p>
-<p>If selecting <strong>Listen for Events</strong>, you need to maintain a callback function for handling when the event is triggered.</p>
+<p>If you select <strong>Listen to Event</strong>, you need to define the callback function to handle the event when it is triggered.</p>
 <p><img src="/workbench/event-bus6.png" alt=""></p>
 <blockquote>
-<p><strong>Special Note</strong>: For the <code>Listen for Events</code> operation, the Event Bus does not automatically handle event destruction. Therefore, you need to define a receiving value (Function) as the <strong>destruction function</strong> for the event, which should be triggered during <code>component destruction</code> or at an appropriate 时机 (timing).</p>
+<p><strong>Important Note</strong>: For the <code>Listen to Event</code> operation, the event bus does not automatically handle event cleanup methods. Therefore, you need to define a return value (Function), which serves as the <strong>cleanup function for the event</strong>. This function must be called when the component is destroyed or at the <strong>appropriate time</strong>.</p>
 </blockquote>
 
 <BottomNav />

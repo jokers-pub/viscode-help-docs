@@ -1,29 +1,28 @@
-## Create teams/organizations
+## Creating Teams/Organizations
 
-This chapter mainly introduces how to create a team/organization.
+This chapter explains how to create a team or organization.
 
-### How to create a team
+### How to Create a Team
 
-After logging in, you can click the plus button in the "My Organization" panel on the home page to create a team/organization.
+After **logging in**, click the plus button in the `My Organizations` panel on the homepage to create a team/organization.
 
 ![](/portal/create-org.png)
 
-### Fill in the team information.
+### Filling in Team Information
 
-In the pop-up window for creating an organization/team, we need to fill in the name, nickname and brief introduction information of the organization to be created, and then click the Confirm button to complete the creation of an organization.
+In the pop-up window for creating an organization/team, you'll need to enter the organization's name, nickname, and a brief description. Then click the "Confirm" button to complete the creation.
 
--   Organization Name: It should be filled with English letters. This name will serve as the unique identifier of the team, which is used for accurate identification and differentiation of different teams in the system to ensure the accuracy and uniqueness of team information.
+- **Organization Name**: Must be entered in English letters. This name will serve as the unique identifier for the team, ensuring precise distinction and uniqueness across the platform.  
+- **Organization Nickname**: Allows you to assign an alias to the team. It is recommended to use concise and intuitive phrasing for easy recognition and memorization by team members and stakeholders.  
 
--   Organization Nickname: You can set an alias for the team. It is recommended to use a concise, intuitive, and easy-to-understand name to facilitate quick recognition and memory by team members and relevant personnel. 
-
-> It should be noted here that the organization name is unique across the entire platform and serves as the unique identifier for your organization/team.
+> Important Note: The organization name must be unique across the entire platform, as it serves as the sole identifier for your organization/team.
 
 ![](/portal/create-org2.png)
 
-### Complete the registration of the team/organization.
+### Completing Team/Organization Registration  
 
-After clicking "Submit" to complete the creation of the "organization/team", the platform will automatically create a team home page for you. You can view and manage all the contents of the team here, including the team nickname, README, avatar, repository, team and so on.
+After clicking "Submit" to finalize the creation of your `organization/team`, the platform will automatically generate a team homepage where you can view and manage all team-related content, including the team's nickname, README, avatar, repositories, team members, and more.  
 
-![](/portal/create-org3.png)
+![](/portal/create-org3.png)  
 
-For detailed instructions on team management, please refer to: [Team Management](/portal/org)
+For detailed instructions on team management, refer to: [Team Management](/portal/org-member).

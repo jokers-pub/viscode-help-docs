@@ -1,26 +1,26 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>My Organization</h2>
-<p>In the collaboration system of the platform, &quot;My Organization&quot; is an important section for managing the relationship between individuals and their teams or organizations. It undertakes key functions such as organization information display and team management, helping users carry out team collaboration efficiently. This chapter will introduce in detail the basic functions of &quot;My Organization&quot;.</p>
-<h3>Entering the My Organization List</h3>
+<h2>My Organizations</h2>
+<p>In the platform's collaboration system, &quot;My Organizations&quot; serves as a pivotal <strong>Section</strong> for managing teams and organizational affiliations. It provides critical functionalities such as organization information display and team management, empowering users to collaborate efficiently. This chapter details the core features of &quot;My Organizations.&quot;</p>
+<h3>Accessing the Organization List</h3>
 <ol>
-<li><strong>Locate the Personal Homepage</strong>: After logging into the platform, click on the profile picture in the upper right corner of the page to enter your personal exclusive homepage. The personal homepage, as the core interaction area for users on the platform, gathers numerous function entrances related to individuals.</li>
-<li><strong>Click on &quot;My Organization&quot;</strong>: On the personal homepage, find and click on the &quot;My Organization&quot; menu option. This operation will lead you into the &quot;My Organization&quot; list page, where you can view all the organization information related to yourself in a centralized manner.
-<img src="/portal/personal-my-org.png" alt="Operation of entering the My Organization list"></li>
+<li><strong>Navigate to Your Profile</strong>: After logging in, click your avatar in the upper-right corner to enter your personal dashboard—the central hub for accessing user-specific functionalities.</li>
+<li><strong>Click &quot;My Organizations&quot;</strong>: Within your dashboard, locate and select the &quot;My Organizations&quot; menu option. This action redirects you to the &quot;My Organizations&quot; listing page, where you can view all organizations associated with you.<br>
+<img src="/portal/personal-my-org.png" alt="Accessing the Organizations List"></li>
 </ol>
 <h3>Organization Management</h3>
 <ol>
-<li><strong>Organization Information Display</strong>: After entering the &quot;My Organization&quot; list page, you will see a detailed organization list, which lists all the teams/organizations that you have created or joined. Each organization entry clearly shows the key information, facilitating you to quickly understand the situation of the relevant organization.</li>
-<li><strong>Role Viewing and Team Withdrawal</strong>: On this page, you can not only view your role in each team to clarify your responsibilities and permissions within the team, but also actively choose to withdraw from a certain team according to actual needs. Through this function, you can manage your team participation flexibly and ensure that you are in the most appropriate position in the organizational structure of the platform.
-<img src="/portal/personal-my-org2.png" alt="The My Organization list page and organization management functions"></li>
+<li><strong>Organization Information Display</strong>: The &quot;My Organizations&quot; page presents a comprehensive list of all teams/organizations you have <strong>created</strong> or <strong>joined</strong>, with critical details displayed for quick reference.</li>
+<li><strong>Viewing Roles &amp; Leaving Teams</strong>: Here, you can check your <strong>role(s)</strong> within each team for clarity on permissions and responsibilities. You may also <strong>leave</strong> a team/organization as needed, ensuring your affiliations align with your collaboration needs.<br>
+<img src="/portal/personal-my-org2.png" alt="Organization Listing and Management"></li>
 </ol>
-<h3>Leaving the Organization</h3>
+<h3>Leaving an Organization</h3>
 <ol>
-<li><strong>Operation Steps</strong>: When you decide to withdraw from a certain team, just find the corresponding team entry in the &quot;My Organization&quot; list page, and click on the &quot;Leave Organization&quot; button to initiatively start the operation of withdrawing from this team/organization. The system will pop up a confirmation prompt to ensure that you are aware of the consequences of the operation before executing it.
-<img src="/portal/personal-my-org3.png" alt="Button for the operation of leaving the team"></li>
+<li><strong>Steps</strong>: To exit a team, locate its entry in the &quot;My Organizations&quot; list and click the <strong>&quot;Leave Organization&quot;</strong> button. A confirmation prompt will appear to verify your intent.<br>
+<img src="/portal/personal-my-org3.png" alt="Leaving a Team Action Button"></li>
 </ol>
 <blockquote>
-<p><strong>Special Note</strong>: If you are the creator of a team/organization, for the sake of the stability of organization management, you cannot directly withdraw from the organization. If you wish to no longer serve as the creator, you can transfer the ownership of the organization to other suitable members through <a href="/protal/org-transfer" target="_blank">Transferring Ownership</a> to achieve a smooth transition of the organization management relationship.</p>
+<p><strong>Important Note</strong>: If you are the <strong>creator</strong> of an organization, direct exit is restricted for administrative stability. To relinquish ownership, you must <a href="/portal/org-transfer" target="_blank">transfer control</a> to another member first. This ensures a seamless transition in governance.</p>
 </blockquote>
 
 <BottomNav />

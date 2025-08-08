@@ -1,18 +1,18 @@
-## Delete Repository
+## Delete Repository  
 
-In the process of repository management, there may be occasions when you need to delete unused repositories. This chapter details the specific steps for deleting a repository and the restrictive conditions involved in this operation. It should be noted that the repository deletion operation is only visible to administrators.
+During repository management, there may be occasions when it is necessary to delete repositories that are no longer in use. This section provides a detailed explanation of the specific steps for deleting a repository, as well as the associated limitations of this operation. It is important to note that the **Delete Repository** function is only visible to administrators.  
 
-### Access Repository Settings
+### Accessing Repository Settings  
 
-1. First, locate and open the settings page of the repository you plan to delete. Click the "Repository Management" menu on this page.
-2. Click the "Delete Repository" button in the "Repository Management" menu, which officially initiates the repository deletion process. At this point, the system will prompt you that an irreversible deletion operation is about to be performed—please confirm carefully.
+1. First, navigate to and open the settings page of the repository you intend to delete. Click on the **"Repository Management"** menu on this page.  
+2. Select the **"Delete Repository"** button within the **"Repository Management"** menu. By clicking this button, you initiate the repository deletion process. At this stage, the system will display a warning about this irreversible operation—please confirm carefully.  
 
-![Delete Repository Button](/portal/rep-delete.png)
+![Delete Repository Button](/portal/rep-delete.png)  
 
-### Confirm Password
+### Password Confirmation  
 
-After clicking the "Delete Repository" button, for security considerations, the platform will immediately pop up a password verification window, requiring you to enter your account password. This step aims to confirm that the deletion operation is performed by the administrator himself, effectively preventing misoperations or illegal actions to ensure the security and stability of repository data.
+After clicking **"Delete Repository"**, the platform will immediately prompt a password verification window for security purposes. This step ensures that the deletion operation is indeed performed by the administrator, preventing accidental or unauthorized actions and maintaining the security and stability of repository data.  
 
-![Password Verification Page](/portal/rep-delete2.png)
+![Password Verification Page](/portal/rep-delete2.png)  
 
-> **Important Note**: If a repository has existing release versions, since these versions may have been referenced or cloned by other projects, deleting the repository will cause serious impacts on projects dependent on these versions. Therefore, such a repository **cannot be deleted**. In this case, you can choose to [archive the repository](/portal/rep-archive). Although an archived repository can no longer be modified or edited, it will remain in the team as a backup of historical data for future reference and traceability.
+> **Important Note**: If the repository has release versions, these may be referenced or cloned by other projects. Deleting the repository could significantly impact dependent projects; therefore, such repositories **cannot be deleted**. In this case, you may opt to **[archive the repository](/portal/rep-archive)** instead. Archived repositories remain accessible within the team as historical backups for reference and traceability, though they can no longer be modified or edited.

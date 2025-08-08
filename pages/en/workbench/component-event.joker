@@ -1,87 +1,94 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Component Events</h2>
-<p>This chapter will introduce the relevant content of component events, mainly covering the following aspects: <strong>How to register component events</strong>, <strong>How to provide events externally</strong>, and <strong>How to pass parameters for events</strong>.</p>
-<h3>How to Register Component Parameters</h3>
-<p>When we select a component, we can view the events provided externally by the current component in the <code>Events</code> tab of the component property panel. We can select the event to be registered here and click <strong>Create Event</strong> to register the corresponding event.</p>
+<p>This chapter covers everything you need to know about component events, focusing on three key areas: <strong>how to register component events</strong>, <strong>how to expose events externally</strong>, and <strong>how parameters are passed along with an event</strong>.</p>
+<h3>Registering Component Parameters</h3>
+<p>When a component is selected, switch to the <code>Events</code> tab in the component’s property panel to see all events that the component exposes. Simply choose the event you need and click <strong>Create Event</strong> to register it.</p>
 <p><video width="80%" controls autoplay muted loop><source src="/workbench/component-event.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
 <h3>Event Parameters</h3>
-<p>Event parameters are divided into two types: parameters passed by the component externally and current context parameters.</p>
-<h4>Parameters Passed by the Component Externally</h4>
-<p>During the event handling process of a component, the component that triggers the event may pass out data parameters. For example, on the product list page, when the user clicks on a product item, the system will pass out the detailed data of the clicked product through the event. In the event logic, we need to use the <code>e.data</code> variable to receive these parameters.</p>
-<p><img src="/workbench/component-event1.png" alt="Picture related to parameters passed by the component externally"></p>
-<p>In the event handling function of each component, there will be an <strong>e</strong> variable, which carries the event handling data, specifically including the following contents:</p>
+<p>There are two kinds of parameters:</p>
+<ol>
+<li>Parameters emitted <strong>by the component</strong>.</li>
+<li>Parameters taken from the <strong>current context</strong>.</li>
+</ol>
+<h4>Parameters Emitted by the Component</h4>
+<p>During event handling, the component that raises the event can transmit data to the outside world.<br>
+For example, on a product-list page, when the user taps an item, the system dispatches an event whose payload contains the detailed product object.<br>
+Inside the event handler you access this payload through the reserved variable <code>e.data</code>.</p>
+<p><img src="/workbench/component-event1.png" alt="Component-emitted parameter"></p>
+<p>Every component event handler receives an <strong>e</strong> object that carries the following members:</p>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>Property</th>
+<th>Type</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>eventName</td>
-<td>String</td>
-<td>Represents the name of the event</td>
+<td>string</td>
+<td>Name of the fired event.</td>
 </tr>
 <tr>
 <td>event</td>
-<td>Object</td>
-<td>Belongs to the native event handling object</td>
+<td>object</td>
+<td>The raw DOM or framework event object.</td>
 </tr>
 <tr>
 <td>target</td>
-<td>Virtual Node</td>
-<td>That is, the virtual node (VNode) that triggers the current event</td>
+<td>VNode</td>
+<td>Virtual DOM node that triggered the event.</td>
 </tr>
 <tr>
 <td>preventDefault</td>
-<td>Method</td>
-<td>Calling this method can prevent the default event from occurring</td>
+<td>function</td>
+<td>Call to suppress the event’s default behavior.</td>
 </tr>
 <tr>
 <td>stopPropagation</td>
-<td>Method</td>
-<td>Calling this method can prevent the event from continuing to spread</td>
+<td>function</td>
+<td>Call to prevent bubbling/capturing further up the tree.</td>
 </tr>
 <tr>
 <td>data</td>
-<td>Object</td>
-<td>It is the data passed by the component externally, and its data type is determined according to the parameter type declared when the event is declared</td>
+<td>object</td>
+<td>Externally declared data whose structure is determined by the component’s event signature.</td>
 </tr>
 </tbody>
 </table>
-<h4>Current Context Parameters</h4>
-<p>When we register the events of a component in the <strong>current file</strong> and want to pass the data in the <strong>current file</strong>, we need to use the second way of data passing parameters. This way enables us to pass the data in our <strong>own file</strong> as parameters into the event method. It is usually applied in the <code>for</code> loop of the page. When the click event is triggered, the data of each item is passed, and these data come from the <strong>own context</strong>, not from inside the component that triggers the event.</p>
-<p><img src="/workbench/component-event2.png" alt=""></p>
-<p>After we add parameters, we can find this parameter in the event handling logic orchestration panel.</p>
-<p><img src="/workbench/component-event3.png" alt=""></p>
+<h4>Parameters from the Current Context</h4>
+<p>When you register an event on a component <strong>within the current file</strong> and want to hand over data that lives in that same file, you switch to the second mode of parameter delivery.<br>
+This pattern is common in list-rendering loops: while iterating with <code>for</code>, each item’s data is forwarded via the event handler even though those items are <strong>not stored inside the triggering component</strong> itself.</p>
+<p><img src="/workbench/component-event2.png" alt="Context parameter"></p>
+<p>After you add such parameters you’ll find them in the event-handler workflow panel.</p>
+<p><img src="/workbench/component-event3.png" alt="Workflow panel with parameters"></p>
 <blockquote>
-<p>The parameter passing here is <strong>sequential passing</strong>, similar to the parameter passing method of methods. We can adjust the order of these parameters by sorting to ensure that they are passed in the order we expect.</p>
+<p>Parameters are bound <strong>positionally</strong>, similar to function arguments. You can drag them to reorder, ensuring they are delivered in the exact required order.</p>
 </blockquote>
-<h3>How to Provide Events Externally</h3>
-<p>When we are developing a component, we can declare the event information provided externally by the current component.</p>
-<h4>Defining Event Information</h4>
-<p>To define event information, you need to operate in the <code>Logic/Event</code> panel in the <code>Component Data</code> menu. Click the <strong>Plus Button</strong> on the right side of the external event to declare the event information.</p>
-<p><img src="/workbench/component-event4.png" alt="Screenshot of the interface for declaring event information"></p>
-<p>When you click <strong>Add</strong> or <strong>Edit</strong> a certain event information, the event <code>Trigger Event</code> editing panel will be opened.</p>
-<p><img src="/workbench/component-event5.png" alt="Screenshot of the event trigger event editing panel"></p>
-<p>In this editing panel, we need to maintain the following contents:</p>
+<h3>How to Expose Events for External Use</h3>
+<p>While developing a component you can declare events that callers will be able to bind to.</p>
+<h4>Defining Event Metadata</h4>
+<p>Open <code>Component Data ➞ Logic/Events</code>. Click the <strong>+</strong> icon beside <strong>Exposed Events</strong>.</p>
+<p><img src="/workbench/component-event4.png" alt="Declare exposed event UI"></p>
+<p>To add or edit an event the <code>Trigger Event</code> dialog appears.</p>
+<p><img src="/workbench/component-event5.png" alt="Trigger Event dialog"></p>
+<p>Fill out the dialog as follows:</p>
 <ol>
-<li><strong>Event Name</strong>: Use English letters to define a name for the event. This name is used to identify and call this event in the code logic.</li>
-<li><strong>Remarks Title</strong>: Give the event a nickname to facilitate developers to quickly understand the role and purpose of the event and improve development efficiency.</li>
-<li><strong>Hint</strong>: Provide comprehensive and detailed event introductions to let developers have a deeper understanding of the function, trigger conditions, and expected effects of the event.</li>
-<li><strong>Event Parameters</strong>: Define the event parameter types here. If the event does not need to pass parameters, it can be left blank.</li>
+<li><strong>Event Name</strong> – an English identifier used in code to raise the event.</li>
+<li><strong>Display Title</strong> – a friendly label developers see in the IDE to quickly grasp its purpose.</li>
+<li><strong>Description</strong> – a concise yet complete explanation of when the event fires, what it achieves, and any edge-cases.</li>
+<li><strong>Event Parameters</strong> – describe the expected schema; leave empty when no payload is required.</li>
 </ol>
-<h4>Triggering Events</h4>
-<p>After completing the declaration of the information of the external trigger events, the corresponding events can be triggered by using the <code>Trigger Event</code> node in the corresponding logic.</p>
-<p><img src="/workbench/component-event6.png" alt="Screenshot of the operation interface for triggering events"></p>
-<p>When operating, you can select the event to be triggered through the drop-down box. The platform will automatically read all the <strong>externally triggered events</strong> registered by the current component, facilitating developers to quickly locate the required events.</p>
-<p>If the event has parameters, the system will require developers to add event parameters at this time to ensure that the event is executed correctly according to the expected logic.</p>
-<h3>Viewing Registered Event Methods</h3>
-<p>After registering a large number of interactive events in the page layout, if you want to quickly find them, you can manage them through the <code>Logic/Event - Internal Events</code> panel in the <code>Component Data</code> menu. This panel will display <strong>all internally registered events</strong>. Click on the event name, and the corresponding event handling function will be opened; click on the <strong>Locate Component</strong> button on the right side of the event, and the component that is the source of the event can be quickly selected. This operation method greatly improves the efficiency of finding and managing events during the development process.</p>
-<p><img src="/workbench/component-event7.png" alt="Screenshot of the interface for viewing registered event methods"></p>
+<h4>Raising the Event</h4>
+<p>Once the event is declared, the <strong>Trigger Event</strong> node becomes available inside the component’s logic graph.</p>
+<p><img src="/workbench/component-event6.png" alt="Trigger Event node usage"></p>
+<p>Use the drop-down to pick the event. The platform enumerates all exposed events defined for this component.<br>
+If the event schema contains parameters, the node surfaces input ports so you can map the corresponding values.</p>
+<h3>Browsing Registered Event Handlers</h3>
+<p>After you attach many interactive events across the page UI, you can quickly locate any handler inside <code>Component Data ➞ Logic/Events – Internal Events</code>. This panel lists <strong>every internally-declared handler</strong>. Click an event name to open the handler’s logic; press the <strong>Locate Component</strong> button to have the canvas jump to the source component – a huge productivity gain during debugging and maintenance.</p>
+<p><img src="/workbench/component-event7.png" alt="Internal events browser"></p>
 
 <BottomNav />
 </div>

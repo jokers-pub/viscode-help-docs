@@ -1,23 +1,24 @@
-## Running and Debugging
+## Run and Debug
 
-This chapter mainly describes how to quickly implement the **running and debugging** of projects. The **running and debugging** is only applicable to the repository projects of the `application` type.
+This chapter mainly explains how to quickly achieve **run and debug** for projects. **Run and debug** is only applicable to Repository projects of the `application` type.
 
-> Currently, the debugging function for server-side projects has not been opened yet. It relies on our local JOKER development tools for **debugging**, and it is currently under development. You can export the code and run the project locally for **debugging**.
+> Currently, the debug feature is not yet available for server-side projects. It relies on our local JOKER development tool for **debugging** and is currently under development. You can export the code and run the project locally for **debugging**.
 
 ### Overview
 
-In the current development process, we adopt a WYSIWYG (What You See Is What You Get) development mode, and we can directly see the actual running effect of the project during development. However, if we want to run the project as a whole, preview the routing page jump situation of the entire project, or connect to the business server to verify the overall **running** effect of the service, we need to use our **running and debugging** tools at this time.
+In the current development process, we adopt a WYSIWYG (What You See Is What You Get) development model, allowing developers to see the actual runtime effects directly during development. However, if we want to **run** the project as a whole to preview the routing and page transitions, or to connect to the business server to verify the overall **runtime** effects of the service, we need to utilize our **run and debug** tool.
 
-### Starting Running and Debugging
+### Starting Run and Debug
 
-We can click on the `Run and Debug` menu in the workbench panel to open the running and debugging panel.
+You can click the `Run and Debug` menu in the Workbench panel to open the Run and Debug panel.  
 ![](/workbench/debugger.png)
 
-Here, we can **select the environment configuration** file and click the **Run and Debug** button to conduct the overall **running** in the browser.
+Here, you can **select the environment configuration** file and click the **Run and Debug** button to **run** the project in the browser.
 
-> You can use the built-in debugging tools of the browser to carry out the **debugging** work of the code.
+> You can use the browser's built-in debugging tools to perform code **debugging**.
 
-### Stopping Running and Debugging
+### Terminating Run and Debug
 
-The platform internally uses heartbeat packets to detect the debugging running status. You can directly close the debugging window to interrupt the **debugging**, or click the **Stop Debugging** button to close the debugging window.
-![](/workbench/debugger1.png) 
+The platform internally uses heartbeat packets to monitor the debug runtime status. You can directly close the debug window to terminate the **debugging** session or click the **Stop Debugging** button to close the debug window.
+
+![](/workbench/debugger1.png)

@@ -1,19 +1,23 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h1>Transferring Teams/Organizations</h1>
-<p>This chapter will elaborate on the specific methods for transferring the ownership of teams/organizations.</p>
+<h1>Transfer Team/Organization Ownership</h1>
+<p>This section details the specific procedures for transferring ownership of a team/organization.</p>
 <h2>Application Scenarios</h2>
-<p>When the <code>owner</code> of a team needs to withdraw from the current team for specific reasons or needs to fully transfer the team to a target client, the function of <code>transferring teams/organizations</code> will be used.</p>
+<p>The <strong>Transfer Team/Organization</strong> feature is used when:</p>
+<ul>
+<li>The current <strong>owner</strong> needs to leave the team for specific reasons.</li>
+<li>The team needs to be fully handed over to a target client.</li>
+</ul>
 <h2>Operation Steps</h2>
 <ol>
-<li>Open the team settings page and click on the <code>Transfer Organization</code> button. At this time, a transfer organization panel will pop up.</li>
+<li>Open the <strong>Team Settings</strong> page and click the <strong>Transfer Organization</strong> button. A transfer panel will appear.</li>
 </ol>
 <p><img src="/portal/org-transfer.png" alt=""></p>
 <ol start="2">
-<li>Fill in the email address or name of the user to whom you plan to transfer the ownership in the panel. The platform will automatically search for and match the user. After selecting the target user, click on the <code>Submit</code> button. Subsequently, the system will require you to enter your account password to confirm whether the operation is authorized.</li>
+<li>In the panel, enter the email or name of the intended recipient. The platform will automatically search for matching users. After selecting the target user, click the <strong>Submit</strong> button. The system will then request account credentials to verify the authorization of this operation.</li>
 </ol>
 <blockquote>
-<p><strong>Kind Reminder</strong>: There is an option of <code>Leave the Organization after Transfer</code> during the transfer process. If this option is checked, after the transfer of the ownership is completed, the original owner will automatically leave the current team; if it is not checked, the original owner will be automatically downgraded to a &quot;developer&quot;. Meanwhile, when performing the <code>organization transfer</code> operation, the permissions of other members within the organization will not change.</p>
+<p><strong>Note</strong>: There is an option labeled <strong>Leave the organization after transferring ownership</strong>. If selected, the original owner will automatically leave the team after the ownership transfer is completed. If not selected, the original owner will be downgraded to a <strong>Developer</strong> role. During the organization transfer process, the permissions of other members in the organization will remain unchanged.</p>
 </blockquote>
 
 <BottomNav />

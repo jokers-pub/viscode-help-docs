@@ -1,52 +1,52 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Style Management</h2>
-<p>This chapter mainly introduces the implementation methods of style management within the project, covering the management of private styles inside components and the management of global styles of the project.</p>
-<h3>Component Internal Styles</h3>
-<p>When opening a component or page file and no component is selected, the attribute panel on the right side by default shows the attribute panel of the current file. Here, the private styles of the current file can be managed.</p>
-<p><img src="/workbench/style.png" alt="Screenshot of the component or page file attribute panel"></p>
-<p>The internal styles of components follow the <code>scoped</code> style scope isolation principle. The so-called style <code>scoped</code> scope isolation means that during actual operation, the CSS of the current file will automatically add the <code>[data-scoped-xxx]</code> mark. This feature makes the CSS content only affect the relevant elements (including block content) within the current page and will not interfere with the styles of other pages or components.</p>
+<p>This chapter focuses on the implementation of style management within projects, covering both private style management within components and global style management across projects.</p>
+<h3>Component-Specific Styles</h3>
+<p>When opening a component or page file without selecting any component, the default view on the right-hand property panel displays the attributes of the current file. Here, you can manage the private styles of the current file.</p>
+<p><img src="/workbench/style.png" alt="Screenshot of Component or Page File Attribute Panel"></p>
+<p>Component-specific styles adhere to the <code>scoped</code> style isolation principle. The <code>scoped</code> isolation ensures that, during runtime, the CSS of the current file automatically appends a <code>[data-scoped-xxx]</code> marker. This feature restricts the CSS scope so that styles only affect elements (including Section content) within the current page, without interfering with styles on other pages or components.</p>
 <h4>Style Penetration</h4>
-<p>After using <code>scoped</code>, the styles of the parent component will not penetrate into the sub-component. However, the root node of the sub-component will be affected by the scoped styles of both the parent component and the sub-component. This design facilitates the parent component to adjust the styles of the root element of the sub-component from the layout perspective.</p>
-<p>In some specific scenarios, if it is necessary to change the styles of the sub-component with <code>scoped</code> in the parent node, <code>:deep()</code> can be used for style penetration to achieve the change of the sub-component styles. For example:</p>
-<pre><code class="language-html">&lt;style scoped&gt;
-   .a :deep(.b) {
-        /*... */
-    }
-&lt;/style&gt;
+<p>With <code>scoped</code> applied, parent component styles do not penetrate child components. However, the root node of a child component is affected by both the parent and child component’s scoped styles. This design allows parent components to adjust the layout-related styles of child component root elements.</p>
+<p>In certain scenarios, if you need to modify the styles of a child component with <code>scoped</code> from a parent node, you can use <code>:deep()</code> for style penetration to achieve the desired changes. For example:</p>
+<pre><code class="language-html">&lt;style scoped&gt;  
+    .a :deep(.b) {  
+        /*... */  
+    }  
+&lt;/style&gt;  
 </code></pre>
-<p>The above code will be compiled into:</p>
-<pre><code class="language-css">.a[data-scoped-981d2c8a].b {
-    /*... */
-}
+<p>The above code will be compiled as:</p>
+<pre><code class="language-css">.a[data-scoped-981d2c8a].b {  
+    /*... */  
+}  
 </code></pre>
-<p>In practical applications, style penetration is often used to control the styles of sub-components, and sub-components can also use style penetration to change the block template styles of the parent container.</p>
-<h3>Project Global Styles</h3>
-<p>The project global styles are only available in the &quot;Component Library&quot; or &quot;Application&quot; repositories in the &quot;Front-end&quot; project. The method set repository does not have the function of global style management.</p>
-<p>In the <code>Project Style Management</code> panel of the <code>Project Configuration</code> file, click the <code>Configure Project Main Style File</code> button to manage the global styles within the current project.</p>
-<p><img src="/workbench/style2.png" alt="Screenshot of the Project Style Management panel"></p>
+<p>In practice, style penetration is often used to control child component styles, and child components may also utilize it to modify the Section template styles of parent containers.</p>
+<h3>Global Project Styles</h3>
+<p>Global project styles are only available in &quot;frontend&quot; projects under &quot;Component Libraries&quot; or &quot;Applications&quot; repositories. Method-based repositories do not support global style management.</p>
+<p>In the <code>Project Configuration</code> file, under the <code>Project Style Management</code> panel, click the <code>Configure Project Main Style File</code> button to manage global styles for the current project.</p>
+<p><img src="/workbench/style2.png" alt="Screenshot of Project Style Management Panel"></p>
 <blockquote>
-<p>It should be noted that if a third-party component library extension package is referenced, the main style file in the component library will be loaded first, and then the main style file in the current application project will be loaded. This arrangement aims to enable the &quot;Application&quot; project to rewrite the styles or style variables in the third-party extension.</p>
+<p>Note: If a third-party component library extension is referenced, the main style file from the component library loads first, followed by the main style file from the current application project. This arrangement ensures that &quot;Application&quot; projects can override styles or style variables from third-party extensions.</p>
 </blockquote>
 <h3>Quick Styles and Style Variables</h3>
-<p>When configuring component attributes, sometimes it is necessary to pass in style names or style variables to complete the parameter setting of the component. However, numerous style names and style variables may lead to difficulties in searching. At this time, we can use the <strong>Style Name</strong> and <strong>Style Variable</strong> management panels in the <code>Project Configuration</code> file to maintain the commonly used style names and style variables. In this way, when it is necessary to pass and configure style values, they can be quickly retrieved.</p>
-<h4>How to Define</h4>
-<p>We can maintain the commonly used style names and style variables through the <strong>Style Name</strong> and <strong>Style Variable</strong> management panels in the <code>Project Configuration</code> file.</p>
-<p><img src="/workbench/style3.png" alt="Screenshot of the Style Name and Style Variable management panels"></p>
-<h4>How to Use</h4>
-<p>Taking the Joker UI project as an example, this repository has already maintained the commonly used style names and style variables.</p>
+<p>When configuring component properties, you may need to pass style names or style variables to complete parameter settings. However, the sheer number of style names and variables can make them difficult to locate. To address this, the <code>Project Configuration</code> file includes <strong>Style Name</strong> and <strong>Style Variable</strong> management panels to maintain commonly used style names and variables. This enables quick retrieval when configuring style values.</p>
+<h4>Definition</h4>
+<p>In the <code>Project Configuration</code> file, use the <strong>Style Name</strong> and <strong>Style Variable</strong> management panels to maintain frequently used style names and variables.</p>
+<p><img src="/workbench/style3.png" alt="Screenshot of Style Name and Style Variable Management Panel"></p>
+<h4>Usage</h4>
+<p>Take the Joker UI project as an example—this Repository has already maintained commonly used style names and variables.</p>
 <ul>
 <li>
-<p><strong>Quickly Select Style Names</strong>
-<img src="/workbench/style4.png" alt="Screenshot of the operation of quickly selecting style names"></p>
+<p><strong>Quickly Select Style Names</strong><br>
+<img src="/workbench/style4.png" alt="Screenshot of Quick Style Name Selection"></p>
 </li>
 <li>
-<p><strong>Quickly Select Style Variables</strong>
-<img src="/workbench/style5.png" alt="Screenshot of the operation of quickly selecting style variables"></p>
+<p><strong>Quickly Select Style Variables</strong><br>
+<img src="/workbench/style5.png" alt="Screenshot of Quick Style Variable Selection"></p>
 </li>
 </ul>
 <blockquote>
-<p>Note that style variables need to be switched to the <code>var variable</code> mode before style variables can be input.</p>
+<p>Note: Style variables must be switched to <code>var variable</code> mode before they can be input.</p>
 </blockquote>
 
 <BottomNav />

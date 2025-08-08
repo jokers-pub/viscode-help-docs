@@ -1,46 +1,51 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>How to Install Extensions</h2>
-<p>This chapter mainly introduces how to install extensions and how to install NPM dependencies, and also elaborates on the differences and applicable scenarios between them.</p>
+<p>This chapter primarily explains how to install extensions and NPM dependencies, while clarifying their differences and applicable scenarios.</p>
 <h3>Overview</h3>
-<p>The JOKER intelligent development platform has flexible expansion capabilities and supports the introduction of third-party resources in two ways.</p>
+<p>The JOKER Intelligent Development Platform offers flexible scalability by supporting the integration of third-party resources through two methods:</p>
 <ul>
 <li>
-<p><strong>Component Method Market</strong>: This platform gathers a collection of visual functions created by the JOKER development platform. Here, developers can install component libraries or method sets carefully crafted by other developers. These resources have visual recognition features. After installation and reference, the visual operation resources provided by the installation packages can be intuitively viewed in the <code>Component Center</code> and the <code>Logic Center</code> in the logic orchestration panel. In this way, developers can quickly utilize these open capabilities through simple drag-and-drop operations, greatly improving development efficiency.</p>
+<p><strong>Component &amp; Method Marketplace</strong>: This platform aggregates a collection of visually functional modules created by the JOKER development ecosystem. Here, developers can install carefully crafted component libraries or method sets created by other developers. These resources are visually identifiable, meaning that after installation and reference, they can be directly viewed in the <code>Component Center</code> and the <code>Logic Center</code> within the logic orchestration panel. Thus, developers can quickly utilize these open capabilities through simple drag-and-drop operations, significantly improving development efficiency.</p>
 </li>
 <li>
-<p><strong>NPM Installation</strong>: NPM plays a significant role in the global software development field and has a huge and active ecological market. In terms of market size, the number of its open-source packages exceeds 1 million, widely covering almost all JavaScript development categories such as front-end frameworks, back-end services, and tool libraries, with weekly downloads reaching hundreds of millions. In terms of user groups, whether they are professional developers, open-source enthusiasts, or enterprise teams, they generally use NPM for project dependency management and application building. Both start-up companies and large technology enterprises rely on NPM to build the technical frameworks required by projects. In terms of industry applications, NPM is widely used in many technical fields such as web development, mobile application development, and server-side programming. Its ecosystem continues to thrive, and new packages and tools are constantly emerging, providing developers with rich and diverse resources and effectively promoting the rapid development and innovation of the entire JavaScript technology stack.</p>
+<p><strong>NPM Installation</strong>: NPM holds a pivotal position in the global software development landscape, boasting a vast and active ecosystem. In terms of scale, its repository contains over 1 million open-source packages, covering nearly all aspects of JavaScript development, including frontend frameworks, backend services, and utility libraries, with billions of weekly downloads. Its user base spans professional developers, open-source enthusiasts, and enterprise teams, all of whom rely on NPM for dependency management and application building. Whether for startups or large tech corporations, NPM serves as the backbone for project scaffolding. Across industries, NPM is widely used in web development, mobile app development, server-side programming, and numerous other technical domains. Its ecosystem continues to flourish, with new packages and tools emerging rapidly, providing developers with a wealth of resources and driving innovation in the JavaScript technology stack.</p>
 </li>
 </ul>
-<h3>Component Method Market</h3>
-<p>On the right side of the workbench, click the &quot;Component Method Market&quot; menu to open the market panel. What is displayed on this panel are all the installable extension packages that match the current repository type. If you want to quickly find a specific extension, you can use the search function to accurately locate the extension you want to integrate.</p>
-<p><img src="/workbench/install-package.png" alt="Screenshot of the Component Method Market Panel"></p>
-<p>The component method market panel is divided into two areas from top to bottom:</p>
+<h3>Component &amp; Method Marketplace</h3>
+<p>On the right side of the workspace, click the &quot;Component &amp; Method Marketplace&quot; menu to open the marketplace panel. The panel displays installable extension packages compatible with the current Repository type. If you need to quickly locate a specific extension, use the search feature to pinpoint the one you wish to integrate.</p>
+<p><img src="/workbench/install-package.png" alt="Component &amp; Method Marketplace Panel Screenshot"></p>
+<p>The marketplace panel is divided into two sections:</p>
 <ul>
-<li><strong>Recommendations</strong>: In this area, you can find extension plugins that meet your own needs. Here, various algorithms and rules will be used to present extensions that may meet your requirements, helping you discover more useful tools.</li>
-<li><strong>Installed</strong>: This area is used to view the extension packages that have been installed in the current project. Moreover, you can easily update and uninstall extensions here. It is convenient for you to manage the installed extensions and ensure that the extensions used in the project are always in the best condition.</li>
+<li><strong>Recommended</strong>: This Section helps you discover extensions tailored to your needs. It employs algorithms and rules to showcase potentially useful extensions, assisting you in finding practical tools.</li>
+<li><strong>Installed</strong>: This Section allows you to view, update, or uninstall extensions currently installed in your project. It provides a straightforward way to manage your extensions, ensuring they remain up to date.</li>
 </ul>
-<p>When you click on an extension in the market, you can view the detailed information of the extension, which includes key data such as the README file, release logs, and dependency references. Through this information, you can have a more comprehensive understanding of the function, usage method, update history, and dependency relationship with other components of the extension.</p>
-<p><img src="/workbench/install-package2.png" alt="Screenshot of the Extension Detailed Information"></p>
-<p><strong>Special Note</strong>: When a new version of an extension is released, when the project that references the extension opens a new project, the &quot;Component Method Market&quot; menu will display an icon indicating that an update is pending, which will promptly remind you to upgrade so that you can enjoy the benefits of new features, fixed issues, and performance optimization in a timely manner.</p>
+<p>Clicking on an extension in the marketplace reveals its detailed information, including the README, changelog, dependencies, and other critical data. These details help you comprehensively understand the extension’s functionality, usage, update history, and dependency relationships.</p>
+<p><img src="/workbench/install-package2.png" alt="Extension Details Screenshot"></p>
+<p>In the extension details panel, you can view its <code>Basic Information</code>, <code>Public Functions</code>, <code>Changelog</code>, and <code>Dependencies</code>. The <strong>Functions</strong> tab allows you to preview the plugin’s publicly available capabilities without installing it:</p>
+<p><img src="/workbench/install-package8.png" alt=""></p>
+<p><strong>Important Note</strong>: When an extension releases a new version, projects referencing it will display an update notification icon on the &quot;Component &amp; Method Marketplace&quot; menu upon opening. This ensures you can promptly upgrade to benefit from new features, bug fixes, and performance improvements.</p>
+<blockquote>
+<p><strong>What Can I Use?</strong> The plugins visible in the <code>Component &amp; Method Marketplace</code> include <strong>publicly released</strong> versions as well as <strong>internal team-only</strong> releases. This means the platform permits the publication of private component libraries for team use. However, non-team members cannot reference non-public extensions, ensuring resource security and team development independence.</p>
+</blockquote>
 <h4>How to Use</h4>
-<p>After we complete the installation of an extension, we can find the capabilities provided by this extension in the work panel.</p>
-<p>If it is a front-end component library extension, we can find the component extensions it provides in the <code>Component Center</code>. We can directly drag it into the work canvas to achieve component reference.</p>
+<p>After installing an extension, its functionalities become accessible in the workspace.</p>
+<p>For frontend component libraries, you can locate their components in the <code>Component Center</code> and drag them directly onto the canvas for integration.</p>
 <p><img src="/workbench/install-package3.png" alt=""></p>
-<p>If the extension provides method calls, we can find the methods it provides in the logic orchestration panel. We can drag it into the logic canvas to achieve method calls.</p>
+<p>For method-based extensions, their exposed methods will appear in the logic orchestration panel. These can be dragged into the logic canvas for invocation.</p>
 <p><img src="/workbench/install-package4.png" alt=""></p>
 <h3>NPM</h3>
-<p>If you need to use the capabilities of NPM underlying packages, you can install and manage NPM dependencies in the <code>Project Configuration</code> file.</p>
-<p><img src="/workbench/install-package5.png" alt="Screenshot Related to NPM in the Project Configuration"></p>
-<p>Click the <code>Add NPM Reference</code> button in the upper right corner of the panel to open the NPM market. Here, you can search for the NPM packages you want to install. Just click the plus sign on the right side of the data entry to complete the reference operation of the NPM package.</p>
-<p><img src="/workbench/install-package6.png" alt="Screenshot of the NPM Market"></p>
-<p><strong>Friendly Reminder</strong>: We have integrated many commonly used npm packages and provided references in the project. If you don't find the npm package you need, please feel free to give us feedback, and we will analyze it as soon as possible and provide the corresponding reference.</p>
+<p>For leveraging core NPM packages, you can install and manage NPM dependencies in the <code>Project Configuration</code> file.</p>
+<p><img src="/workbench/install-package5.png" alt="NPM-Related Screenshot in Project Configuration"></p>
+<p>Click the <code>Add NPM Reference</code> button at the top-right of the panel to open the NPM marketplace. Here, you can search for the desired NPM package and click the &quot;+&quot; icon to complete the installation.</p>
+<p><img src="/workbench/install-package6.png" alt="NPM Marketplace Screenshot"></p>
+<p><strong>Note</strong>: We have integrated many commonly used npm packages into the platform for direct project use. If a required package is missing, feel free to submit feedback, and we will analyze and provide its reference as soon as possible.</p>
 <blockquote>
 <p><a href="https://viscode.jokers.pub/repository/7dcbf0e6-c3e2-4390-b233-dc53a22e3c66/issues" target="_blank">Feedback Link</a></p>
 </blockquote>
 <h4>How to Use</h4>
-<p>After completing the installation of the NPM package, if you want to call the methods it provides externally, you can operate through the corresponding NPM variables provided by the platform.</p>
-<p><img src="/workbench/install-package7.png" alt="Screenshot of Using NPM Variables"></p>
+<p>After installing an NPM package, you can invoke its methods via the platform’s designated NPM variables.</p>
+<p><img src="/workbench/install-package7.png" alt="NPM Variable Usage Screenshot"></p>
 
 <BottomNav />
 </div>

@@ -1,66 +1,70 @@
 ## Component Layout
 
-This chapter mainly introduces the layout functions of components, covering how to arrange the layout of components, the shortcut ways commonly used in the arrangement process, as well as the advanced usages of components, such as the declaration and use of component blocks, component events, etc.
+This chapter focuses on the layout features of components, covering how to orchestrate component layouts, common shortcuts used during orchestration, and advanced usage such as declaring and employing **component Sections** and component events.
 
 ### Adding Components
 
-The platform supports adding components by dragging. The specific ways are as follows:
+The platform supports drag-and-drop to add components through the following channels:
 
-- **Component Center**: In the `Component Center`, reference components can be achieved through dragging operations.
+-   **Component Center**: Inside the **Component Center**, drag-and-drop a component to reference it.  
     [video](/workbench/component4.mp4)
-- **Resource Manager**: In the resource management interface, drag the files of the **component** type to reference the component files within the project.
+
+-   **Explorer**: In the resource management interface, drag a file of type **Component** into the project to reference the in-project component file.  
     [video](/workbench/component7.mp4)
-- **Quick Layout Addition**: After selecting a component, click `Quick Add` on the component to open the quick component addition panel, and then components can be quickly referenced.
-    [video](/workbench/component8.mp4)
-    In the quick component addition panel, users can configure associated components in [Blocks](/workbench/section). The associated components will be displayed at the upper position of the quick component addition panel for convenient and quick selection.
-   ![](/workbench/component-layout.png)
-- **Outline Tree**: After selecting a component in the outline tree, click the `plus sign` on the right side of the outline tree node to open the quick component addition panel. It should be noted that only when the selected component has enabled [Blocks](/workbench/component-section) (with custom block configuration) is it allowed to add child components to it; otherwise, the `plus sign` button will not be displayed.
-   ![](/workbench/component-layout12.png)
+
+-   **Quick Add from Layout**: Select a component on the canvas and click **Quick Add** on it to open the **Quick Add Component** panel, where you can quickly reference other components.  
+    [video](/workbench/component8.mp4)  
+    Within the Quick Add Component panel, users can bind **associated components** via [Section](/workbench/section). Associated components appear at the top of the panel for fast selection.  
+    ![](/workbench/component-layout.png)
+
+-   **Outline Tree**: In the Outline Tree, select a component and click the **plus** icon to its right to open the **Quick Add Component** panel. **Note**: The **plus** icon is only shown if the selected component has **custom Section configuration** enabled; otherwise, child components cannot be added.  
+    ![](/workbench/component-layout12.png)
 
 ### Selecting Components
 
-In the console, components can be selected by clicking with the mouse. When the mouse moves, the platform will mark the component range and component name with `dotted lines`. After confirming that it is the target component, click the `left mouse button` to complete the selection.
+On the canvas, click directly to select a component. While the mouse hovers, the platform draws a **dashed rectangle** around the component and displays its name; click the **left mouse button** to confirm selection.  
 [video](/workbench/component-layout2.mp4)
 
-During the development process, some components are difficult to select because they cannot be rendered on the canvas, such as pop-up windows, hidden buttons, etc. At this time, these components can be selected by clicking operations in the `Component Data - Outline Tree` panel.
+During development, some components—such as modals or hidden buttons—cannot be rendered on the canvas and are therefore hard to select. In such cases, open the **Component Data – Outline Tree** panel and click on the corresponding node to select them.  
 [video](/workbench/component-layout3.mp4)
 
-If you want to cancel the selected state of a component, click the `Deselect` button at the lower right corner of the canvas, and then the property panel can be switched to the file property panel.
+To deselect a component, click the **Deselect** button at the bottom-right corner of the canvas; the Properties panel will revert to file-level settings.  
 ![](/workbench/component-layout8.png)
 
 ### Deleting Components
 
-After selecting a component, click the `Delete` button in the quick operation area above the component to delete the component.
-[video](/workbench/component-layout4.mp4)
-Components can also be quickly deleted in the outline tree.
+After selecting a component, click the **Delete** button in the floating quick-action toolbar to remove it.  
+[video](/workbench/component-layout4.mp4)  
+Alternatively, delete components rapidly via the Outline Tree.  
 ![](/workbench/component-layout5.png)
 
-### Copying Components
+### Duplicating Components
 
-The platform supports quickly copying the selected components. After selecting a component, click the `Copy` button in the quick operation area. After clicking, a new component will be added behind the current component.
-[video](/workbench/component-layout6.mp4)
-Components can also be quickly copied in the outline tree.
+The platform supports instant duplication of the selected component. After selection, click the **Duplicate** button in the quick-action toolbar; a new copy is placed immediately after the original.  
+[video](/workbench/component-layout6.mp4)  
+Duplication can also be performed quickly from the Outline Tree.  
 ![](/workbench/component-layout7.png)
 
-In addition, the platform also provides an advanced copy and paste method: use the keyboard shortcut `ctrl/command + c` to copy the node. After copying, select a certain container in the current component or other components, and then paste it through `ctrl/command + v`.
+Additionally, an advanced copy/paste mechanism is available:  
+Use `Ctrl/Cmd+C` to copy the selected node. Next, select any container (inside the current or another component) and paste with `Ctrl/Cmd+V`.  
 [video](/workbench/component-layout9.mp4)
 
 ### Moving Components
 
-When it is necessary to adjust the layout order, first select the component to be moved, hold down the left mouse button and drag the component. During the dragging process, the platform will prompt the current insertion position. After confirming the position, release the left mouse button to complete the component movement.
+To reorder the layout, select a component and drag it while holding the left mouse button. The platform displays the drop position live; release the button to commit the change.  
 [video](/workbench/component-layout10.mp4)
 
-In a complex page structure, it may be difficult to accurately determine the final document structure by dragging on the canvas. At this time, the platform supports dragging the outline tree nodes in the outline tree to realize the moving operation of components.
+In complex page hierarchies, dragging on the canvas may be imprecise. Instead, drag the corresponding node in the Outline Tree to rearrange components.  
 [video](/workbench/component-layout11.mp4)
 
-### Component Identifier
+### Component Reference
 
-When a non-command type component (for the command type components, detailed introductions are provided below) is selected, the `Component Identifier` (`ref`) can be configured in the component property panel. It is recommended that the component identifier be unique in the current file.
+When a non-command-type component is selected, its Properties panel exposes the **Component Reference** (`ref`). It is recommended that this value be unique within the current file.  
 
-After defining the component identifier, this identifier can be used to quickly obtain the component, and then the methods of the component can be called or the values of the component can be obtained.
+Once defined, the reference provides direct access to the component, enabling method calls or value retrieval.  
 ![](/workbench/component-layout13.png)
 
-After configuring the component identifier, the internal methods of the component can be called in the logical methods (such as life cycle functions, component methods, events, etc.) of the current component.
-![Screenshot of the demonstration of calling public methods](/workbench/component5.png)
+With the reference configured, you can invoke internal methods of the component from logic code (lifecycle functions, component methods, events, etc.) in the current scope.  
+![Public method invocation demo screenshot](/workbench/component5.png)
 
-> **Command Type Components** include: conditional judgment nodes, loop nodes, rendering blocks, and page containers. 
+> **Command-type components** include Condition nodes, Loop nodes, Render Sections, and Page Containers.

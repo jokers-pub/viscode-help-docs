@@ -1,49 +1,49 @@
-### Event Bus
+## Event Bus
 
-In this chapter, we will explore what an Event Bus is and the functionalities it enables.
+In this chapter, we will explore what an event bus is and the functionalities it enables.  
 
-**Note**: The Event Bus feature is only available for `front-end project` types. It cannot be used in component libraries or method set libraries.
+**Note**: The event bus feature is only available for `Frontend - Project` types. It cannot be used in component libraries or method set repositories.  
 
-#### Overview
+### Overview  
 
-In the front-end domain, apart from data communication between components and pages via `props` parameters, the Platform also provides a data communication method called the `Event Bus`. Under the traditional `parameter` and `event` data transfer model, data can only be passed between components with a reference relationship. When a component is **not subordinate** to the current page/component, data transfer via parameters or registered events is not feasible.
+In frontend development, apart from using `props` for data communication between components and pages, the platform also provides a data communication method called `Event Bus`. In the traditional `props` and `events` data passing model, data can only be transmitted between components that have a reference relationship. When a component **does not belong** to the current page/component, it is impossible to pass data via props or register events.  
 
-To achieve data communication between components or pages without a reference relationship, we need the `Event Bus`. The Event Bus acts as a global event manager, allowing all pages/components/methods to register events or listen for events on it.
+To achieve data communication between components or pages without a reference relationship, we use the `Event Bus`. The event bus acts like a global event manager, allowing all pages/components/methods to register or listen to events.  
 
-#### Create an Event Bus
+### Creating an Event Bus  
 
-First, open the **Event Bus** panel in the `Project Configuration` file.
+First, you need to open the **Event Bus** panel in the `Project Configuration` file.  
 
-![](/workbench/event-bus.png)
+![](/workbench/event-bus.png)  
 
-Click the **「Create Event Bus」** button on the page to create an Event Bus. Note that an Event Bus can declare multiple events, so an `Event Bus` can be understood as a collection of event categories, helping us manage events by category.
+Click the **"Create Event Bus"** button to create an event bus. Note that multiple events can be declared within a single event bus, so an `Event Bus` can be understood as a collection of events within a category, helping us manage events by classification.  
 
-![](/workbench/event-bus1.png)
+![](/workbench/event-bus1.png)  
 
-After creating an Event Bus for a specific category, you can define events within it.
+Once an event bus for a specific category is created, you can define events within it.  
 
-![](/workbench/event-bus2.png)
-![](/workbench/event-bus3.png)
+![](/workbench/event-bus2.png)  
+![](/workbench/event-bus3.png)  
 
-Here, you need to define the event name, and the Event Bus allows setting event parameter types.
+Here, you need to define the event name, and the event bus also allows you to set the event parameter types.  
 
-#### How to Use
+### How to Use  
 
-You can perform operations through the `Event Bus` logic node in logic orchestration.
+You can use the `Event Bus` logic node in logical orchestration to perform operations.  
 
-![](/workbench/event-bus4.png)
+![](/workbench/event-bus4.png)  
 
-After dragging in the node, complete the following two steps:
+After dragging in the node, complete the following two steps:  
 
-1. **Select an Event**: The Platform provides a visual selection interface where you can choose the event to trigger.
-2. **Select an Operation Type**: Operation types include **Listen for Events** and **Trigger Event**.
+1. **Select Event**: The platform provides a visual selection interface where you can choose the event to trigger.  
+2. **Select Operation Type**: The operation types include **Listen to Event** and **Trigger Event**.  
 
-When selecting **Trigger Event**, if the current event has constrained event parameter types, you need to fill in the event parameter values to be passed.
+If you select **Trigger Event**, and the event has constrained parameter types, you need to fill in the event parameter values to be passed here.  
 
-![](/workbench/event-bus5.png)
+![](/workbench/event-bus5.png)  
 
-If selecting **Listen for Events**, you need to maintain a callback function for handling when the event is triggered.
+If you select **Listen to Event**, you need to define the callback function to handle the event when it is triggered.  
 
-![](/workbench/event-bus6.png)
+![](/workbench/event-bus6.png)  
 
-> **Special Note**: For the `Listen for Events` operation, the Event Bus does not automatically handle event destruction. Therefore, you need to define a receiving value (Function) as the **destruction function** for the event, which should be triggered during `component destruction` or at an appropriate 时机 (timing).
+> **Important Note**: For the `Listen to Event` operation, the event bus does not automatically handle event cleanup methods. Therefore, you need to define a return value (Function), which serves as the **cleanup function for the event**. This function must be called when the component is destroyed or at the **appropriate time**.

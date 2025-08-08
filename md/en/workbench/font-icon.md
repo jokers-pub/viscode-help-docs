@@ -1,56 +1,56 @@
-### Font Icons
+## Font Icons  
 
-This chapter focuses on introducing how to maintain font icons in projects within the Platform and how to efficiently use these font icons.
+This chapter focuses on how to maintain and efficiently utilize font icons within project files on the platform.  
 
-#### Overview
+### Overview  
 
-The Platform provides the convenience to create **font icon** files in the **`Resources`** folder. This specific folder location serves as the central hub for centrally maintaining font icons of the project.  
-![Font Icon Folder Location](/workbench/font-icon.png)
+The platform provides a convenient way to create and manage **font icon** files under the **`Resources`** folder. This designated location serves as the central hub for organizing font icons in a project.  
+![Font Icon Folder Location](/workbench/font-icon.png)  
 
-#### Configure Style Prefix
+### Configuring Style Prefix  
 
-Before using font icons, a crucial preparatory step is to configure the **style prefix**. This step is extremely important because without configuring the style prefix, the Platform will not generate font files for you.  
-![Configure Style Prefix](/workbench/font-icon1.png)
+Before utilizing font icons, a crucial preliminary step is configuring the **style prefix**. This is essential—failing to set a style prefix will prevent the platform from generating font files.  
+![Configuring Style Prefix](/workbench/font-icon1.png)  
 
-> Ensure the icon style prefix is entered accurately. It is strongly emphasized that any modification to the icon style prefix must be done with caution. Once modified, components that previously referenced the icon are highly likely to lose the icon, severely affecting the normal use of the Platform.
+> Ensure the icon style prefix is entered accurately. It is critical to emphasize that any changes to the style prefix must be made with extreme caution. Modifications may cause previously referenced icons in components to disappear, potentially disrupting platform functionality.  
 
-For example, when the style prefix is configured as `jk-icon`, the styles will be named strictly according to this prefix during actual output, such as:
+For example, if the style prefix is configured as `jk-icon`, the actual style output will strictly follow this naming convention, such as:  
 
 ```css
-.jk-icon-setting {
-}
-.jk-icon-plus {
-}
-/**...*/
-```
+.jk-icon-setting {  
+}  
+.jk-icon-plus {  
+}  
+/**...*/  
+```  
 
-#### Maintain Icons
+### Maintaining Icons  
 
-Within the Platform, you can easily add new icon files to font icons by uploading SVG files.  
-![Upload SVG Files to Maintain Icons](/workbench/font-icon2.png)
+Within the platform, you can easily add new icons by uploading SVG files.  
+![Uploading SVG Files to Maintain Icons](/workbench/font-icon2.png)  
 
--   **Icon**: The specific operation is to upload an **SVG**-formatted file to create and display the icon.
--   **Icon Name**: This serves as the style **suffix** for the icon during actual use. It should be clear that the final effective style name is composed of the **style prefix** combined with this **suffix**.
--   **Remarks**: By adding remark information, you can provide special explanations for the icon, greatly helping developers quickly understand the specific meaning of the icon.
+-   **Icon**: Upload an **SVG** file to create and display the icon.  
+-   **Icon Name**: This serves as the **suffix** for the style name during actual usage. The final effective style name is a combination of the **style prefix** and this **suffix**.  
+-   **Remarks**: Adding notes helps developers quickly understand the icon’s purpose.  
 
-After creating the icon, simply hover the mouse over the icon you want to edit to trigger and open the icon operation panel. In this panel, you can modify or delete the icon.  
-![Icon Operation Panel](/workbench/font-icon3.png)
+After creating an icon, hovering over it will trigger the operation panel, where you can edit or delete the icon.  
+![Icon Operation Panel](/workbench/font-icon3.png)  
 
-#### Generate Font Files
+### Generating Font Files  
 
-The Platform has an intelligent function: when you save the current file, it automatically converts all uploaded SVG files into font files in `woff` format.
+The platform automatically converts uploaded SVG files into `woff`-format font files when the current file is saved.  
 
-> It is particularly important to note that the Platform will only automatically generate font icons when saving the file if both conditions are met: the style prefix is configured, and at least one icon is maintained.
+> Note: Font icons are only generated if two conditions are met: a style prefix is configured, and at least one icon has been maintained before saving.  
 
-#### How to Use
+### How to Use  
 
-All font icons in the Platform are automatically globally referenced, eliminating the need for manual additional configuration. During the maintenance of fields, you can flexibly choose to use the icon component for configuration through the `assignment method`.  
-![Select Icon Component Configuration via Assignment Method](/workbench/font-icon4.png)
+All font icons are globally referenced within the platform automatically, eliminating the need for manual configuration. When maintaining fields, you can leverage the **`assignment method`** to configure icon components flexibly.  
+![Configuring Icon Components via Assignment Method](/workbench/font-icon4.png)  
 
-Once configured, when using the field, the system will automatically present an `icon selection` control. With this control, you can conveniently and quickly view all icon files available in the current project, including both font icons created by the project itself and those provided by installed plugins.  
-![Icon Selection Control](/workbench/font-icon5.png)
+Once configured, the field automatically renders as an **icon selector** control. This allows for quick browsing of all available icons—including those created within the project or provided by installed plugins.  
+![Icon Selector Control](/workbench/font-icon5.png)  
 
-#### Code Generation
+### Code Generation  
 
-During the final code generation stage, the Platform will once again leverage its automation advantage to automatically generate font icon files in `woff` format and complete the relevant associative referencing. You can confidently use these generated font icons.  
-![Operations Related to Font Icons in Code Generation Stage](/workbench/font-icon6.png)
+During the final code generation phase, the platform automates the creation of `woff`-format font files and handles all necessary references. Developers can confidently use these generated font icons.  
+![Font Icon Operations During Code Generation](/workbench/font-icon6.png)

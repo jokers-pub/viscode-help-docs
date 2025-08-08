@@ -1,46 +1,43 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h3>Deployment</h3>
-<p>Deploying a developed project is a critical step in the project development workflow. This chapter details how to perform online builds for completed projects and deploy them to the free cloud environment provided by the Platform. The specific operations are as follows:</p>
-<h4>Important Note</h4>
-<p>Deployment operations are only applicable to <strong>project-type</strong> repositories. Other repository types are not supported.</p>
-<h4>Overview</h4>
-<p>The Platform provides a free cloud environment, significantly facilitating the transition from project development to launch. With this environment, you can perform online build and compilation for completed projects, then deploy them to the corresponding environment. After deployment, the Platform automatically assigns a dedicated domain name, allowing access to the deployed project via this domain name.</p>
+<h2>Deployment</h2>
+<p>In the project development workflow, deploying the completed project to production is a critical step. This section provides a detailed guide on how to perform online builds for developed projects and deploy them to the free cloud environment provided by the platform. The specific steps are as follows:</p>
 <blockquote>
-<p>The Platform also supports source code export for projects. If you prefer not to use the Platform's cloud services, you can import the code into your own environment for self-deployment. For code generation and export methods, refer to <a href="workbench/generate" target="_blank">Code Generation</a>.</p>
+<p><strong>Important Note:</strong> Deployment operations apply <strong>only</strong> to Repository of the <strong>Project</strong> type. Other repository types are not supported.</p>
 </blockquote>
-<p>After completing project development, you must first release a new version of the repository. Build and deployment apply only to released versions, so ensure the repository has at least one released version before deployment.</p>
-<h4>Build Panel</h4>
-<p>After releasing a version, locate the <code>Deploy</code> function panel on the repository homepage to start the version build and deployment process.</p>
+<h3>Overview</h3>
+<p>The platform offers a free cloud environment, significantly streamlining the process from development to deployment. Using this environment, completed projects can be built and compiled online and then deployed to the designated environment. Upon successful deployment, the platform automatically assigns a dedicated domain name, which can be used to access the deployed project.</p>
+<blockquote>
+<p>The platform also supports project source code export. If you prefer not to use the platform's cloud services, you can import the code into your own environment for manual deployment. For code generation and export methods, refer to the <a href="workbench/generate" target="_blank">Code Generation</a> guide.</p>
+</blockquote>
+<p>Before deploying, ensure that a new version of the repository has been released. Build and deployment operations are performed on released versions only, so at least one release version must exist in the repository.</p>
+<h3>Build Panel</h3>
+<p>After releasing a version, locate the <code>Deployment</code> panel on the repository homepage to initiate the build and deployment process.</p>
 <p><img src="/workbench/deploy.png" alt=""></p>
-<h4>Create a Build Deployment Task</h4>
-<p>Enter the deployment panel and click the <strong>Build Now</strong> button in the upper-left corner to start creating a build deployment task.</p>
+<h3>Creating a Build and Deployment Task</h3>
+<p>Navigate to the Deployment panel and click the <strong>Build Now</strong> button in the top-left corner to create a build and deployment task.</p>
 <p><img src="/workbench/deploy1.png" alt=""></p>
-<p>When creating a build deployment task, complete the following operations:</p>
+<p>When creating a build and deployment task, complete the following steps:</p>
 <ol>
-<li>
-<p><strong>Select a Version</strong>: Choose the released version to build and deploy from the list of versions. If no versions are available here, it indicates that no released versions have been created for the repository. You must create a version before deploying the project.<br>
-<img src="/workbench/deploy2.png" alt=""></p>
-</li>
-<li>
-<p><strong>Select an Environment</strong>: After selecting a version, the Platform automatically analyzes the environment variables maintained in the selected version. Select the desired environment variable file for building from the list.<br>
-<img src="/workbench/deploy3.png" alt=""></p>
-<p>After selecting the environment file, the Platform automatically displays all <strong>configured</strong> environment variables in the file. Carefully verify that the environment variables match the project requirements to ensure the selected environment is correct.</p>
-</li>
+<li><strong>Select Version</strong>: Choose the release version to be built and deployed from the available versions. If no versions are listed, it means no release versions exist in the repository. Create a version first before proceeding with deployment.<br>
+<img src="/workbench/deploy2.png" alt=""></li>
+<li><strong>Select Environment</strong>: After selecting a version, the platform automatically analyzes the environment variables maintained for that version. From the list, select the desired environment variable file for the build.<br>
+<img src="/workbench/deploy3.png" alt=""><br>
+Once the environment file is selected, the platform displays all <strong>configured</strong> environment variables in the file. Review these carefully to ensure they align with project requirements and confirm the selected environment.</li>
 </ol>
-<h4>Confirm and Execute the Task</h4>
-<p>After filling in the build task information, click the Confirm button. The system creates the task, and the Platform initiates the automated build and deployment process.</p>
-<p><a href="/workbench/deploy.mp4" target="_blank">Video</a></p>
-<p>During the build and deployment process, you can monitor the task status in real-time to track progress. To view detailed build processes and logs, click <strong>Task Logs</strong> next to the task.</p>
+<h3>Confirming and Executing the Task</h3>
+<p>After filling in the build task details, click the <strong>Confirm</strong> button. The system will create the task, and the platform will automatically start the build and deployment process.</p>
+<p><video width="80%" controls autoplay muted loop><source src="/workbench/deploy.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<p>During the build and deployment, you can monitor the task status and progress in real time. For detailed logs and build information, click the <strong>Task Logs</strong> option next to the task.</p>
 <blockquote>
-<p>To protect developers' intellectual property and sensitive data, non-team members cannot view <strong>Task Logs</strong>, ensuring project information security and confidentiality.</p>
+<p><strong>Security Note</strong>: To protect intellectual property and sensitive data, task logs are only visible to team members. This ensures project information remains secure and confidential.</p>
 </blockquote>
-<h4>How to Access</h4>
-<p>After the deployment task is completed, click the <strong>Access Deployment Environment</strong> link on the repository page to visit the released project.</p>
+<h3>Accessing the Deployed Project</h3>
+<p>Once the deployment task is complete, click the <strong>Access Deployment Environment</strong> link on the repository page to visit the deployed project.</p>
 <p><img src="/workbench/deploy4.png" alt=""></p>
-<p>Take the <code>joker/OfficialWebsite</code> repository as an example. The Platform automatically assigns a domain name following the rule <code>organization name + repository name</code>, such as <a href="https://joker_officialwebsite.app.jokers.pub/" target="_blank">https://joker_officialwebsite.app.jokers.pub/</a>.</p>
+<p>For example, the repository <code>joker/OfficialWebsite</code> will automatically receive a domain following the naming convention of <em>organization_name + repository_name</em>: <a href="https://joker_officialwebsite.app.jokers.pub/" target="_blank">https://joker_officialwebsite.app.jokers.pub/</a>.</p>
 <blockquote>
-<p>Note that the domain name is generated based on the repository's organization and name, with automatic DNS resolution rules created. If the repository is transferred or its name is modified in the future, the deployment access address will automatically update the resolution to ensure the project remains accessible.</p>
+<p><strong>Note:</strong> The domain is generated based on the organization and repository name, and DNS resolution rules are automatically created. If the repository is transferred or renamed later, the deployment URL will update accordingly to ensure uninterrupted access to the project.</p>
 </blockquote>
 
 <BottomNav />

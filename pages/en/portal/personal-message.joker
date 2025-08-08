@@ -1,22 +1,22 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Message Center</h2>
-<p>During the daily use of the platform, the message center is a crucial channel for obtaining all kinds of important information in a timely manner. It integrates various notifications related to you within the platform, helping you keep abreast of the platform's dynamics and business progress at any time. This chapter will explain in depth the functions and usage methods of the message center.</p>
-<h3>Entering the Message Center</h3>
-<p>The entrance to the message center is set up very conveniently, allowing you to access it at any time:</p>
+<h2>Notification Center</h2>
+<p>In daily platform usage, the Notification Center serves as the critical channel for receiving various important updates in real time. It consolidates all platform notifications relevant to you, helping you stay informed about platform dynamics and project progress. This chapter provides an in-depth explanation of the Notification Center's features and usage methods.</p>
+<h3>Accessing the Notification Center</h3>
+<p>The Notification Center is conveniently accessible through multiple entry points:</p>
 <ul>
-<li><strong>Entering through the Personal Center</strong>: On the personal center page, you can find the clearly labeled &quot;Message Center&quot; menu. Click on it to directly enter the message center. This way is suitable for you to check messages when browsing personal-related settings or information.
-<img src="/portal/personal-message.png" alt="Entrance to the message center in the personal center"></li>
-<li><strong>Entering through the Message Notification Icon</strong>: In the upper right of the page, there is a conspicuous &quot;Message Notification&quot; icon, which reminds you in real time whether there are new messages. No matter which page you are operating on within the platform, just click on this icon, and you can quickly jump to the message center page to learn about the latest notifications in a timely manner.
-<img src="/portal/personal-message2.png" alt="Entrance to the message notification icon in the upper right of the page"></li>
+<li><strong>Via User Profile</strong>: On your profile page, you can find the clearly labeled &quot;Notification Center&quot; menu option. Clicking it will take you directly to the center, ideal when you're already navigating personal settings or information.
+<img src="/portal/personal-message.png" alt="Notification Center entry in User Profile"></li>
+<li><strong>Via Notification Bell Icon</strong>: Located in the top-right corner of the interface, a prominent notification bell icon provides real-time alerts for new messages. Regardless of which platform section you're working in, a single click on this icon instantly redirects you to the Notification Center to check the latest updates.
+<img src="/portal/personal-message2.png" alt="Notification bell icon entry in top-right corner"></li>
 </ul>
-<h3>Handling Messages</h3>
+<h3>Managing Notifications</h3>
 <ol>
-<li><strong>Viewing Message Details</strong>: After entering the message center, you can see all the received messages at a glance. Each message contains key information to help you quickly understand the content of the notification. Click on the message details, and the system will intelligently jump to the specific page associated with the message, such as the topic discussion page, the team-related page, etc., enabling you to quickly locate the source of the message and gain an in-depth understanding of related matters.
-<img src="/portal/personal-message3.png" alt="Message display and detail jump in the message center"></li>
-<li><strong>Marking Messages as Read</strong>: To facilitate message management, the platform provides an &quot;Mark All as Read&quot; button. After you have finished browsing the messages, you don't need to mark them one by one. Just click on this button, and the system will automatically mark all unread messages as read, making your message center page cleaner and more organized, and also helping you distinguish between new messages and processed messages.</li>
+<li><strong>Viewing Notification Details</strong>: Upon entering the Notification Center, you'll see all received messages displayed clearly. Each notification contains key information for quick comprehension. Clicking any message intelligently redirects you to its associated context—such as issue discussions or team collaboration pages—enabling immediate access to the source material.
+<img src="/portal/personal-message3.png" alt="Notification display and contextual redirection"></li>
+<li><strong>Marking Messages as Read</strong>: To simplify notification management, the platform provides a &quot;Mark All as Read&quot; button. After reviewing messages, instead of manually marking each one, simply click this button to automatically update all unread notifications, keeping your Notification Center organized and helping distinguish between new and processed alerts.</li>
 </ol>
-<p>Through the above functions, the message center can help you handle various notifications within the platform efficiently, ensuring that you won't miss any important information and greatly improving your work efficiency and interaction experience on the platform.</p>
+<p>Through these functionalities, the Notification Center enables efficient handling of all platform alerts, ensuring no critical information is missed while significantly enhancing your workflow efficiency and interactive experience on the platform.</p>
 
 <BottomNav />
 </div>

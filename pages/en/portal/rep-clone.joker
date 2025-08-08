@@ -1,22 +1,23 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Clone Repository</h2>
-<p>This chapter elaborates on the specific operation methods for cloning a repository.</p>
+<p>This chapter details the specific operational steps for cloning a repository.</p>
 <h3>Overview</h3>
-<p>When exploring repository resources, if you find an open repository that perfectly meets your needs, you can quickly replicate all contents of the repository through the &quot;Clone&quot; operation. After cloning, an identical copy of the original repository will be generated in your team space. With this copy, you can freely carry out secondary development and modification, customizing the repository contents to meet diverse business requirements.</p>
+<p>When exploring repository resources, if you find an open repository that perfectly matches your needs, you can quickly duplicate all its contents through the &quot;Clone&quot; operation. After cloning, an identical copy of the original repository will be generated in your designated team space. With this copy, you can freely perform secondary development and modifications, adapting the repository’s content to meet diverse business requirements as needed.</p>
 <h3>How to Operate</h3>
 <ol>
-<li><strong>Access the Repository Home Page</strong>: First, locate and enter the home page of the repository you want to &quot;clone&quot;. In the upper right corner of this page, you will see a &quot;Clone&quot; button.<br>
-<img src="/portal/rep-clone.png" alt="Clone Button on Repository Home Page"></li>
-<li><strong>Select Clone Version</strong>: After clicking the &quot;Clone&quot; button, the platform will automatically jump to the repository release version list page. On this page, you can clearly view all released versions of the current repository. Browse these versions carefully and select the version you intend to clone based on your actual needs.</li>
-<li><strong>Complete the Clone Operation</strong>: After selecting the version to clone, click the &quot;Clone&quot; button next to the corresponding version to successfully clone the repository. The system will generate an identical repository copy in your specified team space according to the selected version.<br>
-<img src="/portal/rep-clone3.png" alt="Repository Release Version List"></li>
+<li><strong>Access the Repository Homepage</strong>: First, locate and enter the homepage of the repository you wish to clone. In the upper right corner of the page, you will find a &quot;Clone&quot; button.<br>
+<img src="/portal/rep-clone.png" alt=""></li>
+<li><strong>Select the Version to Clone</strong>: After clicking the &quot;Clone&quot; button, the platform will automatically redirect you to the repository’s release list page. Here, you can clearly view all published versions of the repository. Carefully review these versions and select the one you intend to clone based on your actual requirements.</li>
+<li><strong>Complete the Clone Operation</strong>: Once you’ve chosen the version to clone, click the &quot;Clone&quot; button next to the corresponding version to successfully clone the repository. The system will generate an exact replica of the repository in your specified team space, matching the selected version.<br>
+<img src="/portal/rep-clone3.png" alt="">
+<blockquote>
+<p>The cloning process is very similar to the repository creation process, but with a key difference. During cloning, you do not need to select the repository type, category, or platform as you would when creating a repository. The system will directly replicate the source repository’s settings entirely to the target location, significantly simplifying the steps and allowing you to quickly obtain an identical copy of the source repository to focus on subsequent development work.</p>
+</blockquote>
+</li>
 </ol>
 <blockquote>
-<p>The clone operation process is roughly similar to the repository creation process, but there are key differences. When cloning, you do not need to select the repository type, category, or platform as you would when creating a repository. The system directly replicates the source repository's settings to the target location, greatly simplifying the operation steps and allowing you to quickly obtain a copy consistent with the source repository to focus on subsequent development.</p>
-</blockquote>
-<blockquote>
-<p>Special Note: When attempting to clone a repository from a <strong>non-affiliated team</strong>, cloning is only allowed if the repository's release version is in a &quot;<strong>Public</strong>&quot; state. If the version is not public, the &quot;Clone&quot; button will not be displayed on the page. If you expect the repository to be open for cloning, you can express your needs by submitting an &quot;Issue Suggestion&quot; to the repository owner to promote open sharing of the repository.</p>
+<p>Important Note: When attempting to clone a repository <strong>not owned by your team</strong>, the operation is only permitted if the repository’s release version is in the &quot;<strong>Public</strong>&quot; state. If the version is not public, the &quot;Clone&quot; button will not be displayed. If you wish for the repository to be open for cloning, you can submit an &quot;Issue Suggestion&quot; to the repository owner to express your need and encourage open sharing of the repository.</p>
 </blockquote>
 
 <BottomNav />

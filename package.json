@@ -6,6 +6,7 @@
     "scripts": {
         "docs:zh-cn": "ts-node build/docs.ts --lang=zh-CN",
         "docs:en": "ts-node build/docs.ts --lang=en",
+        "translate": "ts-node build/translate.ts",
         "algoliasearch:zh-cn": "ts-node build/algoliasearch.ts --lang=zh-CN",
         "algoliasearch:en": "ts-node build/algoliasearch.ts --lang=en",
         "sitemap": "ts-node build/sitemap.ts",
@@ -28,6 +29,7 @@
         "glob": "^11.0.0",
         "highlight.js": "^11.10.0",
         "markdown-it": "^14.0.0",
+        "openai": "^5.12.1",
         "sharp": "^0.33.5",
         "ts-node": "^10.9.1",
         "typescript": "^5.0.4"

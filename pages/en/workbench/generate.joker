@@ -1,29 +1,29 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Code Generation</h2>
-<p>This chapter mainly explains how to generate code and export it to the local machine.</p>
+<p>This chapter explains how to perform code generation and export it locally.</p>
 <h3>Overview</h3>
-<p>The JOKER intelligent development platform uses an advanced <strong>DSL language</strong> to maintain the resource content in the current project, which endows the JOKER with the ability to generate code. With the help of JOKER's unique <strong>expressions</strong> and advanced <strong>type declarations</strong>, high-quality code generation can be achieved.</p>
-<p>The platform provides the code generation and export capabilities in two scenarios:</p>
+<p>The JOKER Intelligent Development Platform utilizes an advanced <strong>DSL (Domain-Specific Language)</strong> to manage resources within the current project, which empowers JOKER with robust code generation capabilities. Leveraging JOKER’s distinctive <strong>expressions</strong> and sophisticated <strong>type declarations</strong>, it enables high-quality code generation.</p>
+<p>The platform provides code generation and export capabilities for two scenarios:</p>
 <ul>
-<li><strong>Exporting the Release Version Code</strong>: The platform supports code generation and export for the released project versions, which helps to realize the automatic <strong>CICD function</strong> through version release.</li>
-<li><strong>Exporting the Development Version Code</strong>: The platform allows the project code in the development process to be generated and exported, which facilitates developers to understand the actual operation principle of the project in real time during the development process and also provides more flexible operation scenarios.</li>
+<li><strong>Production Release Code Export</strong>: The platform supports generating and exporting code for published project versions, facilitating automated <strong>CI/CD functionality</strong> through version releases.</li>
+<li><strong>Development Version Code Export</strong>: The platform allows generating and exporting project code during development, helping developers understand the actual runtime logic in real time and offering a more flexible operational workflow.</li>
 </ul>
-<h3>Exporting the Release Version Code</h3>
-<p>First, make sure that the current project has completed the release of a version. For the version release process, you can refer to the content of <a href="/portal/rep-version" target="_blank">Portal - Create Version</a> and <a href="/workbench/check-code-version" target="_blank">Workbench - Code Inspection and Release</a> to complete the version release.</p>
-<p>After completing the release of a version, you can view the released version on the <strong>Project Release Version</strong> page and click <strong>Export Code</strong> to implement the code generation work.</p>
+<h3>Production Release Code Export</h3>
+<p>First, ensure that the current project has completed a version release. For the version release process, refer to: <a href="/portal/rep-version" target="_blank">Portal - Creating a Version</a> and <a href="/workbench/check-code-version" target="_blank">Workbench - Code Inspection and Release</a>.</p>
+<p>After releasing a version, you can view the published version on the <strong>Project Releases</strong> page and click <strong>Export Code</strong> to initiate the code generation process.</p>
 <p><img src="/workbench/generate.png" alt=""></p>
-<h3>Exporting the Development Version Code</h3>
-<p>The platform allows the code of the development version to be generated and exported. You can click the <code>Generate Code</code> menu in the workbench to start the code generation work.</p>
+<h3>Development Version Code Export</h3>
+<p>The platform permits generating and exporting code for development versions. You can perform code generation by clicking the <code>Generate Code</code> menu in the Workbench.</p>
 <p><img src="/workbench/generate1.png" alt=""></p>
-<p>When generating the development code, the platform will complete the preparatory work according to the following process:</p>
+<p>When generating development code, the platform follows the preparation steps below:</p>
 <ol>
-<li>Check whether there are unsaved codes.</li>
-<li>Scan the entire code. If there are code exceptions, the code generation operation will be interrupted.</li>
+<li>Check for unsaved code.</li>
+<li>Perform a full code scan—if any code anomalies are detected, the generation process is aborted.</li>
 <li>Trigger the code generation logic.</li>
 </ol>
 <blockquote>
-<p>The generated and exported code will be provided for download in the form of a ZIP package. After downloading and unzipping, please read the <code>readme.md</code> file first, which contains information on how to start the project, an introduction to the project directory, and so on.</p>
+<p>The generated exported code is provided as a ZIP file. After downloading and extracting it, read the <code>readme.md</code> file first, which includes instructions on project initialization, directory structure, and other relevant details.</p>
 </blockquote>
 
 <BottomNav />

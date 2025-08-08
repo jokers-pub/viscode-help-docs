@@ -1,52 +1,52 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Component Lifecycle</h2>
-<p>This chapter mainly introduces the creation and maintenance of the component lifecycle.</p>
+<p>This chapter primarily introduces the creation and maintenance of component lifecycles.</p>
 <h3>How to Create and Maintain</h3>
-<p>We can manage our component lifecycle in &quot;Logic/Events - Lifecycle&quot; within the &quot;Component Data&quot; panel. After clicking the plus button on the right side of the lifecycle, we can add lifecycle functions. Once added, we can maintain our lifecycle logic here. (The logic orchestration help document can be viewed <a href="/workbench/workflow" target="_blank">here</a>.)
+<p>We can manage our component lifecycle in the <code>Component Data</code> panel under <code>Logic/Events - Lifecycle</code>. By clicking the plus button on the right side of the lifecycle, we can add lifecycle functions. After adding them, we can maintain our lifecycle logic here. (Documentation on logic orchestration can be found <a href="/workbench/workflow" target="_blank">here</a>.)<br>
 <img src="/workbench/component2.png" alt=""></p>
-<p>A component or page has a complete set of lifecycle functions from creation to destruction. We can use these functions to implement business processing at different nodes.
-<img src="https://front.jokers.pub/base/component-life.png" alt=""></p>
-<p>Under the default Joker system, the mounting and unloading of a component are one-time operations, and there is no state preservation. To meet the requirement of component state preservation, Joker provides the &quot;keep-alive&quot; attribute. It can make a component only destroy the DOM node instead of the component instance when the &quot;destroy&quot; is called. When the component is loaded again, it will use the surviving instance to re-render the DOM and achieve component state preservation.</p>
-<p>Based on the above introduction, the lifecycle of such state-preserving components is as follows:
-<img src="https://front.jokers.pub/base/keepalive-life.png" alt=""></p>
+<p>A component or page has a complete set of lifecycle functions from creation to destruction. We can use these functions to implement business processing at different stages.</p>
+<p><img src="https://front.jokers.pub/base/component-life.png" alt=""></p>
+<p>In the default Joker framework, the mounting and unmounting of a component are one-time actions, with no state preservation. To satisfy the requirement of maintaining component states, Joker provides the <code>keep-alive</code> attribute, which allows a component to destroy only the DOM node without destroying the component instance when <code>destroy</code> is called. When the component is mounted again, it uses the surviving instance to re-render the DOM, achieving state preservation for the component.</p>
+<p>Based on the above introduction, the lifecycle of such state-preserving components is as follows:</p>
+<p><img src="https://front.jokers.pub/base/keepalive-life.png" alt=""></p>
 <h3>List</h3>
 <table class="mkd-table">
 <thead>
 <tr>
 <th>Function Name</th>
-<th>Introduction</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>created</td>
-<td>Triggered after the component is created.</td>
+<td>Triggered after the component is created</td>
 </tr>
 <tr>
 <td>mounted</td>
-<td>Triggered after the component is rendered and mounted to the DOM.</td>
+<td>Triggered after the component is rendered and the DOM is mounted</td>
 </tr>
 <tr>
 <td>beforeDestroy</td>
-<td>Triggered before the component is destroyed.</td>
+<td>Triggered before the component is destroyed</td>
 </tr>
 <tr>
 <td>destroyed</td>
-<td>Triggered after the component is destroyed, serving as the last hook function in the lifecycle.</td>
+<td>Triggered after the component is destroyed, serving as the final lifecycle hook</td>
 </tr>
 <tr>
 <td>sleeped</td>
-<td>The hook function after the component is put to sleep.</td>
+<td>Hook function triggered after the component is put to sleep</td>
 </tr>
 <tr>
 <td>weakup</td>
-<td>The hook function triggered after the component is awakened.</td>
+<td>Hook function triggered after the component is awakened</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>For the logic orchestration tutorial, please refer to: <a href="/workbench/workflow" target="_blank">Logic Orchestration</a></p>
+<p>For logic orchestration tutorials, see: <a href="/workbench/workflow" target="_blank">Logic Orchestration</a></p>
 </blockquote>
 
 <BottomNav />

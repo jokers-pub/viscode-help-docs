@@ -1,79 +1,53 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Create a Repository</h2>
-<p>This chapter will introduce in detail the specific steps for creating a repository and how to reasonably choose the repository type, helping you quickly get started and smoothly set up the repository required for the project.</p>
+<h2>Creating a Repository</h2>
+<p>This chapter provides a detailed guide on the specific steps to create a repository and how to appropriately select repository types, helping you get started quickly and successfully set up the repository required for your project.</p>
 <h3>How to Create a Repository</h3>
-<p>The operation of creating a repository is quite convenient. You can do it in the following ways:</p>
+<p>Creating a repository is a straightforward process, and below are the methods you can use:</p>
 <ul>
-<li>Locate the entrance for creating a repository at the repository panel on the &quot;My Team&quot; home page.</li>
-<li>Click the plus sign in the &quot;My Repository&quot; panel on the portal home page, and you will be quickly redirected to the page for creating a repository.</li>
+<li>On the &quot;My Team&quot; homepage, locate the repository panel and find the option to create a repository.</li>
+<li>In the &quot;My Repositories&quot; panel on the portal homepage, click the <strong>plus sign</strong> to quickly navigate to the repository creation page.</li>
 </ul>
 <blockquote>
-<p>Special Reminder: Since each repository must belong to a team or an organization, please make sure that you have successfully created a team/organization or have joined an existing team/organization before creating a repository. If you are not yet familiar with the process of creating an organization, you can click here<a href="/portal/create-org" target="_blank">Create a Team </a>，to get detailed instructions.</p>
+<p><strong>Important Note:</strong> Since every repository must belong to a team or organization, ensure that you have successfully created a team/organization or joined an existing one before creating a repository. If you are unfamiliar with the organization creation process, click here <a href="/portal/create-org" target="_blank">Create Team</a> for detailed instructions.</p>
 </blockquote>
 <p><img src="/portal/create-rep.png" alt=""></p>
-<h3>Fill in the Repository Information</h3>
-<p>After being redirected to the repository creation page, you need to fill in various basic pieces of information about the repository here. This information is crucial for the accurate creation and subsequent use of the repository. The specific details are as follows:</p>
+<h3>Enter Repository Information</h3>
+<p>After navigating to the repository creation page, you will need to fill in the essential details for the repository. These details are critical for the accurate creation and subsequent usage of the repository. The required information includes:</p>
 <ul>
-<li><strong>Team/Organization</strong>：Select the team or organization to which the repository will belong from the dropdown menu. If you don’t have a suitable team/organization, click the Create Organization button next to the dropdown to quickly set one up. Note that the dropdown only displays teams where you have Owner or Admin privileges, as only these roles can create repositories within a team. This restriction ensures proper governance and security of team resources.</li>
-<li><strong>Repository Name</strong>：Enter a unique English name for the repository. This name serves as the repository's unique identifier within the selected team, so choose something descriptive and easy to recognize for your team members.</li>
-<li><strong>Repository Type</strong>：Choose between a Server-side or Front-end repository based on your development needs. The platform follows a front-backend separation architecture, allowing developers to work independently on server or frontend projects. Additionally, the platform provides API quick-linking capabilities to facilitate seamless integration between frontend and backend components when required.</li>
-<li><strong>Repository Classification</strong>:
-<ul>
-<li>After selecting the repository type, you need to further set the repository classification information. The available classifications include <strong>Applications</strong>, <strong>Component Libraries</strong>, and <strong>Method Sets</strong>:
+<li>
+<p><strong>Team/Organization Ownership</strong>: From the dropdown menu, select the team or organization under which the repository will be created. If you don’t have a suitable team/organization yet, click the <code>Create Organization</code> button next to the dropdown to quickly set one up. Note that the dropdown only displays teams where you have <code>Owner</code> or <code>Admin</code> permissions. This ensures repository management is standardized and secure, as only administrators and owners have the authority to create repositories within a team.</p>
+</li>
+<li>
+<p><strong>Repository Name</strong>: Enter an English name for the repository. This name will serve as the unique identifier within the team, so choose something distinctive and easily recognizable for team members to locate and manage it efficiently.</p>
+</li>
+<li>
+<p><strong>Repository Type</strong>: Based on development needs, select either a <code>Server-Side</code> or <code>Client-Side</code> repository. The platform currently employs a frontend-backend separation model, allowing developers to independently work on server-side or frontend projects. Additionally, the platform provides API rapid association functionality for seamless integration between frontend and backend when needed.</p>
+</li>
+<li>
+<p><strong>Repository Category</strong>: After selecting the repository type, specify its category. Available categories include:</p>
 <ol>
-<li><strong>Applications</strong>:
-<ul>
-<li>Application repositories are usually used to store the final running projects. When you plan to create a project that will eventually be put into use, such as <code>Lottery Application</code>, <code>Form Collection Application</code>, <code>Mall Application</code>, etc., you can choose the <code>Applications</code> classification.</li>
-<li>Inside this type of repository, you can create various resources like <code>Components</code>, <code>Method Sets</code>, <code>Pages</code>, <code>Interfaces</code>, etc., to meet the diverse needs of the project's operation.</li>
-</ul>
-</li>
-<li><strong>Component Libraries</strong>:
-<ul>
-<li>Component libraries are mainly used to provide a complete set of UI component libraries externally.</li>
-<li>After selecting a repository with this classification, you can create resources of the types <code>Components</code>, <code>Method Sets</code>, <code>Style Variables / Common Styles</code> in the workbench, which helps to centrally manage and reuse UI-related resources.</li>
-</ul>
-</li>
-<li><strong>Method Sets</strong>:
-<ul>
-<li>Method Sets generally cannot be deployed independently and mainly exist as a collection of methods and class libraries, used to provide public method calls externally.</li>
-<li>For repositories of this classification, only resources of the <code>Methods</code> type can be created in the workbench.</li>
-</ul>
-</li>
+<li><strong>Application</strong>: Application repositories are typically used for hosting finalized projects. Choose this category if you are developing a deployable project, such as a <code>Lottery Application</code>, <code>Form Collection App</code>, or <code>E-Commerce App</code>. Within such repositories, you can create various resources like <code>Components</code>, <code>Method Sets</code>, <code>Pages</code>, and <code>APIs</code> to meet diverse project requirements.</li>
+<li><strong>Component Library</strong>: Component libraries are designed to provide a suite of UI components. Selecting this category allows you to create resources like <code>Components</code>, <code>Method Sets</code>, and <code>Style Variables/Global Styles</code> in the workspace, facilitating centralized management and reuse of UI assets.</li>
+<li><strong>Method Set</strong>: Method sets cannot be deployed independently; they primarily serve as collections of methods or libraries for external method invocation. This category allows only the creation of <code>Method</code> resources in the workspace.</li>
 </ol>
 </li>
-</ul>
+<li>
+<p><strong>Target Platform</strong>: Configure the runtime platform for the repository. Current options include <strong>PC</strong>, <strong>Mobile</strong>, and <strong>Platform-Agnostic</strong>. Selecting the appropriate option based on the project’s runtime environment helps optimize performance across different platforms.</p>
 </li>
-<li><strong>Target Platform</strong>:
-<ul>
-<li>Configure the running platform of the current repository here. Currently, the available options are <strong>PC End</strong>, <strong>Mobile End</strong>, and <strong>Unrestricted</strong>.</li>
-<li>Make an accurate selection according to the actual running environment of the project, which helps to optimize the running effect of the project on different platforms.</li>
-</ul>
+<li>
+<p><strong>Repository Description</strong>: Provide a brief description of the repository’s purpose and functionalities. This helps other developers quickly understand its core features and assists in search functionality for precise indexing. Additionally, the repository description serves as the basis for SEO optimization during code generation, so ensure it is detailed and accurate.</p>
 </li>
-<li><strong>Repository Introduction</strong>:
-<ul>
-<li>Fill in the repository introduction. This content can not only help other developers quickly understand the core functions and uses of the repository, but also provide key information for the search function, facilitating the precise location of the repository.</li>
-<li>In addition, the repository introduction is an important basis for SEO optimization when generating the repository code. Therefore, please describe the key points of the repository as detailed and accurate as possible.</li>
-</ul>
+<li>
+<p><strong>Private Repository</strong>: Determine the repository’s access permissions—either public or private. If selected as private, only team members can view its contents, while non-members can only see basic information (with code hidden). Private repositories also do not appear on the platform’s homepage recommendation list, ensuring content privacy and security by restricting access to internal team members.</p>
 </li>
-<li><strong>Private Repository</strong>:
-<ul>
-<li>Here, you can decide the access rights of the current repository, that is, set it as a public or private repository.</li>
-<li>If you choose a private repository, non-team members can only browse the basic information of the repository, and the code inside the repository is hidden from them and cannot be viewed.</li>
-<li>In addition, private repositories will not appear in the recommended list on the platform's home page, thus ensuring the privacy and security of the repository content and ensuring that only team members can operate and access the core code.</li>
-</ul>
-</li>
-<li><strong>Official Template</strong>:
-<ul>
-<li>If you check the option &quot;Use Official Template&quot;, after successfully creating the repository, the system will provide an official sample DEMO by default.</li>
-<li>These carefully designed DEMOs can help you quickly master the development process and get started quickly.</li>
-<li>When you are proficient in the development process and want to build a project according to your own ideas, you can uncheck this option and directly create a blank project to freely start a personalized development journey.</li>
-</ul>
+<li>
+<p><strong>Official Templates</strong>: If you check &quot;Use Official Templates,&quot; the system will automatically provide an official demo example after repository creation. These well-designed demos help you quickly grasp development workflows and get started efficiently. If you’re already familiar or prefer to build your project from scratch, leave this unchecked to create an empty project for customized development.</p>
 </li>
 </ul>
 <p><img src="/portal/create-rep2.png" alt=""></p>
 <blockquote>
-<p>The selection of repository types, classifications, and target platforms is of crucial importance. Please make sure to consider it carefully. Once these key settings are confirmed and submitted, they cannot be changed later. Therefore, please make a prudent choice by combining actual needs and long-term plans to avoid affecting the smooth progress of the project.</p>
+<p><strong>Critical Note:</strong> Choices related to repository type, category, and target platform are permanent once confirmed. Therefore, carefully evaluate your project requirements and long-term plans before finalizing these settings to avoid hindering project progress.</p>
 </blockquote>
 
 <BottomNav />

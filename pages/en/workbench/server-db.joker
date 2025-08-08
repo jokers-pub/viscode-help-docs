@@ -1,198 +1,129 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Controller Design</h2>
-<p>This chapter mainly elaborates on controller-related content. The controller, as the core functional module of server-side applications, undertakes the important task of designing application API interfaces and can be regarded as the design hub for the only request entry of server-side applications.</p>
+<h2>Data Model Design</h2>
+<p>This chapter focuses on how to create and manage data models in server-side application projects.</p>
 <h3>Overview</h3>
-<p>The platform enables us to quickly create API interfaces for server-side applications in a visual way. We can create different controllers according to business types in the <code>Controllers</code> folder, and multiple API methods can be created under each controller.</p>
-<p><img src="/workbench/back-end.png" alt=""></p>
-<p>Next, we will explain in detail the various functions of the controller in the order of &quot;API Creation -&gt; Input Parameters -&gt; API Method Parameters -&gt; API Method Return Value Types -&gt; Authorization&quot;.</p>
-<h3>Create API</h3>
-<p>Multiple API methods can be created in the controller file. Click the <strong>Create API</strong> button in the upper right corner to open the API editor window.</p>
-<p><img src="/workbench/server-controller.png" alt=""></p>
-<p>In this window, the following information of the API interface can be configured:</p>
+<p>In <strong>server-side application</strong> projects, we can leverage data model design to plan database table structures. It enables us to quickly design database schemas in an intelligent, visual manner, covering <strong>data</strong>, <strong>field definitions</strong>, <strong>composite indexes</strong>, <strong>table relationships</strong>, and more.</p>
+<h3>Creating a Table</h3>
+<p>On the left-hand panel in the workbench, navigate to the <strong>Database</strong> menu to view the current database table tree. This menu can be accessed from any file to quickly inspect the table structure. To manage and maintain the tables, click the <strong>Manage Database</strong> button at the bottom of the panel, which opens the database management file. Here, you can create or edit data models to manage tables in the database.<br>
+<img src="/workbench/server-db.png" alt=""></p>
 <ul>
-<li><strong>Name</strong>: This is the name of the API method of the interface. It should be noted that this is not the final API access address. The format of the API access address is <code>Service Root</code>/<code>Controller Name</code>/<code>API Name</code>.</li>
-<li><strong>Remarks Title</strong>: Configure an alias for the API method to help developers quickly understand the meaning of the API.</li>
-<li><strong>Description</strong>: Write detailed description information for the API method to facilitate developers' in-depth understanding.</li>
-<li><strong>Request Type</strong>: Multiple request types can be configured here. Only requests that match the configured request type will be mapped to this API method. The optional values include: <strong>POST</strong>, <strong>GET</strong>, <strong>PUT</strong>, <strong>DELETE</strong>.</li>
-<li><strong>Authorization Authentication</strong>: If this function is enabled, the system will authenticate the JWT before accessing the API interface. Once the JWT verification fails or expires, a 401 error will be directly returned.</li>
-<li><strong>Input Parameters</strong>: The input parameters of the API can be configured here.</li>
+<li><strong>Model Name</strong>: Defines the table name (camelCase recommended).</li>
+<li><strong>Model Alias</strong>: Assigns a readable name to the table for easier reference during development.</li>
+<li><strong>Model Description</strong>: Provides detailed documentation about the table, helping developers understand its purpose.</li>
+<li><strong>Use Recommended Properties</strong>: If enabled, the platform automatically generates common fields, including <strong>primary key (id)</strong>, <strong>creation time (createAt)</strong>, and <strong>update time (updateAt)</strong>.</li>
 </ul>
-<h3>Input Parameter Validation</h3>
-<p>As mentioned earlier, we can create the input parameters of the API interface in the API interface editing panel, and their creation follows the general <code>Field Maintenance</code> rules. For detailed content, please refer to the <a href="/workbench/property" target="_blank">Field Maintenance</a> chapter.</p>
-<p>Here, we mainly explain a special function of API input parameters in field maintenance: <strong>Input Parameter Validation</strong>.</p>
-<p>In the second step of the <strong>Field Maintenance</strong> editing window, different field restriction rules can be configured by selecting different data types.</p>
-<p><img src="/workbench/server-controller1.png" alt=""></p>
-<p>The following is an introduction to all validation rules without considering data types:</p>
+<h3>Creating Table Fields</h3>
+<p>After creating a data model (table), click <strong>Create Attribute</strong> in the model panel to open the field maintenance interface.<br>
+<img src="/workbench/server-db1.png" alt=""></p>
+<p>In the field configuration panel, the following properties must be maintained:</p>
+<ul>
+<li><strong>Name</strong>: The field name (recommended to use concise, meaningful English).</li>
+<li><strong>Alias</strong>: A user-friendly label for the field, aiding quick comprehension.</li>
+<li><strong>Description</strong>: A detailed explanation of the field's purpose, data source, constraints, etc., to prevent misunderstandings.</li>
+<li><strong>Data Type</strong>: Specifies the data type of the field, influencing storage and operations:
 <ol>
-<li><strong>Regular Expression Validation</strong>: Allows customizing regular expressions to constrain the content of input parameters.</li>
-<li><strong>Whether it is an Email</strong>: Used to verify whether the input content is in the email format.</li>
-<li><strong>Whether it is a Telephone</strong>: Judges whether the input content conforms to the telephone format.</li>
-<li><strong>Only Letters</strong>: Ensures that the input content contains only letters.</li>
-<li><strong>Only Letters and Numbers</strong>: Limits the input content to only letters and numbers.</li>
-<li><strong>Only Numbers</strong>: Only allows the input of numbers (string type numbers). If the field itself is of the number type, the field type can be directly changed; this rule only provides a supplementary number format validation for the string type.</li>
-<li><strong>Whether it is an Integer</strong>: Requires the input to be an integer and does not allow floating-point numbers.</li>
-<li><strong>Contains Specific Content</strong>: The string must contain specific content.</li>
-<li><strong>Limit the Value Range</strong>: Limits the range of values. For example, gender can only be male/female, and enumeration values can be manually maintained or selected from the data table.
-<img src="/workbench/server-controller2.png" alt=""></li>
-<li><strong>Length Limit</strong>: Limits the length of the string. The maximum or minimum value can be configured separately, or the limits can be combined simultaneously.</li>
-<li><strong>Maximum Value</strong>: For fields of the number type, the maximum value limit can be configured.</li>
-<li><strong>Minimum Value</strong>: For fields of the number type, the minimum value limit can be configured.</li>
-<li><strong>File Size Limit</strong>: When the field type is <strong>File</strong>, the size of the uploaded file can be limited by this constraint.</li>
-<li><strong>File Quantity Limit</strong>: When the field type is <strong>File</strong>, the maximum number of uploaded files can be limited. By default, only one file is allowed to be uploaded.</li>
-<li><strong>File Type Limit</strong>: When the field type is <strong>File</strong>, the accepted types of uploaded files can be limited, and wildcards are supported. For example, for images (image/jpeg, image/<em>), the &quot;</em>&quot; wildcard is supported. If multiple types need to be limited, they can be separated by &quot;,&quot;.</li>
+<li><strong>String</strong>: Stores text (e.g., names, addresses). Subtypes:
+<ul>
+<li><strong>UUID</strong>: Unique identifiers.</li>
+<li><strong>TEXT</strong>: Longer text (e.g., descriptions).</li>
+<li><strong>VARCHAR</strong>: Short, fixed-length text (e.g., codes).</li>
+</ul>
+</li>
+<li><strong>Integer (Int)</strong>: Whole numbers (e.g., age, quantity).</li>
+<li><strong>Decimal</strong>: Precise decimals (e.g., monetary values).</li>
+<li><strong>Float</strong>: Approximate floating-point numbers (e.g., scientific data).</li>
+<li><strong>DateTime</strong>: Dates/times (e.g., createAt, updateAt).</li>
+<li><strong>Boolean</strong>: True/false values (e.g., payment status).</li>
+<li><strong>Enum</strong>: Fixed value set (e.g., order status, user roles).</li>
+<li><strong>Relationship Field</strong>: Establishes table associations (e.g., linking orders to products).</li>
 </ol>
-<h3>File Upload</h3>
-<p>In server-side projects, the <code>Field Maintenance</code> panel supports selecting the field type as the <code>File</code> file type. With this function, we can implement file upload in the API interface.</p>
-<p>The above has mentioned the configuration of the constraint conditions for file types. Here, we will focus on the attributes and operation methods of the File type.</p>
-<p><img src="/workbench/server-controller3.png" alt=""></p>
-<p>Suppose an input parameter <code>userImg</code> is created, and the uploaded file can be obtained and operated through the way of <code>data.userImg</code>.</p>
-<p>The data of the file type provides us with the following attributes:</p>
+</li>
+<li><strong>Primary Key</strong>: Marks the field as the table's unique identifier (only one per table).</li>
+<li><strong>Default Value</strong>: Initial value if not explicitly set (e.g., default user role).</li>
+<li><strong>Unique</strong>: Ensures field uniqueness (automatically indexed for faster queries).</li>
+<li><strong>Not Null</strong>: Enforces mandatory field values (e.g., order amount cannot be empty).</li>
+<li><strong>Array Type</strong>: Allows storing multiple values (e.g., tags, contact methods).</li>
+<li><strong>Field Type</strong>: Further refines data storage (e.g., UUID vs. VARCHAR for strings).</li>
+</ul>
+<h3>Creating Table Relationships</h3>
+<p>The platform provides an intelligent way to define table relationships. Below is an example with two tables:</p>
+<h4>Product Table</h4>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>Name</th>
-<th>Type</th>
+<th>Field</th>
+<th>Data Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>checkMimeType</td>
-<td>Function</td>
-<td>Checks whether it meets the file type requirements and supports wildcards. For example, for images (image/jpeg, image/<em>), the &quot;</em>&quot; wildcard is supported. If multiple types are limited, it can be a single string or an array of strings.</td>
+<td>id</td>
+<td>UUID</td>
+<td>Product ID (PK)</td>
 </tr>
 <tr>
-<td>checkSize</td>
-<td>Function</td>
-<td>Checks whether it meets the file size limit.</td>
-</tr>
-<tr>
-<td>fileCount</td>
-<td>Number</td>
-<td>The number of files.</td>
-</tr>
-<tr>
-<td>files</td>
-<td>File[]</td>
-<td>All files.</td>
-</tr>
-<tr>
-<td>save</td>
-<td>Function</td>
-<td>Through this method, the file can be saved to the specified directory on the server side.</td>
+<td>name</td>
+<td>String</td>
+<td>Product Name</td>
 </tr>
 </tbody>
 </table>
-<p>Here, we will focus on the <strong>save</strong> file saving method. Other attributes can usually be configured in the input item condition constraints. Unless there are special requirements, custom methods will be considered to judge the file format and file size.</p>
-<h4>File Saving</h4>
-<pre><code class="language-js">// Save directly to the project upload directory without any adjustment
-await data.userImg.save();
-
-// Complete parameter example, save the file to the user folder in the upload directory.
-await data.userImg.save(&quot;user/&quot;, {
-    // Customize the saved file name
-    newFileName: (file) =&gt; {
-        // Name it in the format of userId.ext, where file.ext is the extension of the uploaded file
-        return userId + &quot;.&quot; + file.ext;
-    },
-    // Whether to not compress the image. The default here is false. By default, the platform will compress the uploaded image resources at the bottom layer. If you don't want to compress it, you can configure it as true.
-    uncompressedImage: false,
-    // Image compression processing configuration, which only takes effect when image compression is enabled
-    imageCompressionOption: {
-        // Image compression ratio 0 - 100, default 80
-        quality: 80,
-        // Maximum width of the image, not limited by default, in pixels. If the configured value is less than the actual image value, it will be scaled proportionally.
-        maxWidth: 1000,
-        // Maximum height of the image, not limited by default, in pixels. If the configured value is less than the actual image value, it will be scaled proportionally.
-        maxHeight: 1000
-    }
-});
-</code></pre>
-<blockquote>
-<p>The project upload directory can be configured through <strong>UPLOAD_ROOT_DIR</strong> in the server-side environment variables.</p>
-</blockquote>
-<h4>Save Return Value</h4>
-<p>The call of the <strong>save</strong> method is an asynchronous operation, and its return value is an array:</p>
-<pre><code class="language-typescript">{
-    // List of successfully saved files, with the value being the saved path
-    success: string[];
-    // List of error messages for failed saves
-    error: string[];
-}
-</code></pre>
-<p>Complete example:</p>
-<pre><code class="language-js">// Save directly to the project upload directory without any adjustment
-let uploadResult = await data.userImg.save();
-
-if (uploadResult.error.length) {
-    // TODO: Record the log
-    return ActionError(&quot;Save failed&quot;); // ActionError is introduced in the API return value type.
-}
-
-let userImg = uploadResult.success[0];
-</code></pre>
-<p><img src="/workbench/server-controller4.png" alt=""></p>
-<h3>API Method Parameters</h3>
-<p>In API logic orchestration, the platform provides us with commonly used data parameters.</p>
-<ul>
-<li><strong>data</strong>: Input parameters, and the type can be designed and maintained in the API interface input parameters.</li>
-<li><strong>context</strong>: Routing context, which is the routing context data processed by the API interface and contains:
+<h4>Order Table</h4>
+<table class="mkd-table">
+<thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>UUID</td>
+<td>Order ID (PK)</td>
+</tr>
+<tr>
+<td>productId</td>
+<td>String</td>
+<td>References Product.id</td>
+</tr>
+<tr>
+<td>createAt</td>
+<td>DateTime</td>
+<td>Creation Time</td>
+</tr>
+</tbody>
+</table>
+<h4>Establishing the Relationship</h4>
+<p>To link <code>Order.productId</code> with <code>Product.id</code>, follow these steps in the Order table:<br>
+<img src="/workbench/server-db2.png" alt=""></p>
 <ol>
-<li><strong>jwt</strong>: Authentication token content. The <code>jwt</code> property will only exist if the current controller has enabled <strong>Authorization</strong>. The token value has been parsed, and internal properties can be directly obtained.</li>
-<li><strong>url</strong>: Request address</li>
-<li><strong>request</strong>: Underlying request object. We can obtain data such as the request IP and source address through it.</li>
-<li><strong>logger</strong>: Log processing object, which can help us achieve centralized log output and collection.</li>
+<li><strong>Ignore Field Naming Temporarily</strong>: The platform will auto-generate a name.</li>
+<li><strong>Select Data Type</strong>: Choose <strong>Relationship Field</strong>.</li>
+<li><strong>Define Relationship</strong>: Map <code>productId</code> to <code>Product.id</code>.</li>
+<li><strong>Finalize Field Name</strong>: Edit the auto-generated name if needed.</li>
 </ol>
-</li>
-<li><strong>logger</strong>: Log processing object, which can help us achieve centralized log output and collection. It is different from <code>console</code> in that it is a centralized log collector, and it allows us to use file logs, console logs, and database logs. Different requirements can be configured in <a href="/workbench/env" target="_blank">Environment Configuration</a>.</li>
+<p>After creation:<br>
+<img src="/workbench/server-db3.png" alt=""></p>
+<ul>
+<li><strong>Order Table</strong>: <code>productId</code> becomes a <strong>foreign key</strong>, and a <code>Product</code> field (with full product data) is added.</li>
+<li><strong>Product Table</strong>: An <code>Order[]</code> field is added (one-to-many relationship), enabling quick access to all related orders.</li>
 </ul>
-<h3>API Return Value Types</h3>
-<p>The platform provides us with a unified data return structure, as shown below:</p>
-<pre><code class="language-json">{
-    &quot;header&quot;: {
-        &quot;code&quot;: &quot;Status Code&quot;, // When JK000000 is returned, it represents business success, and all others are business exceptions.
-        &quot;msg&quot;: &quot;Error Message&quot;
-    },
-    &quot;data&quot;: {} // Returned business data
-}
-</code></pre>
-<p>The platform also provides a method for quickly creating the interface return value:</p>
-<h4>Ok</h4>
-<p>Used to return correct business data. The sample code is as follows:</p>
-<pre><code class="language-js">return Ok(业务数据);
-</code></pre>
-<p>Of course, in the logic orchestration panel, you can also use the <strong>Return Success Data</strong> node to return the correct business data.</p>
-<p><img src="/workbench/server-controller5.png" alt=""></p>
-<h4>ActionError</h4>
-<p>Used to return abnormal business data. The sample code is as follows:</p>
-<pre><code class="language-js">return ActionError(错误信息, 错误码, 业务数据);
-// Among them, the error message is a required item. If the error code is not configured, the general exception code JK999999 will be used.
-</code></pre>
+<h3>Creating Composite Indexes</h3>
+<p>Composite indexes enforce uniqueness and improve query performance for multi-field combinations. For example, in a permission table where a user can have only one role per organization, a composite index on <code>userId + orgId</code> ensures uniqueness.</p>
+<p>To create one, click the <strong>dropdown arrow</strong> next to <code>Create Attribute</code> and select <strong>Create Composite Index</strong>.<br>
+<img src="/workbench/server-db4.png" alt=""></p>
+<p>In the editor, select two or more fields to form the index.<br>
+<img src="/workbench/server-db5.png" alt=""></p>
 <blockquote>
-<p>Developers can configure different error codes so that the front end can implement different business processing branches according to the status code when the request is abnormal.</p>
+<p>This section covers data model design. For CRUD operations, refer to the <a href="/workbench/db-option" target="_blank">Data Operations</a> chapter.</p>
 </blockquote>
-<p>Similarly, in the logic orchestration panel, you can also use the <strong>Return Failure Data</strong> node to return abnormal business data.</p>
-<p><img src="/workbench/server-controller6.png" alt=""></p>
-<h4>Data Fallback</h4>
-<p>In the controller, we can directly return business data through <code>return</code>. The platform will judge at the bottom layer. If the returned data meets the required API data format, it will be returned according to the return value; otherwise, it will be automatically wrapped with the <code>Ok</code> method and returned as correct data.</p>
-<h3>Authorization Authentication</h3>
-<p>Next, we will explain in detail how to configure the JWT token function of the project.</p>
-<h4>How to Generate a JWT Token</h4>
-<p>A JWT token can be generated in a certain API interface and returned to the front end, usually completed in the login interface.</p>
-<p>The <code>generateJwtToken</code> method can be used to generate the token.</p>
-<p><img src="/workbench/server-controller7.png" alt=""></p>
-<p>From the logic in the above figure, first query user information according to the interface input items. If the user information is queried, use this information to generate JWT and return <code>Ok</code>; if the user information is not queried, return <code>ActionError</code>.</p>
-<blockquote>
-<p>The above content is only an example. It is especially reminded that sensitive data such as passwords should not be stored in the JWT content.</p>
-</blockquote>
-<h4>How the Front End Sends the JWT Token</h4>
-<p>The front end needs to send the JWT token through <strong>sid</strong> in the interface request header <code>header</code>.</p>
-<p>In the JOKER visual platform, the <code>sid</code> can be uniformly injected in the <code>transformReqData</code> data request conversion method.</p>
-<p><img src="/workbench/server-controller8.png" alt=""></p>
-<blockquote>
-<p>It should be noted here that if the API has enabled the <strong>Authorization</strong> function, the value obtained through <code>context.jwt</code> in the API method is the <code>payload</code> of the JWT. At this time, there is no need to use the <code>verifyJwtToken</code> method to verify the legality of the token, because the platform will pre-judge whether the token is legal in the routing aspect. If the token is invalid, the logic in the API will not be executed. The <code>verifyJwtToken</code> method is only used for advanced and complex custom verification scenarios to provide token parsing operations.</p>
-</blockquote>
+<h3>Database Connection URL</h3>
+<p>Configure the database URL in the <strong>Environment Settings</strong> file (currently supports <strong>PostgreSQL</strong>).<br>
+<img src="/workbench/server-db6.png" alt=""></p>
 
 <BottomNav />
 </div>

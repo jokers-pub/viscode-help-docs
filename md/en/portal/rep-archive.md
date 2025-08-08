@@ -1,20 +1,25 @@
-## Archive Repository
+## Archiving Repository
 
-In warehouse management, archiving is a crucial operation that helps better manage and organize warehouse resources. This chapter details the specific steps and key points for archiving a repository.
+In repository management, archiving is a critical operation that facilitates better organization and management of repository resources. This chapter provides a detailed explanation of the specific steps and key considerations for archiving a repository.
 
-### Scenario
+### Usage Scenarios
 
-In actual project advancement and warehouse management, there are multiple scenarios where archiving a repository is necessary. For example, when a project is completed in stages and will not be updated in the short term, but it is necessary to retain the project-related code, files, and version records for future reference or traceability, the corresponding repository can be archived. Alternatively, if the content in certain repositories no longer serves as the core support for current business but still has reference value, archiving these repositories is a good choice to avoid excessive consumption of system resources while ensuring data integrity. Archiving repositories can clearly distinguish active repositories from historical ones, making warehouse management more orderly and efficient, and improving the work efficiency and resource utilization of the entire team.
+During actual project progression and repository management, multiple situations may arise that necessitate repository archiving. For instance:
 
-### Access Repository Settings
+-   When a project reaches a milestone and will not receive updates in the near term, but its associated code, files, and version history need to be preserved for future reference or traceability, the corresponding repository can be archived.
+-   Certain repositories may no longer serve as core components of current business operations but still retain significant reference value. Archiving such repositories helps conserve system resources while maintaining data integrity.
 
-1. First, locate and open the settings page of the repository you plan to delete. In this page, click the "Archive Repository" menu.
-2. Click the "Archive Repository" button in the "Repository Management" menu, which officially initiates the repository archiving process.
+By archiving repositories, teams can clearly distinguish between active and historical repositories, ensuring more organized and efficient repository management. This practice enhances overall team productivity and optimizes resource utilization.
 
-![Archive Repository Interface](/portal/rep-archive.png)
+### Accessing Repository Settings
 
-### Confirm Password
+1. **Locate Target Repository**: Navigate to the settings page of the repository you intend to archive.
+2. **Initiate Archiving**: Under the **"Repository Management"** menu, click the **"Archive Repository"** button to begin the archival process.
 
-After clicking the "Archive Repository" button, for security considerations, the platform will immediately pop up a password verification window, requiring you to enter your account password. This step aims to confirm that the operation is performed by the administrator 本人 (the administrator himself), effectively preventing misoperations or illegal actions to ensure the security and stability of repository data.
+![](/portal/rep-archive.png)
 
-![Password Verification Window](/portal/rep-archive2.png)
+### Password Confirmation
+
+After clicking **"Archive Repository"**, a security verification window will prompt you to enter your account password. This step ensures that the operation is performed by an authorized administrator, preventing accidental or unauthorized actions to safeguard repository data security and stability.
+
+![](/portal/rep-archive2.png)

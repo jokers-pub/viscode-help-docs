@@ -1,53 +1,53 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Controller Design</h2>
-<p>This chapter mainly elaborates on controller-related content. The controller, as the core functional module of server-side applications, undertakes the important task of designing application API interfaces and can be regarded as the design hub for the only request entry of server-side applications.</p>
+<p>This chapter focuses on the controller, a core functional module in server-side applications that is responsible for designing API interfaces, serving as the sole entry point for requests—a design hub for server-side applications.</p>
 <h3>Overview</h3>
-<p>The platform enables us to quickly create API interfaces for server-side applications in a visual way. We can create different controllers according to business types in the <code>Controllers</code> folder, and multiple API methods can be created under each controller.</p>
-<p><img src="/workbench/back-end.png" alt=""></p>
-<p>Next, we will explain in detail the various functions of the controller in the order of &quot;API Creation -&gt; Input Parameters -&gt; API Method Parameters -&gt; API Method Return Value Types -&gt; Authorization&quot;.</p>
-<h3>Create API</h3>
-<p>Multiple API methods can be created in the controller file. Click the <strong>Create API</strong> button in the upper right corner to open the API editor window.</p>
-<p><img src="/workbench/server-controller.png" alt=""></p>
-<p>In this window, the following information of the API interface can be configured:</p>
+<p>The platform empowers users to rapidly create API interfaces for server-side applications through a visual interface. Within the <code>Controller</code> folder, developers can create different controllers based on business types, with each controller supporting multiple API methods.<br>
+<img src="/workbench/back-end.png" alt=""></p>
+<p>The explanation of controller functionalities will follow this sequence: <strong>API Creation → Input Parameters → API Method Parameters → API Method Return Types → Authentication</strong>.</p>
+<h3>Creating an API</h3>
+<p>In a controller file, multiple API methods can be created. Click the <strong>Create API</strong> button in the top-right corner to open the API editor window.<br>
+<img src="/workbench/server-controller.png" alt=""></p>
+<p>Within this window, the following configurations can be applied to an API interface:</p>
 <ul>
-<li><strong>Name</strong>: This is the name of the API method of the interface. It should be noted that this is not the final API access address. The format of the API access address is <code>Service Root</code>/<code>Controller Name</code>/<code>API Name</code>.</li>
-<li><strong>Remarks Title</strong>: Configure an alias for the API method to help developers quickly understand the meaning of the API.</li>
-<li><strong>Description</strong>: Write detailed description information for the API method to facilitate developers' in-depth understanding.</li>
-<li><strong>Request Type</strong>: Multiple request types can be configured here. Only requests that match the configured request type will be mapped to this API method. The optional values include: <strong>POST</strong>, <strong>GET</strong>, <strong>PUT</strong>, <strong>DELETE</strong>.</li>
-<li><strong>Authorization Authentication</strong>: If this function is enabled, the system will authenticate the JWT before accessing the API interface. Once the JWT verification fails or expires, a 401 error will be directly returned.</li>
-<li><strong>Input Parameters</strong>: The input parameters of the API can be configured here.</li>
+<li><strong>Name</strong>: The name of the API method. Note that this is not the final API access URL, which follows the format: <code>service-root</code>/<code>controller-name</code>/<code>api-name</code>.</li>
+<li><strong>Alias Title</strong>: A user-defined name for the API method to help developers quickly understand its purpose.</li>
+<li><strong>Description</strong>: A detailed explanation of the API method for deeper comprehension.</li>
+<li><strong>Request Type</strong>: Configures the allowed HTTP request method(s). Only requests matching the configured type(s) will map to this API method. Options include: <strong>POST</strong>, <strong>GET</strong>, <strong>PUT</strong>, <strong>DELETE</strong>.</li>
+<li><strong>Authorization</strong>: When enabled, the system validates the JWT before accessing the API. If verification fails or the JWT expires, it returns a <strong>401</strong> error.</li>
+<li><strong>Input Parameters</strong>: Configures API input parameters.</li>
 </ul>
 <h3>Input Parameter Validation</h3>
-<p>As mentioned earlier, we can create the input parameters of the API interface in the API interface editing panel, and their creation follows the general <code>Field Maintenance</code> rules. For detailed content, please refer to the <a href="/workbench/property" target="_blank">Field Maintenance</a> chapter.</p>
-<p>Here, we mainly explain a special function of API input parameters in field maintenance: <strong>Input Parameter Validation</strong>.</p>
-<p>In the second step of the <strong>Field Maintenance</strong> editing window, different field restriction rules can be configured by selecting different data types.</p>
-<p><img src="/workbench/server-controller1.png" alt=""></p>
-<p>The following is an introduction to all validation rules without considering data types:</p>
+<p>As mentioned earlier, input parameters for API interfaces can be configured in the editor panel, following the general <strong>Field Management</strong> rules. Detailed documentation on this topic is available in the <a href="/workbench/property" target="_blank">Field Management</a> section.</p>
+<p>Here, we highlight a special feature in <strong>Field Management</strong> for API input parameters: <strong>Input Parameter Validation</strong>.</p>
+<p>In the second step of the <strong>Field Management</strong> editor window, different data types allow for varying constraint rules.<br>
+<img src="/workbench/server-controller1.png" alt=""></p>
+<p>Below are all validation rules, regardless of data type:</p>
 <ol>
-<li><strong>Regular Expression Validation</strong>: Allows customizing regular expressions to constrain the content of input parameters.</li>
-<li><strong>Whether it is an Email</strong>: Used to verify whether the input content is in the email format.</li>
-<li><strong>Whether it is a Telephone</strong>: Judges whether the input content conforms to the telephone format.</li>
-<li><strong>Only Letters</strong>: Ensures that the input content contains only letters.</li>
-<li><strong>Only Letters and Numbers</strong>: Limits the input content to only letters and numbers.</li>
-<li><strong>Only Numbers</strong>: Only allows the input of numbers (string type numbers). If the field itself is of the number type, the field type can be directly changed; this rule only provides a supplementary number format validation for the string type.</li>
-<li><strong>Whether it is an Integer</strong>: Requires the input to be an integer and does not allow floating-point numbers.</li>
-<li><strong>Contains Specific Content</strong>: The string must contain specific content.</li>
-<li><strong>Limit the Value Range</strong>: Limits the range of values. For example, gender can only be male/female, and enumeration values can be manually maintained or selected from the data table.
+<li><strong>Regex Validation</strong>: Custom regex patterns for parameter constraints.</li>
+<li><strong>Email Format</strong>: Ensures input matches email format.</li>
+<li><strong>Phone Number Format</strong>: Validates phone number formatting.</li>
+<li><strong>Alphabetic Only</strong>: Restricts input to letters only.</li>
+<li><strong>Alphanumeric Only</strong>: Allows only letters and numbers.</li>
+<li><strong>Numeric Only</strong>: Permits numeric strings (for string-type fields). For numeric fields, change the type directly—this rule supplements string-type validation.</li>
+<li><strong>Integer Only</strong>: Requires strict integer input (no decimals).</li>
+<li><strong>Contains Specific Content</strong>: Ensures the string contains predefined content.</li>
+<li><strong>Value Range Restriction</strong>: Limits values (e.g., gender selection: male/female). Supports manual enumeration or table-based enums.<br>
 <img src="/workbench/server-controller2.png" alt=""></li>
-<li><strong>Length Limit</strong>: Limits the length of the string. The maximum or minimum value can be configured separately, or the limits can be combined simultaneously.</li>
-<li><strong>Maximum Value</strong>: For fields of the number type, the maximum value limit can be configured.</li>
-<li><strong>Minimum Value</strong>: For fields of the number type, the minimum value limit can be configured.</li>
-<li><strong>File Size Limit</strong>: When the field type is <strong>File</strong>, the size of the uploaded file can be limited by this constraint.</li>
-<li><strong>File Quantity Limit</strong>: When the field type is <strong>File</strong>, the maximum number of uploaded files can be limited. By default, only one file is allowed to be uploaded.</li>
-<li><strong>File Type Limit</strong>: When the field type is <strong>File</strong>, the accepted types of uploaded files can be limited, and wildcards are supported. For example, for images (image/jpeg, image/<em>), the &quot;</em>&quot; wildcard is supported. If multiple types need to be limited, they can be separated by &quot;,&quot;.</li>
+<li><strong>Length Restriction</strong>: Limits string length (min/max or combined).</li>
+<li><strong>Maximum Value</strong>: Numeric field upper limit.</li>
+<li><strong>Minimum Value</strong>: Numeric field lower limit.</li>
+<li><strong>File Size Limit</strong>: For <strong>File</strong>-type fields, restricts upload size.</li>
+<li><strong>File Format Limit</strong>: For <strong>File</strong>-type fields, limits the number of uploads (default: 1).</li>
+<li><strong>File Type Limit</strong>: Restricts allowed file types for upload (supports wildcards, e.g., <code>image/jpeg, image/*</code>, with multiple types separated by commas).</li>
 </ol>
 <h3>File Upload</h3>
-<p>In server-side projects, the <code>Field Maintenance</code> panel supports selecting the field type as the <code>File</code> file type. With this function, we can implement file upload in the API interface.</p>
-<p>The above has mentioned the configuration of the constraint conditions for file types. Here, we will focus on the attributes and operation methods of the File type.</p>
-<p><img src="/workbench/server-controller3.png" alt=""></p>
-<p>Suppose an input parameter <code>userImg</code> is created, and the uploaded file can be obtained and operated through the way of <code>data.userImg</code>.</p>
-<p>The data of the file type provides us with the following attributes:</p>
+<p>In server-side projects, the <strong>Field Management</strong> panel supports selecting <strong>File</strong> as a field type, enabling file uploads via APIs.</p>
+<p>Earlier sections introduced file-type constraints; here, we focus on <strong>File</strong>-type properties and operations.<br>
+<img src="/workbench/server-controller3.png" alt=""></p>
+<p>If an input parameter <code>userImg</code> is created, the uploaded file can be accessed via <code>data.userImg</code> and manipulated accordingly.</p>
+<p>The <strong>File</strong> type provides the following attributes:</p>
 <table class="mkd-table">
 <thead>
 <tr>
@@ -58,140 +58,137 @@
 </thead>
 <tbody>
 <tr>
-<td>checkMimeType</td>
+<td><code>checkMimeType</code></td>
 <td>Function</td>
-<td>Checks whether it meets the file type requirements and supports wildcards. For example, for images (image/jpeg, image/<em>), the &quot;</em>&quot; wildcard is supported. If multiple types are limited, it can be a single string or an array of strings.</td>
+<td>Validates file type compliance (supports wildcards, e.g., <code>image/*</code> or array of types).</td>
 </tr>
 <tr>
-<td>checkSize</td>
+<td><code>checkSize</code></td>
 <td>Function</td>
-<td>Checks whether it meets the file size limit.</td>
+<td>Validates file size compliance.</td>
 </tr>
 <tr>
-<td>fileCount</td>
+<td><code>fileCount</code></td>
 <td>Number</td>
-<td>The number of files.</td>
+<td>Number of files.</td>
 </tr>
 <tr>
-<td>files</td>
+<td><code>files</code></td>
 <td>File[]</td>
-<td>All files.</td>
+<td>Array of all files.</td>
 </tr>
 <tr>
-<td>save</td>
+<td><code>save</code></td>
 <td>Function</td>
-<td>Through this method, the file can be saved to the specified directory on the server side.</td>
+<td>Saves files to a specified server directory.</td>
 </tr>
 </tbody>
 </table>
-<p>Here, we will focus on the <strong>save</strong> file saving method. Other attributes can usually be configured in the input item condition constraints. Unless there are special requirements, custom methods will be considered to judge the file format and file size.</p>
+<p>The <strong>save</strong> method is particularly important. Other properties are typically configured via constraints unless custom validation for file type/size is required.</p>
 <h4>File Saving</h4>
-<pre><code class="language-js">// Save directly to the project upload directory without any adjustment
-await data.userImg.save();
+<pre><code class="language-js">// Save directly to the default upload directory without modifications  
+await data.userImg.save();  
 
-// Complete parameter example, save the file to the user folder in the upload directory.
-await data.userImg.save(&quot;user/&quot;, {
-    // Customize the saved file name
-    newFileName: (file) =&gt; {
-        // Name it in the format of userId.ext, where file.ext is the extension of the uploaded file
-        return userId + &quot;.&quot; + file.ext;
-    },
-    // Whether to not compress the image. The default here is false. By default, the platform will compress the uploaded image resources at the bottom layer. If you don't want to compress it, you can configure it as true.
-    uncompressedImage: false,
-    // Image compression processing configuration, which only takes effect when image compression is enabled
-    imageCompressionOption: {
-        // Image compression ratio 0 - 100, default 80
-        quality: 80,
-        // Maximum width of the image, not limited by default, in pixels. If the configured value is less than the actual image value, it will be scaled proportionally.
-        maxWidth: 1000,
-        // Maximum height of the image, not limited by default, in pixels. If the configured value is less than the actual image value, it will be scaled proportionally.
-        maxHeight: 1000
-    }
-});
+// Full parameter example: Save to the 'user' subdirectory  
+await data.userImg.save(&quot;user/&quot;, {  
+    // Custom filename  
+    newFileName: (file) =&gt; {  
+        // Format: userId.ext (e.g., 123.jpg)  
+        return userId + &quot;.&quot; + file.ext;  
+    },  
+    // Disable image compression (default: false)  
+    uncompressedImage: false,  
+    // Image compression settings (if enabled)  
+    imageCompressionOption: {  
+        // Quality (0–100, default: 80)  
+        quality: 80,  
+        // Max width in pixels (default: unlimited)  
+        maxWidth: 1000,  
+        // Max height in pixels (default: unlimited)  
+        maxHeight: 1000  
+    }  
+});  
 </code></pre>
 <blockquote>
-<p>The project upload directory can be configured through <strong>UPLOAD_ROOT_DIR</strong> in the server-side environment variables.</p>
+<p>The upload directory path can be configured via the <code>UPLOAD_ROOT_DIR</code> environment variable in server settings.</p>
 </blockquote>
-<h4>Save Return Value</h4>
-<p>The call of the <strong>save</strong> method is an asynchronous operation, and its return value is an array:</p>
-<pre><code class="language-typescript">{
-    // List of successfully saved files, with the value being the saved path
-    success: string[];
-    // List of error messages for failed saves
-    error: string[];
-}
+<h4>Save Method Return Value</h4>
+<p>The <strong>save</strong> method returns an asynchronous response as an array:</p>
+<pre><code class="language-typescript">{  
+    success: string[];  // Array of successfully saved file paths  
+    error: string[];    // Array of error messages for failed saves  
+}  
 </code></pre>
-<p>Complete example:</p>
-<pre><code class="language-js">// Save directly to the project upload directory without any adjustment
-let uploadResult = await data.userImg.save();
+<p>Usage example:</p>
+<pre><code class="language-js">let uploadResult = await data.userImg.save();  
 
-if (uploadResult.error.length) {
-    // TODO: Record the log
-    return ActionError(&quot;Save failed&quot;); // ActionError is introduced in the API return value type.
-}
+if (uploadResult.error.length) {  
+    // Log errors  
+    return ActionError(&quot;Upload failed&quot;);  // ActionError is covered in the API Return Types section.  
+}  
 
-let userImg = uploadResult.success[0];
+let userImg = uploadResult.success[0];  
 </code></pre>
 <p><img src="/workbench/server-controller4.png" alt=""></p>
 <h3>API Method Parameters</h3>
-<p>In API logic orchestration, the platform provides us with commonly used data parameters.</p>
+<p>During API logic orchestration, the platform provides commonly used parameters:</p>
 <ul>
-<li><strong>data</strong>: Input parameters, and the type can be designed and maintained in the API interface input parameters.</li>
-<li><strong>context</strong>: Routing context, which is the routing context data processed by the API interface and contains:
+<li><code>data</code>: Input parameters (defined in API configurations).</li>
+<li><code>context</code>: Routing context data, including:
 <ol>
-<li><strong>jwt</strong>: Authentication token content. The <code>jwt</code> property will only exist if the current controller has enabled <strong>Authorization</strong>. The token value has been parsed, and internal properties can be directly obtained.</li>
-<li><strong>url</strong>: Request address</li>
-<li><strong>request</strong>: Underlying request object. We can obtain data such as the request IP and source address through it.</li>
-<li><strong>logger</strong>: Log processing object, which can help us achieve centralized log output and collection.</li>
+<li><code>jwt</code>: Decrypted JWT payload (available only if authentication is enabled).</li>
+<li><code>url</code>: Request URL.</li>
+<li><code>request</code>: Raw request object (for IP, referrer, etc.).</li>
+<li><code>logger</code>: Centralized logging object.</li>
 </ol>
 </li>
-<li><strong>logger</strong>: Log processing object, which can help us achieve centralized log output and collection. It is different from <code>console</code> in that it is a centralized log collector, and it allows us to use file logs, console logs, and database logs. Different requirements can be configured in <a href="/workbench/env" target="_blank">Environment Configuration</a>.</li>
+<li><code>logger</code>: For structured logging (file, console, or database), configurable in <a href="/workbench/env" target="_blank">Environment Settings</a>.</li>
 </ul>
-<h3>API Return Value Types</h3>
-<p>The platform provides us with a unified data return structure, as shown below:</p>
-<pre><code class="language-json">{
-    &quot;header&quot;: {
-        &quot;code&quot;: &quot;Status Code&quot;, // When JK000000 is returned, it represents business success, and all others are business exceptions.
-        &quot;msg&quot;: &quot;Error Message&quot;
-    },
-    &quot;data&quot;: {} // Returned business data
-}
+<h3>API Return Types</h3>
+<p>The platform enforces a standardized response structure:</p>
+<pre><code class="language-json">{  
+    &quot;header&quot;: {  
+        &quot;code&quot;: &quot;Status Code&quot;,  // &quot;JK000000&quot; indicates success; others denote errors.  
+        &quot;msg&quot;: &quot;Error Message&quot;  
+    },  
+    &quot;data&quot;: {}  // Business data payload  
+}  
 </code></pre>
-<p>The platform also provides a method for quickly creating the interface return value:</p>
-<h4>Ok</h4>
-<p>Used to return correct business data. The sample code is as follows:</p>
-<pre><code class="language-js">return Ok(业务数据);
+<h4>Helper Methods</h4>
+<p><strong>Ok</strong><br>
+Returns successful responses:</p>
+<pre><code class="language-js">return Ok(businessData);  
 </code></pre>
-<p>Of course, in the logic orchestration panel, you can also use the <strong>Return Success Data</strong> node to return the correct business data.</p>
-<p><img src="/workbench/server-controller5.png" alt=""></p>
-<h4>ActionError</h4>
-<p>Used to return abnormal business data. The sample code is as follows:</p>
-<pre><code class="language-js">return ActionError(错误信息, 错误码, 业务数据);
-// Among them, the error message is a required item. If the error code is not configured, the general exception code JK999999 will be used.
+<p>Equivalent to the <strong>Return Success Data</strong> node in logic orchestration:<br>
+<img src="/workbench/server-controller5.png" alt=""></p>
+<p><strong>ActionError</strong><br>
+Returns error responses:</p>
+<pre><code class="language-js">return ActionError(errorMessage, errorCode, businessData);  
+// errorCode defaults to &quot;JK999999&quot; if omitted.  
 </code></pre>
 <blockquote>
-<p>Developers can configure different error codes so that the front end can implement different business processing branches according to the status code when the request is abnormal.</p>
+<p>Custom error codes enable frontend conditional handling.</p>
 </blockquote>
-<p>Similarly, in the logic orchestration panel, you can also use the <strong>Return Failure Data</strong> node to return abnormal business data.</p>
-<p><img src="/workbench/server-controller6.png" alt=""></p>
-<h4>Data Fallback</h4>
-<p>In the controller, we can directly return business data through <code>return</code>. The platform will judge at the bottom layer. If the returned data meets the required API data format, it will be returned according to the return value; otherwise, it will be automatically wrapped with the <code>Ok</code> method and returned as correct data.</p>
-<h3>Authorization Authentication</h3>
-<p>Next, we will explain in detail how to configure the JWT token function of the project.</p>
-<h4>How to Generate a JWT Token</h4>
-<p>A JWT token can be generated in a certain API interface and returned to the front end, usually completed in the login interface.</p>
-<p>The <code>generateJwtToken</code> method can be used to generate the token.</p>
-<p><img src="/workbench/server-controller7.png" alt=""></p>
-<p>From the logic in the above figure, first query user information according to the interface input items. If the user information is queried, use this information to generate JWT and return <code>Ok</code>; if the user information is not queried, return <code>ActionError</code>.</p>
+<p>This can also be achieved via the <strong>Return Error Data</strong> node:<br>
+<img src="/workbench/server-controller6.png" alt=""></p>
+<h4>Fallback Handling</h4>
+<p>In controllers, returning raw data (e.g., via <code>return</code>) triggers automatic wrapping with <code>Ok</code> if the response doesn't match the standard format.</p>
+<h3>Authentication</h3>
+<p>This section details JWT token configuration.</p>
+<h4>Generating JWT Tokens</h4>
+<p>Tokens are typically generated in login APIs using <code>generateJwtToken</code>:<br>
+<img src="/workbench/server-controller7.png" alt=""></p>
+<p>Key considerations:</p>
+<ul>
+<li>The example demonstrates user lookup and token generation.</li>
+<li>Avoid storing sensitive data (e.g., passwords) in JWT payloads.</li>
+</ul>
+<h4>Frontend Token Submission</h4>
+<p>Frontends must include the JWT in the <code>sid</code> header.</p>
+<p>In the JOKER platform, <code>sid</code> can be injected globally via <code>transformReqData</code>:<br>
+<img src="/workbench/server-controller8.png" alt=""></p>
 <blockquote>
-<p>The above content is only an example. It is especially reminded that sensitive data such as passwords should not be stored in the JWT content.</p>
-</blockquote>
-<h4>How the Front End Sends the JWT Token</h4>
-<p>The front end needs to send the JWT token through <strong>sid</strong> in the interface request header <code>header</code>.</p>
-<p>In the JOKER visual platform, the <code>sid</code> can be uniformly injected in the <code>transformReqData</code> data request conversion method.</p>
-<p><img src="/workbench/server-controller8.png" alt=""></p>
-<blockquote>
-<p>It should be noted here that if the API has enabled the <strong>Authorization</strong> function, the value obtained through <code>context.jwt</code> in the API method is the <code>payload</code> of the JWT. At this time, there is no need to use the <code>verifyJwtToken</code> method to verify the legality of the token, because the platform will pre-judge whether the token is legal in the routing aspect. If the token is invalid, the logic in the API will not be executed. The <code>verifyJwtToken</code> method is only used for advanced and complex custom verification scenarios to provide token parsing operations.</p>
+<p><strong>Important</strong>: For authenticated APIs, <code>context.jwt</code> provides the decoded payload. No manual <code>verifyJwtToken</code> call is needed—platform middleware handles validation. Use <code>verifyJwtToken</code> only for advanced custom validation.</p>
 </blockquote>
 
 <BottomNav />

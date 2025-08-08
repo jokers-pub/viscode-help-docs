@@ -1,18 +1,18 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>My Issues</h2>
-<p>During the process of project collaboration and task management, the &quot;My Issues&quot; functional module can help you efficiently sort out and follow up on the issues closely related to you. Through this function, you can centrally manage and quickly filter various issues, effectively improving work efficiency. This chapter will introduce the &quot;My Issues&quot; function in detail.</p>
-<h3>Entering the My Issues List</h3>
+<p>In the process of project collaboration and task management, the &quot;My Issues&quot; feature module helps you efficiently organize and track issues closely related to you. Through this feature, you can centrally manage and quickly filter various types of issues, effectively improving work efficiency. This chapter provides a detailed introduction to the &quot;My Issues&quot; functionality.</p>
+<h3>Accessing My Issues List</h3>
 <ol>
-<li><strong>Open the Personal Homepage</strong>: After logging into the platform, find and click on your profile picture in the upper right corner of the page, and you can smoothly enter your personal exclusive homepage. The personal homepage integrates a series of functions and information related to you personally and is an important entrance for operations.</li>
-<li><strong>Click on &quot;My Issues&quot;</strong>: On the personal homepage, the &quot;My Issues&quot; menu option is clearly labeled. Click on it, and the system will automatically jump to the &quot;My Issues&quot; list page. From here, you can comprehensively manage and view the issue contents closely related to yourself.
-<img src="/portal/personal-my-issues.png" alt="Operation of entering the My Issues list"></li>
+<li><strong>Open Your Personal Homepage</strong>: After logging into the platform, locate and click your profile picture in the upper-right corner of the page to enter your personal homepage. Your personal homepage integrates a series of features and information relevant to you, serving as a key entry point for operations.</li>
+<li><strong>Click &quot;My Issues&quot;</strong>: In your personal homepage, a clearly labeled &quot;My Issues&quot; menu option is available. Clicking it will automatically redirect you to the &quot;My Issues&quot; list page. From here, you can fully manage and view all issues closely related to you.<br>
+<img src="/portal/personal-my-issues.png" alt="Accessing the My Issues List Operation"></li>
 </ol>
 <h3>Filtering</h3>
 <ol>
-<li><strong>Scope of Issue Display</strong>: After entering the &quot;My Issues&quot; list page, the issues displayed here mainly include two categories: &quot;Issues I Raised&quot; and &quot;Issues I'm in Charge of&quot;. This setting ensures that you can quickly focus on the work content directly associated with you and avoid spending time searching among numerous issues.</li>
-<li><strong>Filtering Operation Methods</strong>: To further meet your need for refined management of issues, the platform provides convenient filtering tools. You just need to click on the toggle button on the page to quickly switch between the &quot;Issues I Raised&quot; and &quot;Issues I'm in Charge of&quot; issue categories. Meanwhile, by clicking on the status buttons, such as &quot;To be Handled&quot;, &quot;In Progress&quot;, &quot;Completed&quot;, etc., you can filter out the issue lists that meet the conditions according to the different states of the issues. Through these filtering operations, you can easily sort out issues of specific types and states, making your work arrangements clearer and more orderly.
-<img src="/portal/personal-my-issues2.png" alt="Filtering function of the My Issues list"></li>
+<li><strong>Issue Display Scope</strong>: Upon entering the &quot;My Issues&quot; list page, the issues displayed here are primarily categorized into &quot;Issues I Reported&quot; and &quot;Issues Assigned to Me.&quot; This setup ensures you can quickly focus on work content directly relevant to you, avoiding the time-consuming task of searching through numerous issues.</li>
+<li><strong>Filtering Operations</strong>: To further meet your needs for detailed issue management, the platform provides convenient filtering tools. Simply click the toggle button on the page to quickly switch between &quot;Issues I Reported&quot; and &quot;Issues Assigned to Me.&quot; Additionally, by clicking status buttons such as &quot;Pending,&quot; &quot;In Progress,&quot; or &quot;Completed,&quot; you can filter the issue list based on different statuses. Through these filtering operations, you can effortlessly organize issues of specific types and statuses, making your work planning clearer and more structured.<br>
+<img src="/portal/personal-my-issues2.png" alt="My Issues List Filtering Feature"></li>
 </ol>
 
 <BottomNav />

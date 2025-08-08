@@ -1,11 +1,12 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h2>Basic Components</h2>
-<p>This chapter mainly describes the basic layout components provided by the platform.</p>
+<h2>Base Components</h2>
+<p>This chapter introduces the foundational layout components provided by the platform.</p>
 <p><img src="/workbench/component-base.png" alt=""></p>
 <h3>Text</h3>
 <p><img src="/workbench/component-base2.png" alt="">
-The text node allows us to add a text display node on the page. It enables us to configure the text display value through static text or dynamic text. It has the following attributes:</p>
+A <strong>Text Node</strong> enables you to display text anywhere in the canvas. You may configure the display value using either <strong>static text</strong> or <strong>dynamic expressions</strong>.<br>
+Key properties:</p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
 <thead>
@@ -17,30 +18,36 @@ The text node allows us to add a text display node on the page. It enables us to
 </thead>
 <tbody>
 <tr>
-<td>Component Identifier</td>
+<td>Component ID</td>
 <td>String</td>
-<td>Here we can define the <code>ref</code> value for it, which is used to obtain the text virtual node in the logic method and operate on it.</td>
+<td>Defines a <code>ref</code> used to obtain the virtual node in code and perform programmatic operations.</td>
 </tr>
 <tr>
 <td>Text Content</td>
 <td>String</td>
-<td>The text display value. Here we can configure a static text value or use an expression to configure a dynamic value.</td>
+<td>The value to render—supply a static string or an expression for dynamic rendering.</td>
 </tr>
 <tr>
-<td>Custom Style Name</td>
+<td>Custom Style Class</td>
 <td>Array</td>
-<td>The <code>class</code> name of the text node can be configured.</td>
+<td>Accepts an array of CSS class names to be applied to the node.</td>
 </tr>
 <tr>
-<td>Custom Style</td>
+<td>Custom Styles</td>
 <td>Object</td>
-<td>The <code>style</code> property of the text node can be edited through the visual style editor.</td>
+<td>Edited through the visual style editor; maps to the node’s inline <code>style</code>.</td>
 </tr>
 </tbody>
 </table>
+<hr>
 <h3>Element</h3>
-<p>The element node is one of the most commonly used components in page layout. We can drag in the element component and change its <code>Tag</code> to make it display as different <strong>DOM</strong> nodes. By default, it is rendered using <strong>DIV</strong>.</p>
-<p>The element component supports us to customize component attributes and element events, which enables us to display and interact with any DOM node through the element component. Whether it's a <code>div</code> container, an <code>i</code> tag, or an <code>input</code> input box, it can be implemented through the element tag.</p>
+<p>The <strong>Element Node</strong> is the most frequently used layout primitive. Drop an element and change its <code>tagName</code> to render any <strong>DOM</strong> element; defaults to <strong>DIV</strong>.<br>
+It exposes:</p>
+<ul>
+<li>Custom attributes</li>
+<li>Custom element events<br>
+This lets you model any DOM node—div, i, input, etc.—without restrictions.</li>
+</ul>
 <p><img src="/workbench/component-base3.png" alt=""></p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
@@ -53,54 +60,55 @@ The text node allows us to add a text display node on the page. It enables us to
 </thead>
 <tbody>
 <tr>
-<td>Component Identifier</td>
+<td>Component ID</td>
 <td>String</td>
-<td>Here we can define the <code>ref</code> value for it, which is used to obtain the text virtual node in the logic method and operate on it.</td>
+<td>Defines a <code>ref</code> used within logic to reference and manipulate the virtual node.</td>
 </tr>
 <tr>
-<td>Tag</td>
+<td>Tag Name</td>
 <td>String</td>
-<td>This attribute can be used to determine the tag type. By default, it is rendered using DIV.</td>
+<td>Controls the rendered element type; defaults to <code>div</code>.</td>
 </tr>
 <tr>
-<td>Custom Style Name</td>
+<td>Custom Style Class</td>
 <td>Array</td>
-<td>The <code>class</code> name of the text node can be configured.</td>
+<td>CSS class names array for the element.</td>
 </tr>
 <tr>
-<td>Custom Style</td>
+<td>Inline Style</td>
 <td>Object</td>
-<td>The <code>style</code> property of the text node can be edited through the visual style editor.</td>
+<td>Visual style editor maps to the element’s inline styles.</td>
 </tr>
 <tr>
-<td>Custom Component Attribute</td>
+<td>Custom Attributes</td>
 <td>String</td>
-<td>Component attributes can be added customarily, and the attribute values can be modified or deleted after adding.</td>
+<td>Arbitrary HTML attributes can be added, edited, or removed after creation.</td>
 </tr>
 </tbody>
 </table>
-<h4>Block</h4>
+<h4>Section</h4>
 <table class="mkd-table">
 <thead>
 <tr>
-<th>Name</th>
-<th>Remarks</th>
+<th>Slot</th>
+<th>Label</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>default</td>
-<td>Container Content</td>
-<td>By configuring the container content block, the display of nested levels can be achieved.</td>
+<td>Content</td>
+<td>Container’s content slot; supports nested elements for hierarchical composition.</td>
 </tr>
 </tbody>
 </table>
-<h4>Event</h4>
-<p>The element component allows developers to customize node events.</p>
+<h4>Events</h4>
+<p>Developers may attach custom DOM events to the node.</p>
 <p><video width="80%" controls autoplay muted loop><source src="/workbench/component-base4.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<hr>
 <h3>Button</h3>
-<p>The platform provides a simple button component, through which we can achieve click interaction effects.</p>
+<p>A lightweight <strong>Button</strong> component for rapid click interactions.</p>
 <p><img src="/workbench/component-base5.png" alt=""></p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
@@ -113,24 +121,24 @@ The text node allows us to add a text display node on the page. It enables us to
 </thead>
 <tbody>
 <tr>
-<td>Component Identifier</td>
+<td>Component ID</td>
 <td>String</td>
-<td>Here we can define the <code>ref</code> value for it, which is used to obtain the text virtual node in the logic method and operate on it.</td>
+<td>Assigns a <code>ref</code> for programmatic access.</td>
 </tr>
 <tr>
 <td>Button Content</td>
 <td>String</td>
-<td>The text display value. Here we can configure a static text value or use an expression to configure a dynamic value.</td>
+<td>Static text or expression-driven dynamic text displayed on the button.</td>
 </tr>
 <tr>
-<td>Custom Style Name</td>
+<td>Custom Style Class</td>
 <td>Array</td>
-<td>The <code>class</code> name of the text node can be configured.</td>
+<td>CSS classes.</td>
 </tr>
 <tr>
-<td>Custom Style</td>
+<td>Button Style</td>
 <td>Object</td>
-<td>The <code>style</code> property of the text node can be edited through the visual style editor.</td>
+<td>Inline styles edited with the visual style editor.</td>
 </tr>
 </tbody>
 </table>
@@ -138,39 +146,41 @@ The text node allows us to add a text display node on the page. It enables us to
 <table class="mkd-table">
 <thead>
 <tr>
-<th>Event Name</th>
-<th>Event Meaning</th>
-<th>Parameter</th>
-<th>Description</th>
+<th>Event</th>
+<th>Meaning</th>
+<th>Params</th>
+<th>Details</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>click</td>
-<td>Mouse Click Event</td>
-<td>-</td>
-<td>When the button on the pointing device (e.g., the primary button of the mouse) is pressed and released on a single element, the click event is triggered. If the button on one element is pressed and released on another element, the event will be triggered on the most specific ancestor element that contains both elements. The click event is triggered after the mousedown and mouseup events in sequence.</td>
+<td>Mouse-click</td>
+<td>—</td>
+<td>Fired after both <code>mousedown</code> and <code>mouseup</code> complete on the same element (or their least-common ancestor).</td>
 </tr>
 <tr>
 <td>mouseenter</td>
-<td>Mouse Enter Event</td>
-<td>-</td>
-<td>This event usually works with the mouseleave event and occurs when the mouse pointer moves into the element.</td>
+<td>Pointer enters</td>
+<td>—</td>
+<td>Triggered when the pointing device enters the component bounds. Usually paired with <code>mouseleave</code>.</td>
 </tr>
 <tr>
 <td>mouseleave</td>
-<td>Mouse Leave Event</td>
-<td>-</td>
-<td>This event usually works with the mouseenter event and occurs when the mouse pointer moves out of the element.</td>
+<td>Pointer exits</td>
+<td>—</td>
+<td>Triggered when the pointer leaves the component bounds. Usually paired with <code>mouseenter</code>.</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>The <strong>BUTTON component</strong> provided by the platform is relatively simple and is more suitable for quick integration in <strong>DEMO</strong> demonstrations or debugging processes. If you need to implement a button with complex functions, you can consider using the element node to encapsulate the button component by yourself or choose to install a third-party UI component library to meet the requirements.</p>
+<p>The built-in Button is intentionally minimal—for complex logic or styling, wrap your own button via the <strong>Element</strong> node or integrate a third-party UI kit.</p>
 </blockquote>
-<h3>Conditional Judgment</h3>
-<p>The conditional judgment node is mainly used to control the display state of elements on the page.</p>
+<hr>
+<h3>Conditional Rendering</h3>
+<p>Controls the visibility of DOM fragments.</p>
 <p><img src="/workbench/component-base4.png" alt=""></p>
+<p>Define a <strong>primary condition</strong> and optionally add <code>else if</code> / <code>else</code> branches. The panel auto-creates matching condition branches in the outline tree, where you can nest child elements accordingly.</p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
 <thead>
@@ -184,17 +194,18 @@ The text node allows us to add a text display node on the page. It enables us to
 <tr>
 <td>Condition</td>
 <td>Boolean</td>
-<td>When the value is <strong>true</strong>, the content included in the conditional judgment will be rendered; if it is <strong>false</strong>, it will not be rendered. Usually, expressions are used to implement complex interaction logic.</td>
+<td>When truthy, renders the wrapped elements; falsy hides them. Use expressions to model sophisticated logic.</td>
 </tr>
 </tbody>
 </table>
-<p>In this example, we use the conditional judgment component to wrap a <code>button</code> button component. By changing the condition value, we can observe that the button will be displayed or hidden accordingly according to the change of the condition.</p>
-<p><video width="80%" controls autoplay muted loop><source src="/workbench/component-base6.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
+<p>Example: wrapping a <code>button</code> inside a condition toggles its visibility based on the expression value.<br>
+<video width="80%" controls autoplay muted loop><source src="/workbench/component-base6.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
 <blockquote>
-<p>It should be noted that since the conditional component belongs to the command component, once it contains content, it will no longer be presented as a selectable element. At this time, if you want to select the conditional judgment component, you can operate in the outline tree.</p>
+<p>Conditional nodes are <em>directive</em> elements; once populated, clicking them on the canvas selects their children instead. Use the outline tree to select the directive itself.</p>
 </blockquote>
+<hr>
 <h3>Loop</h3>
-<p>The loop function can help us render repeated data display nodes in a loop on the page.</p>
+<p>Renders repeated data (lists or objects) dynamically.</p>
 <p><img src="/workbench/component-base7.png" alt=""></p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
@@ -207,28 +218,29 @@ The text node allows us to add a text display node on the page. It enables us to
 </thead>
 <tbody>
 <tr>
-<td>Loop Object</td>
+<td>Loop Source</td>
 <td>Array/Object</td>
-<td>This is the data source for our loop operation. It can be either an array or an object.</td>
+<td>The dataset to iterate over.</td>
 </tr>
 <tr>
-<td>Loop Item Name</td>
+<td>Item Name</td>
 <td>String</td>
-<td>This string is used to define the variable name of the <strong>item</strong> generated during the loop. In the elements or components inside the loop component, this variable name can be used through expressions.</td>
+<td>Identifier for the current loop item—accessible as an expression variable inside the loop.</td>
 </tr>
 <tr>
-<td>Loop Index</td>
+<td>Index Name</td>
 <td>String</td>
-<td>This string is used to define the variable name of the <strong>index</strong> generated during the loop. Inside the loop component, this variable name can be used through expressions. If the loop object is an array, the value of this variable is the array index; if the loop object is an object, the value of this variable represents the KEY of the object.</td>
+<td>Identifier for the index/key variable: array index for arrays, object key for objects.</td>
 </tr>
 </tbody>
 </table>
-<h4>How to Use Loop Variables</h4>
-<p>Once the loop item name or loop index variable is defined, these variables can be used in the form of expressions inside the loop component.</p>
+<h4>Using Loop Variables</h4>
+<p>After declaring Item Name and Index Name, reference them inside the loop scope via expressions.</p>
 <p><img src="/workbench/component-base8.png" alt=""></p>
-<p>From the above example, it can be clearly seen that in the icon component inside the loop, the <strong>item</strong> variable defined in the loop component is called by using an expression.</p>
+<p>Illustrates referencing an <code>item</code> variable inside an icon component nested in the loop.</p>
+<hr>
 <h3>Dynamic Component</h3>
-<p>The dynamic component has similarities with the element component. Both support setting custom attributes and custom events inside the component. However, the <strong>dynamic component</strong> has a unique purpose. It is usually used to dynamically render third-party underlying components according to the tag name and supports custom blocks.</p>
+<p>Much like the <strong>Element</strong> node, but purpose-built for <em>runtime tag selection</em>. You supply tag names at runtime to render third-party components, and you can define custom sections.</p>
 <p><img src="/workbench/component-base9.png" alt=""></p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
@@ -241,33 +253,34 @@ The text node allows us to add a text display node on the page. It enables us to
 </thead>
 <tbody>
 <tr>
-<td>Component Identifier</td>
+<td>Component ID</td>
 <td>String</td>
-<td>Here you can define the <code>ref</code> value so that you can obtain the text virtual node in the logic method and operate on it.</td>
+<td>Assign <code>ref</code> for programmatic access.</td>
 </tr>
 <tr>
-<td>Tag</td>
+<td>Tag Name</td>
 <td>String</td>
-<td>The tag type can be determined through this attribute.</td>
+<td>The tag or component name to render.</td>
 </tr>
 <tr>
-<td>Custom Component Attribute</td>
+<td>Custom Attributes</td>
 <td>String</td>
-<td>Component attributes can be added customarily, and the attribute values can be modified or deleted after adding.</td>
+<td>Arbitrary attributes editable post-add.</td>
 </tr>
 </tbody>
 </table>
-<h4>Block</h4>
-<p>The dynamic component allows developers to customize node blocks.</p>
+<h4>Sections</h4>
+<p>Dynamic components let you define custom <strong>slots/sections</strong> for content projection.</p>
 <p><img src="/workbench/component-base10.png" alt=""></p>
-<h4>Event</h4>
-<p>The dynamic component allows developers to customize node events.</p>
+<h4>Events</h4>
+<p>Attach custom events to the dynamic node.</p>
 <p><img src="/workbench/component-base11.png" alt=""></p>
 <blockquote>
-<p>This component is often used to quickly integrate the NPM third-party underlying library and realize the visual declaration and encapsulation of the components of the underlying library.</p>
+<p>Often leveraged to wrap NPM-based low-level libraries into visually-declarative components.</p>
 </blockquote>
-<h3>Rendering Block</h3>
-<p>The rendering block component can only be referenced in <strong>component</strong> type files. With the help of this component, the area that supports dynamic rendering within the component can be determined. Dynamic rendering means that when the component is referenced, the caller has the right to determine the rendering content of this area.</p>
+<hr>
+<h3>Render Slot</h3>
+<p>Available <strong>only</strong> in a <em>Component</em> type file. Marks a region within a component that can be injected dynamically by consumers.</p>
 <p><img src="/workbench/component-base12.png" alt=""></p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
@@ -280,45 +293,45 @@ The text node allows us to add a text display node on the page. It enables us to
 </thead>
 <tbody>
 <tr>
-<td>Default Display Block</td>
+<td>Default Slot</td>
 <td>Boolean</td>
-<td>If the value is <strong>true</strong>, when the component is introduced into other components or pages, this block will be enabled by default, which is convenient for quickly editing this block.</td>
+<td>When <code>true</code>, the slot appears open by default when the component is dropped onto the canvas, simplifying initial editing.</td>
 </tr>
 <tr>
-<td>Identifier</td>
+<td>ID</td>
 <td>String</td>
-<td>It is used to name the rendering block (English letters should be used). If a component has multiple dynamic rendering parts, they can be distinguished by configuring this identifier. The default value is <code>default</code>.</td>
+<td>Alphabetic identifier—defaults to <code>default</code>—used to distinguish multiple slots in one component.</td>
 </tr>
 <tr>
-<td>Block Description</td>
+<td>Slot Description</td>
 <td>String</td>
-<td>This description helps developers quickly understand the function of the block when using the component.</td>
+<td>Human readable guidance for developers consuming the component.</td>
 </tr>
 <tr>
-<td>Block Remarks/Name</td>
+<td>Slot Alias</td>
 <td>String</td>
-<td>A nickname can be given to the block, which is convenient for developers to quickly understand the meaning of the block and makes the display in the outline tree clearer.</td>
+<td>A nickname for better tooltip/outliner readability.</td>
 </tr>
 <tr>
-<td>Associated Components</td>
+<td>Linked Components</td>
 <td>Array</td>
-<td>Here you can choose the components associated with the current component to help developers quickly insert sub-components that meet the requirements into this block.</td>
+<td>Pre-attach suggested children for quick drop-in usage.</td>
 </tr>
 <tr>
-<td>Block Parameters</td>
+<td>Slot Parameters</td>
 <td>Array</td>
-<td>The platform supports configuring block parameters, through which the data in the component can be passed to the dynamically rendered sub-components through the block to meet more complex and flexible development needs.</td>
+<td>Define arguments to be passed from the host component into the dynamic slot content, enabling data-driven composition.</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>For detailed information about blocks, you can read <a href="/workbench/component-section" target="_blank">Component Blocks</a>.</p>
+<p>For deeper slot mechanics, see <em>Component Sections</em>.</p>
 </blockquote>
-<h4>How to Use</h4>
 <p><video width="80%" controls autoplay muted loop><source src="/workbench/component-base13.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
-<p>In this video, we can observe that multiple dynamic rendering blocks arranged in front and back are added to the <code>input</code> component. When the <code>input</code> component is introduced into another component, the blocks provided by the <code>input</code> component can be viewed in the <strong>Component Attributes - Block</strong> panel, and whether to open these blocks can be configured here. This operation method enables developers to flexibly control the display and hiding of different blocks within the component according to actual needs, thereby achieving more personalized and customized component applications.</p>
+<p>Demonstrates injecting an <code>Input</code> component with multiple <code>before/after</code> slots; toggling each slot in the consumer’s <em>Component Slots</em> panel renders exactly the intended additions or omissions.</p>
+<hr>
 <h3>Image</h3>
-<p>The image component can help us quickly display a single image.</p>
+<p>Quickly renders a single image asset.</p>
 <p><img src="/workbench/component-base14.png" alt=""></p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
@@ -331,24 +344,24 @@ The text node allows us to add a text display node on the page. It enables us to
 </thead>
 <tbody>
 <tr>
-<td>Component Identifier</td>
+<td>Component ID</td>
 <td>String</td>
-<td>Here you can define the <code>ref</code> value so that you can obtain the virtual node related to the image in the logic method and operate on it.</td>
+<td>Assign <code>ref</code> for programmatic access.</td>
 </tr>
 <tr>
-<td>Image Address</td>
+<td>Image Source</td>
 <td>String</td>
-<td>The platform provides a convenient resource selection function to select the image resources to be displayed, and the dynamic image address can also be configured through an expression.</td>
+<td>Bind static assets or dynamic URLs via expressions.</td>
 </tr>
 <tr>
-<td>Custom Style Name</td>
+<td>Custom Style Class</td>
 <td>Array</td>
-<td>It can be used to configure the <code>class</code> name of the image node to apply specific styles.</td>
+<td>CSS classes.</td>
 </tr>
 <tr>
-<td>Custom Style</td>
+<td>Inline Styles</td>
 <td>Object</td>
-<td>The <code>style</code> property of the image node can be edited through the visual style editor to achieve personalized style settings.</td>
+<td>Styled via the visual editor.</td>
 </tr>
 </tbody>
 </table>
@@ -356,38 +369,39 @@ The text node allows us to add a text display node on the page. It enables us to
 <table class="mkd-table">
 <thead>
 <tr>
-<th>Event Name</th>
-<th>Event Meaning</th>
-<th>Parameter</th>
-<th>Description</th>
+<th>Event</th>
+<th>Meaning</th>
+<th>Params</th>
+<th>Details</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>click</td>
-<td>Mouse Click Event</td>
-<td>-</td>
-<td>When the primary button of the mouse is pressed and released on the image element, this event is triggered. If the button is pressed on one element and released on another element, the event will be triggered on the nearest ancestor element that contains both elements. This event is triggered after the mousedown and mouseup events in sequence.</td>
+<td>Click on the image</td>
+<td>—</td>
+<td>Event fires after mousedown + mouseup on the element or closest common ancestor.</td>
 </tr>
 <tr>
 <td>load</td>
-<td>After Image Loading is Completed</td>
-<td>-</td>
-<td>This event is executed when the image is successfully loaded onto the page and can be used to perform operations related to the successful image loading, such as displaying a loading success prompt.</td>
+<td>Image loaded successfully</td>
+<td>—</td>
+<td>Executes when the image finishes loading. Ideal for hiding placeholders.</td>
 </tr>
 <tr>
 <td>error</td>
-<td>Triggered when Image Loading Fails</td>
-<td>-</td>
-<td>This event is executed when an error occurs during the image loading process and the image cannot be displayed normally. It can be used to prompt the user that the image loading has failed or take other remedial measures.</td>
+<td>Image load failed</td>
+<td>—</td>
+<td>Executes if fetching the image fails. Useful for fallback behaviors.</td>
 </tr>
 </tbody>
 </table>
-<h4>How to Quickly Select Internal Resources</h4>
+<h4>Quick Asset Selection</h4>
 <p><img src="/workbench/component-base15.png" alt=""></p>
-<p>We can upload the image resources required by the project in the <code>Resources</code> folder of the <code>Resource Manager</code>. Then, in the image property panel, we can conveniently select the locally uploaded resources by using the quick resource selection function. This operation process provides convenience for the management and use of image resources in the project, enabling us to efficiently apply the required images to the corresponding components.</p>
-<h4>HTML Rendering</h4>
-<p>The HTML rendering node is generally used to render dynamic HTML data to the specified position on the canvas. We usually use it to render some dynamic HTML fragments, such as news content, comment content, etc.</p>
+<p>Upload images to the <strong>Resources</strong> folder in the <em>Asset Manager</em>, then pick them via the bind-in resource panel for drop-in usage.</p>
+<hr>
+<h3>HTML Renderer</h3>
+<p>Outputs dynamic HTML fragments (e.g., news, comments) into a positioned slot.</p>
 <p><img src="/workbench/component-base16.png" alt=""></p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
@@ -400,29 +414,30 @@ The text node allows us to add a text display node on the page. It enables us to
 </thead>
 <tbody>
 <tr>
-<td>Component Identifier</td>
+<td>Component ID</td>
 <td>String</td>
-<td>Here you can define the <code>ref</code> value so that you can obtain the virtual node related to the image in the logic method and operate on it.</td>
+<td>Assigns a <code>ref</code> for programmatic access.</td>
 </tr>
 <tr>
 <td>Content</td>
 <td>String</td>
-<td>The content of the HTML fragment to be inserted. Generally, we use expressions to render dynamic HTML.</td>
+<td>HTML fragment, generally supplied via expressions.</td>
 </tr>
 <tr>
-<td>Close Sandbox Isolation</td>
+<td>Disable Sandbox</td>
 <td>Boolean</td>
-<td>By default, the platform will use HTML Sandbox to achieve style isolation. You can choose to turn it off here to modify the internal style.</td>
+<td>Defaults to sandboxed iframe isolation. Toggle off to allow styles/scripts—use cautiously.</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>Generally, we use expressions to render dynamic HTML. For static HTML data, we do not recommend using it for rendering. Instead, we recommend using the element node for development.
-It is not recommended to turn off sandbox isolation. Sandbox isolation can effectively isolate CSS and prevent the internal style from affecting the global style. After the change, the canvas needs to be refreshed to update the rendering.
-Attention should be paid to content security to prevent XSS injection risks. Please note that the dragged Html rendering component cannot be selected on the canvas. Please select it in the outline tree and operate on it.</p>
+<p>Prefer expressions for dynamic HTML. Static markup is better modeled via plain <strong>Element</strong> nodes.<br>
+Keep sandbox <em>on</em> to avoid CSS/global leakage; disabling requires a canvas refresh.<br>
+Always sanitize inputs to mitigate XSS; the node is not directly selectable on canvas—use the outliner.</p>
 </blockquote>
+<hr>
 <h3>SVG Component</h3>
-<p>Since SVG usually uses extremely complex multi-level content to complete graphic drawing, if ordinary elements are used to implement SVG rendering, it may be difficult to maintain effectively due to too many levels. Therefore, the platform specifically launches the SVG component, which supports managing SVG content in the form of strings.</p>
+<p>SVG often contains deeply nested layers; building via plain nodes becomes unmanageable. This component accepts SVG source as a string.</p>
 <p><img src="/workbench/component-base17.png" alt=""></p>
 <h4>Component Attributes</h4>
 <table class="mkd-table">
@@ -435,21 +450,22 @@ Attention should be paid to content security to prevent XSS injection risks. Ple
 </thead>
 <tbody>
 <tr>
-<td>Component Identifier</td>
+<td>Component ID</td>
 <td>String</td>
-<td>Define the <code>ref</code> value here, and you can obtain the virtual node related to SVG in the logic method and operate on it.</td>
+<td>Provide a <code>ref</code> for code-level interaction.</td>
 </tr>
 <tr>
-<td>Value</td>
+<td>SVG Source</td>
 <td>String</td>
-<td>It is used to input SVG code to determine the graphic content presented by the SVG component.</td>
+<td>The raw SVG markup rendered by the component.</td>
 </tr>
 </tbody>
 </table>
+<hr>
 <h3>Page Container</h3>
-<p>The page container component is only available in <strong>page</strong> type resources. With the help of this component, we can insert page containers on the page to achieve the rendering of dynamic areas on the page. It is similar to the &quot;rendering block&quot; in components. The difference is that the page container is driven by routing information for rendering, and different routing addresses will display different sub-pages.</p>
-<p>Using this component, we can conduct in-depth page layout development. If you want to learn more about relevant content, you can refer to the <a href="/workbench/page" target="_blank">Page</a> help document.</p>
+<p>Available only in <em>Page</em> files. Inserts a container whose content is driven by routing data—different routes render different child pages.</p>
 <p><img src="/workbench/component-base18.png" alt=""></p>
+<p>This grants deep, multi-level layout capabilities. See <a href="/workbench/page" target="_blank">Pages</a> for further reading.</p>
 
 <BottomNav />
 </div>

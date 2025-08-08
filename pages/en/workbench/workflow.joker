@@ -1,70 +1,70 @@
 <template>
 <div ref='container' class='joker-demo-container'>
 <h2>Logic Orchestration</h2>
-<p>This chapter mainly elaborates on the basic functions of logic orchestration and how to quickly implement business logic with the help of these functions.</p>
+<p>This chapter elaborates on the fundamental features of logic orchestration and how to leverage these capabilities to rapidly implement business logic.</p>
 <h3>Overview</h3>
-<p>Logic orchestration is a visual method development tool. In this tool, you can write code to implement business logic either through simple drag-and-drop operations or by using custom code blocks. The platform has a powerful <strong>Type Expression</strong> function, which enables us to quickly query the required data variables at any logic node. Meanwhile, the intelligent <strong>Syntax Hint</strong> and <strong>Syntax Check</strong> functions make us more handy and smooth when carrying out logic development.</p>
+<p>Logic Orchestration is a visual development tool for methods. Within this tool, you can either use simple drag-and-drop operations or employ custom code blocks to implement business logic. The platform features robust <strong>type expressions</strong>, enabling quick access to required data variables at any logic node. Additionally, intelligent <strong>syntax hints</strong> and <strong>syntax checking</strong> functionalities make logic development more intuitive and smooth.</p>
 <h3>How to Add Logic</h3>
-<p>We can drag the method nodes in the toolbox into the canvas in the logic orchestration panel to implement method calls.</p>
+<p>You can drag method nodes from the toolbox onto the canvas in the Logic Orchestration panel to invoke methods.</p>
 <p><video width="80%" controls autoplay muted loop><source src="/workbench/workflow.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
 <h3>How to Delete Logic</h3>
-<p>We can click the delete button on the right side of the node to be deleted to delete the logic node.</p>
+<p>Click the delete button on the right side of the node you wish to remove to delete the logic node.</p>
 <p><img src="/workbench/workflow2.png" alt=""></p>
-<h3>Add Node Annotations</h3>
-<p>We can click the edit annotation button on the right side of the node to edit the annotations for the node.</p>
-<p><img src="/workbench/workflow3.png" alt=""></p>
+<h3>Adding Node Comments</h3>
+<p>Click the edit comment button on the right side of the node to edit its comments.<br>
+<img src="/workbench/workflow3.png" alt=""></p>
 <blockquote>
-<p>The edited annotations will be output to the actual code output together when the code is generated.</p>
+<p>The edited comments will be exported to the actual generated code output.</p>
 </blockquote>
-<h3>Drag Order</h3>
-<p>We can move the mouse over the node to be dragged, select the drag icon and then hold down the left mouse button to achieve the drag position.</p>
+<h3>Dragging Order</h3>
+<p>Hover the mouse over the node you wish to move, select the drag icon, and hold the left mouse button to drag the node into position.</p>
 <p><video width="80%" controls autoplay muted loop><source src="/workbench/workflow1.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
-<h3>Logic Branches</h3>
-<p>Logic branches allow us to implement the logic of <strong>if</strong>, <strong>else if</strong>, and <strong>else</strong> in a visual way.</p>
+<h3>Logic Branching</h3>
+<p>Logic branching allows you to visually implement <strong>if</strong>, <strong>else if</strong>, and <strong>else</strong> logic.</p>
 <p><img src="/workbench/workflow4.png" alt=""></p>
-<h3>Logs</h3>
-<p>We can quickly implement a <code>console</code> console log output through the log logic.</p>
+<h3>Logging</h3>
+<p>You can use the logging node to quickly output logs to the <code>console</code>.</p>
 <p><img src="/workbench/workflow5.png" alt=""></p>
 <blockquote>
-<p>Please note that in server-side projects, the server-side controller provides a distributed log processing function, which is more powerful than controlling log output and can freely choose the form of log output.</p>
+<p>Note: In server-side projects, the server controller provides distributed logging capabilities, which are more powerful than console logging and allow flexible log output formats.</p>
 </blockquote>
-<h3>Internal Method Calls</h3>
-<p>We can use this node to implement visual internal method calls, and this node will automatically analyze the internal functions in the current project.</p>
+<h3>Internal Method Invocation</h3>
+<p>This node enables visual internal method calls, automatically analyzing internal functions within the current project.</p>
 <p><img src="/workbench/workflow6.png" alt=""></p>
-<h4>Method Return Value Reception</h4>
-<p>It should be noted that if the method has a return value, an operation icon for variable reception will be displayed on the left side of the method call. Click it to configure the receiving variable.</p>
-<p><img src="/workbench/workflow7.png" alt=""></p>
-<p>We can choose to use an existing variable to receive the return value or create a new variable to receive it here.</p>
+<h4>Method Return Value Handling</h4>
+<p>If the method has a return value, a variable reception operation icon will appear on the left side of the method call. Click it to configure the receiving variable.<br>
+<img src="/workbench/workflow7.png" alt=""></p>
+<p>You can choose to use an existing variable or create a new one to receive the return value.</p>
 <p><img src="/workbench/workflow8.png" alt=""></p>
 <h4>Method Parameters</h4>
-<p>By default, the platform will automatically recognize the optional parameter configuration of the method and automatically hide the subsequent non-required (unconfigured) parameters. We can click to expand more parameters to display all parameters.</p>
+<p>By default, the platform automatically identifies optional parameters and hides subsequent non-required (unconfigured) parameters. Click &quot;Expand More Parameters&quot; to reveal all parameters.</p>
 <p><video width="80%" controls autoplay muted loop><source src="/workbench/workflow9.mp4" type="video/mp4">你的浏览器不支持视频播放。</video></p>
 <h4>Asynchronous Methods (await)</h4>
-<p>When the method we call is an asynchronous function, the method call node will show whether to enable <code>await</code>.</p>
-<p>After <code>await</code> is enabled, when the method is executed, it will wait until the method is successfully executed before executing the subsequent logic; if the waiting is turned off, the execution result will not be waited for, and the logic will be executed asynchronously.</p>
+<p>When invoking an asynchronous function, the method call node displays the option to enable <code>await</code>.</p>
+<p>If <code>await</code> is enabled, the execution will wait for the method to complete successfully before continuing. If disabled, the logic will execute asynchronously without waiting for the result.</p>
 <p><img src="/workbench/workflow10.png" alt=""></p>
 <h3>Data Observation</h3>
-<p>In front-end projects, we can use the data observation method in component type files to monitor the update of response values and notify when the values change.</p>
+<p>In frontend projects, you can use the data observation node in component-type files to monitor reactive value updates and receive notifications when values change.</p>
 <p><img src="/workbench/workflow11.png" alt=""></p>
-<p>The operation of this node will be converted into the following code for execution:</p>
-<pre><code class="language-js">import { Component } from &quot;@joker.front/core&quot;;
+<p>This node's operation translates into the following code:</p>
+<pre><code class="language-js">import { Component } from &quot;@joker.front/core&quot;;  
 
-export default class extends Component {
-    model = {
-        value: &quot;v1&quot;
-    };
+export default class extends Component {  
+    model = {  
+        value: &quot;v1&quot;  
+    };  
 
-    方法() {
-        this.$watch(
-            () =&gt; this.model.icons,
-            (nv, ov) =&gt; {
-                console.info(&quot;值变更了&quot;);
-            }
-        );
-    }
-}
+    method() {  
+        this.$watch(  
+            () =&gt; this.model.icons,  
+            (nv, ov) =&gt; {  
+                console.info(&quot;Value changed&quot;);  
+            }  
+        );  
+    }  
+}  
 </code></pre>
-<p>We can use a demo to understand this function in depth.</p>
+<p>Let’s explore this feature further with a demo.</p>
 <DemoContainer component="@(components.DEMO_JOKER_demo1)">
 <pre><code class="language-html">&lt;template&gt;
     &lt;p&gt;
@@ -98,137 +98,137 @@ export default class extends Component {
 </code></pre>
 </DemoContainer>
 <blockquote>
-<p>For detailed content, you can read the introduction of the <code>$watch</code> method in the <a href="https://front.jokers.pub/base/component-api" target="_blank">Component Internal Methods</a> document.</p>
+<p>For detailed usage, refer to the <code>$watch</code> method in the <a href="https://front.jokers.pub/base/component-api" target="_blank">Component Internal Methods</a> documentation.</p>
 </blockquote>
-<h3>Define Variables</h3>
-<p>We can use this node to define new variables.</p>
+<h3>Variable Declaration</h3>
+<p>Use this node to declare new variables.</p>
 <p><img src="/workbench/workflow12.png" alt=""></p>
-<p>It is equivalent to the following code:</p>
-<pre><code class="language-js">let age = 35;
+<p>Equivalent to:</p>
+<pre><code class="language-js">let age = 35;  
 </code></pre>
 <h3>Variable Assignment</h3>
-<p>We can use this node to assign values to existing variables.</p>
+<p>Use this node to assign values to existing variables.</p>
 <p><img src="/workbench/workflow13.png" alt=""></p>
 <h3>Loop Traversal</h3>
-<p>We can use this node to implement loop traversal of arrays/objects.</p>
+<p>This node enables looping through arrays or objects.</p>
 <ul>
-<li><strong>Loop</strong>: The object to be looped through, which can be an array or an object.</li>
-<li><strong>Loop Item</strong>: Define the variable name of the loop item. If the looped object is an object, this value represents the property value of the object; if the looped object is an array, this value represents the array item.</li>
-<li><strong>Loop Index</strong>: Define the variable of the loop index. If the looped object is an object, this value represents the KEY of the object; if the looped array, this value represents the index of the array.</li>
+<li><strong>Loop Target</strong>: The object to loop through, which can be an array or an object.</li>
+<li><strong>Loop Item</strong>: Defines the variable name for the loop item. For objects, this represents the property value; for arrays, it represents the array item.</li>
+<li><strong>Loop Index</strong>: Defines the loop index variable. For objects, this represents the key; for arrays, it represents the index.</li>
 </ul>
-<p>When we want to break the loop during the loop process, we can use the <code>break</code> node or directly use the <code>return</code> node.</p>
+<p>To break out of the loop, use the <code>break</code> node or the <code>return</code> node directly.</p>
 <p><img src="/workbench/workflow14.png" alt=""></p>
-<p>The above logic orchestration is equivalent to:</p>
-<pre><code class="language-js">for (let item of [1, 2, 3, 4]) {
-    console.info(item);
+<p>The above logic is equivalent to:</p>
+<pre><code class="language-js">for (let item of [1, 2, 3, 4]) {  
+    console.info(item);  
 
-    if (item &gt; 2) {
-        break;
-    }
-}
+    if (item &gt; 2) {  
+        break;  
+    }  
+}  
 </code></pre>
 <h3>Return</h3>
-<p>We can use the return node to implement the <code>return</code> operation of the method. We can click the button on the right side of the return node to configure the return value.</p>
+<p>Use the return node to implement the <code>return</code> operation for methods. Click the button on the right to configure the return value.</p>
 <p><img src="/workbench/workflow15.png" alt=""></p>
-<h3>Custom Code Blocks</h3>
-<p>Custom code blocks allow us to freely edit our code using the <code>Javascript</code> syntax.</p>
+<h3>Custom Code Block</h3>
+<p>The custom code block allows you to freely write code using <code>JavaScript</code> syntax.</p>
 <p><img src="/workbench/workflow16.png" alt=""></p>
-<p>We can click the zoom button on the right side of the custom code block node to open the expression editing panel. Here, we can have a larger operation space, and the platform will also prompt all the variables that can be operated on by the current node.</p>
+<p>Click the expand button on the right to open the expression editor, which provides more space for operations and displays all available variables for the current node.</p>
 <p><img src="/workbench/workflow17.png" alt=""></p>
 <blockquote>
-<p>It should be noted that the temporary variables declared in the code block will not be recognized by the node expressions after the node. If you want the variables declared to be available in the subsequent logic, you can first define them through the <code>Define Variables</code> node before the code block is executed and then assign values in the custom code block. The reason why the platform does this is that it can better identify and display the variables in the method during subsequent debugging.</p>
+<p>Note: Temporary variables declared within the code block are not recognized by subsequent node expressions. To make variables available later, declare them using the &quot;Define Variable&quot; node before the custom code block and assign values within the block. This design ensures better variable identification and debugging.</p>
 </blockquote>
-<h3>Debugging and Running</h3>
-<p>We are allowed to embed a <code>debugger</code> node in a certain business logic node, which can help us debug in the console during development and debugging.</p>
+<h3>Debugging</h3>
+<p>You can embed a <code>debugger</code> node in any logic node to facilitate debugging in the console.</p>
 <p><img src="/workbench/workflow18.png" alt=""></p>
 <blockquote>
-<p>When the actual code is exported and built, this node will be removed, so you can use it with confidence.</p>
+<p>This node is removed during the actual code export/build process and can be safely used.</p>
 </blockquote>
-<h3>Trigger Events</h3>
-<p>This node will only be displayed in front-end component files. We can use this logic node to implement event triggering for components.</p>
-<p><img src="/workbench/workflow19.png" alt=""></p>
+<h3>Triggering Events</h3>
+<p>This node appears only in frontend component files. Use it to trigger component events.<br>
+<img src="/workbench/workflow19.png" alt=""></p>
 <blockquote>
-<p>For detailed usage methods, please refer to <a href="/workbench/component-event" target="_blank">Component Events</a>.</p>
+<p>For detailed usage, refer to <a href="/workbench/component-event" target="_blank">Component Events</a>.</p>
 </blockquote>
-<h3>Get Components</h3>
-<p>This node will only be displayed in front-end component files. We can use this node to implement method calls for marked components.</p>
-<p>Before using this node, you need to configure the <code>Component Identifier</code> property of the component to be operated, and the component has external public methods.</p>
+<h3>Component Access</h3>
+<p>This node appears only in frontend component files. Use it to call methods of marked components.</p>
+<p>Before using this node, ensure the target component has a <strong>Component Identifier</strong> property and exposes public methods.</p>
 <p><img src="/workbench/workflow20.png" alt=""></p>
-<p>Of course, we can also obtain the component virtual node through the <code>this.$getRef</code> method in the custom code block. This is an advanced usage that provides more flexible operations. In addition to being able to call the component's public methods, it can also read the component's internal data, register the component's events, and other advanced functions.</p>
-<pre><code class="language-js">import { Component } from &quot;@joker.front/core&quot;;
+<p>Alternatively, you can use <code>this.$getRef</code> in a custom code block to access the component’s virtual node. This advanced usage offers more flexibility, including accessing internal data and registering component events.</p>
+<pre><code class="language-js">import { Component } from &quot;@joker.front/core&quot;;  
 
-export default class extends Component {
-    model = {
-        value: &quot;v1&quot;
-    };
+export default class extends Component {  
+    model = {  
+        value: &quot;v1&quot;  
+    };  
 
-    方法() {
-        this.$getRef(&quot;form1&quot;)?.component.submit();
-    }
-}
+    method() {  
+        this.$getRef(&quot;form1&quot;)?.component.submit();  
+    }  
+}  
 </code></pre>
-<h3>Environment Branches</h3>
-<p>The platform is divided into three environments according to the development scenario: development, debugging, and output. We can implement the effectiveness of code in different environments through conditional judgment.</p>
+<h3>Environment Branching</h3>
+<p>The platform divides development scenarios into three environments: development, debugging, and production. Use conditional logic to enable code for specific environments.</p>
 <p><img src="/workbench/workflow21.png" alt=""></p>
-<p>Its operation principle is not to implement whether the logic is executed through <code>if</code> judgment in the code, but a function at the code block output level from the perspective of code generation.</p>
+<p>This functionality operates at the code generation level, not through runtime <code>if</code> checks.</p>
 <blockquote>
-<p>The environment here is not the environment maintained in the environment variables, but the environment division for the development scenario.</p>
+<p>These environments are distinct from environment variables and are specific to development scenarios.</p>
 </blockquote>
 <h3>Internal Events</h3>
-<p>We can use the <code>Internal Event Registration</code> and <code>Internal Event Destruction</code> nodes to manage the event handling within the current component.</p>
-<p><img src="/workbench/workflow22.png" alt=""></p>
-<p><img src="/workbench/workflow23.png" alt=""></p>
-<h3>Combined Reply</h3>
-<p>This node will only be displayed in front-end projects. The combined reply is usually used when we need to frequently operate a certain variable. Its purpose is to avoid frequent execution of DOM rendering before the final setting is completed. By using this method, all changes in the method can be deduplicated and then the change notification can be uniformly executed.</p>
+<p>Use the <strong>Internal Event Registration</strong> and <strong>Internal Event Removal</strong> nodes to manage internal component event handling.</p>
+<p><img src="/workbench/workflow22.png" alt=""><br>
+<img src="/workbench/workflow23.png" alt=""></p>
+<h3>Batched Updates</h3>
+<p>This node appears only in frontend projects. Use it to optimize DOM rendering when frequently modifying a variable. It batches changes and executes them once to avoid redundant updates.</p>
 <blockquote>
-<p>Before understanding the combined reply node, please first learn the content of the JOKER framework <a href="https://front.jokers.pub/base/combined-reply" target="_blank">Combined Reply</a>.</p>
+<p>Before using this node, familiarize yourself with the JOKER framework’s <a href="https://front.jokers.pub/base/combined-reply" target="_blank">Batched Updates</a>.</p>
 </blockquote>
-<p>The platform provides the ability to quickly implement combined replies:</p>
-<p><img src="/workbench/workflow24.png" alt=""></p>
-<p>It is equivalent to:</p>
-<pre><code class="language-js">combinedReply(() =&gt; {
-    this.model.radioValue = 1;
-    this.model.radioValue = 2;
-});
+<p>The platform provides quick batched update functionality:<br>
+<img src="/workbench/workflow24.png" alt=""></p>
+<p>Equivalent to:</p>
+<pre><code class="language-js">combinedReply(() =&gt; {  
+    this.model.radioValue = 1;  
+    this.model.radioValue = 2;  
+});  
 </code></pre>
 <h3>Data Synchronization</h3>
-<p>This node will only be displayed in front-end component files. We can use this method node to quickly synchronize the attribute values in <code>props</code> to the attributes in <code>model</code> and synchronize the modification of the values in <code>model</code> when the attribute values in <code>props</code> change.</p>
+<p>This node appears only in frontend component files. Use it to quickly synchronize <code>props</code> values to <code>model</code> properties, updating the <code>model</code> when <code>props</code> change.</p>
 <blockquote>
-<p>This node requires that the attribute values in <code>props</code> and the attributes in <code>model</code> have the same names.</p>
+<p>The <code>props</code> and <code>model</code> property names must match.</p>
 </blockquote>
 <p><img src="/workbench/workflow25.png" alt=""></p>
 <blockquote>
-<p>For detailed content, please refer to <code>Attribute Synchronization ($syncProp)</code> in <a href="https://front.jokers.pub/base/component-api" target="_blank">Component Internal Methods</a>.</p>
+<p>For details, refer to the <strong>Property Synchronization (<code>$syncProp</code>)</strong> in <a href="https://front.jokers.pub/base/component-api" target="_blank">Component Internal Methods</a>.</p>
 </blockquote>
-<h3>Wait for Update and Rendering</h3>
-<p>This node will only be displayed in front-end component files. This method is used to wait for the actual update and rendering of the DOM after the change is updated and can be used for asynchronous rendering waiting.</p>
+<h3>Await DOM Update</h3>
+<p>This node appears only in frontend component files. Use it to wait for DOM updates after changes, which is useful for asynchronous rendering.</p>
 <p><img src="/workbench/workflow26.png" alt=""></p>
 <blockquote>
-<p>The rendering of the Joker front end is immediate. When the property changes, it will be immediately updated and rendered in the page. However, when we use asynchronous components, we need to use the <code>$nextUpdatedRender</code> function to monitor whether the component has completed the overall rendering update. For detailed content, please refer to <code>Wait for Next Rendering</code> in <a href="https://front.jokers.pub/base/component-api" target="_blank">Component Internal Methods</a>.</p>
+<p>Joker frontend updates the DOM immediately upon property changes. However, when working with async components, use <code>$nextUpdatedRender</code> to confirm full rendering completion. For details, refer to <strong>Await Next Render</strong> in <a href="https://front.jokers.pub/base/component-api" target="_blank">Component Internal Methods</a>.</p>
 </blockquote>
 <h3>Return Success Data</h3>
-<p>It will only be displayed in server-side application projects. We can use this node to complete the return of successful data for the interface.</p>
+<p>Appears only in server applications. Use this node to return successful response data.</p>
 <p><img src="/workbench/workflow27.png" alt=""></p>
-<p>It is equivalent to:</p>
-<pre><code class="language-js">return Ok(1);
+<p>Equivalent to:</p>
+<pre><code class="language-js">return Ok(1);  
 </code></pre>
 <blockquote>
-<p>This node is also a <code>return</code> syntax node with business meaning. For detailed content, please refer to <a href="/workbench/server-controller" target="_blank">Controller Design</a>.</p>
+<p>This is a specialized <code>return</code> node with business semantics. Refer to <a href="/workbench/server-controller" target="_blank">Controller Design</a> for details.</p>
 </blockquote>
-<h3>Return Failure Data</h3>
-<p>It will only be displayed in server-side application projects. We can use this node to complete the return of abnormal data for the interface.</p>
+<h3>Return Error Data</h3>
+<p>Appears only in server applications. Use this node to return error response data.</p>
 <p><img src="/workbench/workflow28.png" alt=""></p>
-<p>It is equivalent to:</p>
-<pre><code class="language-js">return ActionError(&quot;错误信息&quot;);
+<p>Equivalent to:</p>
+<pre><code class="language-js">return ActionError(&quot;Error message&quot;);  
 </code></pre>
 <blockquote>
-<p>This node is also a <code>return</code> syntax node with business meaning. For detailed content, please refer to <a href="/workbench/server-controller" target="_blank">Controller Design</a>.</p>
+<p>This is a specialized <code>return</code> node with business semantics. Refer to <a href="/workbench/server-controller" target="_blank">Controller Design</a> for details.</p>
 </blockquote>
 <h3>Database Operations</h3>
-<p>It will only be displayed in server-side application projects. This node can help us implement database operations. For detailed content, please read the <a href="https://workbench/db-option" target="_blank">Database Operations</a> article.</p>
+<p>Appears only in server applications. Use this node to perform database operations. For details, see <a href="/workbench/db-option" target="_blank">Database Operations</a>.</p>
 <p><img src="/workbench/db-option.png" alt=""></p>
 <h3>Cache Operations</h3>
-<p>It will only be displayed in server-side application projects. This node can help us implement cache operations. For detailed content, please read the <a href="https://workbench/server-cache" target="_blank">Cache Operations</a> article.</p>
+<p>Appears only in server applications. Use this node to perform cache operations. For details, see <a href="/workbench/server-cache" target="_blank">Cache Operations</a>.</p>
 <p><img src="/workbench/server-cache1.png" alt=""></p>
 
 <BottomNav />

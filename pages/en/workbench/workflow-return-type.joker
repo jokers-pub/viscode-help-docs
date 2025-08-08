@@ -1,34 +1,34 @@
 <template>
 <div ref='container' class='joker-demo-container'>
-<h3>Method Return Type Inference</h3>
-<p>When developing method logic, the Platform provides a flexible way to specify the method's return type without pre-designing it before development. This approach allows us to derive the return type based on declared variable types during logic orchestration, significantly simplifying method declaration.</p>
-<h4>How to Enable</h4>
-<p>Method return type inference does not take effect in all method editing scenarios. For example, in scenarios where the Platform has forcibly constrained return types, such as component lifecycles, component event functions, request interceptors, and route interceptors, return type inference is not allowed. This feature only works in scenarios that allow custom return types.</p>
+<h2>Method Return Type Inference</h2>
+<p>When developing method logic, the platform provides a flexible way to specify return types without requiring pre-definition during design. This approach allows us to derive return types based on declared variable types during logic orchestration, significantly simplifying method declaration.</p>
+<h3>How to Enable</h3>
+<p>Method return type inference is not available in all method editing scenarios. For example, it cannot be used in component lifecycle methods, component event functions, request aspects, route aspects, or other scenarios where the platform enforces strict return type constraints. This feature is only effective in scenarios where custom return types are permitted.</p>
 <p><img src="/workbench/workflow-return-type.png" alt=""></p>
 <blockquote>
-<p><strong>Note</strong>: The Platform performs type inference based on variable types declared in logic orchestration. Therefore, the &quot;Derive Return Type from Variables&quot; button will only appear when there are logic nodes with declared variables.</p>
+<p><strong>Note</strong>: The platform performs type inference based on variable declarations in logic orchestration. Therefore, the <strong>&quot;Infer Return Type from Variables&quot;</strong> button will only appear when logic nodes exist and variables have been declared.</p>
 </blockquote>
-<h4>How to Operate</h4>
-<p>When needing to infer the method return type, click the <strong>Derive Return Type from Variables</strong> button at the bottom of the logic orchestration panel to open the operation panel.<br>
+<h3>How to Operate</h3>
+<p>To perform method return type inference, click the <strong>Infer Return Type from Variables</strong> button at the bottom of the logic orchestration panel to open the operation panel.
 <img src="/workbench/workflow-return-type1.png" alt=""></p>
 <ul>
-<li><strong>Left Panel</strong>: Displays the actual return type of the current method.</li>
-<li><strong>Right Panel</strong>: Lists declared variables in the logic and their types.</li>
+<li><strong>Left Panel</strong>: Displays the current method's actual return type.</li>
+<li><strong>Right Panel</strong>: Lists variables declared in the logic along with their types.</li>
 </ul>
-<p>If the method's return type matches a variable's type, a <strong>Replace Return Type</strong> button will appear on the right. Clicking this button sets the variable's type as the method's return type.<br>
+<p>If the method's return type matches a variable's type, a <strong>Replace Return</strong> button will appear on the right. Clicking this button will set the variable's type as the method's return type.
 <img src="/workbench/workflow-return-type2.png" alt=""></p>
-<p>To import properties into an object, select the target object node in the <strong>left panel</strong>. When an <code>object</code>-type node is selected, an <strong>Import as Field</strong> button will appear in the right panel. Clicking this button imports the field into the object.<br>
+<p>To import properties into an object, select the target object node in the <strong>left panel</strong>. When an object-type node is selected, the right panel will display an <strong>Import as Field</strong> button. Clicking this button imports the field into the object.
 <img src="/workbench/workflow-return-type3.png" alt=""></p>
-<p>The left panel for method return types also supports the following common operations:<br>
+<p>The left panel for method return types also supports the following common operations:
 <img src="/workbench/workflow-return-type4.png" alt=""></p>
 <ol>
-<li><strong>Reset</strong>: Restores the method return type to the last saved state for easy rollback.</li>
-<li><strong>Clear</strong>: Removes the existing method return type.</li>
-<li><strong>Delete</strong>: Allows deleting a specific property.</li>
+<li><strong>Reset</strong>: Restores the method return type to its last saved state, enabling easy rollback of operations.</li>
+<li><strong>Clear</strong>: Empties the current method's return type definition.</li>
+<li><strong>Delete</strong>: Allows deletion of a specific property.</li>
 </ol>
-<p><strong>Tip</strong>: For modifying property names, titles, remarks, or other details, it is recommended to edit the return type in the method editing panel after saving the logic. This operation panel primarily provides quick type import functionality.</p>
-<h4>How to Take Effect</h4>
-<p>After editing the method return type, click the Save button at the bottom of the panel to complete the return type configuration. Note that this operation takes effect immediately in the logic orchestration, updating the method's return type in the panel and quickly exposing syntax issues. When logic orchestration is completed, the method return type will be updated alongside the logic save, uniformly modifying and saving method information.</p>
+<p><strong>Tip</strong>: To modify property names, titles, descriptions, or other details, it is recommended to adjust the return type comprehensively in the method editing panel after saving the logic. This operation panel primarily provides quick type import functionality.</p>
+<h3>How It Takes Effect</h3>
+<p>After editing the method return type, click the <strong>Save</strong> button at the bottom of the panel to finalize the changes. Note that this operation only takes effect within the logic orchestration panel, where the method's return type is updated immediately and potential syntax issues are highlighted. Once logic orchestration is completed, the method return type will be modified and saved along with other method information when the orchestration is saved.</p>
 
 <BottomNav />
 </div>

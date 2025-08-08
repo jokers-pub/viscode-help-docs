@@ -1,29 +1,29 @@
-## Global Variables
+## Global Variables  
 
-Global variables allow developers to create unified global variables within a project and share them among multiple files.
+Global variables allow developers to create unified variables that can be shared and used across multiple files within a project.  
 
-### Overview
+### Overview  
 
-Global variables are helpful in solving the problem of variable sharing across files. In different files, we can both access global variables and modify their values. Moreover, if your project is a component/method set, when it is referenced, effective data isolation will also be achieved in the project reference environment.
+Global variables help solve the problem of variable sharing across different files. They can be accessed and modified in any file. Moreover, if your project is a component/method set, data isolation is effectively maintained in the referencing environment when the project is imported.  
 
-We can maintain variables through the **Global Variables** panel in the `Project Configuration` file.
+Global variables can be managed via the **Global Variables** panel in the `Project Configuration` file.  
 
-![](/workbench/globalData.png)
+![](/workbench/globalData.png)  
 
-### How to Create Variables
+### How to Create Variables  
 
-We can click the `Create Global Variable` button on the page to create variables.
+You can click the `Create Global Variable` button on the page to create a variable.  
 
-![](/workbench/globalData1.png)
+![](/workbench/globalData1.png)  
 
-> For the tutorial on specific creation attributes, please refer to [Field Maintenance](/workbench/property).
+> For a detailed tutorial on property creation, refer to [Field Maintenance](/workbench/property).  
 
-### How to Use
+### How to Use  
 
-Global variables can be used in any expression.
+Global variables can be used in any expression.  
 
-![](/workbench/globalData2.png)
+![](/workbench/globalData2.png)  
 
-At the same time, global variables can also be used in logical methods.
+Additionally, global variables can also be utilized within logic methods.  
 
-![](/workbench/globalData3.png) 
+![](/workbench/globalData3.png)

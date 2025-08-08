@@ -1,17 +1,19 @@
-# Transferring Teams/Organizations
+# Transfer Team/Organization Ownership  
 
-This chapter will elaborate on the specific methods for transferring the ownership of teams/organizations.
+This section details the specific procedures for transferring ownership of a team/organization.  
 
-## Application Scenarios
+## Application Scenarios  
 
-When the `owner` of a team needs to withdraw from the current team for specific reasons or needs to fully transfer the team to a target client, the function of `transferring teams/organizations` will be used.
+The **Transfer Team/Organization** feature is used when:  
+- The current **owner** needs to leave the team for specific reasons.  
+- The team needs to be fully handed over to a target client.  
 
-## Operation Steps
+## Operation Steps  
 
-1. Open the team settings page and click on the `Transfer Organization` button. At this time, a transfer organization panel will pop up.
+1. Open the **Team Settings** page and click the **Transfer Organization** button. A transfer panel will appear.  
 
-![](/portal/org-transfer.png)
+![](/portal/org-transfer.png)  
 
-2. Fill in the email address or name of the user to whom you plan to transfer the ownership in the panel. The platform will automatically search for and match the user. After selecting the target user, click on the `Submit` button. Subsequently, the system will require you to enter your account password to confirm whether the operation is authorized.
+2. In the panel, enter the email or name of the intended recipient. The platform will automatically search for matching users. After selecting the target user, click the **Submit** button. The system will then request account credentials to verify the authorization of this operation.  
 
-> **Kind Reminder**: There is an option of `Leave the Organization after Transfer` during the transfer process. If this option is checked, after the transfer of the ownership is completed, the original owner will automatically leave the current team; if it is not checked, the original owner will be automatically downgraded to a "developer". Meanwhile, when performing the `organization transfer` operation, the permissions of other members within the organization will not change. 
+> **Note**: There is an option labeled **Leave the organization after transferring ownership**. If selected, the original owner will automatically leave the team after the ownership transfer is completed. If not selected, the original owner will be downgraded to a **Developer** role. During the organization transfer process, the permissions of other members in the organization will remain unchanged.

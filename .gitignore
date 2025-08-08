@@ -5,4 +5,5 @@ yarn.lock
 dist
 types
 build/algoliasearch.ts
+build/translate.ts
 pnpm-lock.yaml

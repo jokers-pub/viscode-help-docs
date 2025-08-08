@@ -1,33 +1,36 @@
 ## Member Management
 
-This chapter elaborates on the management methods for team members, covering aspects such as applying to join a team, inviting members, and the specific management and role configuration of team members.
+This chapter details the methods for managing team members, including applying to join a team, inviting members, and configuring member roles and permissions.
 
 ### Applying to Join a Team
 
-On the team settings page, you can decide whether to accept applications from external developers to join the team by configuring the "Whether to Open Applications" option.
-![Interface related to opening applications on the team settings page](/portal/org-member.png)
+On the team settings page, you can configure the `Allow Applications` option to determine whether external developers can submit join requests.  
+![Team Settings Interface for Application Management](/portal/org-member.png)
 
-If you choose to open applications, when non-team members visit the team home page, a "Apply to Join" button will be displayed on the page. Clicking this button allows you to submit an application to join the team.
-![Interface of the "Apply to Join" button on the team home page](/portal/org-member2.png)
+If applications are enabled, non-team members visiting the team homepage will see an `Apply to Join` button. Clicking this button allows them to submit a join request.  
+![Team Homepage with Apply Button](/portal/org-member2.png)
 
-When a member submits an application to join the team, the platform will send an internal message reminder. You can also click on the "Application Management" menu on the team settings page and enter the team application management page to view the application list.
-![Team application management page](/portal/org-member3.png)
+When a member submits an application, the platform sends an internal notification. You can also navigate to the `Application Management` section in the team settings to view pending requests.  
+![Application Management Page](/portal/org-member3.png)
 
-In the application list, you can click the **Approve** or **Reject** button to decide whether to approve the member's application to join the team.
+In the application list, you can click **Approve** or **Reject** to accept or decline the join request.
 
 ### Inviting Members
 
-In addition to waiting for members to apply to join, you can also take the initiative to invite members to join the team. The specific operations are as follows: Open the "Member Management" page, click the **Invite Members** button, and an invite members panel will pop up. In this panel, you can search for the developers you want to invite by using information such as user email addresses and account numbers. After finding the target person, click the add button, and the system will send an invitation message. Once the other party accepts the invitation, they will automatically join the current team.
-![Interface for the operation of inviting members](/portal/org-member4.png)
+In addition to accepting applications, you can proactively invite members to join the team. Follow these steps:  
+1. Open the `Member Management` page and click the **Invite Member** button to open the invitation panel.  
+2. Search for developers by email, username, or other criteria.  
+3. Click the add button to send an invitation. Once accepted, the member will automatically join the team.  
+![Invite Member Interface](/portal/org-member4.png)
 
 ### Member Management
 
-On the "Member Management" page, you can manage the existing members of the team, including deleting members and setting member permissions. Currently, team member permissions are divided into the following categories:
+On the `Member Management` page, you can manage existing team members, including removing members and configuring their permissions. Current team roles include:  
 
-- **Owner**: Holds the highest permissions of the team, usually the creator of the team.
-- **Administrator**: Can modify the basic information of the team and has daily management permissions such as adding members, handling the issue status of team repositories, and releasing versions.
-- **Developer**: Only has the permission to modify the code in the repositories within the team.
+- **Owner**: Holds the highest permissions, typically the team creator.  
+- **Administrator**: Can edit team information, manage members, handle Repository issues, and perform daily operations like version releases.  
+- **Developer**: Has only code modification permissions for team Repositories.  
 
-![Member Management page](/portal/org-member5.png)
+![Member Management Page](/portal/org-member5.png)  
 
-> New members joining the team will have the default identity of "Developer" by default. It should be noted that administrators can handle team applications, invite members, and delete members, but they cannot operate on member permissions or handle the information of members with the same or higher identities as themselves. 
+> New members are assigned the `Developer` role by default. Note: Administrators can manage applications and invitations but cannot modify permissions for members of equal or higher roles.

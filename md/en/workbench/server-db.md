@@ -1,220 +1,98 @@
-## Controller Design
+## Data Model Design  
 
-This chapter mainly elaborates on controller-related content. The controller, as the core functional module of server-side applications, undertakes the important task of designing application API interfaces and can be regarded as the design hub for the only request entry of server-side applications.
+This chapter focuses on how to create and manage data models in server-side application projects.  
 
-### Overview
+### Overview  
 
-The platform enables us to quickly create API interfaces for server-side applications in a visual way. We can create different controllers according to business types in the `Controllers` folder, and multiple API methods can be created under each controller.
+In **server-side application** projects, we can leverage data model design to plan database table structures. It enables us to quickly design database schemas in an intelligent, visual manner, covering **data**, **field definitions**, **composite indexes**, **table relationships**, and more.  
 
-![](/workbench/back-end.png)
+### Creating a Table  
 
-Next, we will explain in detail the various functions of the controller in the order of "API Creation -> Input Parameters -> API Method Parameters -> API Method Return Value Types -> Authorization".
+On the left-hand panel in the workbench, navigate to the **Database** menu to view the current database table tree. This menu can be accessed from any file to quickly inspect the table structure. To manage and maintain the tables, click the **Manage Database** button at the bottom of the panel, which opens the database management file. Here, you can create or edit data models to manage tables in the database.  
+![](/workbench/server-db.png)  
 
-### Create API
+- **Model Name**: Defines the table name (camelCase recommended).  
+- **Model Alias**: Assigns a readable name to the table for easier reference during development.  
+- **Model Description**: Provides detailed documentation about the table, helping developers understand its purpose.  
+- **Use Recommended Properties**: If enabled, the platform automatically generates common fields, including **primary key (id)**, **creation time (createAt)**, and **update time (updateAt)**.  
 
-Multiple API methods can be created in the controller file. Click the **Create API** button in the upper right corner to open the API editor window.
+### Creating Table Fields  
 
-![](/workbench/server-controller.png)
+After creating a data model (table), click **Create Attribute** in the model panel to open the field maintenance interface.  
+![](/workbench/server-db1.png)  
 
-In this window, the following information of the API interface can be configured:
+In the field configuration panel, the following properties must be maintained:  
 
-- **Name**: This is the name of the API method of the interface. It should be noted that this is not the final API access address. The format of the API access address is `Service Root`/`Controller Name`/`API Name`.
-- **Remarks Title**: Configure an alias for the API method to help developers quickly understand the meaning of the API.
-- **Description**: Write detailed description information for the API method to facilitate developers' in-depth understanding.
-- **Request Type**: Multiple request types can be configured here. Only requests that match the configured request type will be mapped to this API method. The optional values include: **POST**, **GET**, **PUT**, **DELETE**.
-- **Authorization Authentication**: If this function is enabled, the system will authenticate the JWT before accessing the API interface. Once the JWT verification fails or expires, a 401 error will be directly returned.
-- **Input Parameters**: The input parameters of the API can be configured here.
+- **Name**: The field name (recommended to use concise, meaningful English).  
+- **Alias**: A user-friendly label for the field, aiding quick comprehension.  
+- **Description**: A detailed explanation of the field's purpose, data source, constraints, etc., to prevent misunderstandings.  
+- **Data Type**: Specifies the data type of the field, influencing storage and operations:  
+  1. **String**: Stores text (e.g., names, addresses). Subtypes:  
+     - **UUID**: Unique identifiers.  
+     - **TEXT**: Longer text (e.g., descriptions).  
+     - **VARCHAR**: Short, fixed-length text (e.g., codes).  
+  2. **Integer (Int)**: Whole numbers (e.g., age, quantity).  
+  3. **Decimal**: Precise decimals (e.g., monetary values).  
+  4. **Float**: Approximate floating-point numbers (e.g., scientific data).  
+  5. **DateTime**: Dates/times (e.g., createAt, updateAt).  
+  6. **Boolean**: True/false values (e.g., payment status).  
+  7. **Enum**: Fixed value set (e.g., order status, user roles).  
+  8. **Relationship Field**: Establishes table associations (e.g., linking orders to products).  
+- **Primary Key**: Marks the field as the table's unique identifier (only one per table).  
+- **Default Value**: Initial value if not explicitly set (e.g., default user role).  
+- **Unique**: Ensures field uniqueness (automatically indexed for faster queries).  
+- **Not Null**: Enforces mandatory field values (e.g., order amount cannot be empty).  
+- **Array Type**: Allows storing multiple values (e.g., tags, contact methods).  
+- **Field Type**: Further refines data storage (e.g., UUID vs. VARCHAR for strings).  
 
-### Input Parameter Validation
+### Creating Table Relationships  
 
-As mentioned earlier, we can create the input parameters of the API interface in the API interface editing panel, and their creation follows the general `Field Maintenance` rules. For detailed content, please refer to the [Field Maintenance](/workbench/property) chapter.
+The platform provides an intelligent way to define table relationships. Below is an example with two tables:  
 
-Here, we mainly explain a special function of API input parameters in field maintenance: **Input Parameter Validation**.
+#### Product Table  
 
-In the second step of the **Field Maintenance** editing window, different field restriction rules can be configured by selecting different data types.
+| Field | Data Type | Description            |  
+|-------|-----------|------------------------|  
+| id    | UUID      | Product ID (PK)        |  
+| name  | String    | Product Name           |  
 
-![](/workbench/server-controller1.png)
+#### Order Table  
 
-The following is an introduction to all validation rules without considering data types:
+| Field      | Data Type | Description                    |  
+|------------|-----------|--------------------------------|  
+| id         | UUID      | Order ID (PK)                 |  
+| productId  | String    | References Product.id          |  
+| createAt   | DateTime  | Creation Time                  |  
 
-1. **Regular Expression Validation**: Allows customizing regular expressions to constrain the content of input parameters.
-2. **Whether it is an Email**: Used to verify whether the input content is in the email format.
-3. **Whether it is a Telephone**: Judges whether the input content conforms to the telephone format.
-4. **Only Letters**: Ensures that the input content contains only letters.
-5. **Only Letters and Numbers**: Limits the input content to only letters and numbers.
-6. **Only Numbers**: Only allows the input of numbers (string type numbers). If the field itself is of the number type, the field type can be directly changed; this rule only provides a supplementary number format validation for the string type.
-7. **Whether it is an Integer**: Requires the input to be an integer and does not allow floating-point numbers.
-8. **Contains Specific Content**: The string must contain specific content.
-9. **Limit the Value Range**: Limits the range of values. For example, gender can only be male/female, and enumeration values can be manually maintained or selected from the data table.
-![](/workbench/server-controller2.png)
-10. **Length Limit**: Limits the length of the string. The maximum or minimum value can be configured separately, or the limits can be combined simultaneously.
-11. **Maximum Value**: For fields of the number type, the maximum value limit can be configured.
-12. **Minimum Value**: For fields of the number type, the minimum value limit can be configured.
-13. **File Size Limit**: When the field type is **File**, the size of the uploaded file can be limited by this constraint.
-14. **File Quantity Limit**: When the field type is **File**, the maximum number of uploaded files can be limited. By default, only one file is allowed to be uploaded.
-15. **File Type Limit**: When the field type is **File**, the accepted types of uploaded files can be limited, and wildcards are supported. For example, for images (image/jpeg, image/*), the "*" wildcard is supported. If multiple types need to be limited, they can be separated by ",".
+#### Establishing the Relationship  
 
-### File Upload
+To link `Order.productId` with `Product.id`, follow these steps in the Order table:  
+![](/workbench/server-db2.png)  
 
-In server-side projects, the `Field Maintenance` panel supports selecting the field type as the `File` file type. With this function, we can implement file upload in the API interface.
+1. **Ignore Field Naming Temporarily**: The platform will auto-generate a name.  
+2. **Select Data Type**: Choose **Relationship Field**.  
+3. **Define Relationship**: Map `productId` to `Product.id`.  
+4. **Finalize Field Name**: Edit the auto-generated name if needed.  
 
-The above has mentioned the configuration of the constraint conditions for file types. Here, we will focus on the attributes and operation methods of the File type.
+After creation:  
+![](/workbench/server-db3.png)  
 
-![](/workbench/server-controller3.png)
+- **Order Table**: `productId` becomes a **foreign key**, and a `Product` field (with full product data) is added.  
+- **Product Table**: An `Order[]` field is added (one-to-many relationship), enabling quick access to all related orders.  
 
-Suppose an input parameter `userImg` is created, and the uploaded file can be obtained and operated through the way of `data.userImg`.
+### Creating Composite Indexes  
 
-The data of the file type provides us with the following attributes:
+Composite indexes enforce uniqueness and improve query performance for multi-field combinations. For example, in a permission table where a user can have only one role per organization, a composite index on `userId + orgId` ensures uniqueness.  
 
-| Name | Type | Description |
-| ---- | ---- | ---- |
-| checkMimeType | Function | Checks whether it meets the file type requirements and supports wildcards. For example, for images (image/jpeg, image/*), the "*" wildcard is supported. If multiple types are limited, it can be a single string or an array of strings. |
-| checkSize | Function | Checks whether it meets the file size limit. |
-| fileCount | Number | The number of files. |
-| files | File[] | All files. |
-| save | Function | Through this method, the file can be saved to the specified directory on the server side. |
+To create one, click the **dropdown arrow** next to `Create Attribute` and select **Create Composite Index**.  
+![](/workbench/server-db4.png)  
 
-Here, we will focus on the **save** file saving method. Other attributes can usually be configured in the input item condition constraints. Unless there are special requirements, custom methods will be considered to judge the file format and file size.
+In the editor, select two or more fields to form the index.  
+![](/workbench/server-db5.png)  
 
-#### File Saving
+> This section covers data model design. For CRUD operations, refer to the [Data Operations](/workbench/db-option) chapter.  
 
-```js
-// Save directly to the project upload directory without any adjustment
-await data.userImg.save();
+### Database Connection URL  
 
-// Complete parameter example, save the file to the user folder in the upload directory.
-await data.userImg.save("user/", {
-    // Customize the saved file name
-    newFileName: (file) => {
-        // Name it in the format of userId.ext, where file.ext is the extension of the uploaded file
-        return userId + "." + file.ext;
-    },
-    // Whether to not compress the image. The default here is false. By default, the platform will compress the uploaded image resources at the bottom layer. If you don't want to compress it, you can configure it as true.
-    uncompressedImage: false,
-    // Image compression processing configuration, which only takes effect when image compression is enabled
-    imageCompressionOption: {
-        // Image compression ratio 0 - 100, default 80
-        quality: 80,
-        // Maximum width of the image, not limited by default, in pixels. If the configured value is less than the actual image value, it will be scaled proportionally.
-        maxWidth: 1000,
-        // Maximum height of the image, not limited by default, in pixels. If the configured value is less than the actual image value, it will be scaled proportionally.
-        maxHeight: 1000
-    }
-});
-```
-
-> The project upload directory can be configured through **UPLOAD_ROOT_DIR** in the server-side environment variables.
-
-#### Save Return Value
-
-The call of the **save** method is an asynchronous operation, and its return value is an array:
-
-```typescript
-{
-    // List of successfully saved files, with the value being the saved path
-    success: string[];
-    // List of error messages for failed saves
-    error: string[];
-}
-```
-
-Complete example:
-
-```js
-// Save directly to the project upload directory without any adjustment
-let uploadResult = await data.userImg.save();
-
-if (uploadResult.error.length) {
-    // TODO: Record the log
-    return ActionError("Save failed"); // ActionError is introduced in the API return value type.
-}
-
-let userImg = uploadResult.success[0];
-```
-
-![](/workbench/server-controller4.png)
-
-### API Method Parameters
-
-In API logic orchestration, the platform provides us with commonly used data parameters.
-
-- **data**: Input parameters, and the type can be designed and maintained in the API interface input parameters.
-- **context**: Routing context, which is the routing context data processed by the API interface and contains:
-    1. **jwt**: Authentication token content. The `jwt` property will only exist if the current controller has enabled **Authorization**. The token value has been parsed, and internal properties can be directly obtained.
-    2. **url**: Request address
-    3. **request**: Underlying request object. We can obtain data such as the request IP and source address through it.
-    4. **logger**: Log processing object, which can help us achieve centralized log output and collection.
-- **logger**: Log processing object, which can help us achieve centralized log output and collection. It is different from `console` in that it is a centralized log collector, and it allows us to use file logs, console logs, and database logs. Different requirements can be configured in [Environment Configuration](/workbench/env).
-
-### API Return Value Types
-
-The platform provides us with a unified data return structure, as shown below:
-
-```json
-{
-    "header": {
-        "code": "Status Code", // When JK000000 is returned, it represents business success, and all others are business exceptions.
-        "msg": "Error Message"
-    },
-    "data": {} // Returned business data
-}
-```
-
-The platform also provides a method for quickly creating the interface return value:
-
-#### Ok
-
-Used to return correct business data. The sample code is as follows:
-
-```js
-return Ok(业务数据);
-```
-
-Of course, in the logic orchestration panel, you can also use the **Return Success Data** node to return the correct business data.
-
-![](/workbench/server-controller5.png)
-
-#### ActionError
-
-Used to return abnormal business data. The sample code is as follows:
-
-```js
-return ActionError(错误信息, 错误码, 业务数据);
-// Among them, the error message is a required item. If the error code is not configured, the general exception code JK999999 will be used.
-```
-
-> Developers can configure different error codes so that the front end can implement different business processing branches according to the status code when the request is abnormal.
-
-Similarly, in the logic orchestration panel, you can also use the **Return Failure Data** node to return abnormal business data.
-
-![](/workbench/server-controller6.png)
-
-#### Data Fallback
-
-In the controller, we can directly return business data through `return`. The platform will judge at the bottom layer. If the returned data meets the required API data format, it will be returned according to the return value; otherwise, it will be automatically wrapped with the `Ok` method and returned as correct data.
-
-### Authorization Authentication
-
-Next, we will explain in detail how to configure the JWT token function of the project.
-
-#### How to Generate a JWT Token
-
-A JWT token can be generated in a certain API interface and returned to the front end, usually completed in the login interface.
-
-The `generateJwtToken` method can be used to generate the token.
-
-![](/workbench/server-controller7.png)
-
-From the logic in the above figure, first query user information according to the interface input items. If the user information is queried, use this information to generate JWT and return `Ok`; if the user information is not queried, return `ActionError`.
-
-> The above content is only an example. It is especially reminded that sensitive data such as passwords should not be stored in the JWT content.
-
-#### How the Front End Sends the JWT Token
-
-The front end needs to send the JWT token through **sid** in the interface request header `header`.
-
-In the JOKER visual platform, the `sid` can be uniformly injected in the `transformReqData` data request conversion method.
-
-![](/workbench/server-controller8.png)
-
-> It should be noted here that if the API has enabled the **Authorization** function, the value obtained through `context.jwt` in the API method is the `payload` of the JWT. At this time, there is no need to use the `verifyJwtToken` method to verify the legality of the token, because the platform will pre-judge whether the token is legal in the routing aspect. If the token is invalid, the logic in the API will not be executed. The `verifyJwtToken` method is only used for advanced and complex custom verification scenarios to provide token parsing operations. 
+Configure the database URL in the **Environment Settings** file (currently supports **PostgreSQL**).  
+![](/workbench/server-db6.png)

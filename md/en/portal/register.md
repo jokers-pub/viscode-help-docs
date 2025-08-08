@@ -1,45 +1,45 @@
-## Login/Registration
+## Login/Registration  
 
-### Scenario Introduction
+### Scenario Introduction  
 
-Before using the Joker Intelligent Development Platform, you need to register an account first. The following takes the SaaS version as an example to introduce the registration process of the low-code platform account.
+Before using the **Joker Intelligent Development Platform**, you need to register an account. The following steps will guide you through the account registration process for the **SaaS version** of this low-code platform.  
 
-### Operation Steps
+### Procedure  
 
-#### Open the Visual Development Platform
+#### Access the Visual Development Platform  
 
-First, go to the official website of the Joker platform. On the homepage of the official website, find and click the "Enter Visual Development Platform" button.  
-![Button to enter the visual development platform](/portal/official.png)
+First, visit the official **Joker Platform** website. On the homepage, locate and click the **"Enter Visual Development Platform"** button.  
+![Enter Visual Development Platform Button](/portal/official.png)  
 
-### Enter the Login Page
+### Navigate to the Login Page  
 
-After successfully jumping to the Visual Development Platform, you can browse the platform content freely. When performing operations that require login permissions, the system will automatically guide you to the login page; you can also actively click the avatar icon in the upper right corner of the page to manually jump to the login page.  
-![Schematic of the login page entry](/portal/login.png)
+After successfully redirecting to the **Visual Development Platform**, you can freely browse the platform’s content. When performing operations that require authentication, the system will automatically guide you to the login page. Alternatively, you can manually navigate to the login page by clicking the profile icon in the upper-right corner of the page.  
+![Login Page Entry Illustration](/portal/login.png)  
 
-> In addition, you can also directly visit this address to enter the login page: [Login Address](https://viscode.jokers.pub/user/login)
+> You can also directly access the login page via this link: [Login Page URL](https://viscode.jokers.pub/user/login)  
 
-### User Login
+### User Login  
 
-After opening the login page, enter your email and password in the corresponding fields, then click the "Login" button to complete the user login operation.  
-![User login interface](/portal/login2.png)
+Once the login page is loaded, enter your **email address** and **password** in the respective fields, then click the **"Login"** button to complete the authentication.  
+![User Login Interface](/portal/login2.png)  
 
-> Special Reminder: When logging in to your account in public places, please operate with caution and do not check the browser's "Remember Password" option to avoid potential risks to your information security caused by password leakage.
+> **Important**: When logging in from a public device, exercise caution to ensure security. **Never** enable the browser’s "Remember Password" feature to prevent potential password breaches.  
 
-### User Registration
+### User Registration  
 
-If you haven’t registered an account yet, click the "Register" button on the login page to switch to the user registration panel.  
-![Button to switch to the registration page](/portal/login3.png)
+If you do not have an account yet, click the **"Register"** button on the login page to switch to the registration panel.  
+![Switch to Registration Page Button](/portal/login3.png)  
 
-In the registration panel, fill in your email and set the account password in sequence. After completing the above information, click the corresponding button, and the platform will send a verification code to your registered email.  
-![Registration information filling interface](/portal/login4.png)
+On the registration panel, fill in your **email address** and set a **password** for your account. After completing these fields, click the appropriate button, and the platform will send a **verification code** to your registered email.  
+![Registration Form Interface](/portal/login4.png)  
 
-After receiving the verification code, enter it in the specified field and click the "Verify" button. After the verification is passed, you have successfully completed the registration of the platform account.
+Once you receive the verification code, enter it in the designated field and click the **"Verify"** button. Upon successful verification, your platform account will be successfully registered.  
 
-### Forgot Password
+### Forgot Password  
 
-If you forget your account password, click the "Forgot Password" button below the login page to jump to the password reset page.  
-![Location of the forgot password button](/portal/login5.png)
+If you forget your account password, click the **"Forgot Password"** button at the bottom of the login page to navigate to the password reset page.  
+![Forgot Password Button Location](/portal/login5.png)  
 
-On the password reset page, enter your registered email, and the platform will send a verification code to this email. After completing the verification, the platform will randomly generate a new password for you.
+On the password reset page, enter your registered email address. The platform will send a verification code to that email. After verification, a **temporary password** will be automatically generated for you.  
 
-> Please log in to the platform in a timely manner after resetting the password, and modify the password to a secure one that is easy for you to remember in the User Management module.
+> **Note**: After resetting your password, log in to the platform **as soon as possible** and update it to a **memorable yet secure** password in the **User Management** module.

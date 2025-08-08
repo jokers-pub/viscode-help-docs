@@ -1,67 +1,65 @@
-## Joker Visual Dev Platform
+## Joker Intelligent Development Platform
 
 ### Product Overview
 
-The Joker Visual Dev Platform is a cloud-based visual development tool designed to offer developers an efficient and flexible development environment. It supports the visual development of front-end projects, back-end services, and AI agents throughout the entire development process. Adopting a low-code development mode, it reduces the development threshold, cuts down on the amount of code writing, and boosts development efficiency through an intuitive visual interface.
+The Joker Intelligent Visual Development Platform is a cloud-based visual development tool designed to provide developers with an efficient and flexible development environment. It supports visual development for front-end projects, back-end services, and AI agents, covering the entire development lifecycle. Adopting a low-code development model, it reduces the barriers to entry and the amount of coding required through an intuitive visual interface, thereby enhancing development efficiency.
 
 ### Product Advantages
 
-#### Unified Development Model, Lowering Learning Costs
+#### Unified Development Model, Lower Learning Costs
 
-The traditional offline code development model encounters numerous issues, such as differences in developers' technical abilities, inconsistent local environments, and diverse development frameworks, which lead to high learning and development costs. The Joker platform establishes a unified development model, migrates various development resources to the cloud, and dispenses with complex code writing and environment configuration work by leveraging a visual operation interface. Developers can quickly get started without having to deeply study obscure code syntax and complex frameworks. They can utilize the "what-you-see-is-what-you-get" feature to obtain real-time feedback and accurately grasp project details, thereby enhancing development efficiency and quality.
+Traditional offline code development faces numerous challenges, such as variations in developers' technical skills, inconsistent local environments, and diverse development frameworks, leading to high learning and development costs. The Joker Platform establishes a unified development model by migrating various development resources online and leveraging a visual interface to eliminate complex coding and environment configuration. Developers can quickly get started without deep knowledge of obscure code syntax or complex frameworks, utilizing the WYSIWYG (What You See Is What You Get) feature to obtain real-time feedback and precisely control project details, improving both efficiency and quality.
 
-#### Highly Flexible Visual Cloud IDE
+#### Highly Flexible Cloud-Based Visual IDE
 
-Most low-code products on the market have limitations, including high entry barriers, poor component flexibility, insufficient functions of visual editors, numerous development restrictions, and an imperfect component ecosystem. The Joker platform, based on the needs of technical personnel, creates a powerful cloud-based visual editor (IDE). It features simple operation logic, a high degree of component customization, and can meet the requirements of complex development scenarios, like node loops and slot parameter passing. Meanwhile, the assets developed on the platform can be flexibly deployed, and the generated source code allows developers to have greater freedom, reducing their dependence on the platform. The rich component market provides diverse and high-quality component resources, facilitating the rapid construction of projects and business innovation.
+Most low-code products on the market suffer from limitations such as high entry barriers, poor component flexibility, inadequate visual editor functionality, development restrictions, and incomplete component ecosystems. The Joker Platform is built from the perspective of technical professionals, offering a powerful cloud-based visual editor (IDE). Its operational logic is simple, and components are highly customizable, supporting complex development scenarios such as node looping and slot parameter passing. Additionally, assets developed on the platform can be flexibly deployed, and the generated source code allows developers full control, reducing dependency on the platform. A rich component marketplace provides diverse, high-quality resources, accelerating project setup and business innovation.
 
 [video](https://static.jokers.pub/home/video/component.mp4)
 
-#### Healthy Visual Ecosystem Community
+#### Thriving Visual Ecosystem Community
 
-The platform takes inspiration from the Github open-source community concept and manages project versions in the form of repositories. Developers can publish projects, collect issues, reference, and clone other people's repositories within the community. Through this approach, an open-source ecological cycle of visual assets is formed, enriching component resources, promoting the continuous development of projects, and helping developers complete project development efficiently.
+Inspired by the open-source principles of GitHub, the platform manages project versions using Repositories. Developers can publish projects, collect issues, and clone others' Repositories in the community. This fosters an open-source ecosystem for visual assets, enriching component resources, driving continuous project development, and helping developers complete projects efficiently.
 
-![flow](/portal/flow.png)
+[video](https://static.jokers.pub/home/video/ai.mp4)
 
-#### Powerful Underlying Layer, Independent and Controllable
+#### Powerful Underlying Architecture, Autonomous Control
 
-The Joker platform independently develops its underlying framework and component ecosystem, covering all key aspects such as the framework's bottom layer, component library, scaffolding, routing, VSCODE plugin, and requests. This self-developed underlying layer model enables independent and controllable full-process tool chains from development to production deployment, ensuring that the platform is not restricted by external technologies and can operate stably and efficiently. After years of market application tests, the Joker underlying framework has demonstrated excellent performance and stability. Its unique development syntax is simple and efficient, effectively improving developers' work efficiency and providing a solid foundation for the continuous optimization and development of the platform.
-
+The Joker Platform features a self-developed underlying framework and component ecosystem, covering key areas such as the framework foundation, component library, scaffolding, routing, VS Code plugins, and request handling. This self-developed approach ensures full autonomy over the development and production deployment toolchain, shielding the platform from external technical constraints and ensuring stable, high-performance operation. Years of market application have proven the excellence of Joker's underlying framework in both performance and stability. Its unique development syntax is concise and efficient, significantly boosting developer productivity and providing a solid foundation for ongoing platform optimization and growth.
 ![core lib](/portal/lib.png)
 
 #### Embracing the AI Era
 
-With the rapid development of AI large models, cloud-based visual IDEs will become ideal carriers for integrating with AI products. As a cloud-based visual tool, the Joker platform has a deep integration with AI models, enabling the generation of visual results through conversations. Users can make targeted modifications, creating a flexible, efficient, and creative development experience for developers and leading the intelligent development of software.
-
-[video](https://static.jokers.pub/home/video/ai.mp4)
+With the rapid advancement of AI models, cloud-based visual IDEs are becoming ideal platforms for integrating AI products. As a cloud-based visual tool, the Joker Platform deeply integrates AI models, enabling users to generate visual outputs through conversation and make targeted modifications. This offers developers a flexible, efficient, and creative development experience, pioneering the intelligent evolution of software development.
+![AI](/portal/ai.jpeg)
 
 ### Product Positioning
 
-The Joker platform is positioned as a visual development tool beneath the no-code and low-code levels, providing a highly available and highly flexible cloud-based visual IDE. Through component visual configuration and model code generation, it supports no-code and low-code development models to meet the needs of different developers, reduce development difficulties, and improve development efficiency.
+The Joker Platform is positioned as a visual development tool beneath no-code and low-code solutions, delivering a highly available and flexible cloud-based visual IDE. Through component visual configuration and model code generation, it supports no-code and low-code development modes, catering to diverse developer needs while lowering development complexity and boosting efficiency.
 
 ![Product Positioning](/portal/position.jpeg)
 
-### Core Values
+### Core Value
 
-#### Intelligent Visual Development Tool
+#### Intelligent Visual Development Tools
 
-1. **Visual Development**: It supports the online visual development of components, method sets, and projects, enabling online release and reference, which is convenient and fast.
-2. **Visual Tool for Development**: It integrates the key features of local code development, such as life cycle and component reference, improving the editing and development efficiency and convenience.
-3. **Logic Development Based on Expression Mode**: Equipped with an intelligent prompt function and utilizing dynamic type declaration, it helps developers quickly obtain prompts for operation objects, reducing development difficulties and error probabilities.
-4. **Code Inspection**: It provides a complete code inspection capability, giving real-time feedback on code problems, such as missing parameters and type errors, locating problems, and providing modification suggestions.
-5. **Front-end and Back-end Separation**: Users can independently choose to develop front-end or back-end projects within the platform, and the two are not forcibly bound. Front-end projects can access existing back-end projects through APIs, and back-end projects can manage data models independently.
-6. **Third-party Component Reference**: It supports online NPM reference and the reference of component libraries of other developers, accelerating project development and achieving rapid dependencies.
-7. **Version Management**: It has a complete version management mechanism, and version updates and releases are immediately notified to the reference repositories, enabling rapid upgrade of dependencies.
+1. **Visual Development**: Supports online visual development of components, method sets, and projects, enabling quick publishing and referencing.
+2. **Developer-Oriented Visual Tools**: Integrates key features of local code development, such as lifecycles and component references, enhancing editing efficiency and convenience.
+3. **Expression-Based Logic Development**: Equipped with smart hints and dynamic type declarations, it helps developers quickly access object operation hints, reducing development difficulty and error rates.
+4. **Code Inspection**: Provides comprehensive code inspection capabilities, offering real-time feedback on issues such as missing parameters or type errors, along with problem localization and modification suggestions.
+5. **Front-End/Back-End Separation**: Users can independently develop front-end or back-end projects on the platform without forced coupling. Front-end projects can access existing back-end projects via APIs, while back-end projects can autonomously manage data models.
+6. **Third-Party Component References**: Supports online NPM references and the use of other developers' component libraries, accelerating project development and enabling rapid dependency management.
+7. **Version Management**: Features a robust version control mechanism, with version updates instantly notifying dependent Repositories for quick upgrades.
 
 ![](/portal/main.png)
 
 #### Developer Community
 
-The platform has a built-in team management and repository management system. Administrators can precisely set repository permissions, covering member management, permission allocation, and other operations, improving project management efficiency. The market function provides intelligent search and screening, facilitating developers to obtain high-quality component and project resources and realizing the efficient reuse of technical resources.
+The platform includes built-in team and Repository management systems. Administrators can finely configure Repository permissions, covering member management and role assignment to improve project management efficiency. The marketplace offers smart search and filtering, making it easy for developers to access high-quality components and project resources for efficient technical reuse.
 
-#### AI Intelligent Assistant
+#### AI Assistant
 
-The platform provides an AI intelligent assistant function, generating page layouts through conversations and applying them to the visual editor with one click to achieve seamless docking and improve development efficiency.
+The platform provides an AI assistant feature that generates page layouts through conversation, which can be applied to the visual editor with one click for seamless integration and improved efficiency.
 
-#### Flexible and Diverse Asset Export
+#### Flexible Asset Export
 
-The platform provides CICD functions to realize the automated service deployment after warehouse development, and also supports WebHook to trigger the privatized CICD process. The developed assets can generate source code that complies with industry standards, facilitating independent selection of deployment methods or local secondary development after export.
+The platform offers CI/CD capabilities for automated service deployment post-Repository development, as well as support for WebHook-triggered private CI/CD processes. Development assets can generate industry-standard source code, allowing for flexible export and local secondary development or deployment choices.

@@ -1,149 +1,181 @@
-## Understanding the Workbench
+## Getting to Know the Workbench
 
-In this chapter, we will take an in-depth look at the workbench, covering its definition, functional area division, and the specific functions of each area, to help you quickly get started and carry out development work efficiently.
+In this Section we’ll dive deep into the workbench—its definition, functional zones, and the specifics of each zone—to get you up to speed and productive immediately.
 
-### Overview
+### Overview  
+The workbench is a **browser-based visual development platform**. Inside any Repository you can perform code-first or visual development while seamlessly integrating:  
+- front-end **Sections**, pages, methods, APIs, and  
+- back-end databases, caches, controllers (APIs), and configuration files.  
 
-The workbench, as an online visual development tool, is a powerful assistant in our daily development process. Through the workbench, we can conveniently conduct code development within the repository. It integrates rich resources such as front-end components, pages, methods, APIs, as well as the server-side database, cache, controllers (APIs), and configuration files, realizing visual development operations.
-
-Moreover, the platform has a powerful built-in Javascript/Typescript expression editor. With the help of this tool, developers can achieve more complex and advanced functional development through expression writing. Meanwhile, during the development process, the code inspection function provided by the platform runs in real time, promptly discovers potential problems, and gives targeted solutions, effectively improving the accuracy of development, reducing the time for error troubleshooting, and greatly enhancing the development efficiency.
+A powerful in-platform **JavaScript/TypeScript expression editor** allows you to compose sophisticated logic. A real-time linter continuously inspects code as you type, surfaces potential issues, and provides actionable fixes—cutting troubleshooting time and boosting throughput.
 
 ![](/workbench/basic.png)
 
-### Functional Areas
-
-The workbench can be divided into three major areas according to functions:
+### Functional Areas  
+Three principal zones divide the UI:  
 
 ![](/workbench/basic2.png)
 
-- **Left Panel**: This is our menu panel, which contains the commonly used function menu panels. Different menus will be displayed according to different project types and the types of opened files.
-- **Middle Panel**: This is our work area. When we open a file, the platform will display different visual work area panels according to the file type.
-- **Bottom Panel**: This is the area for displaying the basic information of the project, showing information such as errors and exceptions in the project, file size, and version.
+- **Left Pane** – Menu Panel: context-sensitive, displays tools relevant to the current project/file type.  
+- **Center Pane** – Workspace: the active visual editor region; its layout morphs to match the file type being edited.  
+- **Bottom Pane** – Project Info: shows errors, exceptions, file sizes, versions, and other diagnostics.
 
-### Resource Manager
+---
+
+### Resource Explorer
 
 ![](/workbench/basic3.png)
 
-The resource manager is presented in the form of an intuitive project file directory tree and is a key area for managing project files. Here, you can conveniently perform operations such as creating files, modifying the basic information of files, deleting files, and copying/pasting files to efficiently manage various file resources in the project.
+The Resource Explorer presents directory tree navigation for the entire project. From here you can create, rename, delete, copy/paste, and reorder files or folders.
 
-![](/workbench/basic4.png)
+Hover any asset to reveal a three-dot action icon that opens the file operations menu.
 
-When the mouse hovers over a resource, a menu operation button will appear on the right side of the resource. Click the three-dot icon to open the file operation menu, which contains the following commonly used functions:
+#### File Actions
 
-#### File Menu
+- **Create Folder** – Appears only on folders; creates a subfolder to keep assets organized and ensure a clean code-generation structure.  
+- **Create…** – Context-aware; presents the correct template based on the parent node so you can bootstrap new artifacts instantly.  
+- **Commit Log** – Lists every change-set, author, timestamp, and description—ideal for change-tracing and team collaboration.  
+- **Edit** – Rename files, modify routes, or adjust other meta attributes.  
+- **Delete** – Removes files or folders (root directories are protected).  
+- **Copy** – Copies file content to clipboard for a quick clone.  
+- **Paste** – Appears only after a copy; completes the clone operation.  
+- **Move / Cut** – Allows repositioning of whole files or subtrees.
 
-- **Create Folder**: This option is only displayed for folder resources and can be used to create sub-folders within the current folder, which is convenient for business classification. Reasonable planning of the folder structure helps ensure the rationality of the file directory when generating code and improves the overall organization and maintainability of the project.
-- **Create XX**: Different create file menus will be displayed according to different root directories or parent nodes, meeting diverse file creation needs and allowing you to quickly create the required files.
-- **Commit Record**: Click this option to view the commit log of the file, which records in detail who has operated the file, the operation time, and the specific operation content, facilitating the tracing of the file's change history and understanding the project progress and team collaboration situation.
-- **Edit**: It is used to edit the information of file nodes, such as modifying the file name, adjusting routing information and other basic file attributes, allowing you to flexibly adjust the identification and path settings of the file.
-- **Delete**: It can be used to delete files or folders, but the root directory is protected and cannot be deleted, ensuring the stability of the core structure of the project and avoiding confusion in the project file system caused by misoperations.
-- **Copy**: After clicking Copy, the file content will be temporarily stored in memory for pasting operations in the target folder or parent file, realizing the rapid copying of files and improving the efficiency of file management.
-- **Paste**: The Paste menu will be displayed only when there are files that have been copied and is used to complete the pasting operation of files and complete the file copying and transfer process.
-- **Move/Cut**: Through this operation, files can be cut and pasted at the target file position, thus realizing the movement of files and facilitating the adjustment of the position of files in the project directory.
+> When a Repository is created the platform auto-generates **canonical root directories** according to project type. You cannot add additional root directories manually; you may, however, create unlimited subfolders.
 
-> When a repository is created, the platform will automatically create a root directory folder that complies with the specifications according to the repository type. To ensure standardization and consistency, users cannot create new root directories on their own, but they can freely create sub-folders under the root directories created by the platform. The root directories created by the platform are divided according to functions and conform to general business specifications.
+#### Root Directory Guide
 
-#### Root Directory Explanation
-
-- **Components**: This folder is specifically used to store general or cross-page UI component resources. You can further subdivide the types through folders inside it for convenient management and searching. This folder only exists in front-end projects (not method sets) and is an important resource storage place for building front-end pages.
-- **Methods**: It mainly stores general method sets. You can create different types of method function sets according to business types inside it, classify and manage related methods, and improve the reusability and maintainability of code.
-- **Pages**: It is used to store page layout and functional page files and is the main area for creating actual display pages. Here, you can design and build pages that directly interact with users. This folder is only applicable to front-end projects (not method sets).
-- **Resources**: It mainly stores files of types such as pictures and fonts in the project. The platform supports uploading resources such as pictures and provides a visual quick reference function, which is convenient for quickly calling these resources during the project development process and improving the development efficiency.
-- **Cache**: This folder stores the cache strategies for server-side business data. You can create cache types and cache strategies for specific businesses here to optimize the performance of server-side data processing. This folder only exists in server-side projects (not method sets).
-- **Controllers**: It mainly stores the controllers (APIs) provided by the server side to the outside world. You can create API methods here to implement the interaction interfaces between the server side and the outside world, facilitating data transmission and function calls. It is only applicable to server-side projects (not method sets).
-- **Project Configuration (File)**: Here, you can maintain the basic information of the current project, such as which components, method sets, and style variables are open; configure security and access control functions such as route guards; maintain the NPM references of the current project to ensure the normal management of project dependencies; and also set global variables and global methods to achieve the global configuration and management of the project.
-- **Environment Variables (File)**: You can create cache variables and environments. During runtime, you can choose an environment according to actual needs to determine the values of environment variables and achieve differentiated configurations for different running environments, meeting the needs of the project in different stages such as development, testing, and production.
+- **Sections** – Shared and reusable UI components; organized via internal folders (front-end projects only).  
+- **Methods** – Utility libraries grouped by business concern (method sets only).  
+- **Pages** – Actual rendered pages and layouts (front-end projects only).  
+- **Assets** – Images, fonts, icons, etc.; supports drag-and-drop upload and instant asset reference.  
+- **Cache** – Back-end caching policies; classes and strategies live here (back-end projects only).  
+- **Controllers** – Service APIs exposed by the back-end (back-end projects only).  
+- **Project Config (file)** – Global project settings: open components, globals, route guards, NPM packages, etc.  
+- **Environment Variables (file)** – Dedicated environment definition files to switch values between dev, test, and prod.
 
 #### Opening Files
 
-In the operation interface, the way to open files is very convenient. When you **click on a file node**, the corresponding file can be quickly opened. The system adopts an intelligent management mechanism. If the opened file has not been changed in any way, when you open the next file, the previous unchanged file will be automatically closed to keep the operation interface simple and orderly.
+- **Single-click** → Opens the file for editing; keeps the workspace lean—unchanged files auto-close.  
+- **Double-click** → Pins the file so it stays on the tab strip even if unmodified.  
+- **Open Editors Panel** – Located below the file tree; lists all currently pinned tabs for lightning-fast navigation.
 
-However, if you don't want to modify the file content but hope that the file will always remain in the open file taskbar, just **double-click on the file node** to keep the file in the taskbar, which is convenient for viewing and switching at any time.
+#### Saving Files
 
-![](/workbench/basic5.png)
+Press **Ctrl + S** (Windows/Linux) or **Cmd + S** (macOS) to persist all changes instantly.
 
-In addition, below the resource manager, there is an `“Opened Editors”` panel. Here, you can clearly view the list of already opened files, quickly locate and switch to the required files, further improving the operation efficiency.
+---
 
-### Component Data
+### Keyboard Shortcuts
 
-In **front-end** projects, when you open files of the `Components` or `Pages` types, the **Component Data** menu will be displayed on the left menu panel. This menu is one of the most commonly used tools for front-end developers. Through it, you can view the internal data of the current component or page.
+Master these hotkeys for rapid interaction:
 
-![Screenshot related to component data](/workbench/basic6.png)
+- **Ctrl/Cmd + S** – Save Resource  
+- **Ctrl/Cmd + P** – Quick Resource Finder  
+- **Ctrl/Cmd + C** – Copy element in front-end visual pane  
+- **Ctrl/Cmd + V** – Paste element in front-end visual pane  
+- **Ctrl/Cmd + Z** – Undo last visual operation  
 
-Here, you can maintain the "state data" and "logic/events" of the component, and also view the "layout outline tree" to understand and manage the relevant data and structure of the component or page more comprehensively and deeply.
+---
 
-### Component Center
+### Component Data (front-end projects only)
 
-In **front-end** projects, when you open files of the `Components` or `Pages` types, the **Component Center** menu will be displayed on the left menu panel. For front-end developers, this is one of the most commonly used tools. With the help of this menu, you can view the list of available components in the current project, and you can quickly add and reference components through simple **drag-and-drop** operations.
+Open any **Section** or **Page**, and the left menu presents **Component Data**. Use it to inspect and edit:  
+- **State**  
+- **Logic / Events**  
+- **Layout tree outline**
 
-![Screenshot related to component center](/workbench/basic7.png)
+![](/workbench/basic6.png)
 
-Here, the basic components are displayed by default, and these basic components cannot be deleted. If the basic components cannot meet the daily development needs, you can go to the `Component Market` to install plugins. After the installation is completed, the available components in other plugins will be displayed here.
+---
 
+### Component Center (front-end projects only)
+
+While editing a **Section** or **Page**, the **Component Center** appears in the left panel. Here you can:
+
+- See every available component in the project.  
+- **Drag & drop** to embed new components instantly.  
+- Install plug-ins from the **Component/Method Market**; installed plug-ins will populate the custom components list.
+
+![](/workbench/basic7.png)  
 ![](/workbench/basic8.png)
 
-### Request Management
+---
 
-In **front-end (application type)** projects, the `Request Management` menu option will appear in the left menu. This is a key area for centralized maintenance of request APIs in the current project.
+### Request Management (front-end *app* projects)
 
-![Screenshot related to request management](/workbench/basic9.png)
+Open the **Request Management** menu in the left panel. Launch the **Request Management Editor** to:
 
-In the request management panel, click the `Request Management` button at the bottom to open the request management editor. In this editor, you can perform a series of key operations:
+- **Create / Edit / Delete** API interfaces declaratively.  
+- Configure **global request defaults**: timeout, request interceptors, response transformers, etc.
 
-- **Interface Management**: You can conveniently **create** new interfaces, **edit** various parameters and configurations of existing interfaces, and **delete** interfaces when they are no longer needed, flexibly controlling the addition, deletion, and modification of interfaces.
-- **Global Configuration Settings**: You can adjust the global configuration of interface requests, such as setting the **request timeout period** to ensure that requests will not wait for a long time when the network is poor; configuring **request aspect events** to achieve custom processing of the logic before and after requests; and performing **request data conversion** to make the format of received and sent data meet the project requirements, comprehensively optimizing various parameters and processes of interface requests.
+![](/workbench/basic9.png)
 
-### Data Model
+---
 
-In **server-side (application type)** projects, the `Data Model` menu option will be displayed on the left menu. This is the core area for maintaining the database tables in the current project.
+### Data Model (back-end *app* projects)
 
-![Screenshot related to data model](/workbench/basic13.png)
+Access the **Data Model** menu to:
 
-In the data model panel, just click the `Manage Database` button at the bottom to open the database management editor. In this powerful editor, you can conduct comprehensive maintenance of the database table structure. The platform provides highly flexible support for table structure design. Whether it is establishing the association relationships between data tables, setting primary key constraints, or creating joint indexes and other complex designs, all can be easily completed here, fully meeting various complex data management needs.
+- Click **Manage Database** and open an intuitive schema designer.  
+- Build tables, relationships, composite indexes, constraints, and default values interactively—no SQL required.
 
-### Run and Debug
+![](/workbench/basic13.png)
 
-The `Run and Debug` panel is a key area for performing complete run and debug operations on the current project.
+---
 
-![Screenshot related to run and debug](/workbench/basic10.png)
+### Run & Debug Panel
 
-> It is worth noting that in this panel, you can choose different environments to run and debug according to the project requirements to meet the testing and optimization requirements of the project in different scenarios.
+The **Run & Debug** panel lets you:
+
+- Launch the project under the selected environment.  
+- Attach the debugger, reload modules, and observe logs in real time.
+
+![](/workbench/basic10.png)
+
+---
 
 ### Export Code
 
-The platform supports the code export operation in the development branch. Just click the "Export Code" menu to generate the code in the development branch.
+From any development branch, open **Export Code** in the menu. A full-repository scan runs; zero **issues** must be reported before the export succeeds, guaranteeing clean deliverables.
 
-![Screenshot related to export code](/workbench/basic11.png)
+![](/workbench/basic11.png)
 
-It should be noted that **before exporting the code**, the platform will automatically conduct a full-file scan and inspection of the code. Only when the scan result shows that there are no problems will the file code be allowed to be exported smoothly, ensuring the quality and integrity of the exported code.
+---
 
-### Component Method Market
+### Component/Method Market
 
-The platform has a `Component Method Market`, which provides developers with a convenient plugin management platform. Here, developers can **install**, **update**, and **uninstall** plugins. These plugins are all developed by other developers and made public.
+Install, update, or uninstall plug-ins—each contributed by the community—directly from the **Component/Method Market**.
 
-![Screenshot related to component method market](/workbench/basic12.png)
+![](/workbench/basic12.png)
 
-### Main Work Area
+---
 
-The middle area of the workbench is our **Main Work Area**, which undertakes the important task of displaying visual editors of different file types and is the core operation area for daily work.
+### Main Workspace
 
-![Screenshot related to main work area](/workbench/basic14.png)
+The **center area** is the **Main Workspace**, where the visual editors render:
 
-The main work area is mainly divided into two parts from top to bottom:
+![](/workbench/basic14.png)
 
-- **Taskbar**: This shows the files that are in the opened/edited state.
-- **Editor**: As the rendering area of the file editor, it is also the place where actual development and editing are carried out.
+- **Tab Bar** – Lists all open/editable files.  
+- **Editor Surface** – Actual rendering region for configuration or code.
 
-In the taskbar, different display effects correspond to different states of the file:
+Tab states:  
+1. *Italic* → Clean file, auto-closes when another file is focused.  
+2. **Dot icon** → Unsaved changes.  
+3. Hover → Close button appears; unsaved changes trigger a save prompt.
 
-1. If the file name is in `italic`, it indicates that the current file has neither been edited nor modified. When the next file is opened, this file will be automatically closed. If you want to keep it in the taskbar, you can double-click the task or double-click the target file in the resource management panel.
-2. When a `dot` is displayed after the file, it means that the current file has been changed but not saved yet.
-3. When the mouse moves over a task item, a close button will be displayed behind it. If the file is closed without being saved, the system will pop up a prompt asking whether to save it.
+---
 
-### Bottom Status Bar
+### Status Bar
 
-The **Bottom Status Bar** at the bottom of the workbench is mainly used to display various status information of the project, specifically including: project name, classification, type, problem panel, file size, login status, etc.
+The **Status Bar** at the bottom reports:
 
-![Screenshot of the bottom status bar](/workbench/basic15.png)
+- Project name, category, and type  
+- **Problems** panel (integrated linter)  
+- File size  
+- Auth status  
 
-> Among them, the `Problem Panel` is a commonly used function. Here, you can view the code problems of the current project. Moreover, when creating a project version, the code inspection also needs to be completed through the `Problem Panel` to trigger the subsequent release process and ensure that the project code quality meets the release standard. 
+Use **Problems** to review code issues; it must be empty before any release can pass the gated pipeline.
+
+![](/workbench/basic15.png)

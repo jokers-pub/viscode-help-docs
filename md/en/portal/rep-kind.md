@@ -1,40 +1,40 @@
-## Repository Types
+## Repository Types  
 
-This chapter focuses on explaining the differences between different repository types and their applicable scenarios.
+This chapter focuses on explaining the differences between various repository types and their applicable scenarios.  
 
-The JOKER Intelligent Development Platform follows a **front-end and back-end separation** development model, which grants developers greater flexibility. They can independently complete visual rapid development for front-end projects or server-side projects. Meanwhile, even when front-end and back-end development are in the same team, the platform provides API quick association functions to ensure seamless synchronization between front-end and back-end.
+The JOKER Intelligent Development Platform follows a frontend-backend separation development model, which provides developers with greater flexibility. They can independently complete the visual rapid development of frontend projects or achieve fast visual development for server-side projects. Additionally, even if frontend and backend development are handled by the same team, the platform offers API quick-association functionality to ensure seamless synchronization between the frontend and backend.  
 
-### Front-end
+### Frontend  
 
-Front-end projects generally refer to projects, components, or method-related projects that can run on terminals.
+Frontend projects typically refer to projects, components, or method-related projects that can run on end-user devices.  
 
-#### Categories
+#### Categories  
 
-Front-end projects can be subdivided into three types: Applications, UI Components, and Method Sets.
+Frontend projects can be subdivided into Applications, UI Components, and Method Libraries.  
 
-1. **Application**: Application-type repositories are mainly used to store projects that finally run for users. When creating practical projects such as a `lucky draw application`, `form collection application`, or `mall application`, you should select the `Application` category. In this type of repository, you can create various resources such as `Components`, `Method Sets`, `Pages`, and `Interfaces` to fully meet the operational needs of the project.  
-   ![Repository Type Selection Interface](/portal/rep-kind.png)
+1. **Application**: Application-type repositories are primarily used to store projects ultimately intended for end users. When creating projects such as `Lottery Application`, `Form Collection Application`, or `E-Commerce Application` that are intended for real-world use, you should select the `Application` category. In this type of repository, you can create various resources such as `Components`, `Method Libraries`, `Pages`, and `Interfaces` to comprehensively meet the diverse requirements of the project.  
+   ![](/portal/rep-kind.png)  
 
-2. **Component Library**: The Component Library aims to provide a complete set of UI component libraries externally. If you choose this type of repository, you can create resources like `Components`, `Method Sets`, and `Style Variables/Public Styles` in the Workbench, which is conducive to centralized management and reuse of UI-related resources.  
-   ![Component Library Repository Interface](/portal/rep-kind2.png)
+2. **Component Library**: Component libraries aim to provide a complete set of UI components for external use. If you select this type of repository, you can create resources such as `Components`, `Method Libraries`, and `Style Variables/Common Styles` in the workspace, which facilitates centralized management and reuse of UI-related resources.  
+   ![](/portal/rep-kind2.png)  
 
-3. **Method Set**: A Method Set generally cannot be deployed independently. It exists mainly as a collection of methods and class libraries to provide public method calls externally. After selecting a repository of this category, you can only create `Method`-type resources in the Workbench.  
-   ![Method Set Repository Interface](/portal/rep-kind3.png)
+3. **Method Library**: Method libraries generally cannot be deployed independently. They primarily serve as collections of methods or class libraries designed to provide public method calls externally. After selecting this repository type, you can only create resources of the `Method` type in the workspace.  
+   ![](/portal/rep-kind3.png)  
 
-> **Special Note**: Except for `Application`-type repositories, UI Component Libraries and Method Sets can be **referenced** by other repositories after version release. When an Application project **references** a Component Library or Method Set project, it can call the components or methods therein. `Application`-type repositories are not allowed to be referenced, but after version release, they can be cloned as project templates for secondary development.
+> **Special Note**: Apart from `Application`-type repositories, UI Component Libraries and Method Libraries can be **referenced** by other repositories upon version release. When an application-project **references** a component library or method library, it can access the components or methods within them. However, `Application`-type repositories cannot be referenced, though after version release, they can be cloned as project templates for secondary development.  
 
-#### Running Platform
+#### Runtime Platform  
 
-Configure the current repository's running platform here. The current options are **PC 端 (PC 端)**, **移动端 (Mobile 端)**, and **不限 (Unlimited)**. Accurately selecting based on the project's actual running environment helps optimize the project's performance on different platforms.
+Configure the runtime platform of the current repository here. Currently available options are **PC**, **Mobile**, and **Unrestricted**. Accurately selecting the platform based on the actual runtime environment of the project helps optimize performance across different platforms.  
 
-> If you want to develop an application that can adaptively run on both PC and mobile ends, you can choose **不限 (Unlimited)**.
+> If you want to develop an application that can responsively run on both PC and mobile devices, choose **Unrestricted**.  
 
-> Please carefully select the running platform, as it will affect the display of panels in the Workbench and the recommendation and filtering of the Extension Market in the Workbench.
+> Please carefully select the runtime platform, as it will affect the display of panels in the workspace and the recommendations/filtering in the extension marketplace.  
 
-### Server-side
+### Server-Side  
 
-1. **Application**: Application-type repositories are mainly used to store projects that finally run for users. When creating practical projects such as a `lucky draw application`, `form collection application`, or `mall application`, you should select the `Application` category. In this type of repository, you can create various resources such as `Controllers`, `Databases`, `Caches`, and `Method Sets` to fully meet the operational needs of the project.  
-   ![Server-side Application Repository Interface](/portal/rep-kind4.png)
+1. **Application**: Application-type repositories are primarily used to store projects ultimately intended for end users. When creating projects such as `Lottery Application`, `Form Collection Application`, or `E-Commerce Application` that are intended for real-world use, you should select the `Application` category. In this type of repository, you can create resources such as `Controllers`, `Databases`, `Caches`, and `Method Libraries` to comprehensively meet the diverse requirements of the project.  
+   ![](/portal/rep-kind4.png)  
 
-2. **Method Set**: A Method Set generally cannot be deployed independently. It exists mainly as a collection of methods and class libraries to provide public method calls externally. After selecting a repository of this category, you can only create `Method`-type resources in the Workbench.  
-   ![Method Set Repository Interface](/portal/rep-kind3.png)
+2. **Method Library**: Method libraries generally cannot be deployed independently. They primarily serve as collections of methods or class libraries designed to provide public method calls externally. After selecting this repository type, you can only create resources of the `Method` type in the workspace.  
+   ![](/portal/rep-kind3.png)
