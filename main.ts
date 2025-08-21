@@ -15,7 +15,7 @@ registerGlobalComponent({
 
 let router = new Router({
     history: import.meta.define.routerType === "html5" ? new WebHistory() : undefined,
-    base: getLang() === "zh-CN" ? "/cn" : "",
+    base: getLang() === "zh-CN" ? "" : "/en",
     routes: [
         {
             path: "/",
@@ -24,6 +24,10 @@ let router = new Router({
 
         ...getRouters()
     ]
+});
+
+router.errorCallbacks.add(() => {
+    router.push("/");
 });
 
 new App().$mount(document.getElementById("app"));

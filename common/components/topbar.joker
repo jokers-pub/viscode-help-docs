@@ -62,23 +62,23 @@ export default class extends Component {
     get langSwtichPath() {
         let path = this.model.currentPath;
 
-        if (path.startsWith("/cn")) {
+        if (path.startsWith("/en")) {
             path = path.substring(3);
         }
 
         return (
-            (this.lang === "zh-CN" ? "https://help.viscode.jokers.pub" : "https://help.viscode.jokers.pub/cn") + path
+            (this.lang === "zh-CN" ? "https://help.viscode.jokers.pub/en" : "https://help.viscode.jokers.pub") + path
         );
     }
     getClassName(path: string) {
         if (path.startsWith("http")) return "";
         let currentRoute = router.route.value;
         let routeFullPath = currentRoute.fullPath;
-        if (routeFullPath.startsWith("/cn")) routeFullPath = routeFullPath.substring(3);
+        if (routeFullPath.startsWith("/en")) routeFullPath = routeFullPath.substring(3);
 
-        if (path.startsWith("/cn")) path = path.substring(3);
+        if (path.startsWith("/en")) path = path.substring(3);
 
-        if (routeFullPath.split("/").filter(Boolean)[0] === "" && (path === "/index" || path === "/cn/index"))
+        if (routeFullPath.split("/").filter(Boolean)[0] === "" && (path === "/index" || path === "/en/index"))
             return "active";
 
         return path.split("/").filter(Boolean)[0] === routeFullPath.split("/").filter(Boolean)[0] ? "active" : "";
@@ -129,7 +129,7 @@ export default class extends Component {
         this.metaDescription?.setAttribute("content", description);
         for (let group of menus.allMenus) {
             for (let item of group.children || []) {
-                if (item.path === (this.lang === "zh-CN" ? "/cn" : "") + router.route.value.path) {
+                if (item.path === (this.lang === "zh-CN" ? "" : "/en") + router.route.value.path) {
                     document.title = `${group.title} - ${item.title} ${defaultTitle}`;
                     if (item.description) {
                         this.metaDescription?.setAttribute("content", item.description + " | " + description);

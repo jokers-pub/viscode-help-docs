@@ -15,11 +15,11 @@
                     @(i18n("专为开发人员而生，它拥有更为灵活的开发模式，操作简便，易于上手，学习成本低，是开发人员的得力助手。", "Designed for developers, it features a more flexible development model, simple operation, easy to get started, low learning curve, and is a powerful assistant for developers."))
                 </p>
                 <div class="nav-btns">
-                    <a href="@(i18n("/cn"))/portal/introduction">
+                    <a href="@(i18n('',"/en"))/portal/introduction">
                         @(i18n("门户帮助文档", "Portal Help Documentation"))
                         <i class="jk-icon-right" />
                     </a>
-                    <a href="@(i18n("/cn"))/workbench/basic" class="t1">
+                    <a href="@(i18n('',"/en"))/workbench/basic" class="t1">
                         @(i18n("工作台帮助文档", "Workbench Help Documentation"))
                         <i class="jk-icon-right" />
                     </a>
@@ -75,22 +75,22 @@
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item>
-                            <jk-link href="@(i18n("/cn"))/portal/register">
+                            <jk-link href="@(i18n('',"/en"))/portal/register">
                                 @(i18n("注册用户", "Register User"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item>
-                            <jk-link href="@(i18n("/cn"))/portal/create-org">
+                            <jk-link href="@(i18n('',"/en"))/portal/create-org">
                                 @(i18n("创建第一个团队", "Create First Team"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item>
-                            <jk-link href="@(i18n("/cn"))/portal/create-rep">
+                            <jk-link href="@(i18n('',"/en"))/portal/create-rep">
                                 @(i18n("创建第一个项目", "Create First Project"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item>
-                            <jk-link href="@(i18n("/cn"))/portal/rep-info">
+                            <jk-link href="@(i18n('',"/en"))/portal/rep-info">
                                 @(i18n("了解仓库功能", "Learn About Repository Functions"))
                             </jk-link>
                         </jk-timeline-item>
@@ -102,27 +102,27 @@
                     </div>
                     <jk-timeline>
                         <jk-timeline-item type="primary">
-                            <jk-link href="@(i18n("/cn"))/workbench/basic">
+                            <jk-link href="@(i18n('',"/en"))/workbench/basic">
                                 @(i18n("了解工作台", "Learn About Workbench"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item type="primary">
-                            <jk-link href="@(i18n("/cn"))/workbench/front-end">
+                            <jk-link href="@(i18n('',"/en"))/workbench/front-end">
                                 @(i18n("了解前端项目", "Learn About Front-end Projects"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item type="primary">
-                            <jk-link href="@(i18n("/cn"))/workbench/back-end">
+                            <jk-link href="@(i18n('',"/en"))/workbench/back-end">
                                 @(i18n("了解服务端项目", "Learn About Server-side Projects"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item type="primary">
-                            <jk-link href="@(i18n("/cn"))/workbench/install-package">
+                            <jk-link href="@(i18n('',"/en"))/workbench/install-package">
                                 @(i18n("如何安装扩展", "How to Install Extensions"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item type="primary">
-                            <jk-link href="@(i18n("/cn"))/workbench/check-code-version">
+                            <jk-link href="@(i18n('',"/en"))/workbench/check-code-version">
                                 @(i18n("代码检查及版本发布", "Code Inspection and Version Release"))
                             </jk-link>
                         </jk-timeline-item>
@@ -134,27 +134,27 @@
                     </div>
                     <jk-timeline>
                         <jk-timeline-item type="success">
-                            <jk-link href="@(i18n("/cn"))/workbench/package-release">
+                            <jk-link href="@(i18n('',"/en"))/workbench/package-release">
                                 @(i18n("组件/方法集发布", "Component/Method Set Release"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item type="success">
-                            <jk-link href="@(i18n("/cn"))/workbench/workflow">
+                            <jk-link href="@(i18n('',"/en"))/workbench/workflow">
                                 @(i18n("逻辑编排", "Logic Orchestration"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item type="success">
-                            <jk-link href="@(i18n("/cn"))/workbench/env">
+                            <jk-link href="@(i18n('',"/en"))/workbench/env">
                                 @(i18n("环境变量", "Environment Variables"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item type="success">
-                            <jk-link href="@(i18n("/cn"))/workbench/debugger">
+                            <jk-link href="@(i18n('',"/en"))/workbench/debugger">
                                 @(i18n("运行调试", "Run Debugging"))
                             </jk-link>
                         </jk-timeline-item>
                         <jk-timeline-item type="success">
-                            <jk-link href="@(i18n("/cn"))/workbench/generate">
+                            <jk-link href="@(i18n('',"/en"))/workbench/generate">
                                 @(i18n("代码生成", "Code Generation"))
                             </jk-link>
                         </jk-timeline-item>

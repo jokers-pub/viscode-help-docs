@@ -54,7 +54,7 @@ export default class extends Component<{
     get moduleName() {
         let path = this.model.currentRoutePath;
 
-        if (path.startsWith("/cn")) {
+        if (path.startsWith("/en")) {
             path = path.substring(3);
         }
         return path.substring(1).split("/")[0];
