@@ -7,7 +7,7 @@ module.exports = {
             input: {
                 // 配置多个入口，键为打包后的文件名前缀
                 index: path.resolve(__dirname, "index.html"),
-                "index.cn": path.resolve(__dirname, "index.cn.html")
+                "index.en": path.resolve(__dirname, "index.en.html")
             }
         }
     },
