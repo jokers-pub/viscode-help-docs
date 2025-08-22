@@ -7,3 +7,4 @@ types
 build/algoliasearch.ts
 build/translate.ts
 pnpm-lock.yaml
+.npmrc

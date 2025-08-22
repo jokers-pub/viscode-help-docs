@@ -22,7 +22,7 @@
         "@joker.front/cli": "^1.1.157",
         "@joker.front/core": "^1.3.86",
         "@joker.front/router": "^1.0.49",
-        "@joker.front/ui": "^1.0.316",
+        "@joker.front/ui": "^1.0.318",
         "@types/markdown-it": "^13.0.7",
         "@types/node": "^22.13.1",
         "algoliasearch": "^5.17.0",
